@@ -198,10 +198,11 @@
     const slug = (name) => name.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     $('#trust-grid').innerHTML = dict.clients.featured.map((n, i) => {
       const { sector, group } = findSector(n);
-      const file = (dict.clients.logos || {})[n] || `${slug(I18N.en.clients.featured[i] || n)}.png`;
+      const enName = I18N.en.clients.featured[i] || n;
+      const file = (I18N.en.clients.logos || {})[enName];
       return `<div class="trust-tile gradient-border-card" data-reveal style="--c:${sector.color}">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/${file}" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>${esc(mono(I18N.en.clients.featured[i] || n))}</b></span>
+          <span class="trust-badge ${file ? '' : 'no-logo'}">${file ? `<img src="/assets/img/clients/${esc(file)}" alt="${esc(n)}" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()">` : ''}<b>${esc(mono(enName))}</b></span>
           <span class="trust-name">${esc(n)}</span>
           <span class="trust-group">${esc(group)}</span>
         </div></div>`;

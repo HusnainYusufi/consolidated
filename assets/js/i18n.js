@@ -128,6 +128,8 @@ window.I18N = {
     clients: {
       title: 'Verified Track Record',
       intro: 'Trusted by heavy industry, manufacturing corporations, agricultural leaders, trading houses, healthcare, technology, education, NGOs and construction across Jordan.',
+      // Real logos: add an entry here as 'Client name as in featured': 'file.png' and drop the file in assets/img/clients/.
+      logos: {},
       featured: ['Al-Mona for Fast Food Co. (Subway)', 'Penal Reform International Association', 'Qurtoba International Schools', 'Petra for Waste Recycling Co.', 'Dar Al-Manhal Publishers Co.', 'Al-Muhammadiyah Schools', 'Modern Kingdom for Gas Stations Management Co.', 'Al Arabia for Oud and Perfumes Co.', 'Delma for Construction Co.', 'Valencia for Food Industries Co.', 'Space One (AI & Tech Applications)', 'Shatt Al-Arab for Ceramic Industry Co.'],
       sectors: [
         { name: 'Manufacturing & Industry', color: '#27fcf2', groups: [

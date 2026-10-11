@@ -38,15 +38,16 @@ Team photos: only the founder's photo was in the profile PDF. Other members use 
 
 ## Client logos
 
-The "Verified Track Record" grid shows a coloured monogram for each featured client until a real logo exists. To add one, save the logo as a PNG (transparent background, roughly square) at `assets/img/clients/<slug>.png`, where the slug is the English client name in lowercase with spaces and punctuation replaced by hyphens, for example:
+The "Verified Track Record" grid shows a coloured monogram for each featured client until a real logo is supplied. To add one, save the logo as a PNG (transparent background, roughly square) in `assets/img/clients/` and map it in `assets/js/i18n.js` under `en.clients.logos`, keyed by the client name exactly as it appears in `featured`:
 
-```
-assets/img/clients/al-mona-for-fast-food-co.png
-assets/img/clients/penal-reform-international-association.png
-assets/img/clients/qurtoba-international-schools.png
+```js
+logos: {
+  'Qurtoba International Schools': 'qurtoba.png',
+  'Penal Reform International Association': 'pri.png'
+}
 ```
 
-The tile picks the logo up automatically on the next reload. No code change is needed. Logos are shown in greyscale and turn to full colour on hover, matching the reference site.
+Logos display in greyscale and turn to full colour on hover, matching the reference site.
 
 ## Inquiry form
 

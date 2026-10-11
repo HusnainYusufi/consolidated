@@ -102,6 +102,7 @@
   
   
   
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -113,10 +114,10 @@
 
   <!-- Fixed hero background: rotating mark + scroll managed overlays -->
   <div class="hero-bg" id="hero-bg" aria-hidden="true">
-    <div class="hero-rotor" style=""><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
-    <div class="hero-veil" id="hero-veil" style=""></div>
-    <div class="hero-dim" id="hero-dim" style=""></div>
-    <div class="hero-solid" id="hero-solid" style=""></div>
+    <div class="hero-rotor"><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
+    <div class="hero-veil" id="hero-veil"></div>
+    <div class="hero-dim" id="hero-dim"></div>
+    <div class="hero-solid" id="hero-solid"></div>
   </div>
 
   <!-- Header -->
@@ -212,13 +213,13 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">01</span>
           <h3 class="vm-title" data-i18n="vision.title">رؤيتنا</h3>
           <p class="vm-text" data-i18n="vision.text">أن نكون الرواد والمرجع النهائي في خدمات التدقيق الخارجي والاستشارات الضريبية والاستشارات المالية والتدريب المهني، محلياً في الأردن وعلى امتداد المشهد الإقليمي الأوسع.</p>
           <p class="vm-tag" data-i18n="vision.tag">هدف استراتيجي · معيار إقليمي</p>
         </article>
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">02</span>
           <h3 class="vm-title" data-i18n="mission.title">مهمتنا</h3>
           <p class="vm-text" data-i18n="mission.text">تقديم خدمات مهنية عالية الجودة وشفافة دون أي مساومة لعملائنا، مبنية على شراكات شخصية ومهنية متينة تمكّنهم من تحقيق توسع تجاري مستدام ومرونة تشغيلية.</p>
@@ -403,7 +404,7 @@
           <h2 class="h2"><span class="italic" data-i18n="services.title1">تدقيق وحوكمة ضريبية</span><br><span data-i18n="services.title2">واستشارات في فريق واحد</span></h2>
           <a class="btn" href="#clients"><span class="btn-label" data-i18n="services.cta">تعرّف على عملائنا</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
         </div>
-        <div class="sol-intro" data-reveal="" style="">
+        <div class="sol-intro" data-reveal="">
           <p data-i18n="services.p1">قدرات تأكيد أساسية: نطبق بصرامة <strong>معايير التدقيق الدولية (ISA)</strong> ومعايير المراجعة الدولية في مهامنا، ونصدر آراء مستقلة رسمية حول البيانات المالية التاريخية بما يتوافق تماماً مع <strong>المعايير الدولية للتقارير المالية</strong>، ونقيّم آليات الرقابة الداخلية وفق <strong>إطار COSO</strong> المعترف به عالمياً.</p>
           <p data-i18n="services.p2">تضيف ممارستنا الاستشارية مجموعة متكاملة من استشارات التمويل المؤسسي الاستراتيجي لدعم صنّاع القرار في القطاعات التجارية والصناعية وغير الربحية، إلى جانب دعم تشغيلي متخصص في التدريب المهني وتأسيس الشركات وتصفيتها والمعاملات الحكومية.</p>
         </div>
@@ -546,65 +547,65 @@
     <!-- 7. Clients that trust us -->
     <section class="section trust container" id="clients">
       <p class="label" data-i18n="clients.title">سجل موثوق</p>
-      <p class="clients-intro" data-i18n="clients.intro" data-reveal="" style="">يثق بنا قادة الصناعات الثقيلة والتصنيع والزراعة وبيوت التجارة والرعاية الصحية والتكنولوجيا والتعليم والمنظمات غير الربحية والمقاولات في الأردن.</p>
+      <p class="clients-intro" data-i18n="clients.intro" data-reveal="">يثق بنا قادة الصناعات الثقيلة والتصنيع والزراعة وبيوت التجارة والرعاية الصحية والتكنولوجيا والتعليم والمنظمات غير الربحية والمقاولات في الأردن.</p>
       <div class="trust-grid" id="trust-grid"><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-mona-for-fast-food-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MF</b></span>
+          <span class="trust-badge no-logo"><b>MF</b></span>
           <span class="trust-name">شركة المنى للوجبات السريعة (Subway)</span>
           <span class="trust-group">المنتجات الاستهلاكية والمنسوجات والأغذية</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/penal-reform-international-association.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>PR</b></span>
+          <span class="trust-badge no-logo"><b>PR</b></span>
           <span class="trust-name">جمعية المنظمة الدولية للإصلاح الجنائي</span>
           <span class="trust-group">المنظمات والجمعيات غير الربحية</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/qurtoba-international-schools.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>QS</b></span>
+          <span class="trust-badge no-logo"><b>QS</b></span>
           <span class="trust-name">مدارس قرطبة الدولية</span>
           <span class="trust-group">التكنولوجيا والإعلام والتعليم</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/petra-for-waste-recycling-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>PW</b></span>
+          <span class="trust-badge no-logo"><b>PW</b></span>
           <span class="trust-name">شركة بترا لإعادة تدوير المخلفات</span>
           <span class="trust-group">الصناعات الثقيلة والمواد</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/dar-al-manhal-publishers-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>DM</b></span>
+          <span class="trust-badge no-logo"><b>DM</b></span>
           <span class="trust-name">شركة دار المنهل ناشرون</span>
           <span class="trust-group">التجزئة والطاقة والتعهدات</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-muhammadiyah-schools.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MS</b></span>
+          <span class="trust-badge no-logo"><b>MS</b></span>
           <span class="trust-name">المدارس المحمدية</span>
           <span class="trust-group">التكنولوجيا والإعلام والتعليم</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/modern-kingdom-for-gas-stations-management-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MK</b></span>
+          <span class="trust-badge no-logo"><b>MK</b></span>
           <span class="trust-name">شركة المملكة الحديثة لإدارة محطات الوقود</span>
           <span class="trust-group">التجزئة والطاقة والتعهدات</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-arabia-for-oud-and-perfumes-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>AO</b></span>
+          <span class="trust-badge no-logo"><b>AO</b></span>
           <span class="trust-name">الشركة العربية للعود والعطور</span>
           <span class="trust-group">التجزئة والطاقة والتعهدات</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/delma-for-construction-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>DC</b></span>
+          <span class="trust-badge no-logo"><b>DC</b></span>
           <span class="trust-name">شركة دلما للمقاولات الإنشائية</span>
           <span class="trust-group">الإسكان والمقاولات والبنية التحتية</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/valencia-for-food-industries-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>VF</b></span>
+          <span class="trust-badge no-logo"><b>VF</b></span>
           <span class="trust-name">شركة فالنسيا للصناعات الغذائية</span>
           <span class="trust-group">المنتجات الاستهلاكية والمنسوجات والأغذية</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/space-one.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>SO</b></span>
+          <span class="trust-badge no-logo"><b>SO</b></span>
           <span class="trust-name">شركة الكون الواحد (الذكاء الاصطناعي والتطبيقات)</span>
           <span class="trust-group">التكنولوجيا والإعلام والتعليم</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/shatt-al-arab-for-ceramic-industry-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>SA</b></span>
+          <span class="trust-badge no-logo"><b>SA</b></span>
           <span class="trust-name">شركة شط العرب لصناعة السيراميك</span>
           <span class="trust-group">الصناعات الثقيلة والمواد</span>
         </div></div></div>
@@ -615,7 +616,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="" style="">
+        <div class="expect-head" data-reveal="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">يمكنك أن</span><span class="italic big" data-i18n="expect.t2">تتوقع</span><span class="italic" data-i18n="expect.t3">أننا</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -643,7 +644,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="" style="">
+        <div class="inquiry-copy" data-reveal="">
           <p class="label" data-i18n="inquiry.kicker">استفسار</p>
           <h2 class="h2"><span data-i18n="inquiry.title1">حدثنا عن</span> <span class="italic" data-i18n="inquiry.title2">أعمالك.</span></h2>
           <p class="light" data-i18n="inquiry.sub">أرسل لنا بعض التفاصيل وسيتواصل معك أحد الشركاء عبر البريد الإلكتروني أو واتساب، عادةً خلال يوم عمل واحد.</p>

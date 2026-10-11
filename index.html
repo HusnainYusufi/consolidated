@@ -102,6 +102,7 @@
   
   
   
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -113,10 +114,10 @@
 
   <!-- Fixed hero background: rotating mark + scroll managed overlays -->
   <div class="hero-bg" id="hero-bg" aria-hidden="true">
-    <div class="hero-rotor" style=""><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
-    <div class="hero-veil" id="hero-veil" style=""></div>
-    <div class="hero-dim" id="hero-dim" style=""></div>
-    <div class="hero-solid" id="hero-solid" style=""></div>
+    <div class="hero-rotor"><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
+    <div class="hero-veil" id="hero-veil"></div>
+    <div class="hero-dim" id="hero-dim"></div>
+    <div class="hero-solid" id="hero-solid"></div>
   </div>
 
   <!-- Header -->
@@ -212,13 +213,13 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">01</span>
           <h3 class="vm-title" data-i18n="vision.title">Our Vision</h3>
           <p class="vm-text" data-i18n="vision.text">To be the pioneers and final reference point in external auditing, tax advisory, financial consultation, and professional vocational training services, both locally within Jordan and across the wider regional landscape.</p>
           <p class="vm-tag" data-i18n="vision.tag">Strategic goal · Regional benchmark</p>
         </article>
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">02</span>
           <h3 class="vm-title" data-i18n="mission.title">Our Mission</h3>
           <p class="vm-text" data-i18n="mission.text">To deliver uncompromisingly high-quality and transparent professional services to our clients, cultivated alongside robust personal and professional partnerships that empower them to achieve sustainable commercial expansion and operational resilience.</p>
@@ -403,7 +404,7 @@
           <h2 class="h2"><span class="italic" data-i18n="services.title1">Audit, Tax Governance</span><br><span data-i18n="services.title2">and Advisory in One Team</span></h2>
           <a class="btn" href="#clients"><span class="btn-label" data-i18n="services.cta">See Who We Serve</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
         </div>
-        <div class="sol-intro" data-reveal="" style="">
+        <div class="sol-intro" data-reveal="">
           <p data-i18n="services.p1">Core assurance capabilities: we rigorously apply <strong>International Standards on Auditing (ISA)</strong> and International Standards on Review during engagements, issuing formal independent opinions on historical financial statements in strict compliance with <strong>IFRS</strong>, and evaluating internal control mechanisms using the globally recognized <strong>COSO Framework</strong>.</p>
           <p data-i18n="services.p2">Our advisory practice adds a complete suite of strategic corporate finance consultations supporting enterprise decision-makers across commercial, industrial, and non-profit sectors, alongside specialized operational support in vocational training, company formation and liquidation, and government affairs.</p>
         </div>
@@ -546,65 +547,65 @@
     <!-- 7. Clients that trust us -->
     <section class="section trust container" id="clients">
       <p class="label" data-i18n="clients.title">Verified Track Record</p>
-      <p class="clients-intro" data-i18n="clients.intro" data-reveal="" style="">Trusted by heavy industry, manufacturing corporations, agricultural leaders, trading houses, healthcare, technology, education, NGOs and construction across Jordan.</p>
+      <p class="clients-intro" data-i18n="clients.intro" data-reveal="">Trusted by heavy industry, manufacturing corporations, agricultural leaders, trading houses, healthcare, technology, education, NGOs and construction across Jordan.</p>
       <div class="trust-grid" id="trust-grid"><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-mona-for-fast-food-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MF</b></span>
+          <span class="trust-badge no-logo"><b>MF</b></span>
           <span class="trust-name">Al-Mona for Fast Food Co. (Subway)</span>
           <span class="trust-group">Consumer Products, Textiles &amp; Food Processing</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/penal-reform-international-association.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>PR</b></span>
+          <span class="trust-badge no-logo"><b>PR</b></span>
           <span class="trust-name">Penal Reform International Association</span>
           <span class="trust-group">NGOs, Associations &amp; Non-Profits</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/qurtoba-international-schools.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>QS</b></span>
+          <span class="trust-badge no-logo"><b>QS</b></span>
           <span class="trust-name">Qurtoba International Schools</span>
           <span class="trust-group">Technology, Media &amp; Education</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/petra-for-waste-recycling-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>PW</b></span>
+          <span class="trust-badge no-logo"><b>PW</b></span>
           <span class="trust-name">Petra for Waste Recycling Co.</span>
           <span class="trust-group">Heavy Manufacturing &amp; Materials</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/dar-al-manhal-publishers-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>DM</b></span>
+          <span class="trust-badge no-logo"><b>DM</b></span>
           <span class="trust-name">Dar Al-Manhal Publishers Co.</span>
           <span class="trust-group">Consumer Retail, Energy &amp; Contracting</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-muhammadiyah-schools.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MS</b></span>
+          <span class="trust-badge no-logo"><b>MS</b></span>
           <span class="trust-name">Al-Muhammadiyah Schools</span>
           <span class="trust-group">Technology, Media &amp; Education</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/modern-kingdom-for-gas-stations-management-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>MK</b></span>
+          <span class="trust-badge no-logo"><b>MK</b></span>
           <span class="trust-name">Modern Kingdom for Gas Stations Management Co.</span>
           <span class="trust-group">Consumer Retail, Energy &amp; Contracting</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/al-arabia-for-oud-and-perfumes-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>AO</b></span>
+          <span class="trust-badge no-logo"><b>AO</b></span>
           <span class="trust-name">Al Arabia for Oud and Perfumes Co.</span>
           <span class="trust-group">Consumer Retail, Energy &amp; Contracting</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/delma-for-construction-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>DC</b></span>
+          <span class="trust-badge no-logo"><b>DC</b></span>
           <span class="trust-name">Delma for Construction Co.</span>
           <span class="trust-group">Housing, Construction &amp; Infrastructure</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/valencia-for-food-industries-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>VF</b></span>
+          <span class="trust-badge no-logo"><b>VF</b></span>
           <span class="trust-name">Valencia for Food Industries Co.</span>
           <span class="trust-group">Consumer Products, Textiles &amp; Food Processing</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/space-one.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>SO</b></span>
+          <span class="trust-badge no-logo"><b>SO</b></span>
           <span class="trust-name">Space One (AI &amp; Tech Applications)</span>
           <span class="trust-group">Technology, Media &amp; Education</span>
         </div></div><div class="trust-tile gradient-border-card" data-reveal="">
         <div class="trust-inner">
-          <span class="trust-badge"><img src="/assets/img/clients/shatt-al-arab-for-ceramic-industry-co.png" alt="" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()"><b>SA</b></span>
+          <span class="trust-badge no-logo"><b>SA</b></span>
           <span class="trust-name">Shatt Al-Arab for Ceramic Industry Co.</span>
           <span class="trust-group">Heavy Manufacturing &amp; Materials</span>
         </div></div></div>
@@ -615,7 +616,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="" style="">
+        <div class="expect-head" data-reveal="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">You Can</span><span class="italic big" data-i18n="expect.t2">Expect</span><span class="italic" data-i18n="expect.t3">That We Are</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -643,7 +644,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="" style="">
+        <div class="inquiry-copy" data-reveal="">
           <p class="label" data-i18n="inquiry.kicker">Inquiry</p>
           <h2 class="h2"><span data-i18n="inquiry.title1">Tell us about</span> <span class="italic" data-i18n="inquiry.title2">your business.</span></h2>
           <p class="light" data-i18n="inquiry.sub">Send us a few details and a partner will get back to you by email or WhatsApp, usually within one business day.</p>

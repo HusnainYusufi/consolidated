@@ -60,7 +60,7 @@ html.light {
 }
 
 * { box-sizing: border-box; }
-html { font-size: clamp(14px, 7.36px + .65vw, 24px); -webkit-text-size-adjust: 100%; }
+html { font-size: clamp(14px, 7.36px + .65vw, 24px); -webkit-text-size-adjust: 100%; overflow-x: clip; }
 body {
   margin: 0; background: var(--background); color: var(--foreground);
   font-family: var(--font-body); font-weight: 400; line-height: 1.5;
@@ -593,9 +593,22 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   .featured-in { flex-direction: column; align-items: flex-start; gap: .75rem; bottom: 2rem; }
   .featured-in .marquee { width: 100%; }
   .sol-head { grid-template-columns: 1fr; }
-  .hero-content { grid-template-columns: 1fr; }
-  .hero-title { font-size: clamp(2.2rem, 9vw, 3.4rem); }
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-title { font-size: clamp(2rem, 9.5vw, 3.2rem); max-width: 100%; }
+  .hero-title .line { white-space: normal; flex-wrap: wrap; row-gap: .1em; }
+  .cycle-wrap, .cycle, .cycle-reserve { white-space: normal; }
+  .cycle-wrap { width: auto; max-width: 100%; }
+  .hero-side { max-width: 100%; }
+  .hero-sub { max-width: 100%; font-size: 1rem; }
   .vm-grid, .leader-inner, .leader-contact, .intro-points, .inquiry-grid, .field-row { grid-template-columns: 1fr; }
+  /* Values: on phones the floating cards sit in a grid under the copy instead of around it. */
+  .wonderland { margin-top: 5rem; padding: 4rem 0; min-height: auto; perspective: none; }
+  .wl-scene { min-height: auto; display: flex; flex-direction: column-reverse; gap: 2.5rem; padding: 0 1.5rem; }
+  .wl-group { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; transform: none !important; }
+  .wl-card { position: static !important; width: 100% !important; left: auto !important; top: auto !important; }
+  .wl-card-inner { aspect-ratio: 3 / 4; }
+  .wl-title { font-size: clamp(2.6rem, 12vw, 3.4rem); }
+  .wl-sub { padding-inline: 0; }
   .leader-photo { min-height: 22rem; }
   .hero-rule { width: 6rem; }
   .wl-card { --card-width: 7.5rem; }
