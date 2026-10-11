@@ -13,5 +13,11 @@ window.SITE_CONFIG = {
   formAccessKey: '',
 
   // Inbox used for the email fallback and the "Send Us An Email" buttons.
-  inquiryEmail: 'emulazem@caudit.net'
+  inquiryEmail: 'emulazem@caudit.net',
+
+  // Careers page. Applications (with the CV attached) are delivered the same way as inquiries.
+  // Leave careersAccessKey empty to reuse formAccessKey. CV attachments require a relay plan that allows file uploads.
+  careersEmail: 'emulazem@caudit.net',
+  careersAccessKey: '',
+  careersMaxFileMb: 5
 };

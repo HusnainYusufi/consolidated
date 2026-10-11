@@ -4,7 +4,7 @@
 
 window.I18N = {
   en: {
-    nav: { services: 'Services', sectors: 'Sectors', team: 'Leadership', clients: 'Clients', about: 'About', cta: 'Book a Consultation', lang: 'عربي' },
+    nav: { services: 'Services', sectors: 'Sectors', team: 'Leadership', clients: 'Clients', about: 'About', careers: 'Careers', cta: 'Book a Consultation', lang: 'عربي' },
     hero: {
       line1: 'Delivering',
       words: ['External Auditing', 'Tax Governance', 'Forensic Reviews', 'Financial Advisory'],
@@ -178,13 +178,43 @@ window.I18N = {
       waIntro: 'Hello Consolidated, I would like to inquire about your services.',
       labels: { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', service: 'Service', message: 'Message' }
     },
+    careers: {
+      kicker: 'Careers',
+      title1: 'Join',
+      title2: 'Our Team.',
+      sub: 'Consolidated is staffed by seasoned auditors and advisors with international certifications. If you are an accountant, auditor or tax professional who wants to work to ISA, IFRS and COSO standards with clients across Jordan and the MENA region, we would like to hear from you.',
+      rolesTitle: 'Open applications',
+      roles: [
+        { title: 'External Auditor', text: 'Statutory audit and review engagements of financial statements under ISA and IFRS for corporate, industrial and NGO clients.', tag: 'Full time · Amman' },
+        { title: 'Tax & Accounting Associate', text: 'Corporate income tax, sales/VAT filings, withholding tax and financial reporting under IFRS, supporting the Tax and Accounting Partner.', tag: 'Full time · Amman' },
+        { title: 'Internal Audit Consultant', text: 'Evaluation of internal control systems under the COSO framework, risk appraisal and regulatory compliance reviews.', tag: 'Full time · Amman' },
+        { title: 'Trainee / Internship', text: 'For accounting and finance graduates preparing for JCPA, CPA, CMA or CIA. Hands-on exposure to audit, tax and financial consultation.', tag: 'Training programme' }
+      ],
+      perksTitle: 'What we offer',
+      perks: ['Work alongside JCPA, CFA, CPA, CMA and CIA certified partners', 'Hands-on preparation for American professional certifications', 'Clients across manufacturing, trading, healthcare, education, NGOs and construction', 'A culture of integrity, transparency and quality'],
+      formTitle: 'Application form',
+      name: 'Full name', email: 'Email', phone: 'WhatsApp / phone', position: 'Position', experience: 'Years of experience', link: 'LinkedIn or portfolio (optional)', message: 'Cover message',
+      cv: 'Upload your CV', cvHint: 'PDF, DOC or DOCX, up to 5 MB', cvChoose: 'Click to choose a file or drag it here',
+      experienceOptions: ['Fresh graduate', '1 to 2 years', '3 to 5 years', '6 to 10 years', 'More than 10 years'],
+      consent: 'I agree that Consolidated may store my application and contact me about current and future opportunities.',
+      send: 'Submit Application', sending: 'Submitting…',
+      ok: 'Thank you. Your application has been received and we will be in touch.',
+      okMail: 'Your email app has opened with your details. Please attach your CV to that email before sending.',
+      err: 'Something went wrong. Please email your CV to {email} instead.',
+      invalid: 'Please complete the required fields and attach your CV.',
+      tooBig: 'The CV file is larger than {mb} MB. Please upload a smaller file.',
+      badType: 'Please upload a PDF, DOC or DOCX file.',
+      privacy: 'Applications are reviewed by the partners and kept confidential.',
+      labels: { name: 'Name', email: 'Email', phone: 'Phone', position: 'Position', experience: 'Experience', link: 'Link', message: 'Message' },
+      subject: 'Job application'
+    },
     footer: {
       connect: 'Let\'s Connect',
       connectSub: 'Start with a no-obligation conversation about your audit, tax or advisory needs',
       email: 'Send Us An Email',
       cols: [
         { title: 'Services', links: [['External Audit & Review', '#services'], ['Internal Audit & Controls', '#services'], ['Strategic Tax Advisory', '#services'], ['Financial Consultation', '#services'], ['Specialized Operational Support', '#services']] },
-        { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients']] },
+        { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients'], ['Careers', '/careers/']] },
         { title: 'Headquarters', links: [['Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.consolidated.net', 'https://www.consolidated.net', true]] },
         { title: 'Email Inquiries', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
       ],
@@ -207,7 +237,7 @@ window.I18N = {
   },
 
   ar: {
-    nav: { services: 'خدماتنا', sectors: 'القطاعات', team: 'القيادة', clients: 'عملاؤنا', about: 'من نحن', cta: 'احجز استشارة', lang: 'EN' },
+    nav: { services: 'خدماتنا', sectors: 'القطاعات', team: 'القيادة', clients: 'عملاؤنا', about: 'من نحن', careers: 'الوظائف', cta: 'احجز استشارة', lang: 'EN' },
     hero: {
       line1: 'نقدم',
       words: ['التدقيق الخارجي', 'الحوكمة الضريبية', 'المراجعات الجنائية', 'الاستشارات المالية'],
@@ -381,13 +411,43 @@ window.I18N = {
       waIntro: 'مرحباً الموحدة، أرغب بالاستفسار عن خدماتكم.',
       labels: { name: 'الاسم', company: 'الشركة', email: 'البريد', phone: 'الهاتف', service: 'الخدمة', message: 'الرسالة' }
     },
+    careers: {
+      kicker: 'الوظائف',
+      title1: 'انضم إلى',
+      title2: 'فريقنا.',
+      sub: 'يعمل في الموحدة مدققون ومستشارون مخضرمون حاصلون على شهادات دولية. إذا كنت محاسباً أو مدققاً أو متخصصاً في الضرائب وترغب في العمل وفق معايير ISA وIFRS وCOSO مع عملاء في الأردن ومنطقة الشرق الأوسط وشمال أفريقيا، فنحن نرحب بطلبك.',
+      rolesTitle: 'التقديم المفتوح',
+      roles: [
+        { title: 'مدقق خارجي', text: 'مهام التدقيق القانوني ومراجعة البيانات المالية وفق معايير ISA وIFRS لعملاء من الشركات والمصانع والمنظمات غير الربحية.', tag: 'دوام كامل · عمّان' },
+        { title: 'محاسب ومتخصص ضرائب', text: 'ضريبة دخل الشركات وإقرارات ضريبة المبيعات والقيمة المضافة والضريبة المقتطعة والتقارير المالية وفق IFRS، بإشراف شريك الضرائب والمحاسبة.', tag: 'دوام كامل · عمّان' },
+        { title: 'مستشار تدقيق داخلي', text: 'تقييم أنظمة الرقابة الداخلية وفق إطار COSO، وتقييم المخاطر ومراجعات الامتثال التنظيمي.', tag: 'دوام كامل · عمّان' },
+        { title: 'متدرب', text: 'لخريجي المحاسبة والمالية المستعدين لشهادات JCPA أو CPA أو CMA أو CIA. خبرة عملية في التدقيق والضرائب والاستشارات المالية.', tag: 'برنامج تدريبي' }
+      ],
+      perksTitle: 'ما نقدمه',
+      perks: ['العمل إلى جانب شركاء معتمدين JCPA وCFA وCPA وCMA وCIA', 'إعداد عملي للشهادات المهنية الأمريكية', 'عملاء في الصناعة والتجارة والرعاية الصحية والتعليم والمنظمات غير الربحية والمقاولات', 'ثقافة قائمة على النزاهة والشفافية والجودة'],
+      formTitle: 'نموذج التقديم',
+      name: 'الاسم الكامل', email: 'البريد الإلكتروني', phone: 'واتساب / الهاتف', position: 'الوظيفة', experience: 'سنوات الخبرة', link: 'لينكدإن أو معرض الأعمال (اختياري)', message: 'رسالة تعريفية',
+      cv: 'ارفع سيرتك الذاتية', cvHint: 'PDF أو DOC أو DOCX بحجم أقصى 5 ميغابايت', cvChoose: 'انقر لاختيار ملف أو اسحبه إلى هنا',
+      experienceOptions: ['خريج جديد', 'سنة إلى سنتين', '3 إلى 5 سنوات', '6 إلى 10 سنوات', 'أكثر من 10 سنوات'],
+      consent: 'أوافق على أن تحتفظ الموحدة بطلبي وتتواصل معي بخصوص الفرص الحالية والمستقبلية.',
+      send: 'إرسال الطلب', sending: 'جارٍ الإرسال…',
+      ok: 'شكراً لك. تم استلام طلبك وسنتواصل معك.',
+      okMail: 'تم فتح تطبيق البريد لديك مع بياناتك. يرجى إرفاق سيرتك الذاتية بالرسالة قبل الإرسال.',
+      err: 'حدث خطأ ما. يرجى إرسال سيرتك الذاتية إلى {email} مباشرة.',
+      invalid: 'يرجى تعبئة الحقول المطلوبة وإرفاق السيرة الذاتية.',
+      tooBig: 'حجم ملف السيرة الذاتية يتجاوز {mb} ميغابايت. يرجى رفع ملف أصغر.',
+      badType: 'يرجى رفع ملف بصيغة PDF أو DOC أو DOCX.',
+      privacy: 'تتم مراجعة الطلبات من قبل الشركاء وتُحفظ بسرية تامة.',
+      labels: { name: 'الاسم', email: 'البريد', phone: 'الهاتف', position: 'الوظيفة', experience: 'الخبرة', link: 'الرابط', message: 'الرسالة' },
+      subject: 'طلب توظيف'
+    },
     footer: {
       connect: 'لنتواصل',
       connectSub: 'ابدأ بمحادثة دون أي التزام حول احتياجاتك في التدقيق أو الضرائب أو الاستشارات',
       email: 'أرسل لنا بريداً إلكترونياً',
       cols: [
         { title: 'الخدمات', links: [['التدقيق الخارجي والمراجعة', '#services'], ['التدقيق الداخلي والرقابة', '#services'], ['الاستشارات الضريبية الاستراتيجية', '#services'], ['الاستشارات المالية', '#services'], ['الدعم التشغيلي المتخصص', '#services']] },
-        { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients']] },
+        { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
         { title: 'المقر الرئيسي', links: [['مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.consolidated.net', 'https://www.consolidated.net', true]] },
         { title: 'البريد الإلكتروني', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
       ],

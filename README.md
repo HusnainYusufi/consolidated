@@ -57,9 +57,15 @@ The form at `#inquiry` has two delivery paths:
 
 Every submission carries the visitor's name, company, email, phone, chosen service and message, so the firm always has both an email address and a WhatsApp number to reply to. A honeypot field blocks simple bots.
 
+## Careers page
+
+`careers/index.html` (Arabic: `ar/careers/index.html`) lists open roles and an application form with CV upload (PDF, DOC or DOCX, up to 5 MB). Roles, perks and labels live under `careers` in `assets/js/i18n.js`. Clicking a role card pre-selects it in the form.
+
+Delivery works like the inquiry form: with a relay access key in `assets/js/config.js` (`careersAccessKey`, or `formAccessKey` as fallback) the application and the attached CV are emailed to the firm. File attachments require a relay plan that allows uploads (Web3Forms Pro, or any endpoint that accepts multipart form data with an `attachment` field). Without a key, the candidate's email client opens with the details pre-filled and they are asked to attach the CV themselves.
+
 ## SEO
 
-- `index.html` (English) and `ar/index.html` (Arabic) are **prerendered static HTML**, so search engines see the full content without running JavaScript. After editing `assets/js/i18n.js` or `index.html`, regenerate them:
+- `index.html`, `careers/index.html` and their Arabic versions under `ar/` are **prerendered static HTML**, so search engines see the full content without running JavaScript. After editing `assets/js/i18n.js` or `index.html`, regenerate them:
 
   ```bash
   pip install playwright && python -m playwright install chromium   # once

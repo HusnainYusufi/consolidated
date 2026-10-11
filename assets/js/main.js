@@ -70,6 +70,7 @@
     $$('[data-i18n="brand.tag"]').forEach((el) => el.textContent = lang === 'ar' ? 'لتدقيق الحسابات والاستشارات المالية' : 'Auditing and Financial Consulting');
     const wa = encodeURIComponent(dict.consult.waText);
     $$('[data-wa]').forEach((a) => { a.href = WA + '?text=' + wa; });
+    $$('[data-careers-link]').forEach((a) => { a.href = lang === 'ar' ? '/ar/careers/' : '/careers/'; });
     $$('a[href^="mailto:"]').forEach((a) => { if (!a.closest('.leader-contact, .footer-col')) a.href = 'mailto:' + CFG.inquiryEmail; });
   }
 
@@ -445,7 +446,8 @@
     // dark hero → light intro
     ScrollTrigger.create({ trigger: intro, start: 'top 60%', end: 'top 5%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(st.progress) });
     // light intro → dark wonderland
-    ScrollTrigger.create({ trigger: wl, start: 'top 70%', end: 'top 25%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(1 - st.progress) });
+    const sectorsSec = $('#sectors') || wl;
+    ScrollTrigger.create({ trigger: sectorsSec, start: 'top 70%', end: 'top 25%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(1 - st.progress) });
     // dark wonderland → light services heading (the accordion rows carry their own colours)
     ScrollTrigger.create({ trigger: solHead, start: 'top 80%', end: 'top 30%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(st.progress) });
     // light accordion → dark team and everything after

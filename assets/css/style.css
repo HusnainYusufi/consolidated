@@ -125,10 +125,11 @@ html[dir="rtl"] .sound-btn { right: auto; left: 1.25rem; }
   padding: 0 .667rem; pointer-events: none; transition: top .4s var(--ease);
 }
 #header > * { pointer-events: auto; }
-.brand { justify-self: start; display: inline-flex; align-items: center; gap: .6rem; color: var(--foreground); transition: color .6s; }
-.brand-icon { height: 2.6rem; width: auto; }
-.brand-wordmark { height: 1.6rem; width: auto; filter: invert(1) brightness(1.1); transition: filter .6s; }
+.brand { justify-self: start; display: inline-flex; align-items: center; gap: .75rem; color: var(--foreground); transition: color .6s; }
+.brand-icon { height: 3.2rem; width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,.45)); }
+.brand-wordmark { height: 2.15rem; width: auto; filter: invert(1) brightness(1.15) drop-shadow(0 2px 6px rgba(0,0,0,.55)); transition: filter .6s; }
 html.light .brand-wordmark { filter: none; }
+html.light .brand-icon { filter: none; }
 html[lang="ar"] .brand-wordmark { display: none; }
 .brand-text { display: none; flex-direction: column; line-height: 1.05; }
 html[lang="ar"] .brand-text { display: flex; }
@@ -584,6 +585,8 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
 }
 @media (max-width: 860px) {
   #header { grid-template-columns: 1fr auto; padding: 0 1rem; }
+  .brand-icon { height: 2.6rem; }
+  .brand-wordmark { height: 1.7rem; }
   .nav-pill, .header-actions .btn, .orb-btn { display: none; }
   .menu-btn { display: block; }
   .hero { padding-bottom: 12rem; }
@@ -609,3 +612,35 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   .gradient-border-card::before, .gradient-border-card::after, .marquee-track, .hero-rotor img, .wl-cursor img { animation: none !important; }
   .ch { opacity: 1 !important; }
 }
+
+/* ---------- Careers page ---------- */
+.careers-page main { padding-top: 7.5rem; }
+.careers-hero { padding: 2rem 0 3rem; }
+.careers-hero .h2 { font-size: clamp(2.6rem, 5.5vw, 4.5rem); max-width: 16ch; }
+.careers-hero .light { max-width: 60ch; margin-top: 1.2rem; font-size: 1.05rem; }
+.careers-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 3rem; align-items: start; padding-bottom: 5rem; }
+.careers-side { display: grid; gap: 1.25rem; }
+.careers-side .label { margin-bottom: .25rem; }
+.role-card { padding: 1.4rem 1.5rem; border-radius: 1.25rem; border: 1px solid var(--line); transition: border-color .3s, transform .4s var(--ease); cursor: pointer; }
+.role-card:hover { border-color: var(--foreground); transform: translateY(-2px); }
+.role-card h3 { font-size: 1.5rem; font-style: italic; }
+html[lang="ar"] .role-card h3 { font-style: normal; }
+.role-card p { margin-top: .4rem; font-weight: 300; font-size: .95rem; color: var(--muted); }
+.role-card small { display: block; margin-top: .6rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); }
+html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
+.careers-perks { display: grid; gap: .6rem; margin-top: .5rem; }
+.careers-perks li { position: relative; padding-inline-start: 1.6rem; font-weight: 300; }
+.careers-perks li::before { content: ""; position: absolute; inset-inline-start: 0; top: .5em; width: .7rem; height: .7rem; border-radius: 999px; background: linear-gradient(135deg, var(--cyan), var(--blue)); }
+.file-field { display: grid; gap: .4rem; }
+.file-drop { position: relative; display: flex; align-items: center; gap: 1rem; padding: 1rem 1.1rem; border-radius: .9rem; border: 1px dashed rgba(255,255,255,.35); background: rgba(255,255,255,.04); cursor: pointer; transition: border-color .3s, background .3s; }
+.file-drop:hover, .file-drop.drag { border-color: var(--cyan); background: rgba(39,252,242,.06); }
+.file-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.file-drop svg { width: 1.6rem; height: 1.6rem; flex: 0 0 auto; color: var(--cyan); }
+.file-drop b { display: block; font-weight: 500; font-size: .95rem; }
+.file-drop span { display: block; font-size: .78rem; opacity: .65; font-weight: 300; }
+.file-drop.has-file { border-style: solid; border-color: rgba(39,252,242,.6); }
+.file-name { font-size: .85rem; color: var(--cyan); min-height: 1.2em; }
+.check { display: flex; align-items: flex-start; gap: .6rem; font-size: .85rem; font-weight: 300; cursor: pointer; }
+.check input { margin-top: .25rem; accent-color: var(--cyan); }
+.careers-page .footer { margin-top: 2rem; }
+@media (max-width: 860px) { .careers-grid { grid-template-columns: 1fr; } }
