@@ -10,7 +10,7 @@ window.I18N = {
       words: ['External Auditing', 'Tax Governance', 'Forensic Reviews', 'Financial Advisory'],
       line2: 'Across',
       line3: 'Jordan & MENA',
-      sub: 'Specialized professional practice delivering external auditing, tax governance, forensic reviews, and strategic financial advisory across the Hashemite Kingdom of Jordan and the MENA region.',
+      sub: 'A professional audit and advisory firm delivering comprehensive audit and assurance, accounting, taxation, financial advisory, risk management, and technology solutions to businesses and organizations across Jordan and the MENA region.',
       cta: 'How We Serve You',
       featured: 'Credentials',
       certs: [['JCPA', 'Jordanian CPA'], ['CFA', 'Chartered Financial Analyst'], ['CPA', 'Certified Public Accountant'], ['CMA', 'Certified Management Accountant'], ['CIA', 'Certified Internal Auditor'], ['ISA', 'International Standards on Auditing'], ['IFRS', 'Financial Reporting'], ['COSO', 'Internal Control Framework']]
@@ -245,7 +245,7 @@ window.I18N = {
       words: ['التدقيق الخارجي', 'الحوكمة الضريبية', 'المراجعات الجنائية', 'الاستشارات المالية'],
       line2: 'في',
       line3: 'الأردن والمنطقة',
-      sub: 'ممارسة مهنية متخصصة تقدم خدمات التدقيق الخارجي والحوكمة الضريبية والمراجعات الجنائية والاستشارات المالية الاستراتيجية في المملكة الأردنية الهاشمية ومنطقة الشرق الأوسط وشمال أفريقيا.',
+      sub: 'مؤسسة مهنية للتدقيق والاستشارات تقدم حلولاً شاملة في التدقيق والتأكيد والمحاسبة والضرائب والاستشارات المالية وإدارة المخاطر والحلول التقنية للشركات والمؤسسات في الأردن ومنطقة الشرق الأوسط وشمال أفريقيا.',
       cta: 'كيف نخدمك',
       featured: 'الاعتمادات',
       certs: [['JCPA', 'محاسب قانوني أردني'], ['CFA', 'محلل مالي معتمد'], ['CPA', 'محاسب قانوني معتمد'], ['CMA', 'محاسب إداري معتمد'], ['CIA', 'مدقق داخلي معتمد'], ['ISA', 'معايير التدقيق الدولية'], ['IFRS', 'المعايير الدولية للتقارير المالية'], ['COSO', 'إطار الرقابة الداخلية']]
