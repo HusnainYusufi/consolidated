@@ -38,16 +38,7 @@ Team photos: only the founder's photo was in the profile PDF. Other members use 
 
 ## Client logos
 
-The "Verified Track Record" grid shows a coloured monogram for each featured client until a real logo is supplied. To add one, save the logo as a PNG (transparent background, roughly square) in `assets/img/clients/` and map it in `assets/js/i18n.js` under `en.clients.logos`, keyed by the client name exactly as it appears in `featured`:
-
-```js
-logos: {
-  'Qurtoba International Schools': 'qurtoba.png',
-  'Penal Reform International Association': 'pri.png'
-}
-```
-
-Logos display in greyscale and turn to full colour on hover, matching the reference site.
+The "Clients That Trust Us" section shows logos only (no client names), in a grid plus two marquee rows. The files live in `assets/img/clients/` and are listed in `en.clients.logoFiles` in `assets/js/i18n.js`. To add a logo, drop the image in that folder and add its filename to the list; to remove one, delete it from the list. The raw originals the client supplied stay in the untracked `Clients Logos/` folder. Logos render in greyscale and turn to colour on hover.
 
 ## Inquiry form
 

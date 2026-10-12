@@ -184,35 +184,15 @@
   }
 
   function renderClients() {
-    const sectors = dict.clients.sectors;
-    // Look up a featured client's sector (for colour and label) and build a monogram.
-    const findSector = (name) => {
-      for (const s of sectors) for (const [g, items] of s.groups) if (items.some((n) => n.split(' (')[0] === name.split(' (')[0])) return { sector: s, group: g };
-      return { sector: sectors[0], group: '' };
-    };
-    const mono = (name) => {
-      const stop = /^(al|the|for|and|co|of|&|-|international|company)$/i;
-      const words = name.replace(/\(.*?\)/g, '').replace(/[-–]/g, ' ').split(/\s+/).filter((w) => w && !stop.test(w));
-      return (words.slice(0, 2).map((w) => w[0]).join('') || name.slice(0, 2)).toUpperCase();
-    };
-    const slug = (name) => name.toLowerCase().replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    $('#trust-grid').innerHTML = dict.clients.featured.map((n, i) => {
-      const { sector, group } = findSector(n);
-      const enName = I18N.en.clients.featured[i] || n;
-      const file = (I18N.en.clients.logos || {})[enName];
-      return `<div class="trust-tile gradient-border-card" data-reveal style="--c:${sector.color}">
-        <div class="trust-inner">
-          <span class="trust-badge ${file ? '' : 'no-logo'}">${file ? `<img src="/assets/img/clients/${esc(file)}" alt="${esc(n)}" loading="lazy" onerror="this.parentNode.classList.add('no-logo'); this.remove()">` : ''}<b>${esc(mono(enName))}</b></span>
-          <span class="trust-name">${esc(n)}</span>
-          <span class="trust-group">${esc(group)}</span>
-        </div></div>`;
-    }).join('');
-    $('#sector-legend').innerHTML = sectors.map((s) => `<span style="--c:${s.color}"><i></i>${esc(s.name)} · ${s.groups.reduce((n, g) => n + g[1].length, 0)}</span>`).join('');
-    const cards = [];
-    sectors.forEach((s) => s.groups.forEach(([group, items]) => items.forEach((n) => cards.push(`<span class="client-card" style="--c:${s.color}"><i></i><span><b>${esc(group)}</b>${esc(n)}</span></span>`))));
-    const rows = [[], [], []];
-    cards.forEach((c, i) => rows[i % 3].push(c));
-    $('#client-rows').innerHTML = rows.map((r, i) => `<div class="marquee"><div class="marquee-track ${i === 1 ? 'right' : ''}" style="--dur:${80 + i * 14}s">${dup(r.join(''))}</div></div>`).join('');
+    const logos = I18N.en.clients.logoFiles || [];
+    const tile = (f) => `<div class="logo-tile" data-reveal><img src="/assets/img/clients/${f}" alt="" loading="lazy" decoding="async"></div>`;
+    $('#trust-grid').innerHTML = logos.map(tile).join('');
+    const legend = $('#sector-legend'); if (legend) legend.remove();
+    // Two marquee rows of logos (opposite directions) under the grid.
+    const chip = (f) => `<span class="logo-chip"><img src="/assets/img/clients/${f}" alt="" loading="lazy" decoding="async"></span>`;
+    const half = Math.ceil(logos.length / 2);
+    const rows = [logos.slice(0, half), logos.slice(half)];
+    $('#client-rows').innerHTML = rows.map((r, i) => `<div class="marquee"><div class="marquee-track ${i === 1 ? 'right' : ''}" style="--dur:${70 + i * 12}s">${dup(r.map(chip).join(''))}</div></div>`).join('');
   }
 
   function renderExpect() {

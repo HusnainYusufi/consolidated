@@ -126,10 +126,10 @@ window.I18N = {
       ]
     },
     clients: {
-      title: 'Verified Track Record',
+      title: 'Clients That Trust Us',
       intro: 'Trusted by heavy industry, manufacturing corporations, agricultural leaders, trading houses, healthcare, technology, education, NGOs and construction across Jordan.',
-      // Real logos: add an entry here as 'Client name as in featured': 'file.png' and drop the file in assets/img/clients/.
-      logos: {},
+      // Client logos shown in the grid and marquee rows (files live in assets/img/clients/). Names are intentionally not displayed.
+      logoFiles: ['logo-01.png', 'logo-02.png', 'logo-03.png', 'logo-04.png', 'logo-05.png', 'logo-06.png', 'logo-07.png', 'logo-08.png', 'logo-09.png', 'logo-10.png', 'logo-11.png', 'logo-12.png', 'logo-13.png', 'logo-14.png', 'logo-15.png', 'logo-16.png', 'logo-18.png', 'logo-19.png', 'logo-20.png', 'logo-21.png', 'logo-22.png', 'logo-23.png', 'logo-24.png', 'logo-25.png', 'logo-26.png', 'logo-27.png', 'logo-28.png', 'logo-29.png', 'logo-30.png', 'logo-31.png', 'logo-32.png', 'logo-33.png', 'logo-34.png', 'logo-35.png', 'logo-36.png', 'logo-37.png'],
       featured: ['Al-Mona for Fast Food Co. (Subway)', 'Penal Reform International Association', 'Qurtoba International Schools', 'Petra for Waste Recycling Co.', 'Dar Al-Manhal Publishers Co.', 'Al-Muhammadiyah Schools', 'Modern Kingdom for Gas Stations Management Co.', 'Al Arabia for Oud and Perfumes Co.', 'Delma for Construction Co.', 'Valencia for Food Industries Co.', 'Space One (AI & Tech Applications)', 'Shatt Al-Arab for Ceramic Industry Co.'],
       sectors: [
         { name: 'Manufacturing & Industry', color: '#27fcf2', groups: [
@@ -361,7 +361,7 @@ window.I18N = {
       ]
     },
     clients: {
-      title: 'سجل موثوق',
+      title: 'عملاء يثقون بنا',
       intro: 'يثق بنا قادة الصناعات الثقيلة والتصنيع والزراعة وبيوت التجارة والرعاية الصحية والتكنولوجيا والتعليم والمنظمات غير الربحية والمقاولات في الأردن.',
       featured: ['شركة المنى للوجبات السريعة (Subway)', 'جمعية المنظمة الدولية للإصلاح الجنائي', 'مدارس قرطبة الدولية', 'شركة بترا لإعادة تدوير المخلفات', 'شركة دار المنهل ناشرون', 'المدارس المحمدية', 'شركة المملكة الحديثة لإدارة محطات الوقود', 'الشركة العربية للعود والعطور', 'شركة دلما للمقاولات الإنشائية', 'شركة فالنسيا للصناعات الغذائية', 'شركة الكون الواحد (الذكاء الاصطناعي والتطبيقات)', 'شركة شط العرب لصناعة السيراميك'],
       sectors: [
