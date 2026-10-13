@@ -352,15 +352,15 @@ html[lang="ar"] .wl-hint { letter-spacing: 0; font-size: .85rem; }
 
 /* ---------- Solutions accordion ---------- */
 .solutions { margin-top: 10rem; }
-.sol-head { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+.sol-head { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: end; }
 .sol-head .h2 { font-size: clamp(2.25rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 .sol-intro { font-size: 1rem; display: grid; gap: 1rem; color: var(--foreground); }
 .sol-intro a, .sol-intro strong { color: #27fcf2; }
 html.light .sol-intro strong { color: #0084cc; }
-.accordion { margin-top: 3rem; background: var(--brand-white); }
-.acc-item { position: relative; background: var(--row); color: var(--brand-white); border-bottom: 1px solid var(--brand-white); }
+.accordion { margin-top: 3rem; background: #0b1623; }
+.acc-item { position: relative; background: var(--row); color: var(--brand-white); border-bottom: 1px solid rgba(255,255,255,.12); }
 .acc-item::after { content: ""; position: absolute; inset: 0; z-index: 0; background: rgba(255,255,255,0); transition: background .3s; pointer-events: none; }
-.acc-item:hover::after { background: rgba(255,255,255,.12); }
+.acc-item:hover::after { background: rgba(255,255,255,.06); }
 .acc-btn { position: relative; z-index: 1; width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; color: inherit; cursor: pointer; text-align: start; padding: .5rem 1.5rem; }
 @media (min-width: 768px) { .acc-btn { padding: .5rem 2.5rem; } }
 .acc-title { font: italic 400 1.45rem var(--font-head); transition: opacity .5s; }

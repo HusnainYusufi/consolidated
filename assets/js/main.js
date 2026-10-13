@@ -156,7 +156,7 @@
   }
 
   const minusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>';
-  const rowColors = ['#9a443a', '#d15f3f', '#896d49', '#d4b287', '#b8943c', '#48a13f'];
+  const rowColors = ['#0e1b2a', '#152a40', '#1c3955', '#24486a', '#2d587f', '#376a96'];
   function renderServices() {
     const host = $('#services-accordion');
     host.innerHTML = dict.services.items.map((s, i) => `
