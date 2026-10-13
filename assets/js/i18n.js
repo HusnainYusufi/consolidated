@@ -224,11 +224,11 @@ window.I18N = {
     consult: {
       name: 'Esam N. Almulazem, CFA, CPA',
       role: 'Founder and Managing Audit Partner',
-      title1: 'Your Books Might Look Fine.',
-      title2: 'But Are They Compliant?',
-      sub: 'Learn where your organisation is exposed on statutory audit, tax governance or internal control, and what should happen next.',
-      b1: 'Book a', b2: 'Consultation', b3: 'with Esam',
-      cta: 'Contact Us Now',
+      title1: 'Your Business Deserves',
+      title2: 'Expert Support.',
+      sub: 'We help businesses manage their finances, meet legal and tax requirements, reduce risks, and make better business decisions. Our experienced team is here to provide the professional advice and support your business needs.',
+      b1: 'Speak with', b2: 'Our Experts', b3: '',
+      cta: 'Schedule a Consultation',
       waText: 'Hi Consolidated, I would like to book a consultation with Mr. Esam N. Almulazem.'
     }
   },
@@ -452,11 +452,11 @@ window.I18N = {
     consult: {
       name: 'عصام ن. الملازم، CFA, CPA',
       role: 'المؤسس والشريك الإداري للتدقيق',
-      title1: 'قد تبدو دفاترك سليمة.',
-      title2: 'لكن هل هي ملتزمة؟',
-      sub: 'اكتشف أين تتعرض منشأتك للمخاطر في التدقيق القانوني أو الحوكمة الضريبية أو الرقابة الداخلية، وما الذي ينبغي فعله بعد ذلك.',
-      b1: 'احجز', b2: 'استشارة', b3: 'مع عصام',
-      cta: 'تواصل معنا الآن',
+      title1: 'عملك يستحق',
+      title2: 'دعماً من الخبراء.',
+      sub: 'نساعد الشركات على إدارة أموالها والوفاء بالمتطلبات القانونية والضريبية وتقليل المخاطر واتخاذ قرارات أعمال أفضل. فريقنا المتمرس هنا لتقديم المشورة المهنية والدعم الذي تحتاجه أعمالك.',
+      b1: 'تحدث مع', b2: 'خبرائنا', b3: '',
+      cta: 'احجز استشارة',
       waText: 'مرحباً الموحدة، أرغب بحجز استشارة مع السيد عصام الملازم.'
     }
   }
