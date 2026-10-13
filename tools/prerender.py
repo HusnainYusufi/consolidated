@@ -77,8 +77,8 @@ def finalize(html, lang, path='index.html'):
             html = re.sub(r'<title>.*?</title>', '<title>Consolidated for Auditing and Financial Consulting | Audit, Tax and Advisory in Amman, Jordan</title>', html, count=1)
     if lang == 'ar':
         html = html.replace('<html lang="en" dir="ltr"', '<html lang="ar" dir="rtl"', 1)
-        html = re.sub(r'<link rel="canonical" href="https://www.consolidated.net/([^"]*)">', r'<link rel="canonical" href="https://www.consolidated.net/ar/\1">', html, count=1)
-        html = re.sub(r'<meta property="og:url" content="https://www.consolidated.net/([^"]*)">', r'<meta property="og:url" content="https://www.consolidated.net/ar/\1">', html, count=1)
+        html = re.sub(r'<link rel="canonical" href="https://www.caudit.net/([^"]*)">', r'<link rel="canonical" href="https://www.caudit.net/ar/\1">', html, count=1)
+        html = re.sub(r'<meta property="og:url" content="https://www.caudit.net/([^"]*)">', r'<meta property="og:url" content="https://www.caudit.net/ar/\1">', html, count=1)
         html = html.replace('<meta property="og:locale" content="en_US">', '<meta property="og:locale" content="ar_JO">')
         html = html.replace('<meta property="og:locale:alternate" content="ar_JO">', '<meta property="og:locale:alternate" content="en_US">')
         title, desc = AR_TITLES[path]

@@ -67,4 +67,4 @@ Delivery works like the inquiry form: with a relay access key in `assets/js/conf
 - Per-language `<title>`, meta description, canonical, `hreflang` (en, ar, x-default), Open Graph and Twitter cards, `og-image.png` (1200 x 630).
 - JSON-LD structured data: `AccountingService` / `LocalBusiness` with address, phones, founding date, services, and `Person` entries for both partners.
 - `sitemap.xml`, `robots.txt`, `site.webmanifest`, favicon and app icons.
-- Replace `https://www.consolidated.net` throughout (`index.html` head, `sitemap.xml`, `robots.txt`, `config.js`) if the final domain differs. After launch, submit the sitemap in Google Search Console.
+- Replace `https://www.caudit.net` throughout (`index.html` head, `sitemap.xml`, `robots.txt`, `config.js`) if the final domain differs. After launch, submit the sitemap in Google Search Console.

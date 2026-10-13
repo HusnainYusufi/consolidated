@@ -1,6 +1,6 @@
 /* Site configuration. Edit these values; no other code changes are needed. */
 window.SITE_CONFIG = {
-  domain: 'https://www.consolidated.net',
+  domain: 'https://www.caudit.net',
 
   // WhatsApp number that receives button clicks and the form's "Send via WhatsApp" (international format, digits only).
   whatsapp: '962796650500',

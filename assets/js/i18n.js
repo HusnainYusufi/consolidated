@@ -97,14 +97,14 @@ window.I18N = {
       title: 'Our Leadership',
       people: [
         {
-          name: 'Esam N. Almulazem, CFA, CPA', role: 'Founder and Managing Audit Partner', photo: 'esam',
+          name: 'Esam N. Almulazem', role: 'Founder and Audit Partner', photo: 'esam',
           certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'Bachelor of Accounting - University of Jordan',
-          bio: ['Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors. Specialized in corporate operational restructuring, forensic due diligence, financial modeling, and professional accreditation training.'],
+          bio: ["An accomplished External Audit Partner with over 17 years of professional experience in external audit and assurance, financial reporting, financial management, corporate advisory, and professional training.", "Possesses extensive expertise in leading and overseeing audit engagements, managing diversified client portfolios, and providing technical guidance on complex accounting, auditing, and financial reporting matters in accordance with International Standards on Auditing (ISAs), IFRS, and IFRS for SMEs.", "His professional background includes senior financial management positions across various industries, alongside extensive external audit experience with International Audit Firms.", "Throughout his career, he has developed substantial expertise in auditing public companies, multinational and cross-border businesses, holding companies, and consolidated financial statements, with a strong commitment to audit quality, professional independence, and client service excellence."],
           contact: [
             { label: 'Headquarters', value: 'Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan' },
             { label: 'Direct line', value: '+962 79 665 0500', href: 'tel:+962796650500', ltr: true },
             { label: 'Email inquiries', value: 'emulazem@caudit.net', href: 'mailto:emulazem@caudit.net', ltr: true },
-            { label: 'Digital portal', value: 'www.consolidated.net', href: 'https://www.consolidated.net', ltr: true }
+            { label: 'Website', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
           ]
         },
         {
@@ -115,7 +115,7 @@ window.I18N = {
             { label: 'Headquarters', value: 'Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan' },
             { label: 'Direct line', value: '+962 79 576 0772', href: 'tel:+962795760772', ltr: true },
             { label: 'Email inquiries', value: 'aabdelhadi@caudit.net', href: 'mailto:aabdelhadi@caudit.net', ltr: true },
-            { label: 'Digital portal', value: 'www.consolidated.net', href: 'https://www.consolidated.net', ltr: true }
+            { label: 'Website', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
           ]
         }
       ]
@@ -212,7 +212,7 @@ window.I18N = {
       cols: [
         { title: 'Services', links: [['Audit & Assurance Services', '#services'], ['Accounting & Bookkeeping Services', '#services'], ['Tax Advisory & Compliance Services', '#services'], ['Internal Audit & Risk Advisory Services', '#services'], ['Financial Advisory Services', '#services'], ['Corporate Advisory Services', '#services'], ['Outsourcing & Back-Office Services', '#services'], ['Training & Professional Development Services', '#services'], ['ERP Solutions & Digital Transformation', '#services']] },
         { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients'], ['Careers', '/careers/']] },
-        { title: 'Headquarters', links: [['Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.consolidated.net', 'https://www.consolidated.net', true]] },
+        { title: 'Headquarters', links: [['Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.caudit.net', 'https://www.caudit.net', true]] },
         { title: 'Email Inquiries', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
       ],
       led: 'Executive governance',
@@ -223,7 +223,7 @@ window.I18N = {
     },
     consult: {
       name: 'Esam N. Almulazem, CFA, CPA',
-      role: 'Founder and Managing Audit Partner',
+      role: 'Founder and Audit Partner',
       title1: 'Your Business Deserves',
       title2: 'Expert Support.',
       sub: 'We help businesses manage their finances, meet legal and tax requirements, reduce risks, and make better business decisions. Our experienced team is here to provide the professional advice and support your business needs.',
@@ -327,14 +327,14 @@ window.I18N = {
       title: 'قيادتنا',
       people: [
         {
-          name: 'عصام ن. الملازم، CFA, CPA', role: 'المؤسس والشريك الإداري للتدقيق', photo: 'esam',
+          name: 'عصام ن. الملازم', role: 'المؤسس وشريك التدقيق', photo: 'esam',
           certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'بكالوريوس المحاسبة - الجامعة الأردنية',
-          bio: ['أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع الصناعي والمنظمات غير الربحية. متخصص في إعادة الهيكلة التشغيلية للشركات والعناية الواجبة الجنائية والنمذجة المالية والتدريب على الاعتمادات المهنية.'],
+          bio: ["شريك تدقيق خارجي متمرس يتمتع بخبرة مهنية تزيد عن 17 عاماً في التدقيق الخارجي والتأكيد والتقارير المالية والإدارة المالية واستشارات الشركات والتدريب المهني.", "يمتلك خبرة واسعة في قيادة مهام التدقيق والإشراف عليها وإدارة محافظ عملاء متنوعة وتقديم التوجيه الفني في المسائل المحاسبية والتدقيقية والتقارير المالية المعقدة وفقاً لمعايير التدقيق الدولية (ISAs) والمعايير الدولية للتقارير المالية (IFRS) والمعيار الدولي للمنشآت الصغيرة والمتوسطة.", "تشمل خلفيته المهنية مناصب إدارية مالية عليا في قطاعات متعددة، إلى جانب خبرة واسعة في التدقيق الخارجي لدى شركات التدقيق الدولية.", "طوّر على مدار مسيرته المهنية خبرة كبيرة في تدقيق الشركات المساهمة العامة والشركات متعددة الجنسيات والعابرة للحدود والشركات القابضة والبيانات المالية الموحدة، مع التزام راسخ بجودة التدقيق والاستقلالية المهنية والتميز في خدمة العملاء."],
           contact: [
             { label: 'المقر الرئيسي', value: 'مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن' },
             { label: 'الخط المباشر', value: '+962 79 665 0500', href: 'tel:+962796650500', ltr: true },
             { label: 'البريد الإلكتروني', value: 'emulazem@caudit.net', href: 'mailto:emulazem@caudit.net', ltr: true },
-            { label: 'البوابة الرقمية', value: 'www.consolidated.net', href: 'https://www.consolidated.net', ltr: true }
+            { label: 'الموقع الإلكتروني', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
           ]
         },
         {
@@ -345,7 +345,7 @@ window.I18N = {
             { label: 'المقر الرئيسي', value: 'مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن' },
             { label: 'الخط المباشر', value: '+962 79 576 0772', href: 'tel:+962795760772', ltr: true },
             { label: 'البريد الإلكتروني', value: 'aabdelhadi@caudit.net', href: 'mailto:aabdelhadi@caudit.net', ltr: true },
-            { label: 'البوابة الرقمية', value: 'www.consolidated.net', href: 'https://www.consolidated.net', ltr: true }
+            { label: 'الموقع الإلكتروني', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
           ]
         }
       ]
@@ -440,7 +440,7 @@ window.I18N = {
       cols: [
         { title: 'الخدمات', links: [['خدمات التدقيق والتأكيد', '#services'], ['خدمات المحاسبة ومسك الدفاتر', '#services'], ['خدمات الاستشارات والامتثال الضريبي', '#services'], ['خدمات التدقيق الداخلي واستشارات المخاطر', '#services'], ['خدمات الاستشارات المالية', '#services'], ['خدمات استشارات الشركات', '#services'], ['خدمات الإسناد الخارجي والدعم المكتبي', '#services'], ['خدمات التدريب والتطوير المهني', '#services'], ['حلول تخطيط موارد المؤسسات والتحول الرقمي', '#services']] },
         { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
-        { title: 'المقر الرئيسي', links: [['مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.consolidated.net', 'https://www.consolidated.net', true]] },
+        { title: 'المقر الرئيسي', links: [['مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.caudit.net', 'https://www.caudit.net', true]] },
         { title: 'البريد الإلكتروني', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
       ],
       led: 'الحوكمة التنفيذية',
@@ -451,7 +451,7 @@ window.I18N = {
     },
     consult: {
       name: 'عصام ن. الملازم، CFA, CPA',
-      role: 'المؤسس والشريك الإداري للتدقيق',
+      role: 'المؤسس وشريك التدقيق',
       title1: 'عملك يستحق',
       title2: 'دعماً من الخبراء.',
       sub: 'نساعد الشركات على إدارة أموالها والوفاء بالمتطلبات القانونية والضريبية وتقليل المخاطر واتخاذ قرارات أعمال أفضل. فريقنا المتمرس هنا لتقديم المشورة المهنية والدعم الذي تحتاجه أعمالك.',
