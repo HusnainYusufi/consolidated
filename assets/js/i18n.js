@@ -30,7 +30,7 @@ window.I18N = {
       ]
     },
     intro: {
-      p1: 'Consolidated for Auditing and Tax Consultation was established on 26 February 2015 in the Hashemite Kingdom of Jordan. We operate as a distinguished licensed entity specializing in statutory auditing, corporate tax advisory, complex financial consultations, and executive vocational training.',
+      p1: "Established in 2015 in Amman, Jordan, Consolidated for Auditing & Tax Services is a professional firm providing a comprehensive range of audit, assurance, accounting, taxation, and business advisory services. Since our establishment, we have been committed to delivering high-quality professional services built on integrity, independence, technical expertise, and a thorough understanding of our clients’ business needs. Our team of qualified and experienced professionals serves businesses and organizations across various industries, providing practical, tailored solutions that enhance financial transparency, strengthen regulatory compliance, improve operational efficiency, and support sustainable growth. At Consolidated, we believe in building long-term relationships based on trust, professionalism, and a shared commitment to our clients’ success.",
       p2: 'Founded with a resolute commitment to raise regional audit rigor and provide enterprise leaders with dependable financial clarity in an increasingly volatile regulatory ecosystem.',
       points: [
         { title: 'Elite Professional Caliber', text: 'Staffed by seasoned auditors and advisors with international certifications.' },
@@ -265,7 +265,7 @@ window.I18N = {
       ]
     },
     intro: {
-      p1: 'تأسست الموحدة لتدقيق الحسابات والاستشارات الضريبية بتاريخ 26 شباط 2015 في المملكة الأردنية الهاشمية. نعمل كجهة مرخصة متميزة متخصصة في التدقيق القانوني والاستشارات الضريبية للشركات والاستشارات المالية المعقدة والتدريب المهني التنفيذي.',
+      p1: 'تأسست الموحدة لتدقيق الحسابات والخدمات الضريبية عام 2015 في عمّان، الأردن، وهي مؤسسة مهنية تقدم مجموعة شاملة من خدمات التدقيق والتأكيد والمحاسبة والضرائب والاستشارات الإدارية. ومنذ تأسيسنا، التزمنا بتقديم خدمات مهنية عالية الجودة قائمة على النزاهة والاستقلالية والخبرة الفنية والفهم العميق لاحتياجات أعمال عملائنا. يخدم فريقنا من المهنيين المؤهلين وذوي الخبرة الشركات والمؤسسات في مختلف القطاعات، مقدماً حلولاً عملية مصممة خصيصاً لتعزيز الشفافية المالية وترسيخ الامتثال التنظيمي وتحسين الكفاءة التشغيلية ودعم النمو المستدام. في الموحدة، نؤمن ببناء علاقات طويلة الأمد قائمة على الثقة والاحترافية والالتزام المشترك بنجاح عملائنا.',
       p2: 'تأسست بالتزام راسخ برفع مستوى صرامة التدقيق في المنطقة وتزويد قادة المنشآت بوضوح مالي موثوق في بيئة تنظيمية متزايدة التقلب.',
       points: [
         { title: 'كفاءة مهنية رفيعة', text: 'كادر من المدققين والمستشارين المخضرمين الحاصلين على شهادات دولية.' },
