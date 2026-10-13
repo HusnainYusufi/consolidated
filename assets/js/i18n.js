@@ -102,7 +102,7 @@ window.I18N = {
           certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'Bachelor of Accounting - University of Jordan',
           bio: ["An accomplished External Audit Partner with over 17 years of professional experience in external audit and assurance, financial reporting, financial management, corporate advisory, and professional training.", "Possesses extensive expertise in leading and overseeing audit engagements, managing diversified client portfolios, and providing technical guidance on complex accounting, auditing, and financial reporting matters in accordance with International Standards on Auditing (ISAs), IFRS, and IFRS for SMEs.", "His professional background includes senior financial management positions across various industries, alongside extensive external audit experience with International Audit Firms.", "Throughout his career, he has developed substantial expertise in auditing public companies, multinational and cross-border businesses, holding companies, and consolidated financial statements, with a strong commitment to audit quality, professional independence, and client service excellence."],
           contact: [
-            { label: 'Headquarters', value: 'Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan' },
+            { label: 'Headquarters', value: "King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan" },
             { label: 'Direct line', value: '+962 79 665 0500', href: 'tel:+962796650500', ltr: true },
             { label: 'Email inquiries', value: 'emulazem@caudit.net', href: 'mailto:emulazem@caudit.net', ltr: true },
             { label: 'Website', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
@@ -113,7 +113,7 @@ window.I18N = {
           certs: [], degree: 'Bachelor of Accounting - Al Ahliyya Amman University',
           bio: ['Leads the firm\'s Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.', 'Directs technical engagements spanning corporate income tax, sales/VAT filings, withholding tax audits, and strategic tax planning for diverse industries. Proven track record in representing corporate clients before tax authorities during field audits, objections, and dispute resolutions, safeguarding client interests while optimizing tax positions and mitigating statutory exposure.'],
           contact: [
-            { label: 'Headquarters', value: 'Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan' },
+            { label: 'Headquarters', value: "King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan" },
             { label: 'Direct line', value: '+962 79 576 0772', href: 'tel:+962795760772', ltr: true },
             { label: 'Email inquiries', value: 'aabdelhadi@caudit.net', href: 'mailto:aabdelhadi@caudit.net', ltr: true },
             { label: 'Website', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
@@ -155,7 +155,7 @@ window.I18N = {
         { text: 'Serving a diverse clientele across public and private enterprises, international organizations, non-profit institutions, and high-net-worth individuals', img: 'sky-5' },
         { text: 'Rooted in Jordan, extending our professional expertise and services across the MENA region', img: 'sky-6' },
         { text: 'Safeguarding client information through unwavering confidentiality, professional ethics, and trusted business practices', img: 'sky-7' },
-        { text: 'Our headquarters are located at Al Nahda Complex, Jubayr Bin Mut’em Street, Amman, Jordan', img: 'sky-2' },
+        { text: 'Our headquarters are located at King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan', img: 'sky-2' },
         { text: 'Upholding the highest standards of integrity, transparency, and quality in every professional engagement', img: 'sky-3' }
       ]
     },
@@ -163,8 +163,8 @@ window.I18N = {
       kicker: 'Inquiry',
       title1: 'Tell us about',
       title2: 'your business.',
-      sub: 'Send us a few details and a partner will get back to you by email or WhatsApp, usually within one business day.',
-      points: ['No obligation, no fees for the first conversation', 'Direct reply from a certified partner, not a call centre', 'Your information stays confidential'],
+      sub: 'Share a few details about your business or professional requirements, and one of our partners or qualified professionals will respond by email or WhatsApp, usually within one business day.',
+      points: ['Complimentary initial consultation with no obligation', 'Direct communication with our partners or qualified professionals', 'Strict confidentiality of all information shared'],
       name: 'Full name', company: 'Company', email: 'Email', phone: 'WhatsApp / phone', service: 'Service of interest', message: 'How can we help?',
       serviceOptions: ["Audit & Assurance Services", "Accounting & Bookkeeping Services", "Tax Advisory & Compliance Services", "Internal Audit & Risk Advisory Services", "Financial Advisory Services", "Corporate Advisory Services", "Outsourcing & Back-Office Services", "Training & Professional Development Services", "ERP Solutions & Digital Transformation", "Other"],
       send: 'Send Inquiry', sendWa: 'Send via WhatsApp', sending: 'Sending…',
@@ -213,8 +213,7 @@ window.I18N = {
       cols: [
         { title: 'Services', links: [['Audit & Assurance Services', '#services'], ['Accounting & Bookkeeping Services', '#services'], ['Tax Advisory & Compliance Services', '#services'], ['Internal Audit & Risk Advisory Services', '#services'], ['Financial Advisory Services', '#services'], ['Corporate Advisory Services', '#services'], ['Outsourcing & Back-Office Services', '#services'], ['Training & Professional Development Services', '#services'], ['ERP Solutions & Digital Transformation', '#services']] },
         { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients'], ['Careers', '/careers/']] },
-        { title: 'Headquarters', links: [['Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman – Jordan', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.caudit.net', 'https://www.caudit.net', true]] },
-        { title: 'Email Inquiries', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
+        { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=Al+Nahda+Complex%2C+King+Abdullah+II+Street%2C+Amman%2C+Jordan"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
       ],
       led: 'Executive governance',
       name1: 'Esam N. Almulazem, CFA, CPA',
@@ -333,7 +332,7 @@ window.I18N = {
           certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'بكالوريوس المحاسبة - الجامعة الأردنية',
           bio: ["شريك تدقيق خارجي متمرس يتمتع بخبرة مهنية تزيد عن 17 عاماً في التدقيق الخارجي والتأكيد والتقارير المالية والإدارة المالية واستشارات الشركات والتدريب المهني.", "يمتلك خبرة واسعة في قيادة مهام التدقيق والإشراف عليها وإدارة محافظ عملاء متنوعة وتقديم التوجيه الفني في المسائل المحاسبية والتدقيقية والتقارير المالية المعقدة وفقاً لمعايير التدقيق الدولية (ISAs) والمعايير الدولية للتقارير المالية (IFRS) والمعيار الدولي للمنشآت الصغيرة والمتوسطة.", "تشمل خلفيته المهنية مناصب إدارية مالية عليا في قطاعات متعددة، إلى جانب خبرة واسعة في التدقيق الخارجي لدى شركات التدقيق الدولية.", "طوّر على مدار مسيرته المهنية خبرة كبيرة في تدقيق الشركات المساهمة العامة والشركات متعددة الجنسيات والعابرة للحدود والشركات القابضة والبيانات المالية الموحدة، مع التزام راسخ بجودة التدقيق والاستقلالية المهنية والتميز في خدمة العملاء."],
           contact: [
-            { label: 'المقر الرئيسي', value: 'مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن' },
+            { label: 'المقر الرئيسي', value: "شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن" },
             { label: 'الخط المباشر', value: '+962 79 665 0500', href: 'tel:+962796650500', ltr: true },
             { label: 'البريد الإلكتروني', value: 'emulazem@caudit.net', href: 'mailto:emulazem@caudit.net', ltr: true },
             { label: 'الموقع الإلكتروني', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
@@ -344,7 +343,7 @@ window.I18N = {
           certs: [], degree: 'بكالوريوس المحاسبة - جامعة عمّان الأهلية',
           bio: ['يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة متخصصة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية للتقارير المالية والامتثال التنظيمي.', 'يدير التكليفات الفنية التي تشمل ضريبة دخل الشركات وإقرارات ضريبة المبيعات والقيمة المضافة وتدقيقات الضريبة المقتطعة والتخطيط الضريبي الاستراتيجي لمختلف القطاعات. سجل حافل في تمثيل الشركات أمام السلطات الضريبية خلال التدقيق الميداني والاعتراضات وتسوية النزاعات، بما يحمي مصالح العملاء ويحسّن أوضاعهم الضريبية ويقلل من المخاطر القانونية.'],
           contact: [
-            { label: 'المقر الرئيسي', value: 'مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن' },
+            { label: 'المقر الرئيسي', value: "شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن" },
             { label: 'الخط المباشر', value: '+962 79 576 0772', href: 'tel:+962795760772', ltr: true },
             { label: 'البريد الإلكتروني', value: 'aabdelhadi@caudit.net', href: 'mailto:aabdelhadi@caudit.net', ltr: true },
             { label: 'الموقع الإلكتروني', value: 'www.caudit.net', href: 'https://www.caudit.net', ltr: true }
@@ -384,7 +383,7 @@ window.I18N = {
         { text: 'نخدم قاعدة متنوعة من العملاء تشمل المنشآت العامة والخاصة والمنظمات الدولية والمؤسسات غير الربحية والأفراد ذوي الملاءة العالية', img: 'sky-5' },
         { text: 'متجذرون في الأردن، ونمد خبراتنا وخدماتنا المهنية إلى منطقة الشرق الأوسط وشمال أفريقيا', img: 'sky-6' },
         { text: 'نحمي معلومات عملائنا من خلال سرية لا تتزعزع وأخلاقيات مهنية وممارسات أعمال موثوقة', img: 'sky-7' },
-        { text: 'يقع مقرنا الرئيسي في مجمع النهضة، شارع جبير بن مطعم، عمّان، الأردن', img: 'sky-2' },
+        { text: 'يقع مقرنا الرئيسي في شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن', img: 'sky-2' },
         { text: 'نلتزم بأعلى معايير النزاهة والشفافية والجودة في كل مهمة مهنية', img: 'sky-3' }
       ]
     },
@@ -392,8 +391,8 @@ window.I18N = {
       kicker: 'استفسار',
       title1: 'حدثنا عن',
       title2: 'أعمالك.',
-      sub: 'أرسل لنا بعض التفاصيل وسيتواصل معك أحد الشركاء عبر البريد الإلكتروني أو واتساب، عادةً خلال يوم عمل واحد.',
-      points: ['دون التزام ودون رسوم للمحادثة الأولى', 'رد مباشر من شريك معتمد وليس من مركز اتصال', 'معلوماتك تبقى سرية'],
+      sub: 'شاركنا بعض التفاصيل عن أعمالك أو متطلباتك المهنية، وسيرد عليك أحد شركائنا أو المهنيين المؤهلين لدينا عبر البريد الإلكتروني أو واتساب، عادةً خلال يوم عمل واحد.',
+      points: ['استشارة أولية مجانية دون أي التزام', 'تواصل مباشر مع شركائنا أو المهنيين المؤهلين لدينا', 'سرية تامة لجميع المعلومات المشاركة'],
       name: 'الاسم الكامل', company: 'الشركة', email: 'البريد الإلكتروني', phone: 'واتساب / الهاتف', service: 'الخدمة المطلوبة', message: 'كيف يمكننا مساعدتك؟',
       serviceOptions: ["خدمات التدقيق والتأكيد", "خدمات المحاسبة ومسك الدفاتر", "خدمات الاستشارات والامتثال الضريبي", "خدمات التدقيق الداخلي واستشارات المخاطر", "خدمات الاستشارات المالية", "خدمات استشارات الشركات", "خدمات الإسناد الخارجي والدعم المكتبي", "خدمات التدريب والتطوير المهني", "حلول تخطيط موارد المؤسسات والتحول الرقمي", "أخرى"],
       send: 'إرسال الاستفسار', sendWa: 'إرسال عبر واتساب', sending: 'جارٍ الإرسال…',
@@ -442,8 +441,7 @@ window.I18N = {
       cols: [
         { title: 'الخدمات', links: [['خدمات التدقيق والتأكيد', '#services'], ['خدمات المحاسبة ومسك الدفاتر', '#services'], ['خدمات الاستشارات والامتثال الضريبي', '#services'], ['خدمات التدقيق الداخلي واستشارات المخاطر', '#services'], ['خدمات الاستشارات المالية', '#services'], ['خدمات استشارات الشركات', '#services'], ['خدمات الإسناد الخارجي والدعم المكتبي', '#services'], ['خدمات التدريب والتطوير المهني', '#services'], ['حلول تخطيط موارد المؤسسات والتحول الرقمي', '#services']] },
         { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
-        { title: 'المقر الرئيسي', links: [['مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن', null], ['+962 79 665 0500', 'tel:+962796650500', true], ['+962 79 576 0772', 'tel:+962795760772', true], ['www.caudit.net', 'https://www.caudit.net', true]] },
-        { title: 'البريد الإلكتروني', links: [['emulazem@caudit.net', 'mailto:emulazem@caudit.net', true], ['aabdelhadi@caudit.net', 'mailto:aabdelhadi@caudit.net', true]] }
+        { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=Al+Nahda+Complex%2C+King+Abdullah+II+Street%2C+Amman%2C+Jordan"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
       ],
       led: 'الحوكمة التنفيذية',
       name1: 'عصام ن. الملازم، CFA, CPA',

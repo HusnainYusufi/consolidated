@@ -3,7 +3,7 @@ window.SITE_CONFIG = {
   domain: 'https://www.caudit.net',
 
   // WhatsApp number that receives button clicks and the form's "Send via WhatsApp" (international format, digits only).
-  whatsapp: '962796650500',
+  whatsapp: '962796875200',
 
   // Inquiry form email delivery. The site is static, so a form relay service delivers submissions by email.
   // Recommended: Web3Forms (free). Create an access key at https://web3forms.com using the inbox that should
@@ -13,11 +13,11 @@ window.SITE_CONFIG = {
   formAccessKey: '',
 
   // Inbox used for the email fallback and the "Send Us An Email" buttons.
-  inquiryEmail: 'emulazem@caudit.net',
+  inquiryEmail: 'info@caudit.net',
 
   // Careers page. Applications (with the CV attached) are delivered the same way as inquiries.
   // Leave careersAccessKey empty to reuse formAccessKey. CV attachments require a relay plan that allows file uploads.
-  careersEmail: 'emulazem@caudit.net',
+  careersEmail: 'info@caudit.net',
   careersAccessKey: '',
   careersMaxFileMb: 5
 };
