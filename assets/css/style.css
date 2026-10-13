@@ -615,6 +615,11 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
 .consult-book { font: 400 1.45rem var(--font-head); }
 .consult-text .btn { justify-content: space-between; }
 
+/* Founder photo has more headroom than the others: frame it a little lower. */
+.consult-photo img[src*="esam"] { object-position: center 32%; transform: scale(1); }
+.stack-item img[src*="esam"] { object-position: center 22%; }
+.leader-photo img[src*="esam"] { object-position: center 18%; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
