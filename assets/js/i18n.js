@@ -93,8 +93,8 @@ window.I18N = {
       ]
     },
     leaders: {
-      kicker: 'Executive Governance',
-      title: 'Leadership & Contact',
+      kicker: '',
+      title: 'Our Leadership',
       people: [
         {
           name: 'Esam N. Almulazem, CFA, CPA', role: 'Founder and Managing Audit Partner', photo: 'esam',
@@ -323,8 +323,8 @@ window.I18N = {
       ]
     },
     leaders: {
-      kicker: 'الحوكمة التنفيذية',
-      title: 'القيادة والتواصل',
+      kicker: '',
+      title: 'قيادتنا',
       people: [
         {
           name: 'عصام ن. الملازم، CFA, CPA', role: 'المؤسس والشريك الإداري للتدقيق', photo: 'esam',
