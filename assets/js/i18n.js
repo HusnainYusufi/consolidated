@@ -152,7 +152,7 @@ window.I18N = {
         { text: 'Staffed by seasoned auditors and advisors with international certifications', img: 'sky-3' },
         { text: 'Strictly aligned with IFRS, ISA, Jordanian Tax Codes and international frameworks', img: 'sky-4' },
         { text: 'Serving a diverse clientele across public and private enterprises, international organizations, non-profit institutions, and high-net-worth individuals', img: 'sky-5' },
-        { text: 'Operating across the Hashemite Kingdom of Jordan and the MENA region', img: 'sky-6' },
+        { text: 'Rooted in Jordan, extending our professional expertise and services across the MENA region', img: 'sky-6' },
         { text: 'Absolute in preserving corporate confidentiality', img: 'sky-7' },
         { text: 'Headquartered at Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman', img: 'sky-2' },
         { text: 'Guided by integrity, transparency and quality', img: 'sky-3' }
@@ -380,7 +380,7 @@ window.I18N = {
         { text: 'كادر من المدققين والمستشارين المخضرمين الحاصلين على شهادات دولية', img: 'sky-3' },
         { text: 'ملتزمون بصرامة بمعايير IFRS وISA وقوانين الضريبة الأردنية والأطر الدولية', img: 'sky-4' },
         { text: 'نخدم قاعدة متنوعة من العملاء تشمل المنشآت العامة والخاصة والمنظمات الدولية والمؤسسات غير الربحية والأفراد ذوي الملاءة العالية', img: 'sky-5' },
-        { text: 'نعمل في المملكة الأردنية الهاشمية ومنطقة الشرق الأوسط وشمال أفريقيا', img: 'sky-6' },
+        { text: 'متجذرون في الأردن، ونمد خبراتنا وخدماتنا المهنية إلى منطقة الشرق الأوسط وشمال أفريقيا', img: 'sky-6' },
         { text: 'نحافظ حفاظاً مطلقاً على سرية معلومات الشركات', img: 'sky-7' },
         { text: 'مقرنا في مجمع النهضة، شارع جبير بن مطعم، عمّان', img: 'sky-2' },
         { text: 'نسترشد بالنزاهة والشفافية والجودة', img: 'sky-3' }
