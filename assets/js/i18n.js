@@ -50,14 +50,15 @@ window.I18N = {
       title1: 'Our',
       title2: 'Core Values',
       sub: 'Our core values define our identity, guide our actions, and shape the way we serve our clients. Rooted in integrity, independence, and professional excellence, these principles reflect our commitment to building trusted relationships, delivering exceptional quality, and creating lasting value.',
+      hint: 'Click a card to read each one',
       cta: 'Start a Conversation',
       cards: [
-        { title: 'Integrity', text: 'Honesty and transparency with every client, on both professional and personal levels. We give forthright counsel and hold ourselves to the highest ethical standards.', img: 'sky-3' },
-        { title: 'Independence', text: 'Unbiased evaluation and due professional care. We proactively identify and neutralise any conflict of interest to guarantee impartial, rigorous analysis.', img: 'sky-4' },
-        { title: 'Professional Excellence', text: 'Highly certified specialists who continuously raise service benchmarks, delivering distinguished work that exceeds client expectations.', img: 'sky-5' },
-        { title: 'Client Commitment', text: 'A client-focused approach built on lasting partnerships, practical solutions and a shared commitment to our clients’ success.', img: 'sky-6' },
-        { title: 'Confidentiality', text: 'Absolute preservation of corporate confidentiality. No transaction data or commercial intelligence is ever disclosed to unauthorised parties.', img: 'sky-2' },
-        { title: 'Innovation', text: 'Innovative, forward-looking solutions that enhance financial transparency, strengthen compliance and improve operational efficiency.', img: 'sky-7' }
+        { title: 'Integrity', text: 'We uphold the highest ethical standards in everything we do, ensuring honesty, transparency, and accountability in our professional conduct and client relationships.', img: 'sky-3' },
+        { title: 'Independence', text: 'We maintain objectivity and professional judgment, free from undue influence, to deliver impartial assessments and reliable assurance that strengthen stakeholder confidence.', img: 'sky-4' },
+        { title: 'Professional Excellence', text: 'We are committed to delivering exceptional quality through technical expertise, continuous professional development, and adherence to internationally recognized standards and best practices.', img: 'sky-5' },
+        { title: 'Client Commitment', text: 'We place our clients at the heart of our services, building lasting relationships through responsiveness, personalized attention, and practical solutions tailored to their business needs.', img: 'sky-6' },
+        { title: 'Confidentiality', text: 'We safeguard our clients’ sensitive information with the utmost care and discretion, maintaining strict professional confidentiality and protecting the trust placed in us.', img: 'sky-2' },
+        { title: 'Innovation', text: 'We embrace emerging technologies, modern methodologies, and continuous improvement to deliver efficient, forward-thinking solutions that respond to our clients’ evolving needs.', img: 'sky-7' }
       ]
     },
     services: {
@@ -286,14 +287,15 @@ window.I18N = {
       title1: 'قيمنا',
       title2: 'الأساسية',
       sub: 'تحدد قيمنا الأساسية هويتنا وتوجه أفعالنا وتشكّل الطريقة التي نخدم بها عملاءنا. وانطلاقاً من النزاهة والاستقلالية والتميز المهني، تعكس هذه المبادئ التزامنا ببناء علاقات موثوقة وتقديم جودة استثنائية وخلق قيمة دائمة.',
+      hint: 'انقر على البطاقة لقراءة كل قيمة',
       cta: 'ابدأ محادثة',
       cards: [
-        { title: 'النزاهة', text: 'الصدق والشفافية مع كل عميل على المستويين المهني والشخصي. نقدم مشورة صريحة ونلتزم بأعلى المعايير الأخلاقية.', img: 'sky-3' },
-        { title: 'الاستقلالية', text: 'تقييم غير منحاز وعناية مهنية واجبة. نرصد أي تضارب في المصالح ونحيّده استباقياً لضمان تحليل محايد ودقيق.', img: 'sky-4' },
-        { title: 'التميز المهني', text: 'متخصصون معتمدون رفيعو المستوى يرفعون معايير الخدمة باستمرار ويقدمون عملاً متميزاً يفوق توقعات العملاء.', img: 'sky-5' },
-        { title: 'الالتزام تجاه العملاء', text: 'نهج يركز على العميل، قائم على شراكات دائمة وحلول عملية والتزام مشترك بنجاح عملائنا.', img: 'sky-6' },
-        { title: 'السرية', text: 'حفاظ مطلق على سرية معلومات الشركات. لا يتم الإفصاح عن أي بيانات معاملات أو معلومات تجارية لأي جهة غير مخولة.', img: 'sky-2' },
-        { title: 'الابتكار', text: 'حلول مبتكرة واستشرافية تعزز الشفافية المالية وترسخ الامتثال وتحسّن الكفاءة التشغيلية.', img: 'sky-7' }
+        { title: 'النزاهة', text: 'نلتزم بأعلى المعايير الأخلاقية في كل ما نقوم به، بما يضمن الصدق والشفافية والمساءلة في سلوكنا المهني وعلاقاتنا مع العملاء.', img: 'sky-3' },
+        { title: 'الاستقلالية', text: 'نحافظ على الموضوعية والحكم المهني بعيداً عن أي تأثير غير مبرر، لتقديم تقييمات محايدة وتأكيد موثوق يعزز ثقة أصحاب المصلحة.', img: 'sky-4' },
+        { title: 'التميز المهني', text: 'نلتزم بتقديم جودة استثنائية من خلال الخبرة الفنية والتطوير المهني المستمر والالتزام بالمعايير وأفضل الممارسات المعترف بها دولياً.', img: 'sky-5' },
+        { title: 'الالتزام تجاه العملاء', text: 'نضع عملاءنا في صميم خدماتنا، ونبني علاقات دائمة من خلال سرعة الاستجابة والاهتمام الشخصي والحلول العملية المصممة وفق احتياجات أعمالهم.', img: 'sky-6' },
+        { title: 'السرية', text: 'نحمي المعلومات الحساسة لعملائنا بأقصى درجات العناية والتحفظ، ونحافظ على السرية المهنية الصارمة ونصون الثقة الموضوعة فينا.', img: 'sky-2' },
+        { title: 'الابتكار', text: 'نتبنى التقنيات الناشئة والمنهجيات الحديثة والتحسين المستمر لتقديم حلول فعّالة واستشرافية تلبي احتياجات عملائنا المتطورة.', img: 'sky-7' }
       ]
     },
     services: {
