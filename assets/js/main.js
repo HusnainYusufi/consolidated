@@ -294,8 +294,16 @@
     fields.forEach((k) => form.elements[k].addEventListener('input', () => form.elements[k].closest('.field').classList.remove('invalid')));
   }
 
+  function renderWhy() {
+    const host = $('#why-grid'); if (!host || !dict.why) return;
+    host.innerHTML = dict.why.items.map((it, i) => `
+      <article class="why-card gradient-border-card" data-reveal>
+        <div class="why-inner"><span class="why-num">${String(i + 1).padStart(2, '0')}</span><h3>${esc(it.title)}</h3><p>${esc(it.text)}</p></div>
+      </article>`).join('');
+  }
+
   function renderAll() {
-    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderExpect(); renderInquiry(); renderFooter();
+    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderWhy(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderExpect(); renderInquiry(); renderFooter();
   }
 
   /* ---------- Accordion (one open at a time, height tween) ---------- */

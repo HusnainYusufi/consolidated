@@ -350,6 +350,22 @@ html[lang="ar"] .wl-hint { letter-spacing: 0; font-size: .85rem; }
 .wl-glow { position: absolute; inset: -3rem; border-radius: 999px; background: radial-gradient(circle, rgba(255,244,214,.2) 0%, rgba(255,244,214,.08) 38%, transparent 72%); filter: blur(12px); }
 .wonderland.cursor-active { cursor: none; }
 
+/* ---------- Why choose us ---------- */
+.why { margin-top: 2rem; padding-block: 4rem 2rem; }
+.why-head { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem 4rem; align-items: end; }
+.why-head .label { grid-column: 1 / -1; margin-bottom: -1rem; }
+.why-intro { font-size: 1.05rem; font-weight: 300; line-height: 1.6; color: var(--muted); max-width: 60ch; }
+.why-sub { margin: 3.5rem 0 1.5rem; }
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.why-card { border-radius: 1.4rem; padding: 1px; }
+.why-inner { position: relative; z-index: 1; border-radius: inherit; background: #141414; padding: 1.8rem 1.6rem; height: 100%; display: flex; flex-direction: column; gap: .7rem; }
+.why-num { font-family: var(--font-head); font-size: 1rem; letter-spacing: .12em; color: var(--cyan); opacity: .9; }
+.why-card h3 { font-size: 1.55rem; font-style: italic; line-height: 1.15; }
+html[lang="ar"] .why-card h3 { font-style: normal; }
+.why-card p { font-size: .95rem; font-weight: 300; line-height: 1.55; color: var(--muted); }
+@media (max-width: 1024px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 860px) { .why-head { grid-template-columns: 1fr; } .why-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Solutions accordion ---------- */
 .solutions { margin-top: 10rem; }
 .sol-head { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: end; }
