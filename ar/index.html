@@ -59,11 +59,15 @@
         "hasOfferCatalog": {
           "@type": "OfferCatalog", "name": "Services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "External Audit & Review" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Internal Audit & Controls" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Strategic Tax Advisory" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Financial Consultation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Specialized Operational Support" } }
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Audit & Assurance Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Accounting & Bookkeeping Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tax Advisory & Compliance Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Internal Audit & Risk Advisory Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Financial Advisory Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Advisory Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Outsourcing & Back-Office Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Training & Professional Development Services" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ERP Solutions & Digital Transformation" } }
           ]
         },
         "employee": [{ "@id": "https://www.consolidated.net/#esam" }, { "@id": "https://www.consolidated.net/#abdelhadi" }]
@@ -114,6 +118,7 @@
   
   
   
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -125,10 +130,10 @@
 
   <!-- Fixed hero background: rotating mark + scroll managed overlays -->
   <div class="hero-bg" id="hero-bg" aria-hidden="true">
-    <div class="hero-rotor" style=""><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
-    <div class="hero-veil" id="hero-veil" style=""></div>
-    <div class="hero-dim" id="hero-dim" style=""></div>
-    <div class="hero-solid" id="hero-solid" style=""></div>
+    <div class="hero-rotor"><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
+    <div class="hero-veil" id="hero-veil"></div>
+    <div class="hero-dim" id="hero-dim"></div>
+    <div class="hero-solid" id="hero-solid"></div>
   </div>
 
   <!-- Header -->
@@ -223,13 +228,13 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">01</span>
           <h3 class="vm-title" data-i18n="vision.title">رؤيتنا</h3>
           <p class="vm-text" data-i18n="vision.text">أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.</p>
           <p class="vm-tag" data-i18n="vision.tag">تميز مهني · قيادة موثوقة</p>
         </article>
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <span class="vm-num">02</span>
           <h3 class="vm-title" data-i18n="mission.title">مهمتنا</h3>
           <p class="vm-text" data-i18n="mission.text">تقديم خدمات استثنائية في التدقيق والضرائب والمحاسبة والاستشارات من خلال التميز المهني والنزاهة ونهج يركز على العميل. نلتزم ببناء شراكات دائمة، وتقديم حلول عملية ومبتكرة، وتمكين عملائنا من تحقيق الشفافية المالية والكفاءة التشغيلية والنمو المستدام لأعمالهم.</p>
@@ -425,84 +430,193 @@
         </div>
       </div>
       <div class="accordion" id="services-accordion">
-      <div class="acc-item open" style="--row:#0e1b2a">
+      <div class="acc-item open" style="--row:#0c1826">
         <button class="acc-btn" type="button" aria-expanded="true">
-          <span class="acc-title">التدقيق الخارجي والمراجعة</span>
+          <span class="acc-title"><i>01</i>خدمات التدقيق والتأكيد</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
         </button>
         <div class="acc-panel" style=""><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">1</span>
-            <h3 class="acc-big">التدقيق الخارجي والمراجعة</h3>
-            <div class="badges"><span>الالتزام بمعايير ISA</span><span>تقارير IFRS</span></div>
-            <div class="acc-prose"><p>نطبق بصرامة معايير التدقيق الدولية (ISA) ومعايير المراجعة الدولية خلال تنفيذ مهامنا.</p><p>نصدر آراء مستقلة رسمية حول البيانات المالية التاريخية بما يتوافق تماماً مع المعايير الدولية للتقارير المالية.</p></div>
+            <span class="acc-num">01</span>
+            <h3 class="acc-big">خدمات التدقيق والتأكيد</h3>
+            <p class="acc-tagline">تأكيد مستقل. خبرة موثوقة. ثقة أكبر.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم خدمات تدقيق وتأكيد مستقلة مصممة لتعزيز مصداقية المعلومات المالية وشفافيتها وموثوقيتها. يجمع منهجنا في التدقيق القائم على المخاطر بين الخبرة الفنية والشك المهني والفهم العميق لأعمال عملائنا لتقديم تأكيد عالي الجودة وفقاً لمعايير التدقيق الدولية (ISA) وأطر التقارير المالية المعمول بها.</p><p>نتجاوز الامتثال التنظيمي بتقديم رؤى قيّمة حول ممارسات التقارير المالية والرقابة الداخلية ومخاطر الأعمال، بما يساعد المنشآت على تعزيز ثقة أصحاب المصلحة واتخاذ قرارات أعمال مدروسة.</p>
+              <h4 class="acc-h4">خدمات التدقيق والتأكيد المتخصصة</h4><ol class="acc-list"><li>التدقيق القانوني للبيانات المالية</li><li>مراجعة البيانات المالية</li><li>الإجراءات المتفق عليها (AUP)</li><li>التدقيق لأغراض خاصة</li><li>مراجعات الامتثال للمعايير الدولية للتقارير المالية (IFRS)</li><li>تدقيق البيانات المالية للمجموعات والبيانات الموحدة</li><li>تدقيق المشاريع الممولة من المنح والجهات المانحة</li><li>ارتباطات التأكيد الأخرى</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يمكّننا التزامنا بالاستقلالية والنزاهة المهنية والتميز الفني من تقديم خدمات تدقيق وتأكيد موثوقة مصممة وفق قطاع كل عميل وحجمه وبيئة عمله. نركز على التواصل الواضح والتنفيذ الفعّال للمهام والرؤى العملية مع الحفاظ على أعلى معايير جودة التدقيق.</p>
+            </div>
             <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
           </div>
           <div class="acc-img"><img src="/assets/img/sky-2.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#152a40">
+      <div class="acc-item" style="--row:#102235">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title">التدقيق الداخلي والرقابة</span>
+          <span class="acc-title"><i>02</i>خدمات المحاسبة ومسك الدفاتر</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">2</span>
-            <h3 class="acc-big">التدقيق الداخلي والرقابة</h3>
-            <div class="badges"><span>إطار COSO</span><span>تقييم المخاطر</span></div>
-            <div class="acc-prose"><p>نقيّم آليات الرقابة الداخلية باستخدام إطار COSO المعترف به عالمياً.</p><p>نقيّم المخاطر المؤسسية والالتزام التنظيمي والأداء التشغيلي لتعزيز حوكمة الشركات.</p></div>
+            <span class="acc-num">02</span>
+            <h3 class="acc-big">خدمات المحاسبة ومسك الدفاتر</h3>
+            <p class="acc-tagline">سجلات مالية دقيقة. تقارير موثوقة. قرارات أعمال أفضل.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة للمحاسبة ومسك الدفاتر مصممة لمساعدة الشركات على الاحتفاظ بسجلات مالية دقيقة وضمان الامتثال للمعايير المحاسبية المعمول بها وتحقيق شفافية مالية أكبر. تجمع خدماتنا بين الخبرة المهنية والممارسات المحاسبية الحديثة والفهم العميق لعمليات عملائنا لتقديم معلومات مالية موثوقة وفي وقتها.</p><p>نتجاوز مسك الدفاتر التقليدي بتقديم رؤى مالية قيّمة وتعزيز العمليات المحاسبية ودعم الإدارة المالية الفعّالة. وسواء من خلال إسناد الوظائف المحاسبية بالكامل أو تقديم دعم متخصص لفرق المالية الداخلية، تمكّن حلولنا المصممة الشركات من تبسيط عملياتها وتحسين تقاريرها المالية واتخاذ قرارات مدروسة تدعم النمو المستدام.</p>
+              <h4 class="acc-h4">خدمات المحاسبة ومسك الدفاتر المتخصصة</h4><ol class="acc-list"><li>مسك الدفاتر وصيانة دفتر الأستاذ العام</li><li>إعداد البيانات المالية السنوية والمرحلية</li><li>التقارير المالية الشهرية والدورية</li><li>إدارة الذمم الدائنة والمدينة</li><li>التسويات البنكية وتسويات دفتر الأستاذ العام</li><li>محاسبة الأصول الثابتة وإدارتها</li><li>الإشراف والمراجعة المحاسبية</li><li>إعداد الأنظمة المحاسبية وتطوير دليل الحسابات</li><li>إعداد البيانات المالية الموحدة</li><li>إعداد الموازنات والتنبؤات المالية</li><li>محاسبة الرواتب ومعالجتها</li><li>إعادة بناء السجلات المحاسبية وتنقيتها</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع فريقنا بين الخبرة المحاسبية الفنية والمعرفة العملية بالقطاعات والالتزام بالدقة والسرية لتقديم حلول محاسبية موثوقة مصممة وفق احتياجات كل عميل. نركز على الاحتفاظ بسجلات مالية موثوقة وتحسين كفاءة التقارير وتوفير معلومات مالية في وقتها تدعم الإدارة الفعّالة للأعمال. ومن خلال نهجنا المرن الذي يركز على العميل، نساعد المنشآت على تقليل الأعباء الإدارية وتعزيز الرقابة المالية والتركيز على أنشطتها الأساسية.</p>
+            </div>
             <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
           </div>
           <div class="acc-img"><img src="/assets/img/sky-3.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#1c3955">
+      <div class="acc-item" style="--row:#152c44">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title">الاستشارات الضريبية الاستراتيجية</span>
+          <span class="acc-title"><i>03</i>خدمات الاستشارات والامتثال الضريبي</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">3</span>
-            <h3 class="acc-big">الاستشارات الضريبية الاستراتيجية</h3>
-            <div class="badges"><span>ضريبة المبيعات والدخل</span><span>التخطيط الضريبي</span></div>
-            <div class="acc-prose"><p>استشارات شاملة في ضريبة الدخل والمبيعات للشركات والأفراد.</p><p>نضمن الامتثال القانوني الكامل لقوانين الضريبة الأردنية مع تنفيذ استراتيجيات التخطيط الضريبي المثلى لتقليل الالتزامات بشكل قانوني.</p></div>
+            <span class="acc-num">03</span>
+            <h3 class="acc-big">خدمات الاستشارات والامتثال الضريبي</h3>
+            <p class="acc-tagline">حلول ضريبية استراتيجية. امتثال تنظيمي. ثقة مالية أكبر.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة للاستشارات والامتثال الضريبي مصممة لمساعدة الشركات على التعامل مع الأنظمة الضريبية المعقدة وإدارة المخاطر الضريبية والوفاء بالتزاماتها القانونية بثقة. يجمع منهجنا بين الخبرة الضريبية الفنية والمعرفة المتعمقة بالتشريعات الضريبية المحلية والفهم العميق لأنشطة عملائنا لتقديم حلول ضريبية عملية وفعّالة.</p><p>نتجاوز الامتثال الضريبي التقليدي بتقديم تخطيط ضريبي استباقي وتحديد التعرضات الضريبية المحتملة ودعم الشركات في تحسين أوضاعها الضريبية ضمن الأطر القانونية والتنظيمية المعمول بها. وسواء في الإقرارات الضريبية الدورية أو إدارة التقديرات والنزاعات الضريبية أو الاستشارة في المعاملات المحلية والعابرة للحدود المعقدة، تساعد خدماتنا المصممة العملاء على الحفاظ على الامتثال وتحسين الكفاءة الضريبية واتخاذ قرارات مالية مدروسة.</p>
+              <h4 class="acc-h4">خدمات الاستشارات والامتثال الضريبي المتخصصة</h4><ol class="acc-list"><li>الامتثال لضريبة دخل الشركات وإعداد الإقرارات</li><li>الامتثال لضريبة المبيعات العامة وإعداد الإقرارات</li><li>التخطيط والاستشارات الضريبية</li><li>التقديرات والاعتراضات والاستئنافات الضريبية</li><li>دعم التدقيق والفحص الضريبي</li><li>استشارات وامتثال الضريبة المقتطعة</li><li>الاستشارات الضريبية الدولية واتفاقيات تجنب الازدواج الضريبي</li><li>استشارات وتوثيق تسعير المعاملات</li><li>العناية الواجبة الضريبية</li><li>التسجيل الضريبي وإلغاء التسجيل</li><li>تقييم المخاطر الضريبية ومراجعات الامتثال</li><li>الاستشارات الضريبية لإعادة هيكلة الشركات والمعاملات</li><li>استشارات ضريبة الدخل للموظفين والأفراد</li><li>مطالبات الاسترداد الضريبي ومتابعتها</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع متخصصونا الضريبيون بين الخبرة الفنية والتجربة العملية والفهم القوي لقوانين الضريبة الأردنية والمتطلبات التنظيمية لتقديم حلول ضريبية موثوقة ذات توجه تجاري. نركز على التخطيط الاستباقي والامتثال في الوقت المناسب والتواصل الفعّال مع السلطات الضريبية لمساعدة العملاء على تقليل المخاطر الضريبية وإدارة التزاماتهم بكفاءة. ومن خلال نهجنا الشخصي والتزامنا بالتميز المهني، ندعم الشركات في مواكبة الأنظمة الضريبية المتغيرة وحماية مصالحها المالية وتحقيق النمو المستدام.</p>
+            </div>
             <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
           </div>
           <div class="acc-img"><img src="/assets/img/sky-4.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#24486a">
+      <div class="acc-item" style="--row:#1a3653">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title">الاستشارات المالية</span>
+          <span class="acc-title"><i>04</i>خدمات التدقيق الداخلي واستشارات المخاطر</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">4</span>
-            <h3 class="acc-big">الاستشارات المالية</h3>
-            <div class="badges"><span>الممارسة الاستشارية</span></div>
-            <div class="acc-prose"><p>مجموعة متكاملة من استشارات التمويل المؤسسي الاستراتيجي لدعم صنّاع القرار في القطاعات التجارية والصناعية وغير الربحية:</p><ul><li><strong>دراسات الجدوى وخطط الأعمال</strong><span>تقييم جدوى السوق ونمذجة النفقات الرأسمالية وخرائط طريق الاستثمار.</span></li><li><strong>تقييم المنشآت والأعمال</strong><span>منهجيات التقييم بالتدفقات النقدية المخصومة والأصول ومضاعفات السوق لأغراض الاستحواذ وحقوق الملكية.</span></li><li><strong>تجميع البيانات المالية</strong><span>توحيد الميزانيات التاريخية والمتوقعة وعرضها هيكلياً.</span></li><li><strong>الموازنات الرئيسية وتحليل الانحرافات</strong><span>إدارة التدفقات النقدية التشغيلية ومطابقة الانحرافات والتنبؤ المالي.</span></li><li><strong>الرواتب وإدارة الضمان الاجتماعي</strong><span>معالجة الرواتب من البداية إلى النهاية والاقتطاعات الضريبية والامتثال للضمان الاجتماعي.</span></li><li><strong>السياسات المالية الداخلية وإجراءات العمل</strong><span>تصميم إجراءات التشغيل القياسية للخزينة والمشتريات والرقابة الإدارية.</span></li><li><strong>العناية الواجبة والإجراءات المتفق عليها</strong><span>عناية واجبة جنائية مستقلة وتقييم مخاطر المعاملات وبروتوكولات تحقق متفق عليها مخصصة.</span></li></ul></div>
+            <span class="acc-num">04</span>
+            <h3 class="acc-big">خدمات التدقيق الداخلي واستشارات المخاطر</h3>
+            <p class="acc-tagline">تعزيز الرقابة الداخلية. إدارة المخاطر. تحسين أداء الأعمال.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة للتدقيق الداخلي واستشارات المخاطر مصممة لمساعدة المنشآت على تعزيز بيئة الرقابة الداخلية وتحسين حوكمة الشركات وتحديد مخاطر الأعمال وإدارتها بفعالية. يجمع منهجنا القائم على المخاطر بين الخبرة المهنية وممارسات التدقيق الداخلي المعترف بها دولياً والفهم العميق لعمليات عملائنا لتقديم خدمات استشارية مستقلة وموضوعية وذات قيمة.</p><p>نتجاوز التدقيق الداخلي التقليدي بتقديم رؤى عملية وتحديد فرص التحسين التشغيلي ودعم المنشآت في إرساء أطر فعّالة لإدارة المخاطر والحوكمة. وسواء من خلال إسناد وظيفة التدقيق الداخلي بالكامل أو المشاركة في تنفيذها أو تقييمات متخصصة للمخاطر والرقابة الداخلية، تساعد حلولنا المصممة الشركات على حماية أصولها وتحسين كفاءتها التشغيلية وتعزيز امتثالها التنظيمي وتحقيق أهدافها الاستراتيجية.</p>
+              <h4 class="acc-h4">خدمات التدقيق الداخلي واستشارات المخاطر المتخصصة</h4><ol class="acc-list"><li>خدمات التدقيق الداخلي بالإسناد الخارجي</li><li>خدمات التدقيق الداخلي بالإسناد المشترك</li><li>تخطيط التدقيق الداخلي القائم على المخاطر</li><li>مراجعة وتقييم الرقابة الداخلية</li><li>إدارة المخاطر المؤسسية (ERM)</li><li>مراجعة واستشارات حوكمة الشركات</li><li>تدقيق العمليات والإجراءات التشغيلية</li><li>التدقيق التنظيمي وتدقيق الامتثال</li><li>تقييم مخاطر الاحتيال والوقاية منه</li><li>تطوير السياسات والإجراءات المالية والتشغيلية</li><li>مراجعة وتحسين إجراءات الأعمال</li><li>تأسيس وتطوير وظيفة التدقيق الداخلي</li><li>تقييم جودة التدقيق الداخلي</li><li>التقييم الذاتي للمخاطر والرقابة (RCSA)</li><li>متابعة نتائج التدقيق الداخلي ودعم المعالجة</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع متخصصونا في التدقيق الداخلي واستشارات المخاطر بين الخبرة الفنية والتجربة العملية في القطاعات والفهم القوي لأطر الحوكمة وإدارة المخاطر والرقابة الداخلية لتقديم حلول مصممة وفق احتياجات كل منشأة. نركز على الاستقلالية والموضوعية ومنهجية تركز على المخاطر لتحديد نقاط ضعف الرقابة وتقييم المخاطر الناشئة وتقديم توصيات قابلة للتنفيذ تخلق قيمة ملموسة. ومن خلال نهجنا التعاوني والتزامنا بالتميز المهني، نساعد المنشآت على تعزيز المساءلة والمرونة التشغيلية وإرساء ممارسات فعّالة للحوكمة وإدارة المخاطر تدعم النجاح طويل الأمد.</p>
+            </div>
             <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
           </div>
           <div class="acc-img"><img src="/assets/img/sky-5.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#2d587f">
+      <div class="acc-item" style="--row:#1f4062">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title">الدعم التشغيلي المتخصص</span>
+          <span class="acc-title"><i>05</i>خدمات الاستشارات المالية</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">5</span>
-            <h3 class="acc-big">الدعم التشغيلي المتخصص</h3>
-            <div class="badges"><span>حلول مساندة</span></div>
-            <div class="acc-prose"><p>دعم تشغيلي متخصص يحافظ على امتثال منشأتك وكفاءة كوادرها:</p><ul><li><strong>التدريب المهني</strong><span>برامج تدريبية متخصصة للمحاسبين والمحللين الماليين ومديري الشركات، مع إعداد عملي للشهادات المهنية الأمريكية (CPA, CMA, CIA) والإدارة المالية المتقدمة.</span></li><li><strong>خدمات دائرة مراقبة الشركات</strong><span>دعم شامل لتأسيس الشركات والاندماج وتعديلات رأس المال والتصفية الرسمية والإيداع السنوي للبيانات المالية المدققة لدى وزارة الصناعة والتجارة.</span></li><li><strong>المعاملات الحكومية</strong><span>إدارة سلسة للمعاملات لدى أمانة عمّان الكبرى والمؤسسة العامة للضمان الاجتماعي ووزارة العمل وجهات الترخيص ذات الصلة.</span></li></ul></div>
+            <span class="acc-num">05</span>
+            <h3 class="acc-big">خدمات الاستشارات المالية</h3>
+            <p class="acc-tagline">رؤى مالية استراتيجية. قرارات مدروسة. نمو مستدام للأعمال.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة للاستشارات المالية مصممة لمساعدة الشركات على مواجهة التحديات المالية المعقدة وتقييم فرص الاستثمار وتحقيق أهدافها الاستراتيجية والمالية. يجمع منهجنا بين الخبرة المالية الفنية والقدرات التحليلية والفهم العميق لقطاعات عملائنا وبيئات أعمالهم لتقديم مشورة مالية عملية وثاقبة وموجهة نحو النتائج.</p><p>نتجاوز الاستشارات المالية التقليدية بتقديم رؤى استراتيجية تدعم اتخاذ القرارات المدروسة وتحسّن الأداء المالي وتخلق قيمة طويلة الأمد للأعمال. وسواء في عمليات الاندماج والاستحواذ أو تقييم الأعمال أو العناية الواجبة المالية أو إعادة هيكلة الشركات أو التخطيط الاستثماري، تساعد حلولنا الاستشارية المصممة المنشآت على إدارة المخاطر المالية وتحسين استخدام الموارد واغتنام فرص النمو المستدام.</p>
+              <h4 class="acc-h4">خدمات الاستشارات المالية المتخصصة</h4><ol class="acc-list"><li>العناية الواجبة المالية</li><li>تقييم الأعمال وحقوق الملكية</li><li>استشارات الاندماج والاستحواذ</li><li>النمذجة والتنبؤ المالي</li><li>دراسات الجدوى المالية</li><li>تخطيط الأعمال والاستراتيجية المالية</li><li>استشارات إعادة الهيكلة المالية ومعالجة التعثر</li><li>إدارة رأس المال العامل وتحسينه</li><li>تخطيط التدفقات النقدية وإدارة السيولة</li><li>تقييم الاستثمارات والتحليل المالي</li><li>إعداد الموازنات وإدارة الأداء المالي</li><li>استشارات جمع رأس المال والتمويل</li><li>تقييم المخاطر المالية وإدارتها</li><li>دعم المعاملات واستشارات الصفقات</li><li>استشارات التقارير المالية وتحسين الأداء</li><li>الاستعداد للطرح العام الأولي (IPO) والاستشارات المالية</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع متخصصونا في الاستشارات المالية بين الخبرة الفنية والرؤية التجارية والتجربة العملية في القطاعات لتقديم حلول مصممة تعالج التحديات المالية والأولويات الاستراتيجية الخاصة بكل عميل. نركز على الدقة التحليلية والنزاهة المهنية والنهج الموجه نحو النتائج لمساعدة الشركات على تقييم الفرص وإدارة المخاطر المالية واتخاذ قرارات استثمارية وتمويلية واثقة. ومن خلال التزامنا بالجودة والسرية والعلاقات طويلة الأمد مع العملاء، ندعم المنشآت في تعزيز أدائها المالي وتعظيم قيمة أعمالها وتحقيق النمو المستدام.</p>
+            </div>
             <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
           </div>
           <div class="acc-img"><img src="/assets/img/sky-6.jpg" alt="" loading="lazy"></div>
+        </div></div>
+      </div>
+      <div class="acc-item" style="--row:#244a71">
+        <button class="acc-btn" type="button" aria-expanded="false">
+          <span class="acc-title"><i>06</i>خدمات استشارات الشركات</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
+        </button>
+        <div class="acc-panel"><div class="acc-body">
+          <div class="acc-text">
+            <span class="acc-num">06</span>
+            <h3 class="acc-big">خدمات استشارات الشركات</h3>
+            <p class="acc-tagline">حلول أعمال استراتيجية. هياكل مؤسسية أقوى. نمو مستدام.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة لاستشارات الشركات مصممة لدعم الأعمال على امتداد دورة حياتها، من التأسيس والتطوير التنظيمي إلى إعادة الهيكلة والتوسع الاستراتيجي. يجمع منهجنا بين الخبرة المهنية والرؤية التجارية والفهم العميق للبيئة التنظيمية وبيئة الأعمال لمساعدة المنشآت على إرساء هياكل مؤسسية فعّالة وتعزيز ممارسات الحوكمة وتحقيق أهدافها الاستراتيجية طويلة الأمد.</p><p>نتجاوز الاستشارات المؤسسية التقليدية بتقديم حلول عملية ومصممة تعزز الكفاءة التنظيمية وتدعم الامتثال التنظيمي وتخلق قيمة مستدامة للأعمال. وسواء في تأسيس الشركات أو إعادة الهيكلة أو أطر الحوكمة أو توسيع الأعمال أو التطوير التنظيمي، تساعد خدماتنا الاستشارية العملاء على مواجهة تحديات الأعمال المعقدة وتحسين الفعالية التشغيلية واغتنام فرص النمو بثقة.</p>
+              <h4 class="acc-h4">خدمات استشارات الشركات المتخصصة</h4><ol class="acc-list"><li>تأسيس الشركات وتسجيل الأعمال</li><li>هيكلة الشركات وإعادة تنظيمها</li><li>استشارات حوكمة الشركات</li><li>استشارات توسيع الأعمال ودخول الأسواق</li><li>استشارات الامتثال المؤسسي والتنظيمي</li><li>تصميم وتطوير الهيكل التنظيمي</li><li>تطوير السياسات والإجراءات المؤسسية</li><li>تحسين إجراءات الأعمال وتطويرها</li><li>إعادة هيكلة الشركات وتحويل الأعمال</li><li>استشارات الشركات القابضة وهياكل المجموعات</li><li>استشارات هياكل المساهمة والملكية</li><li>الدعم الإداري وأعمال أمانة سر الشركات</li><li>دعم ترخيص الأعمال وتسجيلها</li><li>التخطيط الاستراتيجي للأعمال وتطويرها</li><li>مراجعات الأداء المؤسسي والكفاءة التشغيلية</li><li>تخطيط تعاقب الأعمال واستمراريتها</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع متخصصونا في استشارات الشركات بين الخبرة الفنية والتجربة العملية في الأعمال والفهم القوي لحوكمة الشركات والمتطلبات التنظيمية لتقديم حلول مصممة وفق الاحتياجات التنظيمية والأولويات الاستراتيجية لكل عميل. نركز على الاحترافية والواقعية التجارية والنهج الذي يركز على العميل لمساعدة الشركات على إرساء هياكل مؤسسية فعّالة وتعزيز الحوكمة والتعامل مع التحديات التنظيمية والمؤسسية. ومن خلال التزامنا بالجودة والسرية والشراكات طويلة الأمد، ندعم المنشآت في تعزيز فعاليتها التشغيلية وإدارة مخاطرها المؤسسية وبناء أساس متين للنمو المستدام.</p>
+            </div>
+            <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
+          </div>
+          <div class="acc-img"><img src="/assets/img/sky-7.jpg" alt="" loading="lazy"></div>
+        </div></div>
+      </div>
+      <div class="acc-item" style="--row:#295480">
+        <button class="acc-btn" type="button" aria-expanded="false">
+          <span class="acc-title"><i>07</i>خدمات الإسناد الخارجي والدعم المكتبي</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
+        </button>
+        <div class="acc-panel"><div class="acc-body">
+          <div class="acc-text">
+            <span class="acc-num">07</span>
+            <h3 class="acc-big">خدمات الإسناد الخارجي والدعم المكتبي</h3>
+            <p class="acc-tagline">شريكك الموثوق في الإسناد الخارجي. خبرة مهنية. كفاءة تشغيلية أكبر.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة للإسناد الخارجي والدعم المكتبي مصممة لمساعدة الشركات ومكاتب المحاسبة وشركات التدقيق على تحسين عملياتها وخفض تكاليفها الإدارية والوصول إلى موارد مهنية مؤهلة. يجمع نموذج خدماتنا المرن بين الخبرة الفنية والمهنيين المتمرسين في المحاسبة والتدقيق ومنهجيات العمل الفعّالة لتقديم دعم موثوق وفعّال من حيث التكلفة وعالي الجودة ومصمم وفق المتطلبات التشغيلية لكل عميل.</p><p>نتجاوز الإسناد الخارجي التقليدي بالعمل كامتداد لفرق عملائنا، فنوفر موارد مهنية مخصصة ودعماً فنياً متخصصاً مع الحفاظ على السرية التامة ومعايير الجودة والتواصل الفعّال. وسواء في دعم شركات التدقيق والمحاسبة الدولية بأوراق عمل التدقيق والتقارير المالية، أو إدارة الوظائف المحاسبية المسندة، أو توفير متخصصين ماليين مخصصين، تمكّن حلولنا العملاء من رفع الإنتاجية وإدارة أعباء العمل بكفاءة والتركيز على أنشطتهم الأساسية وأولوياتهم الاستراتيجية.</p>
+              <h4 class="acc-h4">خدمات الإسناد الخارجي والدعم المكتبي المتخصصة</h4><ol class="acc-list"><li>خدمات المحاسبة ومسك الدفاتر بالإسناد الخارجي</li><li>إعداد أوراق عمل التدقيق وملفات التدقيق</li><li>دعم مهام التدقيق عن بُعد</li><li>إعداد البيانات المالية والتقارير</li><li>فرق محاسبة وتدقيق مخصصة</li><li>إسناد الوظائف المالية والمحاسبية</li><li>معالجة الرواتب وإدارتها</li><li>إسناد الذمم الدائنة والمدينة</li><li>التسويات البنكية وصيانة دفتر الأستاذ العام</li><li>التقارير المالية والحسابات الإدارية</li><li>دعم توثيق التدقيق ورقابة الجودة</li><li>دعم توحيد البيانات المالية</li><li>التوظيف المهني المؤقت والقائم على المشاريع</li><li>إعادة بناء السجلات المحاسبية وتنقيتها</li><li>الدعم المكتبي عن بُعد لشركات التدقيق والمحاسبة الدولية</li><li>دعم الدائرة المالية والمساندة التشغيلية</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>يجمع متخصصونا في الإسناد الخارجي والدعم المكتبي بين الخبرة المحاسبية والتدقيقية الفنية القوية والتجربة العملية في القطاعات والالتزام بالسرية وجودة الخدمة لتقديم حلول موثوقة مصممة وفق متطلبات كل عميل. ندرك أهمية الدقة والتسليم في الوقت المناسب والامتثال للمعايير المهنية المعمول بها، لا سيما عند دعم شركات التدقيق والمحاسبة العاملة في الأسواق الدولية.</p><p>ومن خلال نماذج التعاقد المرنة والفرق المهنية المخصصة وتقديم الخدمات بكفاءة في التكلفة، نساعد العملاء على إدارة أعباء العمل المتغيرة وخفض النفقات التشغيلية والحفاظ على جودة ثابتة وتحسين الإنتاجية الإجمالية. إن التزامنا بالاحترافية وسرعة الاستجابة والشراكات طويلة الأمد يجعل الموحدة امتداداً موثوقاً لعمليات عملائنا، بما يتيح لهم التركيز على تطوير الأعمال وعلاقات العملاء والنمو المستدام.</p>
+            </div>
+            <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
+          </div>
+          <div class="acc-img"><img src="/assets/img/sky-1.jpg" alt="" loading="lazy"></div>
+        </div></div>
+      </div>
+      <div class="acc-item" style="--row:#2e5e8f">
+        <button class="acc-btn" type="button" aria-expanded="false">
+          <span class="acc-title"><i>08</i>خدمات التدريب والتطوير المهني</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
+        </button>
+        <div class="acc-panel"><div class="acc-body">
+          <div class="acc-text">
+            <span class="acc-num">08</span>
+            <h3 class="acc-big">خدمات التدريب والتطوير المهني</h3>
+            <p class="acc-tagline">تمكين المهنيين. تطوير المعرفة. بناء قدرات المستقبل.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم برامج شاملة للتدريب والتطوير المهني مصممة لتعزيز المعرفة الفنية وتقوية الكفاءات المهنية ودعم التعلم المستمر في المحاسبة والتدقيق والضرائب والإدارة المالية والاستشارات الإدارية. يجمع منهجنا التدريبي بين الخبرة العملية الواسعة والخبرة الفنية والمعايير المهنية المعترف بها دولياً لتقديم تجارب تعلم شيقة وذات صلة وموجهة نحو التطبيق ومصممة وفق الاحتياجات المتطورة للمهنيين والمنشآت.</p><p>نتجاوز التدريب الصفي التقليدي بالتركيز على التطبيقات العملية وسيناريوهات الأعمال الواقعية والتعلم التطبيقي الذي يمكّن المشاركين من تحويل المعرفة النظرية إلى ممارسة مهنية. وسواء من خلال التدريب المؤسسي المخصص أو ورش العمل الفنية المتخصصة أو برامج الإعداد للشهادات المهنية، تساعد حلولنا الأفراد والمنشآت على تطوير القدرات الأساسية وتحسين الأداء المهني ومواكبة التطورات التنظيمية والتقنية وتحقيق التميز المهني طويل الأمد.</p>
+              <h4 class="acc-h4">خدمات التدريب والتطوير المهني المتخصصة</h4><ol class="acc-list"><li>المعايير الدولية للتقارير المالية (IFRS والمعيار الدولي للمنشآت الصغيرة والمتوسطة)</li><li>معايير التدقيق الدولية (ISA)</li><li>التدقيق الداخلي وإدارة المخاطر وحوكمة الشركات</li><li>الضرائب والامتثال التنظيمي</li><li>التقارير المالية والتحليل والإدارة المالية</li><li>النمذجة المالية والموازنات وتقييم الأعمال</li><li>البرامج المحاسبية وأنظمة تخطيط موارد المؤسسات (ERP)</li><li>الإعداد للشهادات المهنية (CPA وCMA وCIA)</li><li>منهجيات التدقيق والتوثيق وإدارة الجودة</li><li>برامج التدريب المؤسسي والتطوير المهني المخصصة</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>في الموحدة، نجمع بين الخبرة الفنية والتجربة العملية الواسعة والمعايير المهنية المعترف بها دولياً لتقديم برامج تدريبية عالية الجودة وموجهة نحو النتائج. يركز مهنيونا المتمرسون على التطبيقات العملية وتحديات الأعمال الواقعية، ويقدمون حلول تعلم مخصصة تعزز الكفاءات المهنية وترفع الأداء المؤسسي وتدعم التطوير المهني المستمر.</p>
+            </div>
+            <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
+          </div>
+          <div class="acc-img"><img src="/assets/img/sky-3.jpg" alt="" loading="lazy"></div>
+        </div></div>
+      </div>
+      <div class="acc-item" style="--row:#33689e">
+        <button class="acc-btn" type="button" aria-expanded="false">
+          <span class="acc-title"><i>09</i>حلول تخطيط موارد المؤسسات والتحول الرقمي</span>
+          <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
+        </button>
+        <div class="acc-panel"><div class="acc-body">
+          <div class="acc-text">
+            <span class="acc-num">09</span>
+            <h3 class="acc-big">حلول تخطيط موارد المؤسسات والتحول الرقمي</h3>
+            <p class="acc-tagline">تقنية ذكية. حلول متكاملة. أداء أعمال محسّن.</p>
+            <div class="acc-prose">
+              <h4 class="acc-h4">نظرة عامة على الخدمة</h4>
+              <p>في الموحدة لتدقيق الحسابات والخدمات الضريبية، نقدم حلولاً شاملة لأنظمة تخطيط موارد المؤسسات (ERP) وخدمات استشارية للتحول الرقمي مصممة لمساعدة المنشآت على تحديث عملياتها المالية وتبسيط إجراءات الأعمال وتعزيز الكفاءة التشغيلية. ومن خلال الجمع بين خبرتنا في المحاسبة والإدارة المالية والرقابة الداخلية وإجراءات الأعمال وحلول التقنية الحديثة، ندعم المنشآت في اختيار الأنظمة وتنفيذها وتحسينها بما يتوافق مع متطلباتها التشغيلية وأهدافها الاستراتيجية.</p><p>نتجاوز الأنظمة المحاسبية التقليدية بمساعدة الشركات على دمج العمليات المالية والتشغيلية وأتمتة الأنشطة الروتينية وتعزيز الرقابة الداخلية وتحسين دقة المعلومات المالية وسهولة الوصول إليها. وسواء في تنفيذ حلول ERP جديدة أو ترقية الأنظمة القائمة أو دعم مبادرات التحول الرقمي الأوسع، يمكّن نهجنا المصمم المنشآت من تحسين الإنتاجية وتعزيز الشفافية المالية واتخاذ قرارات مدروسة من خلال معلومات أعمال موثوقة وآنية.</p>
+              <h4 class="acc-h4">خدمات حلول ERP والتحول الرقمي المتخصصة</h4><ol class="acc-list"><li>تقييم احتياجات ERP واختيار النظام</li><li>دعم تنفيذ وتهيئة أنظمة ERP</li><li>أنظمة المحاسبة والإدارة المالية</li><li>أتمتة إجراءات الأعمال وتحسينها</li><li>ترحيل بيانات ERP وتكامل الأنظمة</li><li>التقارير المالية ولوحات المعلومات وذكاء الأعمال</li><li>الرقابة الداخلية وتقييم المخاطر في أنظمة ERP</li><li>استراتيجية واستشارات التحول الرقمي</li><li>مراجعة أنظمة ERP وتحسين أدائها</li><li>التدريب على ERP ودعم المستخدمين وصيانة الأنظمة</li></ol>
+              <h4 class="acc-h4">لماذا الموحدة؟</h4><p>في الموحدة، نجمع بين الخبرة المالية والمعرفة العملية بالأعمال والحلول القائمة على التقنية لمساعدة المنشآت على تحقيق تنفيذ ناجح لأنظمة ERP والتحول الرقمي. يركز نهجنا الذي يضع العميل في المقدمة على موثوقية الأنظمة والكفاءة التشغيلية والرقابة الداخلية القوية والتكامل السلس مع إجراءات الأعمال القائمة. ومن خلال تقديم حلول مصممة ودعم مهني مستمر، نساعد الشركات على تعظيم قيمة استثماراتها التقنية وتحسين تقاريرها المالية وتحقيق نمو تشغيلي مستدام.</p>
+            </div>
+            <a class="btn " href="#consult"><span class="btn-label">استفسر عن هذه الخدمة</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
+          </div>
+          <div class="acc-img"><img src="/assets/img/sky-4.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div></div>
     </section>
@@ -562,7 +676,7 @@
     <!-- 7. Clients that trust us -->
     <section class="section trust container" id="clients">
       <p class="label" data-i18n="clients.title">عملاء يثقون بنا</p>
-      <p class="clients-intro" data-i18n="clients.intro" data-reveal="" style="">يثق بنا قادة الصناعات الثقيلة والتصنيع والزراعة وبيوت التجارة والرعاية الصحية والتكنولوجيا والتعليم والمنظمات غير الربحية والمقاولات في الأردن.</p>
+      <p class="clients-intro" data-i18n="clients.intro" data-reveal="">يثق بنا قادة الصناعات الثقيلة والتصنيع والزراعة وبيوت التجارة والرعاية الصحية والتكنولوجيا والتعليم والمنظمات غير الربحية والمقاولات في الأردن.</p>
       <div class="trust-grid" id="trust-grid"><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-01.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-02.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-03.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-04.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-05.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-06.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-07.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-08.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-09.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-10.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-11.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-12.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-13.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-14.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-15.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-16.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-18.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-19.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-20.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-21.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-22.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-23.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-24.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-25.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-26.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-27.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-28.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-29.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-30.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-31.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-32.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-33.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-34.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-35.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-36.png" alt="" loading="lazy" decoding="async"></div><div class="logo-tile" data-reveal="" style=""><img src="/assets/img/clients/logo-37.png" alt="" loading="lazy" decoding="async"></div></div>
       <div class="client-rows" id="client-rows"><div class="marquee"><div class="marquee-track " style="--dur:70s"><span class="logo-chip"><img src="/assets/img/clients/logo-01.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-02.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-03.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-04.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-05.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-06.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-07.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-08.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-09.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-10.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-11.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-12.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-13.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-14.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-15.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-16.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-18.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-19.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-01.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-02.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-03.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-04.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-05.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-06.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-07.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-08.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-09.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-10.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-11.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-12.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-13.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-14.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-15.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-16.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-18.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-19.png" alt="" loading="lazy" decoding="async"></span></div></div><div class="marquee"><div class="marquee-track right" style="--dur:82s"><span class="logo-chip"><img src="/assets/img/clients/logo-20.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-21.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-22.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-23.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-24.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-25.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-26.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-27.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-28.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-29.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-30.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-31.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-32.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-33.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-34.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-35.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-36.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-37.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-20.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-21.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-22.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-23.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-24.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-25.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-26.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-27.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-28.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-29.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-30.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-31.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-32.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-33.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-34.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-35.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-36.png" alt="" loading="lazy" decoding="async"></span><span class="logo-chip"><img src="/assets/img/clients/logo-37.png" alt="" loading="lazy" decoding="async"></span></div></div></div>
     </section>
@@ -570,7 +684,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="" style="">
+        <div class="expect-head" data-reveal="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">يمكنك أن</span><span class="italic big" data-i18n="expect.t2">تتوقع</span><span class="italic" data-i18n="expect.t3">أننا</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -598,7 +712,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="" style="">
+        <div class="inquiry-copy" data-reveal="">
           <p class="label" data-i18n="inquiry.kicker">استفسار</p>
           <h2 class="h2"><span data-i18n="inquiry.title1">حدثنا عن</span> <span class="italic" data-i18n="inquiry.title2">أعمالك.</span></h2>
           <p class="light" data-i18n="inquiry.sub">أرسل لنا بعض التفاصيل وسيتواصل معك أحد الشركاء عبر البريد الإلكتروني أو واتساب، عادةً خلال يوم عمل واحد.</p>
@@ -614,7 +728,7 @@
               <label class="field"><span data-i18n="inquiry.email">البريد الإلكتروني</span><input type="email" name="email" autocomplete="email" required="" dir="ltr"></label>
               <label class="field"><span data-i18n="inquiry.phone">واتساب / الهاتف</span><input type="tel" name="phone" autocomplete="tel" placeholder="+962 7X XXX XXXX" required="" dir="ltr"></label>
             </div>
-            <label class="field"><span data-i18n="inquiry.service">الخدمة المطلوبة</span><select name="service" id="inquiry-service"><option value="التدقيق الخارجي والمراجعة">التدقيق الخارجي والمراجعة</option><option value="التدقيق الداخلي والرقابة">التدقيق الداخلي والرقابة</option><option value="الاستشارات الضريبية الاستراتيجية">الاستشارات الضريبية الاستراتيجية</option><option value="الاستشارات المالية">الاستشارات المالية</option><option value="التدريب المهني">التدريب المهني</option><option value="تأسيس / تصفية الشركات">تأسيس / تصفية الشركات</option><option value="المعاملات الحكومية">المعاملات الحكومية</option><option value="أخرى">أخرى</option></select></label>
+            <label class="field"><span data-i18n="inquiry.service">الخدمة المطلوبة</span><select name="service" id="inquiry-service"><option value="خدمات التدقيق والتأكيد">خدمات التدقيق والتأكيد</option><option value="خدمات المحاسبة ومسك الدفاتر">خدمات المحاسبة ومسك الدفاتر</option><option value="خدمات الاستشارات والامتثال الضريبي">خدمات الاستشارات والامتثال الضريبي</option><option value="خدمات التدقيق الداخلي واستشارات المخاطر">خدمات التدقيق الداخلي واستشارات المخاطر</option><option value="خدمات الاستشارات المالية">خدمات الاستشارات المالية</option><option value="خدمات استشارات الشركات">خدمات استشارات الشركات</option><option value="خدمات الإسناد الخارجي والدعم المكتبي">خدمات الإسناد الخارجي والدعم المكتبي</option><option value="خدمات التدريب والتطوير المهني">خدمات التدريب والتطوير المهني</option><option value="حلول تخطيط موارد المؤسسات والتحول الرقمي">حلول تخطيط موارد المؤسسات والتحول الرقمي</option><option value="أخرى">أخرى</option></select></label>
             <label class="field"><span data-i18n="inquiry.message">كيف يمكننا مساعدتك؟</span><textarea name="message" rows="4" required=""></textarea></label>
             <input type="text" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="inquiry-actions">
@@ -648,7 +762,7 @@
     </div>
 
     <div class="footer-cols" id="footer-cols">
-      <div class="footer-col"><h3>الخدمات</h3><ul><li><a href="#services">التدقيق الخارجي والمراجعة</a></li><li><a href="#services">التدقيق الداخلي والرقابة</a></li><li><a href="#services">الاستشارات الضريبية الاستراتيجية</a></li><li><a href="#services">الاستشارات المالية</a></li><li><a href="#services">الدعم التشغيلي المتخصص</a></li></ul></div>
+      <div class="footer-col"><h3>الخدمات</h3><ul><li><a href="#services">خدمات التدقيق والتأكيد</a></li><li><a href="#services">خدمات المحاسبة ومسك الدفاتر</a></li><li><a href="#services">خدمات الاستشارات والامتثال الضريبي</a></li><li><a href="#services">خدمات التدقيق الداخلي واستشارات المخاطر</a></li><li><a href="#services">خدمات الاستشارات المالية</a></li><li><a href="#services">خدمات استشارات الشركات</a></li><li><a href="#services">خدمات الإسناد الخارجي والدعم المكتبي</a></li><li><a href="#services">خدمات التدريب والتطوير المهني</a></li><li><a href="#services">حلول تخطيط موارد المؤسسات والتحول الرقمي</a></li></ul></div>
       <div class="footer-col"><h3>المؤسسة</h3><ul><li><a href="#about">من نحن</a></li><li><a href="#vision">الرؤية والمهمة</a></li><li><a href="#values">القيم الأساسية</a></li><li><a href="#team">القيادة</a></li><li><a href="#clients">عملاؤنا</a></li><li><a href="/ar/careers/">الوظائف</a></li></ul></div>
       <div class="footer-col"><h3>المقر الرئيسي</h3><ul><li>مجمع النهضة، شارع جبير بن مطعم، عمّان – الأردن</li><li><a href="tel:+962796650500"><span dir="ltr">+962 79 665 0500</span></a></li><li><a href="tel:+962795760772"><span dir="ltr">+962 79 576 0772</span></a></li><li><a href="https://www.consolidated.net" target="_blank" rel="noopener"><span dir="ltr">www.consolidated.net</span></a></li></ul></div>
       <div class="footer-col"><h3>البريد الإلكتروني</h3><ul><li><a href="mailto:emulazem@caudit.net"><span dir="ltr">emulazem@caudit.net</span></a></li><li><a href="mailto:aabdelhadi@caudit.net"><span dir="ltr">aabdelhadi@caudit.net</span></a></li></ul></div></div>

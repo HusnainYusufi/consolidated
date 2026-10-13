@@ -156,22 +156,28 @@
   }
 
   const minusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>';
-  const rowColors = ['#0e1b2a', '#152a40', '#1c3955', '#24486a', '#2d587f', '#376a96'];
+  const rowColors = ['#0c1826', '#102235', '#152c44', '#1a3653', '#1f4062', '#244a71', '#295480', '#2e5e8f', '#33689e'];
   function renderServices() {
     const host = $('#services-accordion');
-    host.innerHTML = dict.services.items.map((s, i) => `
+    const S = dict.services;
+    host.innerHTML = S.items.map((s, i) => `
       <div class="acc-item" style="--row:${rowColors[i % rowColors.length]}">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title">${esc(s.title)}</span>
+          <span class="acc-title"><i>${String(i + 1).padStart(2, '0')}</i>${esc(s.title)}</span>
           <span class="acc-icon">${minusIcon}</span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">${i + 1}</span>
+            <span class="acc-num">${String(i + 1).padStart(2, '0')}</span>
             <h3 class="acc-big">${esc(s.title)}</h3>
-            ${s.badges ? `<div class="badges">${s.badges.map((b) => `<span>${esc(b)}</span>`).join('')}</div>` : ''}
-            <div class="acc-prose">${s.text.map((p) => `<p>${esc(p)}</p>`).join('')}${s.list ? `<ul>${s.list.map((li) => Array.isArray(li) ? `<li><strong>${esc(li[0])}</strong><span>${esc(li[1])}</span></li>` : `<li>${esc(li)}</li>`).join('')}</ul>` : ''}</div>
-            ${btn(dict.services.discuss, '#consult')}
+            ${s.tagline ? `<p class="acc-tagline">${esc(s.tagline)}</p>` : ''}
+            <div class="acc-prose">
+              <h4 class="acc-h4">${esc(S.overviewTitle || '')}</h4>
+              ${s.text.map((p) => `<p>${esc(p)}</p>`).join('')}
+              ${s.list ? `<h4 class="acc-h4">${esc(s.listTitle || '')}</h4><ol class="acc-list">${s.list.map((li) => `<li>${esc(li)}</li>`).join('')}</ol>` : ''}
+              ${s.why ? `<h4 class="acc-h4">${esc(S.whyTitle || '')}</h4>${s.why.map((p) => `<p>${esc(p)}</p>`).join('')}` : ''}
+            </div>
+            ${btn(S.discuss, '#consult')}
           </div>
           <div class="acc-img"><img src="/assets/img/${s.img}.jpg" alt="" loading="lazy"></div>
         </div></div>
