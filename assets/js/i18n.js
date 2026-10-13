@@ -44,7 +44,7 @@ window.I18N = {
       { text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan' }
     ],
     vision: { title: 'Our Vision', text: 'To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.', tag: 'Professional excellence · Trusted leadership' },
-    mission: { title: 'Our Mission', text: 'To deliver uncompromisingly high-quality and transparent professional services to our clients, cultivated alongside robust personal and professional partnerships that empower them to achieve sustainable commercial expansion and operational resilience.', tag: 'Value creation · Partnership driven' },
+    mission: { title: 'Our Mission', text: 'To deliver exceptional audit, tax, accounting, and advisory services through professional excellence, integrity, and a client-focused approach. We are committed to building lasting partnerships, providing practical and innovative solutions, and empowering our clients to achieve financial transparency, operational efficiency, and sustainable business growth.', tag: 'Professional integrity · Client success' },
     values: {
       kicker: 'OPERATING PRINCIPLES',
       title1: 'Step Into',
@@ -278,7 +278,7 @@ window.I18N = {
       { text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية' }
     ],
     vision: { title: 'رؤيتنا', text: 'أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.', tag: 'تميز مهني · قيادة موثوقة' },
-    mission: { title: 'مهمتنا', text: 'تقديم خدمات مهنية عالية الجودة وشفافة دون أي مساومة لعملائنا، مبنية على شراكات شخصية ومهنية متينة تمكّنهم من تحقيق توسع تجاري مستدام ومرونة تشغيلية.', tag: 'خلق القيمة · شراكة حقيقية' },
+    mission: { title: 'مهمتنا', text: 'تقديم خدمات استثنائية في التدقيق والضرائب والمحاسبة والاستشارات من خلال التميز المهني والنزاهة ونهج يركز على العميل. نلتزم ببناء شراكات دائمة، وتقديم حلول عملية ومبتكرة، وتمكين عملائنا من تحقيق الشفافية المالية والكفاءة التشغيلية والنمو المستدام لأعمالهم.', tag: 'نزاهة مهنية · نجاح العملاء' },
     values: {
       kicker: 'مبادئ العمل',
       title1: 'ادخل إلى',
