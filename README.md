@@ -68,3 +68,13 @@ Delivery works like the inquiry form: with a relay access key in `assets/js/conf
 - JSON-LD structured data: `AccountingService` / `LocalBusiness` with address, phones, founding date, services, and `Person` entries for both partners.
 - `sitemap.xml`, `robots.txt`, `site.webmanifest`, favicon and app icons.
 - Replace `https://www.caudit.net` throughout (`index.html` head, `sitemap.xml`, `robots.txt`, `config.js`) if the final domain differs. After launch, submit the sitemap in Google Search Console.
+
+## Company profile (PDF)
+
+`profile/profile.html` lays out the company profile from the same content dictionary as the website, so it always matches the approved copy. Build the English and Arabic PDFs with:
+
+```bash
+python tools/build_profile.py
+```
+
+Outputs `profile/Consolidated-Company-Profile-EN.pdf` and `-AR.pdf` (A4 landscape, 21 pages). Edit copy in `assets/js/i18n.js`, then rebuild.
