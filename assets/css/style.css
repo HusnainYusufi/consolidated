@@ -461,7 +461,7 @@ html[dir="rtl"] .round-btn svg { transform: scaleX(-1); }
 
 /* ---------- Trust ---------- */
 .trust { margin-top: 2.5rem; }
-.trust .label { margin-bottom: 2.5rem; }
+.trust .label { margin-bottom: 2rem; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
 @media (min-width: 768px) { .trust-grid { grid-template-columns: repeat(6, 1fr); gap: 1rem; } }
 .logo-tile { position: relative; aspect-ratio: 4 / 3; border-radius: 1rem; background: #fff; overflow: hidden; border: 1px solid var(--line); transition: transform .5s var(--ease), box-shadow .5s; }
