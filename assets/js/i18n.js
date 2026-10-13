@@ -43,7 +43,7 @@ window.I18N = {
       { n: 500, suffix: '+', label: 'Corporate, Industrial & NGO Client Partners' },
       { text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan' }
     ],
-    vision: { title: 'Our Vision', text: 'To be the pioneers and final reference point in external auditing, tax advisory, financial consultation, and professional vocational training services, both locally within Jordan and across the wider regional landscape.', tag: 'Strategic goal · Regional benchmark' },
+    vision: { title: 'Our Vision', text: 'To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.', tag: 'Professional excellence · Trusted leadership' },
     mission: { title: 'Our Mission', text: 'To deliver uncompromisingly high-quality and transparent professional services to our clients, cultivated alongside robust personal and professional partnerships that empower them to achieve sustainable commercial expansion and operational resilience.', tag: 'Value creation · Partnership driven' },
     values: {
       kicker: 'OPERATING PRINCIPLES',
@@ -277,7 +277,7 @@ window.I18N = {
       { n: 500, suffix: '+', label: 'شريك من الشركات والمصانع والمنظمات' },
       { text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية' }
     ],
-    vision: { title: 'رؤيتنا', text: 'أن نكون الرواد والمرجع النهائي في خدمات التدقيق الخارجي والاستشارات الضريبية والاستشارات المالية والتدريب المهني، محلياً في الأردن وعلى امتداد المشهد الإقليمي الأوسع.', tag: 'هدف استراتيجي · معيار إقليمي' },
+    vision: { title: 'رؤيتنا', text: 'أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.', tag: 'تميز مهني · قيادة موثوقة' },
     mission: { title: 'مهمتنا', text: 'تقديم خدمات مهنية عالية الجودة وشفافة دون أي مساومة لعملائنا، مبنية على شراكات شخصية ومهنية متينة تمكّنهم من تحقيق توسع تجاري مستدام ومرونة تشغيلية.', tag: 'خلق القيمة · شراكة حقيقية' },
     values: {
       kicker: 'مبادئ العمل',
