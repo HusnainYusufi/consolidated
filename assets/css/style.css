@@ -323,9 +323,9 @@ html[lang="ar"] .founder-contact small { letter-spacing: 0; font-size: .8rem; }
 
 /* ---------- Wonderland (floating value cards) ---------- */
 .wonderland { margin-top: 7.5rem; padding: 7rem 0; overflow-x: clip; perspective: 1400px; min-height: 100svh; display: grid; place-items: center; }
-.wl-scene { position: relative; width: 100%; max-width: 90rem; min-height: 80svh; display: grid; place-items: center; transform-style: preserve-3d; }
+.wl-scene { position: relative; width: 100%; max-width: 90rem; min-height: 100svh; display: grid; place-items: center; transform-style: preserve-3d; }
 .wl-group { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
-.wl-card { position: absolute; width: var(--card-width, 12rem); transform-style: preserve-3d; filter: drop-shadow(0 24px 60px rgba(0,0,0,.45)); will-change: transform; }
+.wl-card { position: absolute; width: var(--card-width, 10rem); transform-style: preserve-3d; filter: drop-shadow(0 24px 60px rgba(0,0,0,.45)); will-change: transform; }
 .wl-card-inner { position: relative; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,.15); background: var(--card-dark); aspect-ratio: 160 / 280; box-shadow: 0 18px 50px rgba(0,0,0,.35); transition: transform .6s var(--ease), border-color .3s; transform-style: preserve-3d; }
 .wl-card.flipped .wl-card-inner { transform: rotateY(180deg); border-color: transparent; }
 .wl-face { position: absolute; inset: 0; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; }

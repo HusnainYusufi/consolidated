@@ -46,16 +46,18 @@ window.I18N = {
     vision: { title: 'Our Vision', text: 'To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.', tag: 'Professional excellence · Trusted leadership' },
     mission: { title: 'Our Mission', text: 'To deliver exceptional audit, tax, accounting, and advisory services through professional excellence, integrity, and a client-focused approach. We are committed to building lasting partnerships, providing practical and innovative solutions, and empowering our clients to achieve financial transparency, operational efficiency, and sustainable business growth.', tag: 'Professional integrity · Client success' },
     values: {
-      kicker: 'OPERATING PRINCIPLES',
-      title1: 'Step Into',
-      title2: 'Our Core Values',
-      sub: 'Our values are deeply embedded in the execution methodology we deploy across all client mandates, our multidisciplinary teams, and regulatory stakeholders. Click a card to read each one.',
+      kicker: 'THE PRINCIPLES THAT DEFINE US',
+      title1: 'Our',
+      title2: 'Core Values',
+      sub: 'Our core values define our identity, guide our actions, and shape the way we serve our clients. Rooted in integrity, independence, and professional excellence, these principles reflect our commitment to building trusted relationships, delivering exceptional quality, and creating lasting value.',
       cta: 'Start a Conversation',
       cards: [
-        { title: 'Integrity & Honesty', text: 'Our primary cornerstone. We maintain total transparency, ethical steadfastness, and forthright counsel with clients on both professional and interpersonal dimensions.', img: 'sky-3' },
-        { title: 'Independence & Objectivity', text: 'Unbiased evaluation and due professional care. We proactively identify and neutralize any potential conflicts of interest to guarantee impartial, rigorous analysis.', img: 'sky-4' },
-        { title: 'Quality & Excellence', text: 'We empower and retain highly certified specialists to continuously elevate service benchmarks, ensuring distinguished outputs that exceed client expectations.', img: 'sky-5' },
-        { title: 'Commitment & Discretion', text: 'Absolute preservation of corporate confidentiality. No proprietary transaction data or commercial intelligence is ever disclosed to unauthorized external entities.', img: 'sky-6' }
+        { title: 'Integrity', text: 'Honesty and transparency with every client, on both professional and personal levels. We give forthright counsel and hold ourselves to the highest ethical standards.', img: 'sky-3' },
+        { title: 'Independence', text: 'Unbiased evaluation and due professional care. We proactively identify and neutralise any conflict of interest to guarantee impartial, rigorous analysis.', img: 'sky-4' },
+        { title: 'Professional Excellence', text: 'Highly certified specialists who continuously raise service benchmarks, delivering distinguished work that exceeds client expectations.', img: 'sky-5' },
+        { title: 'Client Commitment', text: 'A client-focused approach built on lasting partnerships, practical solutions and a shared commitment to our clients’ success.', img: 'sky-6' },
+        { title: 'Confidentiality', text: 'Absolute preservation of corporate confidentiality. No transaction data or commercial intelligence is ever disclosed to unauthorised parties.', img: 'sky-2' },
+        { title: 'Innovation', text: 'Innovative, forward-looking solutions that enhance financial transparency, strengthen compliance and improve operational efficiency.', img: 'sky-7' }
       ]
     },
     services: {
@@ -280,16 +282,18 @@ window.I18N = {
     vision: { title: 'رؤيتنا', text: 'أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.', tag: 'تميز مهني · قيادة موثوقة' },
     mission: { title: 'مهمتنا', text: 'تقديم خدمات استثنائية في التدقيق والضرائب والمحاسبة والاستشارات من خلال التميز المهني والنزاهة ونهج يركز على العميل. نلتزم ببناء شراكات دائمة، وتقديم حلول عملية ومبتكرة، وتمكين عملائنا من تحقيق الشفافية المالية والكفاءة التشغيلية والنمو المستدام لأعمالهم.', tag: 'نزاهة مهنية · نجاح العملاء' },
     values: {
-      kicker: 'مبادئ العمل',
-      title1: 'ادخل إلى',
-      title2: 'قيمنا الأساسية',
-      sub: 'قيمنا متجذرة بعمق في منهجية التنفيذ التي نعتمدها في جميع تكليفات عملائنا وفرقنا متعددة التخصصات والجهات التنظيمية. انقر على البطاقة لقراءة كل قيمة.',
+      kicker: 'المبادئ التي تعرّفنا',
+      title1: 'قيمنا',
+      title2: 'الأساسية',
+      sub: 'تحدد قيمنا الأساسية هويتنا وتوجه أفعالنا وتشكّل الطريقة التي نخدم بها عملاءنا. وانطلاقاً من النزاهة والاستقلالية والتميز المهني، تعكس هذه المبادئ التزامنا ببناء علاقات موثوقة وتقديم جودة استثنائية وخلق قيمة دائمة.',
       cta: 'ابدأ محادثة',
       cards: [
-        { title: 'النزاهة والمصداقية', text: 'ركيزتنا الأولى. نحافظ على شفافية تامة وثبات أخلاقي ومشورة صريحة مع عملائنا على المستويين المهني والشخصي.', img: 'sky-3' },
-        { title: 'الاستقلالية والموضوعية', text: 'تقييم غير منحاز وعناية مهنية واجبة. نرصد أي تضارب محتمل في المصالح ونحيّده استباقياً لضمان تحليل محايد ودقيق.', img: 'sky-4' },
-        { title: 'الجودة والتميز', text: 'نمكّن ونحتفظ بمتخصصين معتمدين رفيعي المستوى لرفع معايير الخدمة باستمرار، بما يضمن مخرجات متميزة تفوق توقعات العملاء.', img: 'sky-5' },
-        { title: 'الالتزام والسرية', text: 'حفاظ مطلق على سرية معلومات الشركات. لا يتم الإفصاح عن أي بيانات معاملات أو معلومات تجارية لأي جهة خارجية غير مخولة.', img: 'sky-6' }
+        { title: 'النزاهة', text: 'الصدق والشفافية مع كل عميل على المستويين المهني والشخصي. نقدم مشورة صريحة ونلتزم بأعلى المعايير الأخلاقية.', img: 'sky-3' },
+        { title: 'الاستقلالية', text: 'تقييم غير منحاز وعناية مهنية واجبة. نرصد أي تضارب في المصالح ونحيّده استباقياً لضمان تحليل محايد ودقيق.', img: 'sky-4' },
+        { title: 'التميز المهني', text: 'متخصصون معتمدون رفيعو المستوى يرفعون معايير الخدمة باستمرار ويقدمون عملاً متميزاً يفوق توقعات العملاء.', img: 'sky-5' },
+        { title: 'الالتزام تجاه العملاء', text: 'نهج يركز على العميل، قائم على شراكات دائمة وحلول عملية والتزام مشترك بنجاح عملائنا.', img: 'sky-6' },
+        { title: 'السرية', text: 'حفاظ مطلق على سرية معلومات الشركات. لا يتم الإفصاح عن أي بيانات معاملات أو معلومات تجارية لأي جهة غير مخولة.', img: 'sky-2' },
+        { title: 'الابتكار', text: 'حلول مبتكرة واستشرافية تعزز الشفافية المالية وترسخ الامتثال وتحسّن الكفاءة التشغيلية.', img: 'sky-7' }
       ]
     },
     services: {

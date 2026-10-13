@@ -136,10 +136,12 @@
 
   // Floating value cards: positions mirror the reference's card layout.
   const wlLayout = [
-    { x: '12%', y: '8%', rot: -8, delay: 0, dur: 6.2 },
-    { x: '70%', y: '6%', rot: 7, delay: .6, dur: 5.6 },
-    { x: '8%', y: '58%', rot: 6, delay: 1, dur: 5.8 },
-    { x: '72%', y: '56%', rot: -10, delay: 1.4, dur: 6.6 }
+    { x: '3%', y: '2%', rot: -7, delay: 0, dur: 6.2 },
+    { x: '85%', y: '2%', rot: 7, delay: .6, dur: 5.6 },
+    { x: '17%', y: '36%', rot: 5, delay: 1, dur: 5.8 },
+    { x: '71%', y: '36%', rot: -6, delay: 1.4, dur: 6.6 },
+    { x: '3%', y: '64%', rot: 8, delay: .3, dur: 6.0 },
+    { x: '85%', y: '64%', rot: -8, delay: 1.8, dur: 5.4 }
   ];
   function renderValues() {
     $('#wl-group').innerHTML = dict.values.cards.map((c, i) => {
