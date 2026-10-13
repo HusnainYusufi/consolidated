@@ -148,15 +148,15 @@ window.I18N = {
     expect: {
       t1: 'You Can', t2: 'Expect', t3: 'That We Are',
       cards: [
-        { text: '10+ years of auditing and regulatory leadership since 26 February 2015', img: 'sky-1' },
-        { text: '500+ corporate, industrial and NGO client partners', img: 'sky-2' },
-        { text: 'Staffed by seasoned auditors and advisors with international certifications', img: 'sky-3' },
-        { text: 'Strictly aligned with IFRS, ISA, Jordanian Tax Codes and international frameworks', img: 'sky-4' },
+        { text: 'Over a decade of professional excellence in audit, assurance, and financial advisory services since our establishment in 2015', img: 'sky-1' },
+        { text: 'Proudly served over 500 clients across diverse industries and sectors since our establishment in 2015', img: 'sky-2' },
+        { text: 'Combining extensive professional experience with internationally recognized qualifications to deliver excellence in audit, tax, and advisory services', img: 'sky-3' },
+        { text: 'Upholding internationally recognized accounting and auditing standards while ensuring compliance with applicable regulatory and tax requirements', img: 'sky-4' },
         { text: 'Serving a diverse clientele across public and private enterprises, international organizations, non-profit institutions, and high-net-worth individuals', img: 'sky-5' },
         { text: 'Rooted in Jordan, extending our professional expertise and services across the MENA region', img: 'sky-6' },
-        { text: 'Absolute in preserving corporate confidentiality', img: 'sky-7' },
-        { text: 'Headquartered at Al Nahda Complex, Jubayr Bin Mut\'em Street, Amman', img: 'sky-2' },
-        { text: 'Guided by integrity, transparency and quality', img: 'sky-3' }
+        { text: 'Safeguarding client information through unwavering confidentiality, professional ethics, and trusted business practices', img: 'sky-7' },
+        { text: 'Our headquarters are located at Al Nahda Complex, Jubayr Bin Mut’em Street, Amman, Jordan', img: 'sky-2' },
+        { text: 'Upholding the highest standards of integrity, transparency, and quality in every professional engagement', img: 'sky-3' }
       ]
     },
     inquiry: {
@@ -377,15 +377,15 @@ window.I18N = {
     expect: {
       t1: 'يمكنك أن', t2: 'تتوقع', t3: 'أننا',
       cards: [
-        { text: 'أكثر من 10 سنوات من الريادة في التدقيق والامتثال منذ 26 شباط 2015', img: 'sky-1' },
-        { text: 'أكثر من 500 شريك من الشركات والمصانع والمنظمات غير الربحية', img: 'sky-2' },
-        { text: 'كادر من المدققين والمستشارين المخضرمين الحاصلين على شهادات دولية', img: 'sky-3' },
-        { text: 'ملتزمون بصرامة بمعايير IFRS وISA وقوانين الضريبة الأردنية والأطر الدولية', img: 'sky-4' },
+        { text: 'أكثر من عقد من التميز المهني في خدمات التدقيق والتأكيد والاستشارات المالية منذ تأسيسنا عام 2015', img: 'sky-1' },
+        { text: 'نفخر بخدمة أكثر من 500 عميل في مختلف القطاعات والصناعات منذ تأسيسنا عام 2015', img: 'sky-2' },
+        { text: 'نجمع بين الخبرة المهنية الواسعة والمؤهلات المعترف بها دولياً لتقديم التميز في خدمات التدقيق والضرائب والاستشارات', img: 'sky-3' },
+        { text: 'نلتزم بمعايير المحاسبة والتدقيق المعترف بها دولياً مع ضمان الامتثال للمتطلبات التنظيمية والضريبية المعمول بها', img: 'sky-4' },
         { text: 'نخدم قاعدة متنوعة من العملاء تشمل المنشآت العامة والخاصة والمنظمات الدولية والمؤسسات غير الربحية والأفراد ذوي الملاءة العالية', img: 'sky-5' },
         { text: 'متجذرون في الأردن، ونمد خبراتنا وخدماتنا المهنية إلى منطقة الشرق الأوسط وشمال أفريقيا', img: 'sky-6' },
-        { text: 'نحافظ حفاظاً مطلقاً على سرية معلومات الشركات', img: 'sky-7' },
-        { text: 'مقرنا في مجمع النهضة، شارع جبير بن مطعم، عمّان', img: 'sky-2' },
-        { text: 'نسترشد بالنزاهة والشفافية والجودة', img: 'sky-3' }
+        { text: 'نحمي معلومات عملائنا من خلال سرية لا تتزعزع وأخلاقيات مهنية وممارسات أعمال موثوقة', img: 'sky-7' },
+        { text: 'يقع مقرنا الرئيسي في مجمع النهضة، شارع جبير بن مطعم، عمّان، الأردن', img: 'sky-2' },
+        { text: 'نلتزم بأعلى معايير النزاهة والشفافية والجودة في كل مهمة مهنية', img: 'sky-3' }
       ]
     },
     inquiry: {
