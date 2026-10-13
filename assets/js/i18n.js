@@ -83,7 +83,7 @@ window.I18N = {
     team: {
       title: 'The People Behind Our Professional Excellence',
       people: [
-        {"name": "Esam N. Almulazem, CFA, CPA", "role": "Founder and Managing Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam"},
+        {"name": "Esam N. Almulazem, CFA, CPA", "role": "Founder and Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam"},
         {"name": "Mr. Abedalaziz F.J Abdelhadi", "role": "Accounting & Tax Partner", "line": "Leads the firm's Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.", "photo": "abdelhadi"},
         {"name": "Kareem Masoud", "role": "External Auditor", "line": "Supervises audit engagements, manages audit teams, reviews working papers, and ensures compliance with professional auditing standards and quality requirements.", "photo": "masoud"},
         {"name": "Bashar Hamdan", "role": "Accountant and Tax Officer", "line": "Managing financial records, prepares tax returns, and ensures compliance with accounting standards and tax regulations.", "photo": "hamdan"},
@@ -313,7 +313,7 @@ window.I18N = {
     team: {
       title: 'الأشخاص وراء تميزنا المهني',
       people: [
-        {"name": "عصام ن. الملازم، CFA, CPA", "role": "المؤسس والشريك الإداري للتدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam"},
+        {"name": "عصام ن. الملازم، CFA, CPA", "role": "المؤسس وشريك التدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam"},
         {"name": "السيد عبد العزيز ف. ج. عبد الهادي", "role": "شريك المحاسبة والضرائب", "line": "يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية والامتثال التنظيمي.", "photo": "abdelhadi"},
         {"name": "كريم مسعود", "role": "مدقق خارجي", "line": "يشرف على مهام التدقيق ويدير فرق التدقيق ويراجع أوراق العمل ويضمن الالتزام بمعايير التدقيق المهنية ومتطلبات الجودة.", "photo": "masoud"},
         {"name": "بشار حمدان", "role": "محاسب ومسؤول ضرائب", "line": "يدير السجلات المالية ويعد الإقرارات الضريبية ويضمن الالتزام بالمعايير المحاسبية والأنظمة الضريبية.", "photo": "hamdan"},
