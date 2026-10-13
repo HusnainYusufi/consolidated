@@ -39,7 +39,7 @@ window.I18N = {
     },
     stats: [
       { n: 2015, label: 'Founded · 26 Feb 2015', plain: true },
-      { n: 10, suffix: '+', label: 'Years of Auditing & Regulatory Leadership' },
+      { n: 10, suffix: '+', label: 'Years of auditing, tax advisory and financial consulting' },
       { n: 500, suffix: '+', label: 'Corporate, Industrial & NGO Client Partners' },
       { text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan' }
     ],
@@ -273,7 +273,7 @@ window.I18N = {
     },
     stats: [
       { n: 2015, label: 'التأسيس · 26 شباط 2015', plain: true },
-      { n: 10, suffix: '+', label: 'سنوات من الريادة في التدقيق والامتثال' },
+      { n: 10, suffix: '+', label: 'سنوات من التدقيق والاستشارات الضريبية والمالية' },
       { n: 500, suffix: '+', label: 'شريك من الشركات والمصانع والمنظمات' },
       { text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية' }
     ],
