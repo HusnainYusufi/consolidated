@@ -71,7 +71,7 @@ Delivery works like the inquiry form: with a relay access key in `assets/js/conf
 
 ## Company profile (PDF)
 
-`profile/profile.html` lays out the company profile from the same content dictionary as the website, so it always matches the approved copy. Build the English and Arabic PDFs with:
+`profile/index.html` lays out (and, opened in a browser at /profile/, plays as an animated scroll version) the company profile from the same content dictionary as the website, so it always matches the approved copy. Build the English and Arabic PDFs with:
 
 ```bash
 python tools/build_profile.py

@@ -28,7 +28,7 @@ async def render(lang, out):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(viewport={'width': 794, 'height': 1123})
-        await page.goto(f'http://127.0.0.1:{PORT}/profile/profile.html?lang={lang}', wait_until='networkidle')
+        await page.goto(f'http://127.0.0.1:{PORT}/profile/index.html?lang={lang}&print=1', wait_until='networkidle')
         await page.wait_for_function('window.__profileReady === true')
         await page.evaluate('document.fonts.ready')
         # Make sure every image has loaded (retry any that failed) before printing.
