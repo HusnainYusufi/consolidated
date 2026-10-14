@@ -77,4 +77,4 @@ Delivery works like the inquiry form: with a relay access key in `assets/js/conf
 python tools/build_profile.py
 ```
 
-Outputs `profile/Consolidated-Company-Profile-EN.pdf` and `-AR.pdf` (A4 landscape, 21 pages). Edit copy in `assets/js/i18n.js`, then rebuild.
+Outputs `profile/Consolidated-Company-Profile-EN.pdf` and `-AR.pdf` (A4 portrait brochure, 21 pages). Edit copy in `assets/js/i18n.js`, then rebuild. Icons come from the bundled Lucide set in `profile/vendor/`, toned photography from `profile/img/`, and the back-cover QR code (`profile/qr-website.svg`) points to www.caudit.net.
