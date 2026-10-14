@@ -21,15 +21,17 @@
   h1,h2,h3,h4{ font-family:var(--head); font-weight:400; margin:0; line-height:1.04; }
   p{ margin:0; }
   .it{ font-style:italic; } html[lang="ar"] .it{ font-style:normal; }
+  .ac{ color:var(--blue); } .dark .ac{ color:var(--cyan); }
 
   .page{ position:relative; width:210mm; height:297mm; overflow:hidden; page-break-after:always; break-after:page; background:var(--paper); color:var(--ink); }
   .page:last-child{ page-break-after:auto; break-after:auto; }
   .page.dark{ background:var(--navy); color:var(--white); }
   .page.sand{ background:var(--sand); }
+  .page.ledger{ background-image:repeating-linear-gradient(180deg, transparent 0 8.2mm, rgba(18,20,23,.045) 8.2mm 8.4mm); }
   .pad{ position:absolute; inset:16mm 16mm 20mm; }
   .foot{ position:absolute; left:16mm; right:16mm; bottom:9mm; display:flex; justify-content:space-between; align-items:center; font-size:6.8pt; letter-spacing:.22em; text-transform:uppercase; color:var(--ink2); z-index:3; }
   html[lang="ar"] .foot{ letter-spacing:0; font-size:8pt; }
-  .dark .foot, .foot.light{ color:var(--mute); }
+  .dark .foot{ color:var(--mute); }
   .foot .pn{ font-family:var(--head); font-size:12pt; letter-spacing:0; }
   .foot .bar{ flex:1; height:1px; background:currentColor; opacity:.25; margin:0 5mm; }
 
@@ -37,42 +39,61 @@
   html[lang="ar"] .kicker{ letter-spacing:0; font-size:9.5pt; }
   .kicker::before{ content:""; width:9mm; height:2px; background:var(--grad); flex:0 0 auto; }
   .dark .kicker, .kicker.light{ color:var(--cyan); }
-  .h1{ font-size:60pt; } .h2{ font-size:36pt; } .h3{ font-size:17pt; }
+  .h2{ font-size:36pt; }
   .lead{ font-size:11.6pt; line-height:1.62; }
   .txt{ font-size:9.6pt; line-height:1.62; color:var(--ink2); }
   .dark .txt{ color:var(--mute); }
-  .grad-text{ color:var(--cyan); }
-  .page:not(.dark) .grad-text{ color:var(--blue); }
-
   .img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .duo{ position:absolute; inset:0; mix-blend-mode:multiply; }
+  .gradbar{ height:2.2px; background:var(--grad); }
+  .swirl{ position:absolute; pointer-events:none; }
+
   .ib{ width:13mm; height:13mm; border-radius:50%; display:grid; place-items:center; flex:0 0 auto; color:var(--blue);
        background:linear-gradient(#fff,#fff) padding-box, var(--grad) border-box; border:1.4px solid transparent; }
-  .ib svg{ width:6mm; height:6mm; stroke-width:1.6; }
+  .ib svg{ width:6mm; height:6mm; }
   .dark .ib, .ib.on-dark{ color:var(--cyan); background:linear-gradient(var(--navy),var(--navy)) padding-box, var(--grad) border-box; }
   .ib.solid{ background:var(--grad); color:#fff; border:0; }
-  .ib.lg{ width:17mm; height:17mm; } .ib.lg svg{ width:8mm; height:8mm; }
-  .chip{ display:inline-flex; align-items:center; gap:1.6mm; border:1px solid var(--line); border-radius:99px; padding:1.3mm 3.4mm; font-size:7.8pt; font-weight:400; background:rgba(255,255,255,.6); }
+  .chip{ display:inline-flex; align-items:center; gap:1.6mm; border:1px solid var(--line); border-radius:99px; padding:1.3mm 3.4mm; font-size:7.8pt; background:rgba(255,255,255,.6); }
   .chip svg{ width:3.6mm; height:3.6mm; color:var(--blue); }
+  .sand .chip[style*="color:#fff"] svg{ color:var(--cyan); }
   .dark .chip{ border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.05); }
   .dark .chip svg{ color:var(--cyan); }
   .badge{ display:inline-block; border:1px solid currentColor; border-radius:99px; padding:.8mm 2.8mm; font-size:7.4pt; font-weight:600; letter-spacing:.1em; }
   .ltr{ direction:ltr; unicode-bidi:isolate; display:inline-block; }
 
-  /* logo */
   .logo{ display:flex; align-items:center; gap:3.5mm; }
   .logo .icon{ height:15mm; } .logo .word{ height:9mm; filter:invert(1) brightness(1.15); }
-  .logo.on-light .word{ filter:none; }
   .logo .ar-word{ display:none; flex-direction:column; line-height:1.1; }
   .logo .ar-word b{ font-size:16pt; font-weight:600; } .logo .ar-word small{ font-size:8pt; opacity:.8; }
   html[lang="ar"] .logo .word{ display:none; } html[lang="ar"] .logo .ar-word{ display:flex; }
 
-  /* cover */
-  .cover .shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,22,35,.55) 0%, rgba(11,22,35,.35) 30%, rgba(11,22,35,.9) 62%, rgba(7,15,25,1) 100%); }
-  .swirl{ position:absolute; opacity:.13; pointer-events:none; }
-  .gradbar{ height:2.2px; background:var(--grad); }
+  /* ---------- COVER ---------- */
+  .cv-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,15,25,.35), rgba(7,15,25,.15) 30%, rgba(7,15,25,.85) 66%, var(--deep)); }
+  .cv-words{ font-family:var(--head); font-size:60pt; line-height:.98; }
+  .cv-words div{ display:flex; align-items:center; gap:5mm; }
+  .cv-words .tick{ width:11mm; height:11mm; border-radius:50%; background:var(--grad); display:grid; place-items:center; color:#fff; flex:0 0 auto; }
+  .cv-words .tick svg{ width:6mm; height:6mm; stroke-width:2.6; }
+  html:not([lang="ar"]) .cv-words div:nth-child(2) span{ font-style:italic; }
 
-  /* about */
+  /* ---------- CONTENTS ---------- */
+  .ch-row{ display:grid; grid-template-columns:44mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
+  .ch-thumb{ position:relative; height:30mm; border-radius:4mm; overflow:hidden; }
+  .ch-num{ font-family:var(--head); font-size:30pt; color:var(--blue); line-height:1; }
+  .ch-row h3{ font-size:20pt; margin-bottom:2mm; }
+  .ch-items{ display:flex; flex-wrap:wrap; gap:1mm 5mm; font-size:8.4pt; color:var(--ink2); }
+  .ch-items span b{ font-weight:600; color:var(--ink); margin-inline-start:1.2mm; font-family:var(--head); font-size:10pt; }
+
+  /* ---------- CHAPTER DIVIDER ---------- */
+  .dv-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,15,25,.2) 10%, rgba(7,15,25,.55) 45%, rgba(7,15,25,.96)); }
+  .dv-no{ position:absolute; top:12mm; inset-inline-start:13mm; font-family:var(--head); font-size:230pt; line-height:.8; color:transparent; -webkit-text-stroke:1.2px rgba(255,255,255,.55); }
+  .dv-body{ position:absolute; left:16mm; right:16mm; bottom:26mm; color:#fff; }
+  .dv-title{ font-size:58pt; margin:5mm 0 9mm; }
+  .dv-quote{ display:flex; gap:4mm; max-width:150mm; }
+  .dv-quote svg{ width:8mm; height:8mm; color:var(--cyan); flex:0 0 auto; }
+  .dv-quote p{ font-family:var(--head); font-size:16pt; line-height:1.35; color:rgba(255,255,255,.9); }
+  html:not([lang="ar"]) .dv-quote p{ font-style:italic; }
+  html[dir="rtl"] .dv-quote svg{ transform:scaleX(-1); }
+
+  /* ---------- ABOUT ---------- */
   .band{ position:absolute; top:0; left:0; right:0; overflow:hidden; border-end-end-radius:30mm; }
   .est{ position:absolute; width:34mm; height:34mm; border-radius:50%; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 5mm 12mm rgba(0,0,0,.25); z-index:2; }
   .est b{ font-family:var(--head); font-weight:400; font-size:26pt; line-height:1; }
@@ -83,17 +104,26 @@
   .strength h3{ font-size:14pt; } html:not([lang="ar"]) .strength h3{ font-style:italic; }
   .strength p{ font-size:8.6pt; line-height:1.5; color:var(--ink2); }
 
-  /* glance */
-  .stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:0; border-top:1px solid rgba(255,255,255,.14); }
-  .stat{ padding:7mm 0 7mm; border-bottom:1px solid rgba(255,255,255,.14); display:flex; gap:5mm; align-items:flex-start; }
-  .stat:nth-child(odd){ padding-inline-end:6mm; border-inline-end:1px solid rgba(255,255,255,.14); }
-  .stat:nth-child(even){ padding-inline-start:7mm; }
-  .stat b{ display:block; font-family:var(--head); font-weight:400; font-size:44pt; line-height:.9; }
-  .stat b small{ font-size:.5em; }
-  .stat span{ display:block; margin-top:2.5mm; font-size:7.6pt; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:var(--mute); line-height:1.45; }
-  html[lang="ar"] .stat span{ letter-spacing:0; font-size:8.8pt; }
+  /* ---------- NUMBERS ---------- */
+  .big-n{ display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid rgba(255,255,255,.14); }
+  .big-n > div{ padding:7mm 5mm 7mm 0; border-bottom:1px solid rgba(255,255,255,.14); }
+  html[dir="rtl"] .big-n > div{ padding:7mm 0 7mm 5mm; }
+  .big-n b{ display:block; font-family:var(--head); font-weight:400; font-size:50pt; line-height:.9; }
+  .big-n b small{ font-size:.5em; color:var(--cyan); }
+  .big-n span{ display:block; margin-top:3mm; font-size:7.4pt; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:var(--mute); line-height:1.45; }
+  html[lang="ar"] .big-n span{ letter-spacing:0; font-size:8.6pt; }
+  .big-n .ib{ width:10mm; height:10mm; margin-bottom:4mm; } .big-n .ib svg{ width:4.6mm; height:4.6mm; }
+  .decade{ position:relative; margin-top:6mm; }
+  .decade .track{ height:3px; background:rgba(255,255,255,.14); border-radius:2px; position:relative; }
+  .decade .fill{ position:absolute; inset:0; background:var(--grad); border-radius:2px; }
+  .decade .yrs{ display:flex; justify-content:space-between; margin-top:2.5mm; }
+  .decade .yrs span{ font-size:7pt; color:var(--mute); width:0; display:flex; justify-content:center; white-space:nowrap; }
+  .decade .yrs span.k{ color:#fff; font-weight:600; font-size:8pt; }
+  .decade .dots{ position:absolute; left:0; right:0; top:-1.6mm; display:flex; justify-content:space-between; }
+  .decade .dots i{ width:3.4mm; height:3.4mm; border-radius:50%; background:var(--navy); border:1.2px solid var(--cyan); }
+  .decade .dots i.k{ background:var(--cyan); }
 
-  /* vision/mission */
+  /* ---------- VISION / MISSION ---------- */
   .vm-top{ position:absolute; top:16mm; left:16mm; right:16mm; height:142mm; border-radius:7mm; overflow:hidden; color:var(--white); }
   .vm-top .shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,22,35,.25), rgba(11,22,35,.92) 70%); }
   .vm-in{ position:absolute; left:11mm; right:11mm; bottom:11mm; }
@@ -103,30 +133,44 @@
   .vm-tag{ margin-top:6mm; font-size:7.6pt; letter-spacing:.24em; text-transform:uppercase; font-weight:600; }
   html[lang="ar"] .vm-tag{ letter-spacing:0; font-size:9pt; }
 
-  /* tiles */
-  .tiles{ display:grid; grid-template-columns:repeat(2,1fr); gap:5mm; }
-  .tile{ background:#fff; border-radius:5mm; padding:7mm 6.5mm; display:flex; flex-direction:column; gap:3mm; position:relative; }
-  .tile .no{ position:absolute; top:6mm; inset-inline-end:6.5mm; font-family:var(--head); font-size:11pt; color:rgba(18,20,23,.3); }
-  .tile h3{ font-size:16pt; margin-top:1mm; } html:not([lang="ar"]) .tile h3{ font-style:italic; }
-  .tile p{ font-size:8.9pt; line-height:1.55; color:var(--ink2); }
+  /* ---------- RING DIAGRAM ---------- */
+  .ring{ position:relative; margin:0 auto; }
+  .ring svg.rg{ position:absolute; inset:0; width:100%; height:100%; }
+  .ring .core{ position:absolute; transform:translate(-50%,-50%); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  .ring .node{ position:absolute; transform:translate(-50%,-50%); width:15mm; height:15mm; border-radius:50%; display:grid; place-items:center; background:var(--grad); color:#fff; box-shadow:0 2mm 6mm rgba(7,15,25,.25); }
+  .ring .node svg{ width:6mm; height:6mm; stroke-width:1.7; }
+  .ring .lbl{ position:absolute; transform:translate(-50%,-50%); width:38mm; text-align:center; font-family:var(--head); font-size:14.5pt; line-height:1.1; }
+  html:not([lang="ar"]) .ring .lbl{ font-style:italic; }
+  .ring .lbl small{ display:block; font-family:var(--body); font-style:normal; font-size:6.6pt; letter-spacing:.18em; color:var(--blue); font-weight:600; margin-bottom:1mm; }
+  .dark .ring .lbl small{ color:var(--cyan); }
+  .vgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm 6mm; }
+  .vgrid div{ border-top:1px solid var(--line); padding-top:3mm; }
+  .vgrid h4{ font-size:11.5pt; margin-bottom:1.5mm; } html:not([lang="ar"]) .vgrid h4{ font-style:italic; }
+  .vgrid p{ font-size:8.3pt; line-height:1.48; color:var(--ink2); }
 
-  /* why */
+  /* ---------- WHY ---------- */
   .why-img{ position:absolute; top:0; bottom:0; inset-inline-start:0; width:70mm; overflow:hidden; }
   .why-body{ position:absolute; top:16mm; bottom:20mm; inset-inline-start:82mm; inset-inline-end:16mm; }
   .why-row{ display:flex; gap:4.5mm; padding:4.2mm 0; border-bottom:1px solid rgba(255,255,255,.12); }
   .why-row h3{ font-size:13.5pt; margin-bottom:1.2mm; } html:not([lang="ar"]) .why-row h3{ font-style:italic; }
   .why-row p{ font-size:8.6pt; line-height:1.5; color:var(--mute); }
 
-  /* services overview */
-  .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4.5mm; }
-  .svc-card{ background:var(--navy); color:var(--white); border-radius:5mm; padding:6mm 5mm; min-height:56mm; display:flex; flex-direction:column; gap:3mm; position:relative; overflow:hidden; }
-  .svc-card .no{ position:absolute; top:4.5mm; inset-inline-end:5mm; font-family:var(--head); font-size:22pt; color:rgba(255,255,255,.12); line-height:1; }
-  .svc-card h3{ font-size:13.5pt; line-height:1.12; margin-top:1mm; }
-  .svc-card p{ font-size:7.8pt; line-height:1.45; color:var(--mute); }
-  .svc-card .ib{ color:var(--cyan); background:linear-gradient(var(--navy),var(--navy)) padding-box, var(--grad) border-box; width:11mm; height:11mm; }
-  .svc-card .ib svg{ width:5mm; height:5mm; }
+  /* ---------- LIFECYCLE ---------- */
+  .life{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; position:relative; }
+  .life-line{ position:absolute; top:6.5mm; left:6mm; right:6mm; height:2px; background:var(--grad); }
+  .stage{ position:relative; display:flex; flex-direction:column; gap:3mm; }
+  .stage .step{ width:13mm; height:13mm; border-radius:50%; background:var(--navy); border:2px solid var(--cyan); display:grid; place-items:center; color:var(--cyan); z-index:1; position:relative; }
+  .stage .step svg{ width:6mm; height:6mm; }
+  .stage .sno{ font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--cyan); font-weight:600; margin-top:2mm; }
+  html[lang="ar"] .stage .sno{ letter-spacing:0; font-size:8pt; }
+  .stage h3{ font-size:19pt; } html:not([lang="ar"]) .stage h3{ font-style:italic; }
+  .stage > p{ font-size:9pt; line-height:1.45; color:var(--mute); min-height:18mm; }
+  .svc-pill{ display:flex; gap:3mm; align-items:center; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); border-radius:3.5mm; padding:3.6mm 3.4mm; }
+  .svc-pill i{ font-style:normal; font-family:var(--head); font-size:10pt; color:var(--cyan); }
+  .svc-pill span{ font-size:9pt; line-height:1.28; }
+  .svc-pill svg{ width:4.6mm; height:4.6mm; color:var(--cyan); flex:0 0 auto; }
 
-  /* service detail */
+  /* ---------- SERVICE A (photo top) ---------- */
   .sv-hero{ position:absolute; top:0; left:0; right:0; height:126mm; overflow:hidden; }
   .sv-grad{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,15,25,.15) 20%, rgba(7,15,25,.88)); }
   .sv-no{ position:absolute; top:8mm; inset-inline-end:12mm; font-family:var(--head); font-size:120pt; line-height:.8; color:transparent; -webkit-text-stroke:1.1px rgba(255,255,255,.6); }
@@ -136,15 +180,31 @@
   .sv-badge{ position:absolute; top:115.5mm; inset-inline-end:16mm; width:21mm; height:21mm; border-radius:50%; background:var(--grad); color:#fff; display:grid; place-items:center; box-shadow:0 4mm 10mm rgba(7,15,25,.3); z-index:2; }
   .sv-badge svg{ width:9.5mm; height:9.5mm; stroke-width:1.5; }
   .sv-body{ position:absolute; top:138mm; left:16mm; right:16mm; bottom:20mm; display:flex; flex-direction:column; }
-  .tagline{ font-family:var(--head); font-size:16pt; line-height:1.25; color:var(--blue); max-width:150mm; }
+  .tagline{ font-family:var(--head); font-size:16pt; line-height:1.25; color:var(--blue); }
   html:not([lang="ar"]) .tagline{ font-style:italic; }
+  .count{ display:flex; align-items:baseline; gap:2mm; flex:0 0 auto; }
+  .count b{ font-family:var(--head); font-weight:400; font-size:30pt; line-height:1; color:var(--blue); }
+  .count span{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--ink2); max-width:26mm; line-height:1.3; }
+  html[lang="ar"] .count span{ letter-spacing:0; font-size:8pt; }
   .ks{ margin-top:7mm; background:#fff; border-radius:5mm; padding:6.5mm 7mm; }
   .ks ul{ list-style:none; margin:3.5mm 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:2.2mm 7mm; }
   .ks li{ display:flex; gap:2.2mm; font-size:8.6pt; line-height:1.35; color:var(--ink); }
   .ks li svg{ width:3.8mm; height:3.8mm; color:var(--blue); flex:0 0 auto; margin-top:.2mm; stroke-width:2.2; }
   .ks.dense li{ font-size:8.1pt; } .ks.dense ul{ gap:1.6mm 6mm; }
 
-  /* leadership */
+  /* ---------- SERVICE B (photo side strip) ---------- */
+  .svb-photo{ position:absolute; top:0; bottom:0; inset-inline-end:0; width:72mm; overflow:hidden; }
+  .svb-photo .sv-no{ top:auto; bottom:14mm; inset-inline-end:auto; inset-inline-start:8mm; font-size:110pt; }
+  .svb-photo .icn{ position:absolute; top:16mm; inset-inline-start:10mm; width:20mm; height:20mm; border-radius:50%; background:var(--grad); display:grid; place-items:center; color:#fff; box-shadow:0 4mm 10mm rgba(0,0,0,.35); }
+  .svb-photo .icn svg{ width:9mm; height:9mm; stroke-width:1.5; }
+  .svb-body{ position:absolute; top:16mm; bottom:20mm; inset-inline-start:16mm; inset-inline-end:84mm; display:flex; flex-direction:column; }
+  .svb-body h2{ font-size:31pt; margin:5mm 0 4mm; }
+  .svb-body .ks{ padding:6mm; margin-top:auto; }
+  .svb-body .ks ul{ grid-template-columns:1fr; gap:1.8mm; }
+  .svb-body .ks.dense ul{ grid-template-columns:1fr 1fr; gap:1.4mm 4mm; }
+  .svb-body .ks.dense li{ font-size:7.6pt; }
+
+  /* ---------- PEOPLE ---------- */
   .leader{ display:grid; grid-template-columns:64mm 1fr; gap:9mm; align-items:start; }
   .leader .ph{ position:relative; height:84mm; border-radius:6mm; overflow:hidden; }
   .leader .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 15%; }
@@ -155,8 +215,6 @@
   .leader .deg{ display:flex; gap:2mm; align-items:center; font-size:8.4pt; color:var(--ink2); margin:3mm 0 4mm; }
   .leader .deg svg{ width:4mm; height:4mm; color:var(--blue); }
   .leader p.bio{ font-size:9pt; line-height:1.58; color:var(--ink2); margin-bottom:2.5mm; }
-
-  /* team */
   .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:6mm 8mm; }
   .member{ display:flex; gap:5mm; align-items:flex-start; padding:5mm; border-radius:5mm; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); }
   .member .ph{ width:28mm; height:34mm; border-radius:4mm; overflow:hidden; flex:0 0 auto; background:var(--navy2); display:grid; place-items:center; font-family:var(--head); font-size:22pt; color:var(--cyan); }
@@ -166,18 +224,17 @@
   html[lang="ar"] .member .role{ letter-spacing:0; font-size:8.4pt; }
   .member p{ font-size:8pt; line-height:1.48; color:var(--mute); }
 
-  /* expect */
+  /* ---------- CLIENTS / COMMITMENTS ---------- */
+  .logos{ display:grid; grid-template-columns:repeat(6,1fr); gap:3.2mm; }
+  .logos div{ position:relative; aspect-ratio:1/1; background:#fff; border-radius:3mm; border:1px solid var(--line); overflow:hidden; }
+  .logos img{ position:absolute; inset:3mm; width:calc(100% - 6mm); height:calc(100% - 6mm); object-fit:contain; }
   .exp{ display:grid; grid-template-columns:repeat(3,1fr); gap:4.5mm; }
-  .exp div{ background:#fff; border-radius:5mm; padding:6mm 5mm; min-height:60mm; display:flex; flex-direction:column; gap:4mm; }
+  .exp div{ background:#fff; border-radius:5mm; padding:6mm 5mm; min-height:60mm; display:flex; flex-direction:column; gap:4mm; position:relative; }
+  .exp div .no{ position:absolute; top:5mm; inset-inline-end:5mm; font-family:var(--head); font-size:11pt; color:rgba(18,20,23,.3); }
   .exp p{ font-family:var(--head); font-size:12pt; line-height:1.3; }
   html:not([lang="ar"]) .exp p{ font-style:italic; }
 
-  /* clients */
-  .logos{ display:grid; grid-template-columns:repeat(6,1fr); gap:3mm; }
-  .logos div{ position:relative; aspect-ratio:4/3; background:#fff; border-radius:3mm; border:1px solid var(--line); overflow:hidden; }
-  .logos img{ position:absolute; inset:2.6mm; width:calc(100% - 5.2mm); height:calc(100% - 5.2mm); object-fit:contain; }
-
-  /* contact */
+  /* ---------- CONTACT ---------- */
   .ct-row{ display:flex; gap:4.5mm; align-items:center; padding:4.2mm 0; border-bottom:1px solid rgba(255,255,255,.14); }
   .ct-row small{ display:block; font-size:6.8pt; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); font-weight:600; margin-bottom:1mm; }
   html[lang="ar"] .ct-row small{ letter-spacing:0; font-size:8pt; }
@@ -200,20 +257,31 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const ic = (n) => `<i data-lucide="${n}"></i>`;
   const pad2 = (i) => String(i).padStart(2, '0');
+  const photo = (n, tone, pos = 'center') => `<img class="img" src="/profile/img/sky-${n}-${tone}.jpg" style="object-position:${pos}">`;
 
   const T = AR ? {
-    footer:'الموحدة · الملف التعريفي 2026', profile:'الملف التعريفي 2026', coverA:'الملف', coverB:'التعريفي', motto:'نزاهة • شفافية • جودة', since:'منذ 2015 · عمّان، الأردن',
+    footer:'الموحدة · الملف التعريفي 2026', profile:'الملف التعريفي 2026', motto:['نزاهة.','شفافية.','جودة.'], mottoLine:'نزاهة • شفافية • جودة', since:'منذ 2015 · عمّان، الأردن',
+    contents:'المحتويات', chapter:'الفصل',
+    ch:[ 'من نحن', 'ما نقدمه', 'فريقنا', 'من يثق بنا' ],
     about:'من نحن', whoTitle:'شريك موثوق', whoTitle2:'لأعمالك', est:'تأسست', amman:'عمّان · الأردن',
-    glance:'لمحة سريعة', glanceTitle:'الموحدة', glanceTitle2:'بالأرقام', lines:'خطوط خدمات متكاملة', people:'مهنيون مؤهلون', creds:'الاعتمادات المهنية لقيادتنا', standards:'معايير نعمل وفقها',
-    vm:'الرؤية والمهمة', services:'خدماتنا', service:'الخدمة', servicesIntro:'تسع ممارسات متكاملة تغطي كل ما تحتاجه المنشأة، من التدقيق والضرائب إلى الاستشارات والتحول الرقمي.',
-    leadership:'قيادتنا', team:'فريقنا', expect:'التزاماتنا', clients:'عملاؤنا', sectors:'القطاعات التي نخدمها', contact:'تواصل معنا',
+    glance:'لمحة سريعة', glanceTitle:'الموحدة', glanceTitle2:'بالأرقام', lines:'خطوط خدمات متكاملة', people:'مهنيون مؤهلون', specialised:'خدمة متخصصة عبر جميع الممارسات', decade:'أكثر من عقد من الخبرة', creds:'الاعتمادات المهنية لقيادتنا', standards:'معايير نعمل وفقها',
+    vm:'الرؤية والمهمة', values:'القيم', services:'خدماتنا', service:'الخدمة', specialisedServices:'خدمة متخصصة',
+    lifeKicker:'دورة حياة الأعمال', lifeTitle:'شريك واحد', lifeTitle2:'في كل مرحلة', lifeIntro:'تسع ممارسات متكاملة ترافق عملك من التأسيس إلى النمو والتحول، بحيث يجد كل احتياج مالي أو تنظيمي خبيراً مختصاً تحت سقف واحد.',
+    stages:[ ['التأسيس','نبني الهيكل الصحيح من اليوم الأول.'], ['التشغيل','سجلات دقيقة وعمليات مالية سلسة.'], ['الامتثال والتأكيد','نفي بكل التزام بثقة واستقلالية.'], ['النمو والتحول','قرارات أذكى واستثمار وتحديث.'] ],
+    stage:'المرحلة', stageMap:[[5],[1,6],[0,2,3],[4,8,7]],
+    leadership:'قيادتنا', team:'فريقنا', expect:'التزاماتنا', clients:'عملاؤنا', sectors:'القطاعات التي نخدمها', clientsCore:'عميل', contact:'تواصل معنا',
     address:'العنوان', phone:'الهاتف', email:'البريد الإلكتروني', website:'الموقع الإلكتروني', scan:'امسح الرمز لزيارة موقعنا', more:'تفاصيل كاملة لكل خدمة على موقعنا'
   } : {
-    footer:'Consolidated · Company Profile 2026', profile:'Company Profile 2026', coverA:'Company', coverB:'Profile', motto:'Integrity • Transparency • Quality', since:'Since 2015 · Amman, Jordan',
+    footer:'Consolidated · Company Profile 2026', profile:'Company Profile 2026', motto:['Integrity.','Transparency.','Quality.'], mottoLine:'Integrity • Transparency • Quality', since:'Since 2015 · Amman, Jordan',
+    contents:'Contents', chapter:'Chapter',
+    ch:[ 'Who We Are', 'What We Do', 'Our People', 'Who Trusts Us' ],
     about:'About Us', whoTitle:'A trusted partner', whoTitle2:'for your business', est:'Est.', amman:'Amman · Jordan',
-    glance:'At a Glance', glanceTitle:'Consolidated', glanceTitle2:'in Numbers', lines:'Integrated service lines', people:'Qualified professionals', creds:'Professional credentials held by our leadership', standards:'Standards we work by',
-    vm:'Vision & Mission', services:'Our Services', service:'Service', servicesIntro:'Nine integrated practices that cover everything an organisation needs, from audit and tax to advisory and digital transformation.',
-    leadership:'Our Leadership', team:'Our Team', expect:'Our Commitments', clients:'Our Clients', sectors:'Sectors we serve', contact:'Contact Us',
+    glance:'At a Glance', glanceTitle:'Consolidated', glanceTitle2:'in Numbers', lines:'Integrated service lines', people:'Qualified professionals', specialised:'Specialised services across our practices', decade:'More than a decade of practice', creds:'Professional credentials held by our leadership', standards:'Standards we work by',
+    vm:'Vision & Mission', values:'Values', services:'Our Services', service:'Service', specialisedServices:'Specialised services',
+    lifeKicker:'The Business Lifecycle', lifeTitle:'One partner,', lifeTitle2:'every stage', lifeIntro:'Nine integrated practices follow your business from formation to growth and transformation, so every financial and regulatory need has a dedicated specialist under one roof.',
+    stages:[ ['Establish','The right structure from day one.'], ['Operate','Accurate books and smooth finance operations.'], ['Comply & Assure','Every obligation met with independence and confidence.'], ['Grow & Transform','Smarter decisions, investment and modernisation.'] ],
+    stage:'Stage', stageMap:[[5],[1,6],[0,2,3],[4,8,7]],
+    leadership:'Our Leadership', team:'Our Team', expect:'Our Commitments', clients:'Our Clients', sectors:'Sectors we serve', clientsCore:'Clients', contact:'Contact Us',
     address:'Address', phone:'Phone', email:'Email', website:'Website', scan:'Scan to visit our website', more:'Full details of every service at www.caudit.net'
   };
 
@@ -223,128 +291,213 @@
   const ptIcons  = ['medal','network','clipboard-check'];
   const expIcons = ['hourglass','users-round','graduation-cap','book-check','globe','compass','lock','map-pin','star'];
   const secIcons = ['factory','store','stethoscope','monitor-smartphone','heart-handshake','hard-hat','wheat','fuel'];
+  const stageIcons = ['flag','settings','shield-half','sprout'];
   const tones    = ['navy','teal','violet','navy','teal','violet','navy','teal','violet'];
   const imgPos   = ['center 40%','center 30%','center 55%','center 35%','center 60%','center 45%','center 30%','center 70%','center 50%'];
+  const logo = `<div class="logo"><img class="icon" src="/assets/img/icon.png"><img class="word" src="/assets/img/wordmark.png"><div class="ar-word"><b>الموحدة</b><small>لتدقيق الحسابات والاستشارات المالية</small></div></div>`;
 
-  const logo = (onLight) => `<div class="logo ${onLight ? 'on-light' : ''}"><img class="icon" src="/assets/img/icon.png"><img class="word" src="/assets/img/wordmark.png"><div class="ar-word"><b>الموحدة</b><small>لتدقيق الحسابات والاستشارات المالية</small></div></div>`;
-  let n = 0; const pages = [];
+  // ---------- page builder with anchors (for the contents page) ----------
+  const pages = []; const anchor = {};
+  const mark = (k) => { anchor[k] = pages.length + 1; };
   const page = (cls, inner, opts = {}) => {
-    n++;
-    const foot = opts.noFoot ? '' : `<div class="foot ${opts.lightFoot ? 'light' : ''}"><span>${esc(T.footer)}</span><span class="bar"></span><span class="pn">${pad2(n)}</span></div>`;
+    const no = pages.length + 1;
+    const foot = opts.noFoot ? '' : `<div class="foot"><span>${esc(T.footer)}</span><span class="bar"></span><span class="pn">${pad2(no)}</span></div>`;
     pages.push(`<section class="page ${cls}">${inner}${foot}</section>`);
   };
+  const P = (k) => `%%${k}%%`;
 
-  // ---- contact data (single "Contact Us" column of the site footer)
+  // ---------- ring diagram ----------
+  const ring = (items, opts) => {
+    const W = opts.w, H = opts.h, cx = W / 2, cy = H / 2, rN = opts.rNode, rL = opts.rLabel, n = items.length;
+    const pos = (r, i) => { const a = (-90 + i * 360 / n) * Math.PI / 180; const dx = r * Math.cos(a); return [cx + (AR ? -dx : dx), cy + r * Math.sin(a)]; };
+    const nodes = items.map((it, i) => { const [x, y] = pos(rN, i), [lx, ly] = pos(rL, i);
+      return `<div class="node" style="left:${x}mm;top:${y}mm">${ic(it.icon)}</div><div class="lbl" style="left:${lx}mm;top:${ly}mm"><small>${pad2(i + 1)}</small>${esc(it.title)}</div>`; }).join('');
+    const spokes = items.map((_, i) => { const [x, y] = pos(rN, i); return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="url(#rg-${opts.id})" stroke-width=".25" opacity=".55"/>`; }).join('');
+    return `<div class="ring" style="width:${W}mm;height:${H}mm">
+      <svg class="rg" viewBox="0 0 ${W} ${H}"><defs><linearGradient id="rg-${opts.id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#27fcf2"/><stop offset=".55" stop-color="#3064d0"/><stop offset="1" stop-color="#8739d5"/></linearGradient></defs>
+        <circle cx="${cx}" cy="${cy}" r="${rN}" fill="none" stroke="url(#rg-${opts.id})" stroke-width=".5"/>
+        <circle cx="${cx}" cy="${cy}" r="${rN + 7}" fill="none" stroke="url(#rg-${opts.id})" stroke-width=".2" stroke-dasharray=".6 1.6" opacity=".7"/>${spokes}</svg>
+      <div class="core" style="left:${cx}mm;top:${cy}mm;width:${opts.core}mm;height:${opts.core}mm;${opts.coreStyle}">${opts.coreHtml}</div>${nodes}</div>`;
+  };
+
+  // ---------- contact data ----------
   const cc = D.footer.cols.find(c => c.links.some(l => String(l[1] || '').startsWith('tel:'))) || D.footer.cols[D.footer.cols.length - 1];
   const addr = cc.links[0][0];
   const tel  = (cc.links.find(l => String(l[1] || '').startsWith('tel:')) || [''])[0];
   const mail = (cc.links.find(l => String(l[1] || '').startsWith('mailto:')) || [''])[0];
   const web  = (cc.links.find(l => /^https:\/\/www\.caudit/.test(String(l[1] || ''))) || ['www.caudit.net'])[0];
+  const lastSentence = (t) => { const parts = t.split(/(?<=[.!؟])\s+/).filter(Boolean); return parts[parts.length - 1]; };
 
-  // 1 · COVER
-  page('dark cover', `
-    <img class="img toned" src="/profile/img/sky-1-navy.jpg" style="object-position:center 30%">
-    <div class="shade"></div>
-    <img class="swirl" src="/assets/img/icon.png" style="width:170mm;top:-30mm;inset-inline-end:-55mm">
+  // ---------- chapter divider ----------
+  const divider = (no, title, quote, img, tone, pos) => page('dark', `
+    ${photo(img, tone, pos)}<div class="dv-shade"></div>
+    <span class="dv-no">${pad2(no)}</span>
+    <div class="dv-body"><div class="kicker">${esc(T.chapter)} ${pad2(no)}</div><h2 class="dv-title">${esc(title)}</h2>
+      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`);
+
+  // =============== 1 · COVER ===============
+  page('dark', `
+    ${photo(1, 'navy', 'center 30%')}<div class="cv-shade"></div>
+    <img class="swirl" src="/assets/img/icon.png" style="width:190mm;top:-35mm;inset-inline-end:-70mm;opacity:.14">
     <div class="pad" style="display:flex;flex-direction:column;justify-content:space-between">
-      ${logo(false)}
+      ${logo}
       <div>
         <div class="kicker">${esc(T.profile)}</div>
-        <h1 class="h1" style="font-size:72pt;margin-top:6mm">${esc(T.coverA)}<br><span class="it grad-text">${esc(T.coverB)}</span></h1>
-        <p class="lead" style="max-width:140mm;margin-top:9mm;color:var(--mute)">${esc(D.hero.sub)}</p>
-        <div class="gradbar" style="margin-top:12mm"></div>
-        <div style="display:flex;justify-content:space-between;margin-top:5mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(T.motto)}</span><span>${esc(T.since)}</span></div>
+        <div class="cv-words" style="margin-top:7mm">${T.motto.map(w => `<div><span class="tick">${ic('check')}</span><span>${esc(w)}</span></div>`).join('')}</div>
+        <p class="lead" style="max-width:142mm;margin-top:9mm;color:var(--mute)">${esc(D.hero.sub)}</p>
+        <div class="gradbar" style="margin-top:11mm"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:5mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(D.leaders && EN ? (AR ? 'الموحدة لتدقيق الحسابات والاستشارات المالية' : 'Consolidated for Auditing and Financial Consulting') : '')}</span><span>${esc(T.since)}</span></div>
       </div>
     </div>`, { noFoot: true });
 
-  // 2 · ABOUT
+  // =============== 2 · CONTENTS ===============
+  const chapters = [
+    { img: 2, tone: 'teal', items: [[T.about, 'about'], [T.glanceTitle2 ? `${T.glanceTitle} ${T.glanceTitle2}` : T.glance, 'numbers'], [T.vm, 'vm'], [D.values.title1 + ' ' + D.values.title2, 'values'], [D.why.title1 + ' ' + D.why.title2, 'why']], key: 'c1' },
+    { img: 3, tone: 'violet', items: [[T.lifeKicker, 'life'], [T.services, 'svc']], key: 'c2' },
+    { img: 5, tone: 'navy', items: [[T.leadership, 'lead'], [T.team, 'team']], key: 'c3' },
+    { img: 6, tone: 'teal', items: [[T.sectors, 'sectors'], [T.clients, 'logos'], [T.expect, 'expect'], [T.contact, 'contact']], key: 'c4' },
+  ];
+  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
+      <div class="kicker">${esc(T.contents)}</div>
+      <h2 class="h2" style="margin:5mm 0 10mm;font-size:44pt">${esc(T.contents)}</h2>
+      ${chapters.map((c, i) => `<div class="ch-row"><div class="ch-thumb">${photo(c.img, c.tone)}</div><div class="ch-num">${pad2(i + 1)}</div>
+        <div><h3>${esc(T.ch[i])} <span class="ac" style="font-size:12pt">${P(c.key)}</span></h3><div class="ch-items">${c.items.map(it => `<span>${esc(it[0])}<b>${P(it[1])}</b></span>`).join('')}</div></div></div>`).join('')}
+      <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end">
+        <p style="font-family:var(--head);font-size:15pt;max-width:120mm;line-height:1.35" class="${AR ? '' : 'it'}">${esc(D.consult.title1)} ${esc(D.consult.title2)}</p>
+        <img src="/assets/img/icon.png" style="height:22mm;opacity:.9">
+      </div>
+    </div>`);
+
+  // =============== CHAPTER 01 ===============
+  mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), 2, 'teal', 'center 40%');
+
+  mark('about');
   page('', `
-    <div class="band" style="height:122mm"><img class="img toned" src="/profile/img/sky-2-navy.jpg" style="object-position:center 45%"></div>
+    <div class="band" style="height:122mm">${photo(4, 'navy', 'center 45%')}</div>
     <div class="est" style="top:106mm;inset-inline-end:22mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
     <div style="position:absolute;top:132mm;left:16mm;right:16mm;bottom:20mm;display:flex;flex-direction:column">
       <div class="kicker">${esc(T.about)}</div>
-      <h2 class="h2" style="margin:5mm 0 6mm">${esc(T.whoTitle)} <span class="it">${esc(T.whoTitle2)}</span></h2>
+      <h2 class="h2" style="margin:5mm 0 6mm">${esc(T.whoTitle)} <span class="it ac">${esc(T.whoTitle2)}</span></h2>
       <p class="txt" style="font-size:10pt;color:var(--ink)">${esc(D.intro.p1)}</p>
-      <div class="strengths" style="margin-top:auto">${D.intro.points.map((p, i) => `
-        <div class="strength"><span class="ib">${ic(ptIcons[i])}</span><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join('')}</div>
+      <div class="strengths" style="margin-top:auto">${D.intro.points.map((p, i) => `<div class="strength"><span class="ib">${ic(ptIcons[i])}</span><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join('')}</div>
     </div>`);
 
-  // 3 · AT A GLANCE
-  const st = D.stats;
-  const glance = [
+  mark('numbers');
+  const st = D.stats; const totalSpecialised = D.services.items.reduce((a, s) => a + s.list.length, 0);
+  const nums = [
     { icon:'calendar-check', v: st[0].text ?? st[0].n, label: st[0].label },
     { icon:'clock', v: st[1].n, suf: st[1].suffix, label: st[1].label },
     { icon:'users', v: st[2].n, suf: st[2].suffix, label: st[2].label },
     { icon:'layers', v: D.services.items.length, label: T.lines },
+    { icon:'check-check', v: totalSpecialised, label: T.specialised },
     { icon:'user-round', v: D.team.people.length, label: T.people },
-    { icon:'map-pin', v: st[3].text ?? st[3].n, label: st[3].label },
   ];
+  const years = Array.from({ length: 12 }, (_, i) => 2015 + i);
   page('dark', `
     <img class="swirl" src="/assets/img/icon.png" style="width:120mm;bottom:-30mm;inset-inline-start:-40mm;opacity:.07">
     <div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(T.glance)}</div>
-      <h2 class="h2" style="margin:5mm 0 10mm;font-size:40pt">${esc(T.glanceTitle)} <span class="it grad-text">${esc(T.glanceTitle2)}</span></h2>
-      <div class="stats">${glance.map(g => `<div class="stat"><span class="ib">${ic(g.icon)}</span><div><b>${esc(g.v)}${g.suf ? `<small class="grad-text">${esc(g.suf)}</small>` : ''}</b><span>${esc(g.label)}</span></div></div>`).join('')}</div>
-      <div style="margin-top:9mm"><div class="kicker" style="color:var(--mute)">${esc(T.creds)}</div>
-        <div style="display:flex;gap:2.5mm;margin-top:4mm;color:var(--cyan)">${['JCPA','CFA','CPA','CMA','CIA'].map(c => `<span class="badge">${c}</span>`).join('')}</div></div>
-      <div style="margin-top:7mm"><div class="kicker" style="color:var(--mute)">${esc(T.standards)}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:2.5mm;margin-top:4mm">${D.hero.certs.slice(5).map(c => `<span class="chip">${ic('check')}<b style="font-weight:600">${esc(c[0])}</b>&nbsp;${esc(c[1])}</span>`).join('')}</div></div>
-      <div style="margin-top:auto;height:44mm;border-radius:6mm;overflow:hidden;position:relative"><img class="img toned" src="/profile/img/sky-6-navy.jpg" style="object-position:center 55%">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:20pt;letter-spacing:.06em;color:#fff">${esc(T.motto)}</div></div>
+      <h2 class="h2" style="margin:5mm 0 10mm;font-size:42pt">${esc(T.glanceTitle)} <span class="it ac">${esc(T.glanceTitle2)}</span></h2>
+      <div class="big-n">${nums.map(g => `<div><span class="ib">${ic(g.icon)}</span><b>${esc(g.v)}${g.suf ? `<small>${esc(g.suf)}</small>` : ''}</b><span>${esc(g.label)}</span></div>`).join('')}</div>
+      <div style="margin-top:10mm"><div class="kicker" style="color:var(--mute)">${esc(T.decade)}</div>
+        <div class="decade"><div class="track"><div class="fill"></div></div>
+          <div class="dots">${years.map(y => `<i class="${y === 2015 || y === 2026 ? 'k' : ''}"></i>`).join('')}</div>
+          <div class="yrs">${years.map(y => `<span class="${y === 2015 || y === 2026 ? 'k' : ''}">${y}</span>`).join('')}</div></div></div>
+      <div style="margin-top:10mm;display:grid;grid-template-columns:1fr 1fr;gap:8mm">
+        <div><div class="kicker" style="color:var(--mute)">${esc(T.creds)}</div><div style="display:flex;flex-wrap:wrap;gap:2.5mm;margin-top:4mm;color:var(--cyan)">${['JCPA','CFA','CPA','CMA','CIA'].map(c => `<span class="badge">${c}</span>`).join('')}</div></div>
+        <div><div class="kicker" style="color:var(--mute)">${esc(T.standards)}</div><div style="display:flex;flex-wrap:wrap;gap:2.5mm;margin-top:4mm">${D.hero.certs.slice(5).map(c => `<span class="chip">${ic('check')}<b style="font-weight:600">${esc(c[0])}</b></span>`).join('')}</div></div>
+      </div>
+      <div style="margin-top:auto;height:40mm;border-radius:6mm;overflow:hidden;position:relative">${photo(6, 'navy', 'center 55%')}
+        <div style="position:absolute;inset:0;background:rgba(11,22,35,.35)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:4mm;font-family:var(--head);font-size:21pt;color:#fff"><img src="/assets/img/icon.png" style="height:12mm">${esc(T.mottoLine)}</div></div>
     </div>`);
 
-  // 4 · VISION & MISSION
+  mark('vm');
   page('sand', `
-    <div class="vm-top"><img class="img toned" src="/profile/img/sky-5-navy.jpg" style="object-position:center 35%"><div class="shade"></div>
+    <div class="vm-top">${photo(5, 'navy', 'center 35%')}<div class="shade"></div>
       <div style="position:absolute;top:11mm;inset-inline-start:11mm"><div class="kicker light">${esc(T.vm)}</div></div>
-      <div class="vm-in"><span class="ib on-dark lg">${ic('eye')}</span><h2 class="vm-title">${esc(D.vision.title)}</h2><p class="vm-text">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--cyan)">${esc(D.vision.tag)}</p></div></div>
-    <div class="vm-bottom"><span class="ib lg">${ic('target')}</span><h2 class="vm-title">${esc(D.mission.title)}</h2><p class="vm-text" style="color:var(--ink)">${esc(D.mission.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.mission.tag)}</p></div>`);
+      <div class="vm-in"><span class="ib on-dark" style="width:17mm;height:17mm">${ic('eye')}</span><h2 class="vm-title">${esc(D.vision.title)}</h2><p class="vm-text">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--cyan)">${esc(D.vision.tag)}</p></div></div>
+    <div class="vm-bottom"><span class="ib" style="width:17mm;height:17mm">${ic('target')}</span><h2 class="vm-title">${esc(D.mission.title)}</h2><p class="vm-text" style="color:var(--ink)">${esc(D.mission.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.mission.tag)}</p></div>`);
 
-  // 5 · CORE VALUES
-  page('', `<div class="pad" style="display:flex;flex-direction:column">
+  mark('values');
+  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(D.values.kicker)}</div>
-      <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.values.title1)} <span class="it">${esc(D.values.title2)}</span></h2>
-      <p class="txt" style="max-width:165mm;margin-bottom:9mm">${esc(D.values.sub)}</p>
-      <div class="tiles" style="margin-top:auto">${D.values.cards.map((c, i) => `<div class="tile"><span class="no">${pad2(i + 1)}</span><span class="ib">${ic(valIcons[i])}</span><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`).join('')}</div>
+      <h2 class="h2" style="margin:5mm 0 3mm">${esc(D.values.title1)} <span class="it ac">${esc(D.values.title2)}</span></h2>
+      ${ring(D.values.cards.map((c, i) => ({ title: c.title, icon: valIcons[i] })), { id: 'v', w: 178, h: 166, rNode: 50, rLabel: 72, core: 46,
+          coreStyle: 'background:var(--navy);box-shadow:0 4mm 12mm rgba(7,15,25,.25);', coreHtml: `<img src="/assets/img/icon.png" style="height:20mm"><span style="color:#fff;font-family:var(--head);font-size:11pt;margin-top:1.5mm">${esc(T.values)}</span>` })}
+      <div class="vgrid" style="margin-top:auto">${D.values.cards.map(c => `<div><h4>${esc(c.title)}</h4><p>${esc(c.text)}</p></div>`).join('')}</div>
     </div>`);
 
-  // 6 · WHY CHOOSE US
+  mark('why');
   page('dark', `
-    <div class="why-img"><img class="img toned" src="/profile/img/sky-4-violet.jpg" style="object-position:${AR ? '35%' : '62%'} center">
+    <div class="why-img">${photo(4, 'violet', AR ? '35% center' : '62% center')}
       <div style="position:absolute;inset:0;background:linear-gradient(${AR ? '270deg' : '90deg'}, rgba(11,22,35,0) 60%, rgba(11,22,35,1))"></div></div>
     <div class="why-body" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(D.why.kicker)}</div>
-      <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it grad-text">${esc(D.why.title2)}</span></h2>
+      <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
       <p class="txt" style="margin-bottom:6mm">${esc(D.why.intro)}</p>
       <div class="kicker" style="color:var(--mute);margin-bottom:1mm">${esc(D.why.subtitle)}</div>
       <div>${D.why.items.map((w, i) => `<div class="why-row"><span class="ib">${ic(whyIcons[i])}</span><div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div></div>`).join('')}</div>
     </div>`);
 
-  // 7 · SERVICES AT A GLANCE
-  page('', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker">${esc(T.services)}</div>
-      <h2 class="h2" style="margin:5mm 0 5mm"><span class="it">${esc(D.services.title1)}</span><br>${esc(D.services.title2)}</h2>
-      <p class="txt" style="max-width:150mm;margin-bottom:8mm">${esc(T.servicesIntro)}</p>
-      <div class="svc-grid" style="margin-top:auto">${D.services.items.map((s, i) => `<div class="svc-card"><span class="no">${pad2(i + 1)}</span><span class="ib">${ic(svcIcons[i])}</span><h3>${esc(s.title)}</h3><p>${esc(s.tagline)}</p></div>`).join('')}</div>
+  // =============== CHAPTER 02 ===============
+  mark('c2'); divider(2, T.ch[1], `${D.services.title1} ${D.services.title2}`, 3, 'violet', 'center 50%');
+
+  mark('life');
+  page('dark', `<img class="swirl" src="/assets/img/icon.png" style="width:150mm;top:-40mm;inset-inline-end:-50mm;opacity:.07">
+    <div class="pad" style="display:flex;flex-direction:column">
+      <div class="kicker">${esc(T.lifeKicker)}</div>
+      <h2 class="h2" style="margin:5mm 0 5mm;font-size:42pt">${esc(T.lifeTitle)} <span class="it ac">${esc(T.lifeTitle2)}</span></h2>
+      <p class="txt" style="max-width:160mm;margin-bottom:12mm;font-size:10pt">${esc(T.lifeIntro)}</p>
+      <div class="life"><div class="life-line"></div>${T.stages.map((s, i) => `
+        <div class="stage"><span class="step">${ic(stageIcons[i])}</span><span class="sno">${esc(T.stage)} ${pad2(i + 1)}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p>
+          ${T.stageMap[i].map(k => `<div class="svc-pill">${ic(svcIcons[k])}<span><i>${pad2(k + 1)}</i>&nbsp; ${esc(D.services.items[k].title)}</span></div>`).join('')}</div>`).join('')}</div>
+      <div style="margin-top:auto;height:62mm;border-radius:6mm;overflow:hidden;position:relative">${photo(2, 'teal', 'center 45%')}
+        <div style="position:absolute;inset:0;background:linear-gradient(${AR ? '270deg' : '90deg'}, rgba(11,22,35,.92), rgba(11,22,35,.25))"></div>
+        <div style="position:absolute;inset-inline-start:9mm;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;max-width:110mm">
+          <b style="font-family:var(--head);font-weight:400;font-size:54pt;line-height:.9;color:#fff">${D.services.items.length}<span style="color:var(--cyan);font-size:.45em">&nbsp;${esc(T.lines)}</span></b>
+          <p style="font-family:var(--head);font-size:15pt;color:rgba(255,255,255,.9);margin-top:3mm" class="${AR ? '' : 'it'}">${esc(D.consult.title1)} ${esc(D.consult.title2)}</p></div></div>
     </div>`);
 
-  // 8–16 · ONE PAGE PER SERVICE
+  mark('svc');
   D.services.items.forEach((s, i) => {
     const dense = s.list.length > 12 ? 'dense' : '';
-    page('', `
-      <div class="sv-hero"><img class="img toned" src="/profile/img/${s.img}-${tones[i]}.jpg" style="object-position:${imgPos[i]}"><div class="sv-grad"></div>
-        <span class="sv-no">${pad2(i + 1)}</span>
-        <div class="sv-hero-text"><div class="kicker light">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div><h2>${esc(s.title)}</h2></div></div>
-      <div class="sv-badge">${ic(svcIcons[i])}</div>
-      <div class="sv-body">
-        <p class="tagline">${esc(s.tagline)}</p>
-        <p class="txt" style="margin-top:5mm;color:var(--ink)">${esc(s.text[0])}</p>
-        ${s.list.length <= 10 ? `<p class="txt" style="margin-top:3mm">${esc(s.text[1])}</p>` : ''}
-        <div class="ks ${dense}"><div class="kicker">${esc(s.listTitle)}</div><ul>${s.list.map(li => `<li>${ic('circle-check-big')}<span>${esc(li)}</span></li>`).join('')}</ul></div>
-      </div>`);
+    const count = `<div class="count"><b>${pad2(s.list.length)}</b><span>${esc(T.specialisedServices)}</span></div>`;
+    const list = `<div class="ks ${dense}"><div class="kicker">${esc(s.listTitle)}</div><ul>${s.list.map(li => `<li>${ic('circle-check-big')}<span>${esc(li)}</span></li>`).join('')}</ul></div>`;
+    if (i % 2 === 0) {
+      page('', `
+        <div class="sv-hero">${photo(s.img.replace('sky-', ''), tones[i], imgPos[i])}<div class="sv-grad"></div>
+          <span class="sv-no">${pad2(i + 1)}</span>
+          <div class="sv-hero-text"><div class="kicker light">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div><h2>${esc(s.title)}</h2></div></div>
+        <div class="sv-badge">${ic(svcIcons[i])}</div>
+        <div class="sv-body">
+          <div style="display:flex;justify-content:space-between;gap:8mm;align-items:flex-start;padding-inline-end:26mm"><p class="tagline">${esc(s.tagline)}</p></div>
+          <p class="txt" style="margin-top:5mm;color:var(--ink)">${esc(s.text[0])}</p>
+          ${s.list.length <= 10 ? `<p class="txt" style="margin-top:3mm">${esc(s.text[1])}</p>` : ''}
+          <div style="margin-top:6mm">${count}</div>
+          ${list}
+        </div>`);
+    } else {
+      page('sand', `
+        <div class="svb-photo">${photo(s.img.replace('sky-', ''), tones[i], imgPos[i])}
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,15,25,.25), rgba(7,15,25,.7))"></div>
+          <div class="icn">${ic(svcIcons[i])}</div><span class="sv-no">${pad2(i + 1)}</span></div>
+        <div class="svb-body">
+          <div class="kicker">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
+          <h2>${esc(s.title)}</h2>
+          <p class="tagline">${esc(s.tagline)}</p>
+          <p class="txt" style="margin-top:5mm;color:var(--ink)">${esc(s.text[0])}</p>
+          <p class="txt" style="margin-top:3mm">${esc(s.text[1])}</p>
+          <div style="margin-top:6mm">${count}</div>
+          ${list}
+        </div>`);
+    }
   });
 
-  // 17 · LEADERSHIP
+  // =============== CHAPTER 03 ===============
+  mark('c3'); divider(3, T.ch[2], D.team.title, 5, 'navy', 'center 40%');
+
+  mark('lead');
   page('sand', `<div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(T.leadership)}</div>
       <h2 class="h2" style="margin:5mm 0 9mm">${esc(D.leaders.title)}</h2>
@@ -356,7 +509,7 @@
             ${p.bio.slice(0, 2).map(b => `<p class="bio">${esc(b)}</p>`).join('')}</div></div>`).join('')}</div>
     </div>`);
 
-  // 18 · TEAM
+  mark('team');
   const initials = (name) => name.replace(/^Mr\.\s*/, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('');
   page('dark', `<div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(T.team)}</div>
@@ -365,32 +518,49 @@
         <div><h3>${esc(p.name)}</h3><span class="role">${esc(p.role)}</span><p>${esc(p.line)}</p></div></div>`).join('')}</div>
     </div>`);
 
-  // 19 · COMMITMENTS
-  page('', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker">${esc(T.expect)}</div>
-      <h2 class="h2" style="margin:5mm 0 9mm"><span class="it">${esc(D.expect.t1)} ${esc(D.expect.t2)}</span> ${esc(D.expect.t3)}</h2>
-      <div class="exp" style="margin-top:auto">${D.expect.cards.map((c, i) => `<div><span class="ib">${ic(expIcons[i])}</span><p>${esc(c.text)}</p></div>`).join('')}</div>
+  // =============== CHAPTER 04 ===============
+  mark('c4'); divider(4, T.ch[3], D.expect.cards[1].text, 6, 'teal', 'center 45%');
+
+  mark('sectors');
+  page('dark', `<div class="pad" style="display:flex;flex-direction:column">
+      <div class="kicker">${esc(T.sectors)}</div>
+      <h2 class="h2" style="margin:5mm 0 8mm">${esc(T.ch[3])}</h2>
+      ${ring(D.sectors.cards.map((c, i) => ({ title: c.title, icon: secIcons[i] })), { id: 's', w: 178, h: 178, rNode: 52, rLabel: 76, core: 52,
+          coreStyle: 'background:linear-gradient(var(--navy2),var(--navy2)) padding-box, var(--grad) border-box;border:1.6px solid transparent;',
+          coreHtml: `<b style="font-family:var(--head);font-weight:400;font-size:38pt;line-height:1;color:#fff">${esc(st[2].n)}<span style="color:var(--cyan);font-size:.55em">${esc(st[2].suffix)}</span></b><span style="font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-top:2mm">${esc(T.clientsCore)}</span>` })}
+      <div style="margin-top:auto;display:flex;gap:4mm;align-items:center"><span class="ib">${ic('quote')}</span><p style="font-family:var(--head);font-size:14pt;line-height:1.35" class="${AR ? '' : 'it'}">${esc(D.expect.cards[4].text)}</p></div>
     </div>`);
 
-  // 20 · CLIENTS
+  mark('logos');
   const logos = EN.clients.logoFiles || [];
   page('sand', `<div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker">${esc(T.clients)}</div>
       <h2 class="h2" style="margin:5mm 0 9mm">${esc(D.clients.title)}</h2>
       <div class="logos">${logos.map(f => `<div><img src="/assets/img/clients/${f}"></div>`).join('')}</div>
-      <div style="margin-top:auto"><div class="kicker" style="margin-bottom:4mm">${esc(T.sectors)}</div>
-        <div style="display:flex;flex-wrap:wrap;gap:2.5mm">${D.sectors.cards.map((c, i) => `<span class="chip">${ic(secIcons[i])}${esc(c.title)}</span>`).join('')}</div></div>
+      <div style="margin-top:auto;background:var(--navy);color:#fff;border-radius:6mm;padding:7mm 8mm;display:flex;gap:8mm;align-items:center">
+        <b style="font-family:var(--head);font-weight:400;font-size:44pt;line-height:.9;flex:0 0 auto">${esc(st[2].n)}<span style="color:var(--cyan);font-size:.5em">${esc(st[2].suffix)}</span></b>
+        <div><div class="kicker light" style="margin-bottom:3mm">${esc(T.sectors)}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:2mm">${D.sectors.cards.map((c, i) => `<span class="chip" style="border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.05);color:#fff">${ic(secIcons[i])}${esc(c.title)}</span>`).join('')}</div></div>
+      </div>
     </div>`);
 
-  // 21 · CONTACT (back cover)
+  mark('expect');
+  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
+      <div class="kicker">${esc(T.expect)}</div>
+      <h2 class="h2" style="margin:5mm 0 9mm"><span class="it ac">${esc(D.expect.t1)} ${esc(D.expect.t2)}</span> ${esc(D.expect.t3)}</h2>
+      <div class="exp" style="margin-top:auto">${D.expect.cards.map((c, i) => `<div><span class="no">${pad2(i + 1)}</span><span class="ib">${ic(expIcons[i])}</span><p>${esc(c.text)}</p></div>`).join('')}</div>
+    </div>`);
+
+  // =============== BACK COVER ===============
+  mark('contact');
   page('dark', `
-    <div style="position:absolute;top:0;left:0;right:0;height:122mm;overflow:hidden"><img class="img toned" src="/profile/img/sky-7-navy.jpg" style="object-position:center 40%">
+    <div style="position:absolute;top:0;left:0;right:0;height:122mm;overflow:hidden">${photo(7, 'navy', 'center 40%')}
       <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(11,22,35,.1), rgba(11,22,35,1))"></div></div>
     <img class="swirl" src="/assets/img/icon.png" style="width:110mm;top:8mm;inset-inline-end:-30mm;opacity:.1">
     <div class="pad" style="display:flex;flex-direction:column">
-      ${logo(false)}
+      ${logo}
       <div style="margin-top:62mm"><div class="kicker">${esc(T.contact)}</div>
-        <h2 class="h2" style="margin:5mm 0 5mm;font-size:38pt">${esc(D.consult.title1)} <span class="it grad-text">${esc(D.consult.title2)}</span></h2>
+        <h2 class="h2" style="margin:5mm 0 5mm;font-size:38pt">${esc(D.consult.title1)} <span class="it ac">${esc(D.consult.title2)}</span></h2>
         <p class="txt" style="max-width:150mm">${esc(D.consult.sub)}</p></div>
       <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:auto">
         <div>
@@ -402,10 +572,13 @@
         <div class="qr"><img src="/profile/qr-website.svg"><p>${esc(T.scan)}</p></div>
       </div>
       <div class="gradbar" style="margin-top:8mm"></div>
-      <div style="display:flex;justify-content:space-between;margin-top:4mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(T.motto)}</span><span>${esc(T.more)}</span></div>
+      <div style="display:flex;justify-content:space-between;margin-top:4mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(T.mottoLine)}</span><span>${esc(T.more)}</span></div>
     </div>`, { noFoot: true });
 
-  document.getElementById('doc').innerHTML = pages.join('');
+  // fill page references on the contents page
+  let html = pages.join('');
+  html = html.replace(/%%(\w+)%%/g, (_, k) => pad2(anchor[k] || 0));
+  document.getElementById('doc').innerHTML = html;
   lucide.createIcons({ attrs: { 'stroke-width': 1.6 } });
   document.title = AR ? 'الملف التعريفي – الموحدة' : 'Company Profile – Consolidated';
   window.__profileReady = true;
