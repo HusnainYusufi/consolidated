@@ -347,13 +347,10 @@ html[lang="ar"] .wl-face h3 { font-style: normal; }
 .wl-face.back p { position: relative; z-index: 1; font-size: clamp(.7rem, .95vw, .9rem); line-height: 1.45; }
 .wl-face.back h3 { color: var(--ink); margin-bottom: .6rem; }
 .wl-copy { position: relative; z-index: 5; text-align: center; display: flex; flex-direction: column; align-items: center; pointer-events: none; max-width: 100%; }
-.wl-copy .btn { pointer-events: auto; }
 .wl-kicker { color: rgba(235,235,230,.7); margin-bottom: 1.25rem; font-size: .75rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; }
 html[lang="ar"] .wl-kicker { letter-spacing: 0; font-size: .9rem; }
 .wl-title { display: flex; flex-direction: column; align-items: center; gap: .1em; font-size: clamp(3rem, 7vw, 6rem); line-height: .95; color: var(--brand-white); }
 .wl-sub { color: rgba(235,235,230,.75); margin: 1.2rem auto .6rem; max-width: 58ch; padding-inline: 1.5rem; }
-.wl-hint { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(235,235,230,.5); margin-bottom: 1.4rem; }
-html[lang="ar"] .wl-hint { letter-spacing: 0; font-size: .85rem; }
 .wl-cursor { position: fixed; top: 0; left: 0; z-index: 10060; pointer-events: none; opacity: 0; }
 .wl-cursor img { width: 3.5rem; height: 3.5rem; object-fit: contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,.35)); animation: spin 1.4s linear infinite; }
 .wl-glow { position: absolute; inset: -3rem; border-radius: 999px; background: radial-gradient(circle, rgba(255,244,214,.2) 0%, rgba(255,244,214,.08) 38%, transparent 72%); filter: blur(12px); }
@@ -650,7 +647,7 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   /* Values: on phones the floating cards sit in a grid under the copy instead of around it. */
   .wonderland { margin-top: 5rem; padding: 4rem 0; min-height: auto; perspective: none; }
   .wl-scene { min-height: auto; display: flex; flex-direction: column-reverse; gap: 2.5rem; padding: 0 1.5rem; }
-  .wl-group { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; transform: none !important; }
+  .wl-group { position: static; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; transform: none !important; }
   .wl-card { position: static !important; width: 100% !important; left: auto !important; top: auto !important; }
   .wl-card-inner { aspect-ratio: 3 / 4; }
   .wl-title { font-size: clamp(2.6rem, 12vw, 3.4rem); }

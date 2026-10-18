@@ -51,8 +51,6 @@ window.I18N = {
       title1: 'Our',
       title2: 'Core Values',
       sub: 'Our core values define our identity, guide our actions, and shape the way we serve our clients. Rooted in integrity, independence, and professional excellence, these principles reflect our commitment to building trusted relationships, delivering exceptional quality, and creating lasting value.',
-      hint: 'Click a card to read each one',
-      cta: 'Start a Conversation',
       cards: [
         { title: 'Integrity', text: 'We uphold the highest ethical standards in everything we do, ensuring honesty, transparency, and accountability in our professional conduct and client relationships.', img: 'sky-3' },
         { title: 'Independence', text: 'We maintain objectivity and professional judgment, free from undue influence, to deliver impartial assessments and reliable assurance that strengthen stakeholder confidence.', img: 'sky-4' },
@@ -279,8 +277,6 @@ window.I18N = {
       title1: 'قيمنا',
       title2: 'الأساسية',
       sub: 'تحدد قيمنا الأساسية هويتنا وتوجه أفعالنا وتشكّل الطريقة التي نخدم بها عملاءنا. وانطلاقاً من النزاهة والاستقلالية والتميز المهني، تعكس هذه المبادئ التزامنا ببناء علاقات موثوقة وتقديم جودة استثنائية وخلق قيمة دائمة.',
-      hint: 'انقر على البطاقة لقراءة كل قيمة',
-      cta: 'ابدأ محادثة',
       cards: [
         { title: 'النزاهة', text: 'نلتزم بأعلى المعايير الأخلاقية في كل ما نقوم به، بما يضمن الصدق والشفافية والمساءلة في سلوكنا المهني وعلاقاتنا مع العملاء.', img: 'sky-3' },
         { title: 'الاستقلالية', text: 'نحافظ على الموضوعية والحكم المهني بعيداً عن أي تأثير غير مبرر، لتقديم تقييمات محايدة وتأكيد موثوق يعزز ثقة أصحاب المصلحة.', img: 'sky-4' },
