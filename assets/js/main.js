@@ -141,13 +141,14 @@
   }
 
   // Floating value cards: positions mirror the reference's card layout.
+  // Right-hand cards are placed by their right edge (calc with the card width) so larger cards never run off-screen.
   const wlLayout = [
-    { x: '3%', y: '2%', rot: -7, delay: 0, dur: 6.2 },
-    { x: '85%', y: '2%', rot: 7, delay: .6, dur: 5.6 },
-    { x: '17%', y: '36%', rot: 5, delay: 1, dur: 5.8 },
-    { x: '71%', y: '36%', rot: -6, delay: 1.4, dur: 6.6 },
-    { x: '3%', y: '64%', rot: 8, delay: .3, dur: 6.0 },
-    { x: '85%', y: '64%', rot: -8, delay: 1.8, dur: 5.4 }
+    { x: '2%', y: '1%', rot: -7, delay: 0, dur: 6.2 },
+    { x: 'calc(98% - var(--wl-w))', y: '1%', rot: 7, delay: .6, dur: 5.6 },
+    { x: '12%', y: '35%', rot: 5, delay: 1, dur: 5.8 },
+    { x: 'calc(88% - var(--wl-w))', y: '35%', rot: -6, delay: 1.4, dur: 6.6 },
+    { x: '2%', y: '68%', rot: 8, delay: .3, dur: 6.0 },
+    { x: 'calc(98% - var(--wl-w))', y: '68%', rot: -8, delay: 1.8, dur: 5.4 }
   ];
   function renderValues() {
     $('#wl-group').innerHTML = dict.values.cards.map((c, i) => {
