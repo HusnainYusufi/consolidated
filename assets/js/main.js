@@ -412,16 +412,25 @@
   });
 
   /* ---------- Reveal on scroll (fade + rise 20px) ---------- */
-  let revealTweens = [];
+  let revealTweens = [], rowTriggers = [];
   function initReveals() {
     revealTweens.forEach((t) => { t.scrollTrigger && t.scrollTrigger.kill(); t.kill(); });
     revealTweens = [];
+    rowTriggers.forEach((t) => t.kill());
+    rowTriggers = [];
     const els = $$('[data-reveal]');
     if (!hasGsap || reduced) { els.forEach((el) => { el.style.opacity = 1; el.style.transform = 'none'; }); return; }
     els.forEach((el) => {
       revealTweens.push(gsap.fromTo(el, { opacity: 0, y: +(el.dataset.revealY || 20) }, {
         opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true }
       }));
+    });
+    // Service rows fade and rise in; rows that enter together come in one after another, top to bottom.
+    const rows = $$('.acc-item');
+    gsap.set(rows, { opacity: 0, y: 40 });
+    rowTriggers = ScrollTrigger.batch(rows, {
+      start: 'top 92%', once: true,
+      onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', stagger: .09, overwrite: true })
     });
   }
 
