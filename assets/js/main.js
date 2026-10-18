@@ -111,13 +111,9 @@
 
   function renderSectors() {
     const cards = dict.sectors.cards.map((c) => `
-      <a class="pcard ${c.wide ? 'wide' : ''}" href="#clients" style="--tint:${c.tint}">
+      <a class="pcard ${c.wide ? 'wide' : ''}" href="#clients">
         <img src="/assets/img/${c.img}.jpg" alt="" loading="lazy">
-        <span class="pcard-tint"></span>
-        <span class="pcard-reveal"><span class="pcard-body">
-          <h3>${esc(c.title)}${arrow}</h3>
-          <span class="tags">${c.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join('')}</span>
-        </span></span>
+        <span class="pcard-shade"><span class="pcard-body"><h3>${esc(c.title)}${arrow}</h3></span></span>
       </a>`);
     const a = cards.filter((_, i) => i % 2 === 0).join(''), b = cards.filter((_, i) => i % 2 === 1).join('');
     $('#portfolio-rows').innerHTML = `

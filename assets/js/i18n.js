@@ -19,14 +19,14 @@ window.I18N = {
       title: 'Sectors We Serve',
       cta: 'View All Clients',
       cards: [
-        { title: 'Manufacturing & Industry', tags: ['Heavy Industry', 'Feed', 'Food'], img: 'sky-1', tint: '#3064d0', wide: true },
-        { title: 'Commercial & Trading', tags: ['Trading Houses', 'Retail', 'Publishing'], img: 'sky-2', tint: '#8739d5' },
-        { title: 'Healthcare & Pharmaceuticals', tags: ['Medical Supply Chains', 'Drug Stores'], img: 'sky-3', tint: '#27fcf2' },
-        { title: 'Technology, Media & Education', tags: ['Education', 'Artificial Intelligence'], img: 'sky-4', tint: '#d15f3f' },
-        { title: 'NGOs & Non-Profits', tags: ['International Non-Profits', 'Associations'], img: 'sky-5', tint: '#48a13f', wide: true },
-        { title: 'Housing & Construction', tags: ['Contracting', 'Real Estate'], img: 'sky-6', tint: '#b8943c' },
-        { title: 'Agriculture, Feed & Veterinary', tags: ['Agri-Business'], img: 'sky-7', tint: '#896d49' },
-        { title: 'Energy & Contracting', tags: ['Gas Stations', 'Contracting'], img: 'sky-1', tint: '#3064d0' }
+        { title: 'Manufacturing & Industry', img: 'sky-1', wide: true },
+        { title: 'Commercial & Trading', img: 'sky-2' },
+        { title: 'Healthcare & Pharmaceuticals', img: 'sky-3' },
+        { title: 'Technology, Media & Education', img: 'sky-4' },
+        { title: 'NGOs & Non-Profits', img: 'sky-5', wide: true },
+        { title: 'Housing & Construction', img: 'sky-6' },
+        { title: 'Agriculture, Feed & Veterinary', img: 'sky-7' },
+        { title: 'Energy & Contracting', img: 'sky-1' }
       ]
     },
     intro: {
@@ -247,14 +247,14 @@ window.I18N = {
       title: 'القطاعات التي نخدمها',
       cta: 'عرض جميع العملاء',
       cards: [
-        { title: 'الصناعة والتصنيع', tags: ['الصناعات الثقيلة', 'الأعلاف', 'الأغذية'], img: 'sky-1', tint: '#3064d0', wide: true },
-        { title: 'القطاع التجاري', tags: ['بيوت التجارة', 'التجزئة', 'النشر'], img: 'sky-2', tint: '#8739d5' },
-        { title: 'الرعاية الصحية والأدوية', tags: ['التجهيزات الطبية', 'مستودعات الأدوية'], img: 'sky-3', tint: '#27fcf2' },
-        { title: 'التكنولوجيا والإعلام والتعليم', tags: ['التعليم', 'الذكاء الاصطناعي'], img: 'sky-4', tint: '#d15f3f' },
-        { title: 'المنظمات غير الربحية', tags: ['منظمات دولية', 'جمعيات'], img: 'sky-5', tint: '#48a13f', wide: true },
-        { title: 'الإسكان والمقاولات', tags: ['المقاولات', 'التطوير العقاري'], img: 'sky-6', tint: '#b8943c' },
-        { title: 'الزراعة والأعلاف والبيطرة', tags: ['الأعمال الزراعية'], img: 'sky-7', tint: '#896d49' },
-        { title: 'الطاقة والتعهدات', tags: ['محطات الوقود', 'التعهدات'], img: 'sky-1', tint: '#3064d0' }
+        { title: 'الصناعة والتصنيع', img: 'sky-1', wide: true },
+        { title: 'القطاع التجاري', img: 'sky-2' },
+        { title: 'الرعاية الصحية والأدوية', img: 'sky-3' },
+        { title: 'التكنولوجيا والإعلام والتعليم', img: 'sky-4' },
+        { title: 'المنظمات غير الربحية', img: 'sky-5', wide: true },
+        { title: 'الإسكان والمقاولات', img: 'sky-6' },
+        { title: 'الزراعة والأعلاف والبيطرة', img: 'sky-7' },
+        { title: 'الطاقة والتعهدات', img: 'sky-1' }
       ]
     },
     intro: {
