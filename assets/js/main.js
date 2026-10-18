@@ -163,6 +163,19 @@
   }
 
   const minusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>';
+  // Service icons, in service order: Lucide line icons (ISC licence), the same set the company profile uses.
+  const svcIcons = [
+    '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>', // shield-check
+    '<rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/>', // calculator
+    '<path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/>', // receipt-text
+    '<path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/>', // scan-search
+    '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>', // trending-up
+    '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>', // building-2
+    '<path d="M12 12h.01"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M22 13a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/>', // briefcase-business
+    '<path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>', // graduation-cap
+    '<path d="M12 17v4"/><path d="m15.2 4.9-.9-.4"/><path d="m15.2 7.1-.9.4"/><path d="m16.9 3.2-.4-.9"/><path d="m16.9 8.8-.4.9"/><path d="m19.5 2.3-.4.9"/><path d="m19.5 9.7-.4-.9"/><path d="m21.7 4.5-.9.4"/><path d="m21.7 7.5-.9-.4"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/>' // monitor-cog
+  ];
+  const svcIcon = (i) => `<svg viewBox="0 0 24 24" aria-hidden="true">${svcIcons[i] || ''}</svg>`;
   const rowColors = ['#0c1826', '#102235', '#152c44', '#1a3653', '#1f4062', '#244a71', '#295480', '#2e5e8f', '#33689e'];
   function renderServices() {
     const host = $('#services-accordion');
@@ -170,12 +183,12 @@
     host.innerHTML = S.items.map((s, i) => `
       <div class="acc-item" style="--row:${rowColors[i % rowColors.length]}">
         <button class="acc-btn" type="button" aria-expanded="false">
-          <span class="acc-title"><i>${String(i + 1).padStart(2, '0')}</i>${esc(s.title)}</span>
+          <span class="acc-title"><span class="acc-ico">${svcIcon(i)}</span>${esc(s.title)}</span>
           <span class="acc-icon">${minusIcon}</span>
         </button>
         <div class="acc-panel"><div class="acc-body">
           <div class="acc-text">
-            <span class="acc-num">${String(i + 1).padStart(2, '0')}</span>
+            <span class="acc-num">${svcIcon(i)}</span>
             <h3 class="acc-big">${esc(s.title)}</h3>
             ${s.tagline ? `<p class="acc-tagline">${esc(s.tagline)}</p>` : ''}
             <div class="acc-prose">
