@@ -172,6 +172,7 @@ window.I18N = {
       waIntro: 'Hello Consolidated, I would like to inquire about your services.',
       labels: { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', service: 'Service', message: 'Message' }
     },
+    map: { title1: 'Visit', title2: 'Our Office', address: 'King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan', directions: 'Get Directions', apple: 'Open in Apple Maps', frame: 'Consolidated office on Google Maps' },
     careers: {
       kicker: 'Careers',
       title1: 'Join',
@@ -205,7 +206,7 @@ window.I18N = {
       cols: [
         { title: 'Services', links: [['Audit & Assurance Services', '#services'], ['Accounting & Bookkeeping Services', '#services'], ['Tax Advisory & Compliance Services', '#services'], ['Internal Audit & Risk Advisory Services', '#services'], ['Financial Advisory Services', '#services'], ['Corporate Advisory Services', '#services'], ['Outsourcing & Back-Office Services', '#services'], ['Training & Professional Development Services', '#services'], ['ERP Solutions & Digital Transformation', '#services']] },
         { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients'], ['Careers', '/careers/']] },
-        { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=Al+Nahda+Complex%2C+King+Abdullah+II+Street%2C+Amman%2C+Jordan"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
+        { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
       ],
       led: 'Executive governance',
       name1: 'Esam N. Almulazem, CFA, CPA',
@@ -390,6 +391,7 @@ window.I18N = {
       waIntro: 'مرحباً الموحدة، أرغب بالاستفسار عن خدماتكم.',
       labels: { name: 'الاسم', company: 'الشركة', email: 'البريد', phone: 'الهاتف', service: 'الخدمة', message: 'الرسالة' }
     },
+    map: { title1: 'زوروا', title2: 'مكتبنا', address: 'شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن', directions: 'احصل على الاتجاهات', apple: 'افتح في خرائط Apple', frame: 'مكتب الموحدة على خرائط جوجل' },
     careers: {
       kicker: 'الوظائف',
       title1: 'انضم إلى',
@@ -423,7 +425,7 @@ window.I18N = {
       cols: [
         { title: 'الخدمات', links: [['خدمات التدقيق والتأكيد', '#services'], ['خدمات المحاسبة ومسك الدفاتر', '#services'], ['خدمات الاستشارات والامتثال الضريبي', '#services'], ['خدمات التدقيق الداخلي واستشارات المخاطر', '#services'], ['خدمات الاستشارات المالية', '#services'], ['خدمات استشارات الشركات', '#services'], ['خدمات الإسناد الخارجي والدعم المكتبي', '#services'], ['خدمات التدريب والتطوير المهني', '#services'], ['حلول تخطيط موارد المؤسسات والتحول الرقمي', '#services']] },
         { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
-        { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=Al+Nahda+Complex%2C+King+Abdullah+II+Street%2C+Amman%2C+Jordan"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
+        { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
       ],
       led: 'الحوكمة التنفيذية',
       name1: 'عصام ن. الملازم، CFA, CPA',

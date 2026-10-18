@@ -253,6 +253,14 @@
       </article>`).join('');
   }
 
+  // Office map: Google's keyless embed, labelled in the page language.
+  function renderMap() {
+    const f = $('#visit-map'); if (!f) return;
+    const src = 'https://maps.google.com/maps?q=31.941254,35.849426&z=17&hl=' + lang + '&output=embed';
+    if (f.getAttribute('src') !== src) f.setAttribute('src', src);
+    f.title = dict.map.frame;
+  }
+
   // Consultation card caption mirrors the founder's Leadership card: name, role, credentials, degree.
   function renderConsult() {
     const cap = $('#consult-caption'), p = dict.leaders.people[0]; if (!cap || !p) return;
@@ -340,7 +348,7 @@
   }
 
   function renderAll() {
-    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderWhy(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderConsult(); renderExpect(); renderInquiry(); renderFooter();
+    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderWhy(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderConsult(); renderExpect(); renderInquiry(); renderMap(); renderFooter();
   }
 
   /* ---------- Accordion (one open at a time, height tween) ---------- */

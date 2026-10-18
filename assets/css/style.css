@@ -558,6 +558,16 @@ html[lang="ar"] .ecard-body p { font-style: normal; }
 
 /* ---------- Inquiry form ---------- */
 .inquiry { margin-top: 6rem; }
+/* Office location: details beside a live map, inside the site's gradient-border card. */
+.visit { margin-top: 6rem; }
+.visit-card { border-radius: 1.75rem; padding: 1px; }
+.visit-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); border-radius: inherit; background: #141414; overflow: hidden; }
+.visit-info { display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; padding: 3rem; }
+.visit-address { font-family: var(--font-head); font-size: 1.35rem; line-height: 1.4; }
+.visit-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .5rem; }
+.visit-map { min-height: 26rem; }
+.visit-map iframe { display: block; width: 100%; height: 100%; min-height: 26rem; border: 0; }
+@media (max-width: 860px) { .visit-inner { grid-template-columns: 1fr; } .visit-info { padding: 2rem 1.75rem; } .visit-map, .visit-map iframe { min-height: 20rem; } }
 .inquiry-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 3rem; align-items: start; }
 .inquiry-copy .light { margin: 1rem 0 1.5rem; max-width: 46ch; }
 .inquiry-points { display: grid; gap: .7rem; }
