@@ -7,7 +7,7 @@ window.I18N = {
     nav: { services: 'Services', sectors: 'Sectors', team: 'Leadership', clients: 'Clients', about: 'About', careers: 'Careers', cta: 'Book a Consultation', lang: 'عربي' },
     hero: {
       line1: 'Delivering',
-      words: ['External Auditing', 'Tax Governance', 'Forensic Reviews', 'Financial Advisory'],
+      words: ['Audit & Assurance Services', 'Accounting & Bookkeeping Services', 'Tax Advisory & Compliance', 'Internal Audit & Risk Advisory', 'Financial Advisory Services', 'Corporate Advisory Services', 'Outsourcing & Back-Office Services', 'Training & Professional Development', 'ERP Solutions & Digital Transformation'],
       line2: 'Across',
       line3: 'Jordan & MENA',
       sub: 'A professional audit and advisory firm delivering comprehensive audit and assurance, accounting, taxation, financial advisory, risk management, and technology solutions to businesses and organizations across Jordan and the MENA region.',
@@ -235,7 +235,7 @@ window.I18N = {
     nav: { services: 'خدماتنا', sectors: 'القطاعات', team: 'القيادة', clients: 'عملاؤنا', about: 'من نحن', careers: 'الوظائف', cta: 'احجز استشارة', lang: 'EN' },
     hero: {
       line1: 'نقدم',
-      words: ['التدقيق الخارجي', 'الحوكمة الضريبية', 'المراجعات الجنائية', 'الاستشارات المالية'],
+      words: ['خدمات التدقيق والتأكيد', 'خدمات المحاسبة ومسك الدفاتر', 'الاستشارات والامتثال الضريبي', 'التدقيق الداخلي واستشارات المخاطر', 'خدمات الاستشارات المالية', 'خدمات استشارات الشركات', 'خدمات الإسناد الخارجي والدعم المكتبي', 'التدريب والتطوير المهني', 'حلول تخطيط موارد المؤسسات والتحول الرقمي'],
       line2: 'في',
       line3: 'الأردن والمنطقة',
       sub: 'مؤسسة مهنية للتدقيق والاستشارات تقدم حلولاً شاملة في التدقيق والتأكيد والمحاسبة والضرائب والاستشارات المالية وإدارة المخاطر والحلول التقنية للشركات والمؤسسات في الأردن ومنطقة الشرق الأوسط وشمال أفريقيا.',

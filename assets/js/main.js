@@ -105,7 +105,8 @@
     const t = $('#featured-track');
     t.style.setProperty('--dur', '38s');
     t.innerHTML = dup(dict.hero.certs.map(([k, v]) => `<span class="cert-mark">${esc(k)}<small>${esc(v)}</small></span>`).join(''));
-    $('.cycle-reserve').textContent = dict.hero.words.slice().sort((a, b) => b.length - a.length)[0];
+    // Every phrase sits invisibly in the same cell, so the line is always as tall as the longest one.
+    $('.cycle-reserve').innerHTML = dict.hero.words.map((w) => `<span>${esc(w)}</span>`).join('');
   }
 
   function renderSectors() {
@@ -347,20 +348,25 @@
     clearTimeout(cycleTimer);
     const words = dict.hero.words;
     const isAr = lang === 'ar';
-    let idx = 0;
+    let idx = 0, spans = [];
+    // Letters are grouped per word so a long phrase wraps between words, never inside one.
     const build = (word) => {
       host.innerHTML = '';
-      const units = isAr ? [word] : Array.from(word);
-      return units.map((u) => { const s = document.createElement('span'); s.textContent = u === ' ' ? ' ' : u; host.appendChild(s); return s; });
+      if (isAr) { const s = document.createElement('span'); s.textContent = word; host.appendChild(s); return [s]; }
+      const out = [];
+      word.split(' ').forEach((w) => {
+        const g = document.createElement('span'); g.className = 'cycle-w'; host.appendChild(g);
+        Array.from(w).forEach((u) => { const s = document.createElement('span'); s.textContent = u; g.appendChild(s); out.push(s); });
+      });
+      return out;
     };
     const show = () => {
-      const spans = build(words[idx]);
-      if (hasGsap && !reduced) { gsap.set(spans, { yPercent: 118 }); gsap.to(spans, { yPercent: 0, duration: 1.05, stagger: .045, ease: 'expo.out' }); }
+      spans = build(words[idx]);
+      if (hasGsap && !reduced) { gsap.set(spans, { yPercent: 118 }); gsap.to(spans, { yPercent: 0, duration: 1.05, stagger: .03, ease: 'expo.out' }); }
       cycleTimer = setTimeout(hide, 3200);
     };
     const hide = () => {
-      const spans = $$('span', host);
-      if (hasGsap && !reduced) gsap.to(spans, { yPercent: -118, duration: .9, stagger: .045, ease: 'expo.in', onComplete: () => { idx = (idx + 1) % words.length; show(); } });
+      if (hasGsap && !reduced) gsap.to(spans, { yPercent: -118, duration: .9, stagger: .03, ease: 'expo.in', onComplete: () => { idx = (idx + 1) % words.length; show(); } });
       else { idx = (idx + 1) % words.length; show(); }
     };
     show();

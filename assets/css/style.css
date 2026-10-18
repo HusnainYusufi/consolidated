@@ -226,6 +226,13 @@ html[dir="rtl"] .hero-rule { margin: 0 .3em 0 0; }
 .cycle { grid-area: 1 / 1; display: flex; white-space: nowrap; }
 .cycle span { display: inline-block; will-change: transform; }
 html[lang="ar"] .cycle span { display: inline; }
+/* Service names are long: they take their own line and wrap between words. */
+.hero-title .line-cycle { white-space: normal; font-size: .64em; line-height: 1.08; }
+.line-cycle .cycle-wrap { width: auto; max-width: 100%; clip-path: none; }
+.line-cycle .cycle-reserve { display: grid; white-space: normal; }
+.line-cycle .cycle-reserve > span { grid-area: 1 / 1; }
+.line-cycle .cycle { flex-wrap: wrap; column-gap: .25em; white-space: normal; }
+.cycle-w { display: inline-flex; white-space: nowrap; overflow: hidden; padding-bottom: .14em; margin-bottom: -.14em; }
 html[lang="ar"] .cycle { display: block; }
 .hero-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem); gap: 3rem 4rem; align-items: center; width: min(100% - 3rem, var(--container)); margin-inline: auto; }
 .hero-side { display: flex; flex-direction: column; align-items: flex-start; }

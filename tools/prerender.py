@@ -41,8 +41,8 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
 
 def serve():
     handler = functools.partial(QuietHandler, directory=ROOT)
-    socketserver.TCPServer.allow_reuse_address = True
-    httpd = socketserver.TCPServer(('127.0.0.1', PORT), handler)
+    socketserver.ThreadingTCPServer.allow_reuse_address = True
+    httpd = socketserver.ThreadingTCPServer(('127.0.0.1', PORT), handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
 
@@ -53,6 +53,10 @@ async def render(lang, path='index.html'):
         page = await ctx.new_page()
         await page.goto(f'http://127.0.0.1:{PORT}/{path}?lang={lang}&prerender=1', wait_until='networkidle')
         await page.wait_for_timeout(1500)
+        # If a script failed to load, the page keeps the previous static content; never write that out.
+        ok = await page.evaluate(f"() => typeof I18N !== 'undefined' && document.documentElement.lang === '{lang}'")
+        if not ok:
+            raise RuntimeError(f'{path} ({lang}) did not render; scripts failed to load')
         html = await page.evaluate('''() => {
           // Strip runtime-only inline styles so the static page starts clean.
           document.querySelectorAll('[data-reveal], .ch, .wl-card, .stack-item, #team-text, .hero-title, .hero-sub, .hero-cta, #hero-veil, #hero-solid, #hero-dim, .hero-rotor').forEach(el => el.removeAttribute('style'));
