@@ -80,7 +80,7 @@
     try { localStorage.setItem('cf-lang', lang); } catch (e) {}
     applyText();
     renderAll();
-    initReveals(); initCharReveal(); initCycle(); initCounters();
+    initReveals(); initCharReveal(); initCycle(); initStats();
     if (!first) setLangUrl();
     if (!first && hasGsap) requestAnimationFrame(() => ScrollTrigger.refresh());
   }
@@ -121,33 +121,22 @@
       <div class="marquee"><div class="marquee-track right" style="--dur:50s">${dup(b)}</div></div>`;
   }
 
-  // Stat icons: line drawings (24-unit grid) set inside a gradient ring with an orbiting dot.
-  // Every stroke has pathLength=1 so CSS can draw it in; .si-* classes carry each icon's idle motion.
+  // Stat icons: thin monochrome line drawings (24-unit grid) in a circle with the site's spinning gradient border.
+  // Each stroke has pathLength=1 and the .sd class so CSS can draw it in when the stat enters the viewport.
   const statIcons = {
-    founded: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/><path class="si-tick" d="m8.75 15.25 2.25 2.25 4.25-4.5"/>',
-    years: '<circle cx="12" cy="12" r="8.75"/><path d="M12 4.5v1.25M19.5 12h-1.25M12 19.5v-1.25M4.5 12h1.25"/><path class="si-hour" d="M12 12l3 1.75"/><path class="si-min" d="M12 12V6.75"/>',
-    clients: '<circle cx="9" cy="8" r="3.5"/><path d="M2.75 20v-1.25a4.25 4.25 0 0 1 4.25-4.25h4a4.25 4.25 0 0 1 4.25 4.25V20"/><g class="si-back"><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8"/><path d="M18 14.7a4.25 4.25 0 0 1 3.25 4.05V20"/></g>',
-    location: '<ellipse class="si-ping" cx="12" cy="21" rx="4.5" ry="1.25"/><g class="si-pin"><path d="M19 10c0 4.6-5 9.3-6.6 10.7a.6.6 0 0 1-.8 0C10 19.3 5 14.6 5 10a7 7 0 0 1 14 0"/><circle cx="12" cy="10" r="2.6"/></g>'
+    founded: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15.25 2 2 4-4.25"/>',
+    years: '<path d="M6 3h12M6 21h12"/><path d="M7.5 3v3.2a3 3 0 0 0 .9 2.1L12 12l-3.6 3.7a3 3 0 0 0-.9 2.1V21"/><path d="M16.5 3v3.2a3 3 0 0 1-.9 2.1L12 12l3.6 3.7a3 3 0 0 1 .9 2.1V21"/><path d="M10 18.5h4"/>',
+    clients: '<circle cx="9" cy="8" r="3.5"/><path d="M2.75 20v-1.25a4.25 4.25 0 0 1 4.25-4.25h4a4.25 4.25 0 0 1 4.25 4.25V20"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.7a4.25 4.25 0 0 1 3.25 4.05V20"/>',
+    location: '<path d="M19 10c0 4.6-5 9.3-6.6 10.7a.6.6 0 0 1-.8 0C10 19.3 5 14.6 5 10a7 7 0 0 1 14 0"/><circle cx="12" cy="10" r="2.6"/>'
   };
-  const statIcon = (key, i) => {
-    if (!statIcons[key]) return '';
-    const g = 'sg' + i, r = 'sr' + i;
-    const body = statIcons[key].replace(/<(path|circle|rect|ellipse)\b( class="([^"]*)")?/g, (m, tag, c, cls) => `<${tag} pathLength="1" class="sd${cls ? ' ' + cls : ''}"`);
-    return `<div class="stat-icon si-${key}" aria-hidden="true"><svg viewBox="0 0 64 64">
-      <defs><linearGradient id="${g}" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#3064d0"/><stop offset="1" stop-color="#8739d5"/></linearGradient>
-        <linearGradient id="${r}" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="64" y2="64"><stop offset="0" stop-color="#27fcf2"/><stop offset=".5" stop-color="#3064d0"/><stop offset="1" stop-color="#8739d5"/></linearGradient></defs>
-      <circle class="sd si-ring" cx="32" cy="32" r="30.5" pathLength="1" stroke="url(#${r})"/>
-      <circle class="si-orbit" cx="32" cy="1.5" r="1.9" fill="url(#${r})"/>
-      <svg x="14" y="14" width="36" height="36" viewBox="0 0 24 24" class="si-glyph" stroke="url(#${g})">${body}</svg>
-    </svg></div>`;
-  };
+  const statIcon = (key) => statIcons[key] ? `<div class="stat-badge gradient-border-card" aria-hidden="true"><div class="stat-badge-in">
+      <svg viewBox="0 0 24 24">${statIcons[key].replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" class="sd"')}</svg></div></div>` : '';
 
   function renderStats() {
-    $('#stats').innerHTML = dict.stats.map((s, i) => `
+    $('#stats').innerHTML = dict.stats.map((s) => `
       <div class="stat" data-reveal data-reveal-y="56">
-        ${statIcon(s.icon, i)}
-        <b>${s.text ? `<span class="stat-text">${esc(s.text)}</span>` : `<span data-count="${s.n}" data-plain="${s.plain ? 1 : 0}">${s.plain ? s.n : 0}</span>`}${s.suffix ? `<small>${s.suffix}</small>` : ''}</b>
-        <span>${esc(s.label)}</span>
+        ${statIcon(s.icon)}
+        <span>${esc(s.caption || s.label)}</span>
       </div>`).join('');
     $('#intro-points').innerHTML = dict.intro.points.map((p) => `
       <div class="ipoint" data-reveal><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join('');
@@ -431,20 +420,14 @@
     });
   }
 
-  /* ---------- Counters ---------- */
-  let counterTriggers = [];
-  function initCounters() {
-    counterTriggers.forEach((t) => t.kill());
-    counterTriggers = [];
-    $$('[data-count]').forEach((el) => {
-      const target = +el.dataset.count;
-      if (el.dataset.plain === '1' || !hasGsap || reduced) { el.textContent = target; return; }
-      const o = { v: 0 };
-      counterTriggers.push(ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: target, duration: 1.6, ease: 'power3.out', onUpdate: () => { el.textContent = Math.round(o.v); } }) }));
-    });
+  /* ---------- Stat icons draw in when each stat enters the viewport ---------- */
+  let statTriggers = [];
+  function initStats() {
+    statTriggers.forEach((t) => t.kill());
+    statTriggers = [];
     $$('.stat').forEach((el) => {
       if (!hasGsap || reduced) { el.classList.add('is-in'); return; }
-      counterTriggers.push(ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('is-in') }));
+      statTriggers.push(ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('is-in') }));
     });
   }
 
