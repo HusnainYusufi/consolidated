@@ -303,8 +303,7 @@ html[lang="ar"] .vm-tag { letter-spacing: 0; font-size: .85rem; }
 /* ---------- Vision and mission ---------- */
 .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 5rem; }
 .vm-card { padding: 2.25rem; border-radius: 1.5rem; border: 1px solid var(--line); transition: border-color 1s; }
-.vm-num { display: block; font-family: var(--font-head); font-size: 1.1rem; letter-spacing: .12em; opacity: .6; }
-.vm-title { font-size: 2.2rem; font-style: italic; margin: .6rem 0 1rem; }
+.vm-title { font-size: 2.2rem; font-style: italic; margin: 0 0 1rem; }
 html[lang="ar"] .vm-title { font-style: normal; }
 .vm-text { font-size: 1.05rem; line-height: 1.5; }
 
