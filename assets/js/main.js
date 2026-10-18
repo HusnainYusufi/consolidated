@@ -193,11 +193,6 @@
     const tile = (f) => `<div class="logo-tile" data-reveal><img src="/assets/img/clients/${f}" alt="" loading="lazy" decoding="async"></div>`;
     $('#trust-grid').innerHTML = logos.map(tile).join('');
     const legend = $('#sector-legend'); if (legend) legend.remove();
-    // Two marquee rows of logos (opposite directions) under the grid.
-    const chip = (f) => `<span class="logo-chip"><img src="/assets/img/clients/${f}" alt="" loading="lazy" decoding="async"></span>`;
-    const half = Math.ceil(logos.length / 2);
-    const rows = [logos.slice(0, half), logos.slice(half)];
-    $('#client-rows').innerHTML = rows.map((r, i) => `<div class="marquee"><div class="marquee-track ${i === 1 ? 'right' : ''}" style="--dur:${70 + i * 12}s">${dup(r.map(chip).join(''))}</div></div>`).join('');
   }
 
   function renderExpect() {
