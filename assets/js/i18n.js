@@ -214,8 +214,6 @@ window.I18N = {
       motto: 'Integrity • Transparency • Quality'
     },
     consult: {
-      name: 'Esam N. Almulazem, CFA, CPA',
-      role: 'Founder and Audit Partner',
       title1: 'Your Business Deserves',
       title2: 'Expert Support.',
       sub: 'We help businesses manage their finances, meet legal and tax requirements, reduce risks, and make better business decisions. Our experienced team is here to provide the professional advice and support your business needs.',
@@ -434,8 +432,6 @@ window.I18N = {
       motto: 'نزاهة • شفافية • جودة'
     },
     consult: {
-      name: 'عصام ن. الملازم، CFA, CPA',
-      role: 'المؤسس وشريك التدقيق',
       title1: 'عملك يستحق',
       title2: 'دعماً من الخبراء.',
       sub: 'نساعد الشركات على إدارة أموالها والوفاء بالمتطلبات القانونية والضريبية وتقليل المخاطر واتخاذ قرارات أعمال أفضل. فريقنا المتمرس هنا لتقديم المشورة المهنية والدعم الذي تحتاجه أعمالك.',

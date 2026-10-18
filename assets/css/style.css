@@ -622,12 +622,16 @@ html[lang="ar"] .footer-col h3 { letter-spacing: 0; font-size: 1.05rem; }
 html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-white); backdrop-filter: blur(40px); }
 @media (min-width: 768px) { .consult-inner { flex-direction: row; } }
 .consult-photo { position: relative; margin: 0; overflow: hidden; }
-@media (min-width: 768px) { .consult-photo { width: 17rem; flex: 0 0 17rem; } }
-.consult-photo img { height: 25rem; width: 100%; object-fit: cover; object-position: center 10%; transform-origin: bottom; transform: scale(.92); }
-@media (min-width: 768px) { .consult-photo img { height: 20rem; } }
-.consult-photo figcaption { position: absolute; inset-inline: 0; bottom: 0; padding: 6rem 1.5rem 2rem; text-align: center; color: #fffbf3; background: linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.45), transparent); display: flex; flex-direction: column; gap: .5rem; pointer-events: none; }
-.consult-photo strong { font: 400 1.5rem/1 var(--font-head); }
-.consult-photo span { font-size: .85rem; line-height: 1.25; font-weight: 500; }
+@media (min-width: 768px) { .consult-photo { width: 19rem; flex: 0 0 19rem; } }
+.consult-photo img { height: 30rem; width: 100%; object-fit: cover; object-position: center 10%; transform-origin: bottom; transform: scale(.92); }
+@media (min-width: 768px) { .consult-photo img { height: 27rem; } }
+.consult-photo figcaption { position: absolute; inset-inline: 0; bottom: 0; padding: 5rem 1rem 1.5rem; text-align: center; color: #fffbf3; background: linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.45), transparent); display: flex; flex-direction: column; gap: .5rem; pointer-events: none; }
+.consult-photo strong { font: 400 1.5rem/1.05 var(--font-head); }
+.consult-photo figcaption > span { font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size: .85rem; }
+.consult-photo em { font-style: normal; font-size: .75rem; opacity: .8; }
+.consult-photo .cert-row { justify-content: center; gap: .35rem; margin-top: .2rem; }
+.consult-photo .cert-row span { padding: .2rem .5rem; font-size: .62rem; letter-spacing: .06em; border-color: rgba(255,255,255,.6); }
 .consult-text { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 1.75rem; padding: 1.75rem; text-align: center; }
 @media (min-width: 768px) { .consult-text { align-items: flex-start; gap: .75rem; text-align: start; } }
 .consult-text .h2 { font-size: 2.33rem; line-height: 1.15; }

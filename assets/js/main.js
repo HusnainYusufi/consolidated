@@ -253,6 +253,12 @@
       </article>`).join('');
   }
 
+  // Consultation card caption mirrors the founder's Leadership card: name, role, credentials, degree.
+  function renderConsult() {
+    const cap = $('#consult-caption'), p = dict.leaders.people[0]; if (!cap || !p) return;
+    cap.innerHTML = `<strong>${esc(p.name)}</strong><span>${esc(p.role)}</span>${p.certs.length ? `<div class="cert-row">${p.certs.map((c) => `<span>${esc(c)}</span>`).join('')}</div>` : ''}<em>${esc(p.degree)}</em>`;
+  }
+
   function renderInquiry() {
     const q = dict.inquiry;
     $('#inquiry-points').innerHTML = q.points.map((p) => `<li>${esc(p)}</li>`).join('');
@@ -334,7 +340,7 @@
   }
 
   function renderAll() {
-    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderWhy(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderExpect(); renderInquiry(); renderFooter();
+    renderFeatured(); renderSectors(); renderStats(); renderValues(); renderWhy(); renderServices(); renderTeam(); renderLeaders(); renderClients(); renderConsult(); renderExpect(); renderInquiry(); renderFooter();
   }
 
   /* ---------- Accordion (one open at a time, height tween) ---------- */
