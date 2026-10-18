@@ -627,10 +627,6 @@ html[lang="ar"] .foot-all a { letter-spacing: 0; }
 html[dir="rtl"] .foot-all svg { transform: scaleX(-1); }
 .foot-all a:hover svg { transform: translate(2px, -2px); }
 .footer-col span[dir="ltr"] { unicode-bidi: isolate; display: inline-block; }
-.footer-bottom { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; padding-top: 2rem; border-top: 1px solid var(--line); }
-@media (min-width: 768px) { .footer-bottom { grid-template-columns: auto 1fr; } }
-.footer-brand .brand-icon { height: 3rem; }
-.footer-brand .brand-wordmark { height: 1.8rem; }
 .footer-led p { font-size: .85rem; font-weight: 300; }
 .footer-led .names { font-weight: 500; margin-top: .25rem; }
 .footer-legal { font-size: .8rem; font-weight: 300; text-align: end; }
