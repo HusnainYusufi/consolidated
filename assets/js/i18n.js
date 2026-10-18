@@ -202,8 +202,6 @@ window.I18N = {
       subject: 'Job application'
     },
     footer: {
-      connect: 'Let\'s Connect',
-      connectSub: 'Start with a no-obligation conversation about your audit, tax or advisory needs',
       email: 'Send Us An Email',
       cols: [
         { title: 'Services', links: [['Audit & Assurance Services', '#services'], ['Accounting & Bookkeeping Services', '#services'], ['Tax Advisory & Compliance Services', '#services'], ['Internal Audit & Risk Advisory Services', '#services'], ['Financial Advisory Services', '#services'], ['Corporate Advisory Services', '#services'], ['Outsourcing & Back-Office Services', '#services'], ['Training & Professional Development Services', '#services'], ['ERP Solutions & Digital Transformation', '#services']] },
@@ -425,8 +423,6 @@ window.I18N = {
       subject: 'طلب توظيف'
     },
     footer: {
-      connect: 'لنتواصل',
-      connectSub: 'ابدأ بمحادثة دون أي التزام حول احتياجاتك في التدقيق أو الضرائب أو الاستشارات',
       email: 'أرسل لنا بريداً إلكترونياً',
       cols: [
         { title: 'الخدمات', links: [['خدمات التدقيق والتأكيد', '#services'], ['خدمات المحاسبة ومسك الدفاتر', '#services'], ['خدمات الاستشارات والامتثال الضريبي', '#services'], ['خدمات التدقيق الداخلي واستشارات المخاطر', '#services'], ['خدمات الاستشارات المالية', '#services'], ['خدمات استشارات الشركات', '#services'], ['خدمات الإسناد الخارجي والدعم المكتبي', '#services'], ['خدمات التدريب والتطوير المهني', '#services'], ['حلول تخطيط موارد المؤسسات والتحول الرقمي', '#services']] },

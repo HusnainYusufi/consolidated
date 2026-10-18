@@ -593,8 +593,7 @@ html[dir="rtl"] .field select { background-position: 1.3rem 50%, 1rem 50%; paddi
 .footer { position: relative; z-index: 20; margin-top: 5rem; padding-bottom: 5rem; }
 .connect { display: flex; flex-direction: column; gap: 2rem; justify-content: space-between; padding-bottom: 3rem; border-bottom: 1px solid var(--line); }
 @media (min-width: 768px) { .connect { flex-direction: row; align-items: flex-end; } }
-.connect .h2 { font-size: 2.33rem; line-height: 1; margin-bottom: .6rem; }
-.connect-actions { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.connect-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; align-items: center; }
 .socials { display: flex; gap: .6rem; }
 .socials a { width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--foreground); display: grid; place-items: center; transition: background .3s, color .3s; }
 .socials a:hover { background: var(--foreground); color: var(--background); }
