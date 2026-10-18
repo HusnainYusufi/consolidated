@@ -157,7 +157,6 @@ window.I18N = {
       ]
     },
     inquiry: {
-      kicker: 'Inquiry',
       title1: 'Tell us about',
       title2: 'your business.',
       sub: 'Share a few details about your business or professional requirements, and one of our partners or qualified professionals will respond by email or WhatsApp within one business day.',
@@ -378,7 +377,6 @@ window.I18N = {
       ]
     },
     inquiry: {
-      kicker: 'استفسار',
       title1: 'حدثنا عن',
       title2: 'أعمالك.',
       sub: 'شاركنا بعض التفاصيل عن أعمالك أو متطلباتك المهنية، وسيرد عليك أحد شركائنا أو المهنيين المؤهلين لدينا عبر البريد الإلكتروني أو واتساب خلال يوم عمل واحد.',

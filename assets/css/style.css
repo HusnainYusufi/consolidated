@@ -559,7 +559,6 @@ html[lang="ar"] .ecard-body p { font-style: normal; }
 /* ---------- Inquiry form ---------- */
 .inquiry { margin-top: 6rem; }
 .inquiry-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 3rem; align-items: start; }
-.inquiry-copy .label { margin-bottom: .6rem; }
 .inquiry-copy .light { margin: 1rem 0 1.5rem; max-width: 46ch; }
 .inquiry-points { display: grid; gap: .7rem; }
 .inquiry-points li { position: relative; padding-inline-start: 1.6rem; font-weight: 300; }
