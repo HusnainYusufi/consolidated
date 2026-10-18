@@ -194,7 +194,7 @@
             <div class="acc-prose">
               <h4 class="acc-h4">${esc(S.overviewTitle || '')}</h4>
               ${s.text.map((p) => `<p>${esc(p)}</p>`).join('')}
-              ${s.list ? `<h4 class="acc-h4">${esc(s.listTitle || '')}</h4><ol class="acc-list">${s.list.map((li) => `<li>${esc(li)}</li>`).join('')}</ol>` : ''}
+              ${s.list ? `<h4 class="acc-h4">${esc(s.listTitle || '')}</h4><ul class="acc-list">${s.list.map((li) => `<li>${esc(li)}</li>`).join('')}</ul>` : ''}
             </div>
             ${btn(S.discuss, '#consult')}
           </div>

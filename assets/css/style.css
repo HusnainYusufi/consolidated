@@ -435,9 +435,9 @@ html[lang="ar"] .acc-big { font-style: normal; }
 html[lang="ar"] .acc-tagline { font-style: normal; }
 .acc-h4 { font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(235,235,230,.7); margin: 1.4rem 0 .6rem; }
 html[lang="ar"] .acc-h4 { letter-spacing: 0; font-size: .85rem; }
-.acc-list { list-style: none; counter-reset: svc; display: grid; grid-template-columns: 1fr 1fr; gap: .45rem 1.5rem; margin: 0 0 .5rem; padding: 0; }
-.acc-list li { counter-increment: svc; position: relative; padding-inline-start: 2rem; font-size: .9rem; font-weight: 300; line-height: 1.35; }
-.acc-list li::before { content: counter(svc, decimal-leading-zero); position: absolute; inset-inline-start: 0; top: .1em; font-size: .72rem; font-weight: 600; letter-spacing: .05em; color: var(--cyan); opacity: .9; }
+.acc-prose .acc-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: .45rem 1.5rem; margin: 0 0 .5rem; padding: 0; }
+.acc-prose .acc-list li { position: relative; padding-inline-start: 1.25rem; font-size: .9rem; font-weight: 300; line-height: 1.35; }
+.acc-prose .acc-list li::before { content: ""; position: absolute; inset-inline-start: 0; top: .5em; width: .38rem; height: .38rem; border-radius: 50%; background: var(--cyan); opacity: .9; }
 @media (max-width: 860px) { .acc-list { grid-template-columns: 1fr; } }
 @media (min-width: 768px) { .acc-text { width: 60%; } }
 /* accordion badges and paired lists */
