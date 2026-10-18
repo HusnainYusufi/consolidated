@@ -59,7 +59,7 @@ async def render(lang, path='index.html'):
             raise RuntimeError(f'{path} ({lang}) did not render; scripts failed to load')
         html = await page.evaluate('''() => {
           // Strip runtime-only inline styles so the static page starts clean.
-          document.querySelectorAll('[data-reveal], .ch, .wl-card, .stack-item, #team-text, .hero-title, .hero-sub, .hero-cta, #hero-veil, #hero-solid, #hero-dim, .hero-rotor').forEach(el => el.removeAttribute('style'));
+          document.querySelectorAll('[data-reveal], .ch, .wl-card, .stack-item, #team-text, .hero-title, .hero-sub, .hero-cta, #hero, #hero-veil, #hero-solid, #hero-dim, .hero-rotor').forEach(el => el.removeAttribute('style'));
           document.querySelectorAll('.acc-panel').forEach(el => el.removeAttribute('style'));
           document.querySelectorAll('[data-cycle] span').forEach(el => el.removeAttribute('style'));
           document.documentElement.classList.remove('light');

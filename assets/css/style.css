@@ -279,7 +279,10 @@ html[dir="rtl"] .marquee-track > * { direction: rtl; }
 .intro { padding: 2rem 0 0; color: var(--foreground); transition: color 1s; }
 .intro-text { display: flex; flex-direction: column; align-items: flex-start; }
 html[dir="rtl"] .intro-text { align-items: flex-end; }
-.intro-lead { font-size: 1.25rem; line-height: 1.3; margin-bottom: 2rem; max-width: 70ch; }
+.intro-lead { font-size: 1.25rem; line-height: 1.55; margin: 0; max-width: 70ch; }
+/* About: framed like the vision/mission cards, heading on the start side, copy on the end side. */
+.about-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 2rem 4rem; align-items: start; width: 100%; padding: 3rem; border: 1px solid var(--line); border-radius: 1.5rem; transition: border-color 1s; }
+.about-title { font: italic 400 clamp(2.6rem, 5vw, 4rem)/1 var(--font-head); }
 .intro-big { font-size: clamp(1.5rem, 2.8vw, 2.25rem); line-height: 1.25; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin: 5rem auto 0; padding: 0 1rem; place-items: start center; }
 .stat { display: flex; flex-direction: column; align-items: center; gap: .25rem; }
@@ -626,6 +629,7 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
+  .about-panel { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem; }
   #header { grid-template-columns: 1fr auto; padding: 0 1rem; }
   .brand-icon { height: 2.6rem; }
   .brand-wordmark { height: 1.7rem; }
