@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Roboto:wght@300;400;500;700&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261019o">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261019p">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -157,6 +157,7 @@
   
   
   
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -168,10 +169,10 @@
 
   <!-- Fixed hero background: rotating mark + scroll managed overlays -->
   <div class="hero-bg" id="hero-bg" aria-hidden="true">
-    <div class="hero-rotor"><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
-    <div class="hero-veil" id="hero-veil"></div>
-    <div class="hero-dim" id="hero-dim"></div>
-    <div class="hero-solid" id="hero-solid"></div>
+    <div class="hero-rotor" style=""><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
+    <div class="hero-veil" id="hero-veil" style=""></div>
+    <div class="hero-dim" id="hero-dim" style=""></div>
+    <div class="hero-solid" id="hero-solid" style=""></div>
   </div>
 
   <!-- Header -->
@@ -217,7 +218,7 @@
   <main id="top">
 
     <!-- 1. Hero -->
-    <section class="hero" id="hero" style="">
+    <section class="hero" id="hero">
       <div class="hero-content">
       <h1 class="hero-title">
         <span class="line"><span data-i18n="hero.line1">Delivering</span></span><span class="line line-cycle"><span class="cycle-wrap"><span class="cycle-reserve" aria-hidden="true"><span>Audit &amp; Assurance Services</span><span>Accounting &amp; Bookkeeping Services</span><span>Tax Advisory &amp; Compliance</span><span>Internal Audit &amp; Risk Advisory</span><span>Financial Advisory Services</span><span>Corporate Advisory Services</span><span>Outsourcing &amp; Back-Office Services</span><span>Training &amp; Professional Development</span><span>ERP Solutions &amp; Digital Transformation</span></span><span class="cycle" data-cycle="" aria-live="polite"><span class="cycle-w"><span>A</span><span>u</span><span>d</span><span>i</span><span>t</span></span><span class="cycle-w"><span>&amp;</span></span><span class="cycle-w"><span>A</span><span>s</span><span>s</span><span>u</span><span>r</span><span>a</span><span>n</span><span>c</span><span>e</span></span><span class="cycle-w"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></span></span></span></span>
@@ -268,12 +269,12 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="">
+        <article class="vm-card" data-reveal="" style="">
           <h3 class="vm-title" data-i18n="vision.title">Our Vision</h3>
           <p class="vm-text" data-i18n="vision.text">To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.</p>
           <p class="vm-tag" data-i18n="vision.tag">Professional excellence · Trusted leadership</p>
         </article>
-        <article class="vm-card" data-reveal="">
+        <article class="vm-card" data-reveal="" style="">
           <h3 class="vm-title" data-i18n="mission.title">Our Mission</h3>
           <p class="vm-text" data-i18n="mission.text">To deliver exceptional audit, tax, accounting, and advisory services through professional excellence, integrity, and a client-focused approach. We are committed to building lasting partnerships, providing practical and innovative solutions, and empowering our clients to achieve financial transparency, operational efficiency, and sustainable business growth.</p>
           <p class="vm-tag" data-i18n="mission.tag">Professional integrity · Client success</p>
@@ -397,7 +398,7 @@
     <section class="section why container" id="why">
       <div class="why-head">
         <h2 class="h2"><span data-i18n="why.title1">Why</span> <span class="italic" data-i18n="why.title2">Choose Us</span></h2>
-        <p class="why-intro" data-i18n="why.intro" data-reveal="">We combine professional expertise, industry knowledge, and a client-focused approach to deliver reliable, practical, and value-driven solutions. Our commitment to quality, independence, and continuous improvement enables us to build lasting relationships and support our clients in achieving their business objectives.</p>
+        <p class="why-intro" data-i18n="why.intro" data-reveal="" style="">We combine professional expertise, industry knowledge, and a client-focused approach to deliver reliable, practical, and value-driven solutions. Our commitment to quality, independence, and continuous improvement enables us to build lasting relationships and support our clients in achieving their business objectives.</p>
       </div>
       <div class="why-grid" id="why-grid" hidden="">
       <article class="why-card gradient-border-card open" data-reveal="" style="">
@@ -453,7 +454,7 @@
     <!-- 5. Services accordion -->
     <section class="section solutions" id="services">
       <div class="accordion" id="services-accordion">
-      <div class="acc-item open" style="--row:#0c1826">
+      <div class="acc-item open" style="--row:#141414">
         <button class="acc-btn" type="button" aria-expanded="true">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span>Audit &amp; Assurance Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -473,7 +474,7 @@
           <div class="acc-img"><img src="/assets/img/sky-2.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#102235">
+      <div class="acc-item" style="--row:#222222">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"></rect><line x1="8" x2="16" y1="6" y2="6"></line><line x1="16" x2="16" y1="14" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg></span>Accounting &amp; Bookkeeping Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -493,7 +494,7 @@
           <div class="acc-img"><img src="/assets/img/sky-3.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#152c44">
+      <div class="acc-item" style="--row:#313131">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M14 8H8"></path><path d="M16 12H8"></path><path d="M13 16H8"></path></svg></span>Tax Advisory &amp; Compliance Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -513,7 +514,7 @@
           <div class="acc-img"><img src="/assets/img/sky-4.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#1a3653">
+      <div class="acc-item" style="--row:#424242">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle cx="12" cy="12" r="3"></circle><path d="m16 16-1.9-1.9"></path></svg></span>Internal Audit &amp; Risk Advisory Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -533,7 +534,7 @@
           <div class="acc-img"><img src="/assets/img/sky-5.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#1f4062">
+      <div class="acc-item" style="--row:#555554">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg></span>Financial Advisory Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -553,7 +554,7 @@
           <div class="acc-img"><img src="/assets/img/sky-6.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#244a71">
+      <div class="acc-item acc-light" style="--row:#a2a2a0">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path><path d="M10 18h4"></path></svg></span>Corporate Advisory Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -573,7 +574,7 @@
           <div class="acc-img"><img src="/assets/img/sky-7.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#295480">
+      <div class="acc-item acc-light" style="--row:#b9b9b7">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12h.01"></path><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path><path d="M22 13a18.15 18.15 0 0 1-20 0"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg></span>Outsourcing &amp; Back-Office Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -593,7 +594,7 @@
           <div class="acc-img"><img src="/assets/img/sky-1.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#2e5e8f">
+      <div class="acc-item acc-light" style="--row:#cfcfcd">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg></span>Training &amp; Professional Development Services</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -613,7 +614,7 @@
           <div class="acc-img"><img src="/assets/img/sky-3.jpg" alt="" loading="lazy"></div>
         </div></div>
       </div>
-      <div class="acc-item" style="--row:#33689e">
+      <div class="acc-item acc-light" style="--row:#e6e6e4">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17v4"></path><path d="m15.2 4.9-.9-.4"></path><path d="m15.2 7.1-.9.4"></path><path d="m16.9 3.2-.4-.9"></path><path d="m16.9 8.8-.4.9"></path><path d="m19.5 2.3-.4.9"></path><path d="m19.5 9.7-.4-.9"></path><path d="m21.7 4.5-.9.4"></path><path d="m21.7 7.5-.9-.4"></path><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"></path><path d="M8 21h8"></path><circle cx="18" cy="6" r="3"></circle></svg></span>ERP Solutions &amp; Digital Transformation</span>
           <span class="acc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"></path><path class="v" d="M12 5v14"></path></svg></span>
@@ -696,7 +697,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="">
+        <div class="expect-head" data-reveal="" style="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">You Can</span><span class="italic big" data-i18n="expect.t2">Expect</span><span class="italic" data-i18n="expect.t3">That We Are</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -724,7 +725,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="">
+        <div class="inquiry-copy" data-reveal="" style="">
           <p class="label" data-i18n="inquiry.kicker">Inquiry</p>
           <h2 class="h2"><span data-i18n="inquiry.title1">Tell us about</span> <span class="italic" data-i18n="inquiry.title2">your business.</span></h2>
           <p class="light" data-i18n="inquiry.sub">Share a few details about your business or professional requirements, and one of our partners or qualified professionals will respond by email or WhatsApp within one business day.</p>
@@ -815,8 +816,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="/assets/js/config.js"></script>
-  <script src="/assets/js/i18n.js?v=20261019o"></script>
-  <script src="/assets/js/main.js?v=20261019o"></script>
+  <script src="/assets/js/i18n.js?v=20261019p"></script>
+  <script src="/assets/js/main.js?v=20261019p"></script>
 
 
 </body></html>

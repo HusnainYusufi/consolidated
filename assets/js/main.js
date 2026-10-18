@@ -176,12 +176,14 @@
     '<path d="M12 17v4"/><path d="m15.2 4.9-.9-.4"/><path d="m15.2 7.1-.9.4"/><path d="m16.9 3.2-.4-.9"/><path d="m16.9 8.8-.4.9"/><path d="m19.5 2.3-.4.9"/><path d="m19.5 9.7-.4-.9"/><path d="m21.7 4.5-.9.4"/><path d="m21.7 7.5-.9-.4"/><path d="M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7"/><path d="M8 21h8"/><circle cx="18" cy="6" r="3"/>' // monitor-cog
   ];
   const svcIcon = (i) => `<svg viewBox="0 0 24 24" aria-hidden="true">${svcIcons[i] || ''}</svg>`;
-  const rowColors = ['#0c1826', '#102235', '#152c44', '#1a3653', '#1f4062', '#244a71', '#295480', '#2e5e8f', '#33689e'];
+  // Service rows step from the site's near-black to its light grey; the light rows switch to dark text (.acc-light).
+  const rowColors = ['#141414', '#222222', '#313131', '#424242', '#555554', '#a2a2a0', '#b9b9b7', '#cfcfcd', '#e6e6e4'];
+  const lightRowFrom = 5;
   function renderServices() {
     const host = $('#services-accordion');
     const S = dict.services;
     host.innerHTML = S.items.map((s, i) => `
-      <div class="acc-item" style="--row:${rowColors[i % rowColors.length]}">
+      <div class="acc-item${i % rowColors.length >= lightRowFrom ? ' acc-light' : ''}" style="--row:${rowColors[i % rowColors.length]}">
         <button class="acc-btn" type="button" aria-expanded="false">
           <span class="acc-title"><span class="acc-ico">${svcIcon(i)}</span>${esc(s.title)}</span>
           <span class="acc-icon">${minusIcon}</span>
