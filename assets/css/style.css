@@ -607,14 +607,25 @@ html[dir="rtl"] .field select { background-position: 1.3rem 50%, 1rem 50%; paddi
 .socials a { width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid var(--foreground); display: grid; place-items: center; transition: background .3s, color .3s; }
 .socials a:hover { background: var(--foreground); color: var(--background); }
 .socials svg { width: 1.1rem; height: 1.1rem; }
-.footer-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 2rem; padding: 3rem 0; }
-@media (min-width: 768px) { .footer-cols { grid-template-columns: 1.1fr 1fr 1.3fr; } }
-.footer-col h3 { font-size: .9rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; transition: color .3s; }
-.footer-col h3:hover { color: var(--link-hover); }
-html[lang="ar"] .footer-col h3 { letter-spacing: 0; font-size: 1.05rem; }
-.footer-col ul { display: grid; gap: .5rem; font-size: .9rem; font-weight: 300; }
-.footer-col a { transition: color .3s; position: relative; }
+.footer-cols { display: grid; grid-template-columns: 1fr; gap: 3rem 2.5rem; padding: 3.5rem 0; }
+@media (min-width: 768px) { .footer-cols { grid-template-columns: 1.2fr .8fr 1.3fr; } }
+/* Column headings: serif, large, with a short gradient underline. */
+.footer-col h3 { position: relative; font: 400 clamp(1.7rem, 2.4vw, 2.1rem)/1.1 var(--font-head); padding-bottom: .9rem; margin-bottom: 1.6rem; }
+.footer-col h3::after { content: ""; position: absolute; inset-inline-start: 0; bottom: 0; width: 3rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple)); }
+.footer-col ul { display: grid; gap: .85rem; font-size: .95rem; font-weight: 300; }
+.footer-col a, .footer-col li > div { display: inline-flex; align-items: flex-start; gap: .75rem; transition: color .3s; }
 .footer-col a:hover { color: var(--link-hover); }
+.foot-ico { flex: 0 0 auto; display: grid; place-items: center; width: 2rem; height: 2rem; margin-top: -.3rem; border-radius: 50%; border: 1px solid var(--line); transition: border-color .3s, background .3s; }
+.foot-ico svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.footer-col a:hover .foot-ico { border-color: var(--link-hover); background: rgba(93,230,255,.08); }
+/* Firm links: a short line that stretches on hover. */
+.foot-link a::before { content: ""; flex: 0 0 auto; width: .9rem; height: 1px; margin-top: .7em; background: currentColor; opacity: .5; transition: width .35s var(--ease), opacity .35s; }
+.foot-link a:hover::before { width: 1.6rem; opacity: 1; }
+.foot-all a { align-items: center; gap: .4rem; margin-top: .2rem; font-weight: 500; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; }
+html[lang="ar"] .foot-all a { letter-spacing: 0; }
+.foot-all svg { width: 1rem; height: 1rem; transition: transform .3s var(--ease); }
+html[dir="rtl"] .foot-all svg { transform: scaleX(-1); }
+.foot-all a:hover svg { transform: translate(2px, -2px); }
 .footer-col span[dir="ltr"] { unicode-bidi: isolate; display: inline-block; }
 .footer-bottom { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; padding-top: 2rem; border-top: 1px solid var(--line); }
 @media (min-width: 768px) { .footer-bottom { grid-template-columns: auto 1fr; } }

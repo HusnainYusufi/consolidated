@@ -204,9 +204,9 @@ window.I18N = {
     footer: {
       email: 'Send Us An Email',
       cols: [
-        { title: 'Services', links: [['Audit & Assurance Services', '#services'], ['Accounting & Bookkeeping Services', '#services'], ['Tax Advisory & Compliance Services', '#services'], ['Internal Audit & Risk Advisory Services', '#services'], ['Financial Advisory Services', '#services'], ['Corporate Advisory Services', '#services'], ['Outsourcing & Back-Office Services', '#services'], ['Training & Professional Development Services', '#services'], ['ERP Solutions & Digital Transformation', '#services']] },
-        { title: 'Company', links: [['About the Practice', '#about'], ['Vision & Mission', '#vision'], ['Core Values', '#values'], ['Leadership', '#team'], ['Clients', '#clients'], ['Careers', '/careers/']] },
-        { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
+        { title: 'Our Services', services: [0, 2, 1, 3, 4], all: 'All Services' },
+        { title: 'Our Firm', links: [['About Us', '#about'], ['Our Team', '#team'], ['Our Partners', '#clients'], ['Careers', '/careers/']] },
+        { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null, false, 'pin'], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426", false, 'map'], ['+962 79 687 5200', 'tel:+962796875200', true, 'phone'], ['info@caudit.net', 'mailto:info@caudit.net', true, 'mail'], ['www.caudit.net', 'https://www.caudit.net', true, 'globe']] }
       ],
       led: 'Executive governance',
       name1: 'Esam N. Almulazem, CFA, CPA',
@@ -423,9 +423,9 @@ window.I18N = {
     footer: {
       email: 'أرسل لنا بريداً إلكترونياً',
       cols: [
-        { title: 'الخدمات', links: [['خدمات التدقيق والتأكيد', '#services'], ['خدمات المحاسبة ومسك الدفاتر', '#services'], ['خدمات الاستشارات والامتثال الضريبي', '#services'], ['خدمات التدقيق الداخلي واستشارات المخاطر', '#services'], ['خدمات الاستشارات المالية', '#services'], ['خدمات استشارات الشركات', '#services'], ['خدمات الإسناد الخارجي والدعم المكتبي', '#services'], ['خدمات التدريب والتطوير المهني', '#services'], ['حلول تخطيط موارد المؤسسات والتحول الرقمي', '#services']] },
-        { title: 'المؤسسة', links: [['من نحن', '#about'], ['الرؤية والمهمة', '#vision'], ['القيم الأساسية', '#values'], ['القيادة', '#team'], ['عملاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
-        { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426"], ['+962 79 687 5200', 'tel:+962796875200', true], ['info@caudit.net', 'mailto:info@caudit.net', true], ['www.caudit.net', 'https://www.caudit.net', true]] }
+        { title: 'خدماتنا', services: [0, 2, 1, 3, 4], all: 'جميع الخدمات' },
+        { title: 'مؤسستنا', links: [['من نحن', '#about'], ['فريقنا', '#team'], ['شركاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
+        { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null, false, 'pin'], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426", false, 'map'], ['+962 79 687 5200', 'tel:+962796875200', true, 'phone'], ['info@caudit.net', 'mailto:info@caudit.net', true, 'mail'], ['www.caudit.net', 'https://www.caudit.net', true, 'globe']] }
       ],
       led: 'الحوكمة التنفيذية',
       name1: 'عصام ن. الملازم، CFA, CPA',

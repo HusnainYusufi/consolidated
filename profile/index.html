@@ -398,7 +398,7 @@
       <div class="core" ${o.coreAn ? `data-an="${o.coreAn}"` : ''} style="left:${cx}mm;top:${cy}mm;width:${o.core}mm;height:${o.core}mm;${o.coreStyle}">${o.coreHtml}</div>${nodes}</div>`;
   };
 
-  const cc = D.footer.cols.find(c => c.links.some(l => String(l[1] || '').startsWith('tel:'))) || D.footer.cols[D.footer.cols.length - 1];
+  const cc = D.footer.cols.find(c => (c.links || []).some(l => String(l[1] || '').startsWith('tel:'))) || D.footer.cols[D.footer.cols.length - 1];
   const addr = cc.links[0][0];
   const tel  = (cc.links.find(l => String(l[1] || '').startsWith('tel:')) || [''])[0];
   const mail = (cc.links.find(l => String(l[1] || '').startsWith('mailto:')) || [''])[0];
