@@ -138,8 +138,6 @@
         ${statIcon(s.icon)}
         <span>${esc(s.caption || s.label)}</span>
       </div>`).join('');
-    $('#intro-points').innerHTML = dict.intro.points.map((p) => `
-      <div class="ipoint" data-reveal><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p></div>`).join('');
   }
 
   // Floating value cards: positions mirror the reference's card layout.

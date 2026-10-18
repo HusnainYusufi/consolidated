@@ -286,12 +286,6 @@ html[dir="rtl"] .intro-text { align-items: flex-end; }
 .stat > span { max-width: 30ch; line-height: 1.5; font-size: .938rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--foreground); transition: color 1s; text-align: center; }
 html[lang="ar"] .stat span { letter-spacing: 0; }
 
-/* ---------- Intro points ---------- */
-.intro-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; width: 100%; }
-.ipoint { padding: 1.5rem; border-radius: 1.25rem; border: 1px solid var(--line); transition: border-color 1s; }
-.ipoint h3 { font-size: 1.4rem; font-style: italic; margin-bottom: .5rem; }
-html[lang="ar"] .ipoint h3 { font-style: normal; }
-.ipoint p { font-size: .95rem; font-weight: 300; }
 /* Stat icons: thin strokes in the text colour, inside a circle with the site's spinning gradient border. */
 .stat-badge { width: 5.5rem; height: 5.5rem; border-radius: 50%; padding: 1px; margin-bottom: 1.4rem; }
 .stat-badge-in { display: grid; place-items: center; width: 100%; height: 100%; border-radius: inherit; background: var(--background); transition: background-color 1s; }
@@ -647,7 +641,7 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   .cycle-wrap { width: auto; max-width: 100%; }
   .hero-side { max-width: 100%; }
   .hero-sub { max-width: 100%; font-size: 1rem; }
-  .vm-grid, .leader-inner, .leader-contact, .intro-points, .inquiry-grid, .field-row { grid-template-columns: 1fr; }
+  .vm-grid, .leader-inner, .leader-contact, .inquiry-grid, .field-row { grid-template-columns: 1fr; }
   /* Values: on phones the floating cards sit in a grid under the copy instead of around it. */
   .wonderland { margin-top: 5rem; padding: 4rem 0; min-height: auto; perspective: none; }
   .wl-scene { min-height: auto; display: flex; flex-direction: column-reverse; gap: 2.5rem; padding: 0 1.5rem; }
