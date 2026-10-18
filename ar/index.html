@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Roboto:wght@300;400;500;700&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261019k">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261019l">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -153,6 +153,7 @@
   
   
   
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -164,10 +165,10 @@
 
   <!-- Fixed hero background: rotating mark + scroll managed overlays -->
   <div class="hero-bg" id="hero-bg" aria-hidden="true">
-    <div class="hero-rotor"><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
-    <div class="hero-veil" id="hero-veil"></div>
-    <div class="hero-dim" id="hero-dim"></div>
-    <div class="hero-solid" id="hero-solid"></div>
+    <div class="hero-rotor" style=""><div class="hero-blob"></div><img src="/assets/img/icon.png" alt=""></div>
+    <div class="hero-veil" id="hero-veil" style=""></div>
+    <div class="hero-dim" id="hero-dim" style=""></div>
+    <div class="hero-solid" id="hero-solid" style=""></div>
   </div>
 
   <!-- Header -->
@@ -213,7 +214,7 @@
   <main id="top">
 
     <!-- 1. Hero -->
-    <section class="hero" id="hero" style="">
+    <section class="hero" id="hero">
       <div class="hero-content">
       <h1 class="hero-title">
         <span class="line"><span data-i18n="hero.line1">نقدم</span></span><span class="line line-cycle"><span class="cycle-wrap"><span class="cycle-reserve" aria-hidden="true"><span>خدمات التدقيق والتأكيد</span><span>خدمات المحاسبة ومسك الدفاتر</span><span>الاستشارات والامتثال الضريبي</span><span>التدقيق الداخلي واستشارات المخاطر</span><span>خدمات الاستشارات المالية</span><span>خدمات استشارات الشركات</span><span>خدمات الإسناد الخارجي والدعم المكتبي</span><span>التدريب والتطوير المهني</span><span>حلول تخطيط موارد المؤسسات والتحول الرقمي</span></span><span class="cycle" data-cycle="" aria-live="polite"><span>خدمات التدقيق والتأكيد</span></span></span></span>
@@ -264,12 +265,12 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="">
+        <article class="vm-card" data-reveal="" style="">
           <h3 class="vm-title" data-i18n="vision.title">رؤيتنا</h3>
           <p class="vm-text" data-i18n="vision.text">أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.</p>
           <p class="vm-tag" data-i18n="vision.tag">تميز مهني · قيادة موثوقة</p>
         </article>
-        <article class="vm-card" data-reveal="">
+        <article class="vm-card" data-reveal="" style="">
           <h3 class="vm-title" data-i18n="mission.title">مهمتنا</h3>
           <p class="vm-text" data-i18n="mission.text">تقديم خدمات استثنائية في التدقيق والضرائب والمحاسبة والاستشارات من خلال التميز المهني والنزاهة ونهج يركز على العميل. نلتزم ببناء شراكات دائمة، وتقديم حلول عملية ومبتكرة، وتمكين عملائنا من تحقيق الشفافية المالية والكفاءة التشغيلية والنمو المستدام لأعمالهم.</p>
           <p class="vm-tag" data-i18n="mission.tag">نزاهة مهنية · نجاح العملاء</p>
@@ -393,9 +394,9 @@
     <section class="section why container" id="why">
       <div class="why-head">
         <h2 class="h2"><span data-i18n="why.title1">لماذا</span> <span class="italic" data-i18n="why.title2">تختارنا</span></h2>
-        <p class="why-intro" data-i18n="why.intro" data-reveal="">نجمع بين الخبرة المهنية والمعرفة بالقطاعات ونهج يركز على العميل لتقديم حلول موثوقة وعملية وذات قيمة. ويمكّننا التزامنا بالجودة والاستقلالية والتحسين المستمر من بناء علاقات دائمة ودعم عملائنا في تحقيق أهداف أعمالهم.</p>
+        <p class="why-intro" data-i18n="why.intro" data-reveal="" style="">نجمع بين الخبرة المهنية والمعرفة بالقطاعات ونهج يركز على العميل لتقديم حلول موثوقة وعملية وذات قيمة. ويمكّننا التزامنا بالجودة والاستقلالية والتحسين المستمر من بناء علاقات دائمة ودعم عملائنا في تحقيق أهداف أعمالهم.</p>
       </div>
-      <div class="why-grid" id="why-grid">
+      <div class="why-grid" id="why-grid" hidden="">
       <article class="why-card gradient-border-card open" data-reveal="" style="">
         <div class="why-inner">
           <button class="why-toggle" type="button" aria-expanded="true" aria-controls="why-p0">
@@ -701,7 +702,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="">
+        <div class="expect-head" data-reveal="" style="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">يمكنك أن</span><span class="italic big" data-i18n="expect.t2">تتوقع</span><span class="italic" data-i18n="expect.t3">أننا</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -729,7 +730,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="">
+        <div class="inquiry-copy" data-reveal="" style="">
           <p class="label" data-i18n="inquiry.kicker">استفسار</p>
           <h2 class="h2"><span data-i18n="inquiry.title1">حدثنا عن</span> <span class="italic" data-i18n="inquiry.title2">أعمالك.</span></h2>
           <p class="light" data-i18n="inquiry.sub">شاركنا بعض التفاصيل عن أعمالك أو متطلباتك المهنية، وسيرد عليك أحد شركائنا أو المهنيين المؤهلين لدينا عبر البريد الإلكتروني أو واتساب خلال يوم عمل واحد.</p>
@@ -820,8 +821,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="/assets/js/config.js"></script>
-  <script src="/assets/js/i18n.js?v=20261019k"></script>
-  <script src="/assets/js/main.js?v=20261019k"></script>
+  <script src="/assets/js/i18n.js?v=20261019l"></script>
+  <script src="/assets/js/main.js?v=20261019l"></script>
 
 
 </body></html>

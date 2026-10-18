@@ -365,6 +365,8 @@ html[lang="ar"] .wl-kicker { letter-spacing: 0; font-size: .9rem; }
 .why-intro { margin: 0; font-family: var(--font-head); font-size: clamp(1.35rem, 1.9vw, 1.7rem); font-weight: 400; line-height: 1.4; color: var(--foreground); }
 /* Expanding cards: the panel animates from 0fr to 1fr rows, so it opens to its natural height. */
 .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; align-items: start; margin-top: 2.5rem; }
+/* The cards are hidden for now: remove the hidden attribute from #why-grid in index.html to show them again. */
+.why-grid[hidden] { display: none; }
 .why-card { border-radius: 1.4rem; padding: 1px; }
 .why-inner { position: relative; z-index: 1; border-radius: inherit; background: #141414; }
 .why-toggle { display: flex; align-items: center; gap: 1.1rem; width: 100%; padding: 1.6rem 1.6rem; background: none; border: 0; color: inherit; font: inherit; text-align: start; cursor: pointer; }
