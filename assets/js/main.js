@@ -296,12 +296,27 @@
     fields.forEach((k) => form.elements[k].addEventListener('input', () => form.elements[k].closest('.field').classList.remove('invalid')));
   }
 
+  // Why choose us: expanding cards. Each shows its number and title; a click grows it open to reveal the text.
+  // One card is open at a time and the first starts open, so visitors see that the cards open.
   function renderWhy() {
     const host = $('#why-grid'); if (!host || !dict.why) return;
     host.innerHTML = dict.why.items.map((it, i) => `
-      <article class="why-card gradient-border-card" data-reveal>
-        <div class="why-inner"><span class="why-num">${String(i + 1).padStart(2, '0')}</span><h3>${esc(it.title)}</h3><p>${esc(it.text)}</p></div>
+      <article class="why-card gradient-border-card ${i === 0 ? 'open' : ''}" data-reveal>
+        <div class="why-inner">
+          <button class="why-toggle" type="button" aria-expanded="${i === 0}" aria-controls="why-p${i}">
+            <span class="why-num">${String(i + 1).padStart(2, '0')}</span><h3>${esc(it.title)}</h3><span class="why-plus">${minusIcon}</span>
+          </button>
+          <div class="why-panel" id="why-p${i}"><div><p>${esc(it.text)}</p></div></div>
+        </div>
       </article>`).join('');
+    const cards = $$('.why-card', host);
+    let refresh = null;
+    const settle = () => { clearTimeout(refresh); refresh = setTimeout(() => hasGsap && ScrollTrigger.refresh(), 650); };
+    cards.forEach((card) => card.querySelector('.why-toggle').addEventListener('click', () => {
+      const opening = !card.classList.contains('open');
+      cards.forEach((c) => { const on = opening && c === card; c.classList.toggle('open', on); c.querySelector('.why-toggle').setAttribute('aria-expanded', String(on)); });
+      playHover(); settle();
+    }));
   }
 
   function renderAll() {
