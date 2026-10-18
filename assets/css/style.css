@@ -376,8 +376,6 @@ html[lang="ar"] .why-card h3 { font-style: normal; }
 
 /* ---------- Solutions accordion ---------- */
 .solutions { margin-top: 10rem; }
-.sol-head { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: end; }
-.sol-head .h2 { font-size: clamp(2.25rem, 4vw, 3rem); margin-bottom: 1.5rem; }
 .sol-intro { font-size: 1rem; display: grid; gap: 1rem; color: var(--foreground); }
 .sol-intro a, .sol-intro strong { color: #27fcf2; }
 html.light .sol-intro strong { color: #0084cc; }
@@ -637,7 +635,6 @@ html.dark:not(.light) .consult-inner { background: #1b1b1b; color: var(--brand-w
   .hero { padding-bottom: 12rem; }
   .featured-in { flex-direction: column; align-items: flex-start; gap: .75rem; bottom: 2rem; }
   .featured-in .marquee { width: 100%; }
-  .sol-head { grid-template-columns: 1fr; }
   .hero-content { grid-template-columns: 1fr; gap: 2rem; }
   .hero-title { font-size: clamp(2rem, 9.5vw, 3.2rem); max-width: 100%; }
   .hero-title .line { white-space: normal; flex-wrap: wrap; row-gap: .1em; }

@@ -65,7 +65,6 @@ window.I18N = {
     services: {
       title1: 'Audit, Tax Governance',
       title2: 'and Advisory in One Team',
-      cta: 'See Who We Serve',
       overviewTitle: "Service Overview",
       whyTitle: "Why Choose Consolidated?",
       discuss: 'Discuss This Service',
@@ -293,7 +292,6 @@ window.I18N = {
     services: {
       title1: 'تدقيق وحوكمة ضريبية',
       title2: 'واستشارات في فريق واحد',
-      cta: 'تعرّف على عملائنا',
       overviewTitle: "نظرة عامة على الخدمة",
       whyTitle: "لماذا الموحدة؟",
       discuss: 'استفسر عن هذه الخدمة',

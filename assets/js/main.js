@@ -422,7 +422,7 @@
     });
   }
 
-  /* ---------- Scroll managed background: dark hero → light intro → dark accordion ---------- */
+  /* ---------- Scroll managed background: dark hero → light intro → dark from the sectors onward ---------- */
   function initTheme() {
     if (!hasGsap) return;
     const veil = $('#hero-veil'), solid = $('#hero-solid'), rotor = $('.hero-rotor'), dim = $('#hero-dim');
@@ -436,16 +436,13 @@
       html.classList.toggle('light', m > .42);
     };
     if (reduced) { apply(0); return; }
-    const intro = $('#about'), wl = $('#values'), solHead = $('.sol-head'), acc = $('#services-accordion'), teamSec = $('#team');
+    const intro = $('#about'), wl = $('#values');
     // dark hero → light intro
     ScrollTrigger.create({ trigger: intro, start: 'top 60%', end: 'top 5%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(st.progress) });
     // light intro → dark wonderland
     const sectorsSec = $('#sectors') || wl;
     ScrollTrigger.create({ trigger: sectorsSec, start: 'top 70%', end: 'top 25%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(1 - st.progress) });
-    // dark wonderland → light services heading (the accordion rows carry their own colours)
-    ScrollTrigger.create({ trigger: solHead, start: 'top 80%', end: 'top 30%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(st.progress) });
-    // light accordion → dark team and everything after
-    ScrollTrigger.create({ trigger: acc, start: 'bottom 75%', endTrigger: teamSec, end: 'top 65%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(1 - st.progress) });
+    // From here on the page stays dark: the services rows carry their own colours.
     // Hero content fades out as the user scrolls away.
     gsap.to('.hero-title, .hero-sub, .hero-cta', { yPercent: -8, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '45% top', end: 'bottom top', scrub: true } });
   }
