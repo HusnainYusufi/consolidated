@@ -188,8 +188,6 @@ window.I18N = {
         { title: 'Internal Audit Consultant', text: 'Evaluation of internal control systems under the COSO framework, risk appraisal and regulatory compliance reviews.', tag: 'Full time · Amman' },
         { title: 'Trainee / Internship', text: 'For accounting and finance graduates preparing for JCPA, CPA, CMA or CIA. Hands-on exposure to audit, tax and financial consultation.', tag: 'Training programme' }
       ],
-      perksTitle: 'What we offer',
-      perks: ['Work alongside JCPA, CFA, CPA, CMA and CIA certified partners', 'Hands-on preparation for American professional certifications', 'Clients across manufacturing, trading, healthcare, education, NGOs and construction', 'A culture of integrity, transparency and quality'],
       formTitle: 'Application form',
       name: 'Full name', email: 'Email', phone: 'WhatsApp / phone', position: 'Position', experience: 'Years of experience', link: 'LinkedIn or portfolio (optional)', message: 'Cover message',
       cv: 'Upload your CV', cvHint: 'PDF, DOC or DOCX, up to 5 MB', cvChoose: 'Click to choose a file or drag it here',
@@ -416,8 +414,6 @@ window.I18N = {
         { title: 'مستشار تدقيق داخلي', text: 'تقييم أنظمة الرقابة الداخلية وفق إطار COSO، وتقييم المخاطر ومراجعات الامتثال التنظيمي.', tag: 'دوام كامل · عمّان' },
         { title: 'متدرب', text: 'لخريجي المحاسبة والمالية المستعدين لشهادات JCPA أو CPA أو CMA أو CIA. خبرة عملية في التدقيق والضرائب والاستشارات المالية.', tag: 'برنامج تدريبي' }
       ],
-      perksTitle: 'ما نقدمه',
-      perks: ['العمل إلى جانب شركاء معتمدين JCPA وCFA وCPA وCMA وCIA', 'إعداد عملي للشهادات المهنية الأمريكية', 'عملاء في الصناعة والتجارة والرعاية الصحية والتعليم والمنظمات غير الربحية والمقاولات', 'ثقافة قائمة على النزاهة والشفافية والجودة'],
       formTitle: 'نموذج التقديم',
       name: 'الاسم الكامل', email: 'البريد الإلكتروني', phone: 'واتساب / الهاتف', position: 'الوظيفة', experience: 'سنوات الخبرة', link: 'لينكدإن أو معرض الأعمال (اختياري)', message: 'رسالة تعريفية',
       cv: 'ارفع سيرتك الذاتية', cvHint: 'PDF أو DOC أو DOCX بحجم أقصى 5 ميغابايت', cvChoose: 'انقر لاختيار ملف أو اسحبه إلى هنا',

@@ -33,7 +33,6 @@
     $$('[data-wa]').forEach((a) => a.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent(dict.consult.waText));
     const c = dict.careers;
     $('#roles').innerHTML = c.roles.map((r, i) => `<article class="role-card" data-role="${i}" tabindex="0"><h3>${esc(r.title)}</h3><p>${esc(r.text)}</p><small>${esc(r.tag)}</small></article>`).join('');
-    $('#perks').innerHTML = c.perks.map((p) => `<li>${esc(p)}</li>`).join('');
     $('#apply-position').innerHTML = c.roles.map((r) => `<option value="${esc(r.title)}">${esc(r.title)}</option>`).join('');
     $('#apply-experience').innerHTML = c.experienceOptions.map((o) => `<option value="${esc(o)}">${esc(o)}</option>`).join('');
     $$('.role-card').forEach((card) => {
