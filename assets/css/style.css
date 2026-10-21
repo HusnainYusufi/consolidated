@@ -217,7 +217,7 @@ html[dir="rtl"] .btn-icon svg { transform: scaleX(-1); }
 .btn-white { --btn-border: #fff; --btn-text: #fff; --btn-fill: #fff; --btn-fill-text: #000; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; z-index: 20; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6rem 1.5rem 9rem; text-align: left; }
+.hero { position: relative; z-index: 20; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6rem 0 9rem; text-align: left; }
 html[dir="rtl"] .hero { text-align: right; }
 .hero-title { display: flex; flex-direction: column; gap: .2em; width: fit-content; max-width: 100%; font-size: clamp(2.4rem, 5.6vw, 4.9rem); line-height: .98; color: #fff; }
 .hero-title .line { display: flex; align-items: center; white-space: nowrap; }
@@ -237,7 +237,8 @@ html[lang="ar"] .cycle span { display: inline; }
 .line-cycle .cycle { flex-wrap: wrap; column-gap: .25em; white-space: normal; }
 .cycle-w { display: inline-flex; white-space: nowrap; overflow: hidden; padding-bottom: .14em; margin-bottom: -.14em; }
 html[lang="ar"] .cycle { display: block; }
-.hero-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem); gap: 3rem 4rem; align-items: center; width: min(100% - 3rem, var(--container)); margin-inline: auto; }
+/* The hero uses more of the screen than the rest of the page: headline near the start edge, copy near the end edge. */
+.hero-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem); gap: 3rem 4rem; align-items: center; width: min(100% - clamp(2.5rem, 7vw, 8rem), 104rem); margin-inline: auto; }
 .hero-side { display: flex; flex-direction: column; align-items: flex-start; }
 .hero-sub { max-width: 34ch; margin: 0 0 1.6rem; font: italic 400 1.6rem/1.35 var(--font-head); color: #ebebe6; }
 html[lang="ar"] .hero-sub { font-style: normal; font-size: 1.45rem; line-height: 1.6; }
