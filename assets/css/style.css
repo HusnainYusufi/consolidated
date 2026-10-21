@@ -345,11 +345,10 @@ html[lang="ar"] .founder-contact small { letter-spacing: 0; font-size: .8rem; }
 .wl-face::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85), transparent 60%); }
 .wl-face h3 { position: relative; z-index: 1; font-size: clamp(1.4rem, 1.8vw, 1.8rem); color: #fff; font-style: italic; }
 html[lang="ar"] .wl-face h3 { font-style: normal; }
-.wl-face.back { transform: rotateY(180deg); background: rgba(20,20,20,.92); color: var(--brand-white); justify-content: center; padding: 1.75rem; }
-.wl-face.back::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple)); }
+.wl-face.back { transform: rotateY(180deg); background: var(--bg-light); color: var(--ink); border-color: transparent; justify-content: center; padding: 1.75rem; }
 .wl-face.back::after { display: none; }
-.wl-face.back h3 { margin-bottom: .7rem; }
-.wl-face.back p { position: relative; z-index: 1; font-size: 1.15rem; line-height: 1.45; color: rgba(235,235,230,.85); }
+.wl-face.back h3 { margin-bottom: .7rem; color: var(--ink); }
+.wl-face.back p { position: relative; z-index: 1; font-size: 1.15rem; line-height: 1.45; color: rgba(27,27,27,.82); }
 .wl-card:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 1.25rem; }
 @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .values-grid { grid-template-columns: 1fr; } }
