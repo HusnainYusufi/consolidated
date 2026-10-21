@@ -292,13 +292,14 @@ html[lang="ar"] .intro-lead { font-style: normal; line-height: 1.7; }
 .stat > span { max-width: 26ch; font: 400 1.35rem/1.35 var(--font-head); letter-spacing: .01em; color: var(--foreground); transition: color 1s; text-align: center; }
 html[lang="ar"] .stat span { letter-spacing: 0; }
 
-/* Stat icons: large slim line icons in the cyan-blue-purple gradient, drawn in once on scroll. */
-.stat-icon { width: 4rem; height: 4rem; margin-bottom: 1.3rem; }
-.stat-icon svg { width: 100%; height: 100%; overflow: visible; }
-.stat-icon .sd { fill: none; stroke: url(#stat-grad); stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 1.4s var(--ease) .2s, opacity .2s .2s; }
+/* Stat icons: thin strokes in the text colour, inside a circle with the site's spinning gradient border. */
+.stat-badge { width: 5.5rem; height: 5.5rem; border-radius: 50%; padding: 1px; margin-bottom: 1.4rem; }
+.stat-badge-in { display: grid; place-items: center; width: 100%; height: 100%; border-radius: inherit; background: var(--background); transition: background-color 1s; }
+.stat-badge svg { width: 2.4rem; height: 2.4rem; overflow: visible; color: var(--foreground); transition: color 1s; }
+.stat-badge .sd { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 1.4s var(--ease) .2s, opacity .2s .2s; }
 /* Strokes are matched by .sd, not [pathLength]: Chrome does not restyle attribute selectors on SVG when .is-in is added. */
-.stat.is-in .stat-icon .sd { stroke-dashoffset: 0; opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .stat-icon .sd { transition: none; } }
+.stat.is-in .stat-badge .sd { stroke-dashoffset: 0; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .stat-badge .sd { transition: none; } }
 .vm-tag { margin-top: 1.2rem; font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
 html[lang="ar"] .vm-tag { letter-spacing: 0; font-size: .85rem; }
 
@@ -332,32 +333,26 @@ html[lang="ar"] .founder-contact small { letter-spacing: 0; font-size: .8rem; }
 .founder-contact a:hover { color: var(--link-hover); }
 .founder-contact span[dir="ltr"] { unicode-bidi: isolate; display: inline-block; }
 
-/* ---------- Wonderland (floating value cards) ---------- */
-.wonderland { margin-top: 7.5rem; padding: 7rem 0; overflow-x: clip; perspective: 1400px; min-height: 100svh; display: grid; place-items: center; }
-.wl-scene { --wl-w: clamp(11.5rem, 17.5vw, 17rem); position: relative; width: 100%; max-width: 90rem; min-height: max(100svh, calc(var(--wl-w) * 4.3)); display: grid; place-items: center; transform-style: preserve-3d; }
-.wl-group { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
-.wl-card { position: absolute; width: var(--wl-w); transform-style: preserve-3d; filter: drop-shadow(0 24px 60px rgba(0,0,0,.45)); will-change: transform; }
-.wl-card-inner { position: relative; border-radius: 1rem; aspect-ratio: 3 / 4; transition: transform .6s var(--ease); transform-style: preserve-3d; }
+/* ---------- Core values: About-style panel, then the six cards in a 3 x 2 grid ---------- */
+.values { margin-top: 7rem; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2rem; perspective: 1400px; }
+.wl-card { position: relative; transform-style: preserve-3d; cursor: pointer; }
+.wl-card-inner { position: relative; border-radius: 1.25rem; aspect-ratio: 4 / 3; transition: transform .7s var(--ease); transform-style: preserve-3d; }
 .wl-card.flipped .wl-card-inner { transform: rotateY(180deg); }
-/* The 3D scene would otherwise sit in front of the tilted cards and catch the pointer. */
-.wl-scene, .wl-group { pointer-events: none; }
-.wl-card { pointer-events: auto; }
-@media (hover: hover) and (pointer: fine) { .wl-card:hover .wl-card-inner, .wl-card:focus-visible .wl-card-inner { transform: rotateY(180deg); } .wl-card { cursor: pointer; } }
-.wl-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1rem; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,.15); background: var(--card-dark); box-shadow: 0 18px 50px rgba(0,0,0,.35); }
-.wl-face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; filter: saturate(1.1); }
+@media (hover: hover) and (pointer: fine) { .wl-card:hover .wl-card-inner, .wl-card:focus-visible .wl-card-inner { transform: rotateY(180deg); } }
+.wl-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; border-radius: inherit; overflow: hidden; border: 1px solid var(--line); }
+.wl-face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .wl-face::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85), transparent 60%); }
-.wl-face h3 { position: relative; z-index: 1; font-size: clamp(1.2rem, 1.6vw, 1.6rem); color: #fff; font-style: italic; }
+.wl-face h3 { position: relative; z-index: 1; font-size: clamp(1.4rem, 1.8vw, 1.8rem); color: #fff; font-style: italic; }
 html[lang="ar"] .wl-face h3 { font-style: normal; }
-.wl-face.back { transform: rotateY(180deg); background: #fffbf3; color: var(--ink); justify-content: center; padding: 1.4rem; }
+.wl-face.back { transform: rotateY(180deg); background: rgba(20,20,20,.92); color: var(--brand-white); justify-content: center; padding: 1.75rem; }
+.wl-face.back::before { content: ""; position: absolute; inset-inline: 0; top: 0; height: 2px; background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple)); }
 .wl-face.back::after { display: none; }
-.wl-face.back p { position: relative; z-index: 1; font-size: clamp(.7rem, .95vw, .9rem); line-height: 1.45; }
-.wl-face.back h3 { color: var(--ink); margin-bottom: .6rem; }
-.wl-copy { position: relative; z-index: 5; text-align: center; display: flex; flex-direction: column; align-items: center; pointer-events: none; max-width: 100%; }
-.wl-kicker { color: rgba(235,235,230,.75); margin-bottom: 1.25rem; font: italic 400 1.35rem/1.2 var(--font-head); letter-spacing: .02em; }
-html[lang="ar"] .wl-kicker { letter-spacing: 0; font-style: normal; font-size: 1.3rem; }
-.wl-title { display: flex; flex-direction: column; align-items: center; gap: .1em; font-size: clamp(3rem, 7vw, 6rem); line-height: .95; color: var(--brand-white); }
-/* The intro sits between the inner cards, so its width is capped by the space they leave. */
-.wl-sub { color: rgba(235,235,230,.75); margin: 1.2rem auto .6rem; max-width: min(58ch, calc(min(100vw, 90rem) * .84 - 2 * var(--wl-w) - 2.5rem)); padding-inline: 1.5rem; }
+.wl-face.back h3 { margin-bottom: .7rem; }
+.wl-face.back p { position: relative; z-index: 1; font-size: 1.15rem; line-height: 1.45; color: rgba(235,235,230,.85); }
+.wl-card:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 1.25rem; }
+@media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .values-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Why choose us ---------- */
 .why { margin-top: 2rem; padding-block: 4rem 2rem; }
@@ -692,14 +687,6 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
   .hero-side { max-width: 100%; }
   .hero-sub { max-width: 100%; font-size: 1.3rem; }
   .vm-grid, .leader-inner, .leader-contact, .inquiry-grid, .field-row { grid-template-columns: 1fr; }
-  /* Values: on phones the floating cards sit in a grid under the copy instead of around it. */
-  .wonderland { margin-top: 5rem; padding: 4rem 0; min-height: auto; perspective: none; }
-  .wl-scene { min-height: auto; display: flex; flex-direction: column-reverse; gap: 2.5rem; padding: 0 1.5rem; }
-  .wl-group { position: static; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; transform: none !important; }
-  .wl-card { position: static !important; width: 100% !important; left: auto !important; top: auto !important; }
-  .wl-card-inner { aspect-ratio: 3 / 4; }
-  .wl-title { font-size: clamp(2.6rem, 12vw, 3.4rem); }
-  .wl-sub { padding-inline: 0; max-width: 100%; }
   .leader-photo { min-height: 30rem; }
   .hero-rule { width: 6rem; }
 }
@@ -749,7 +736,7 @@ html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
    Paragraphs, lists and card copy use the heading serif in its upright style (Instrument Serif; Amiri in Arabic).
    Headings keep their own styles, and small interface text (menu, buttons, form fields, uppercase labels) stays
    in the body sans for legibility. The serif runs small, so sizes are set a step larger than the sans they replace. */
-.hero-sub, .intro-lead, .vm-text, .why-intro, .why-card p, .wl-sub, .wl-face.back p,
+.hero-sub, .intro-lead, .vm-text, .why-intro, .why-card p, .wl-face.back p,
 .acc-tagline, .acc-prose p, .acc-prose .acc-list li, .leader-text p, .founder-bio p, .clients-intro,
 .ecard-body p, .inquiry-copy .light, .inquiry-points li, .visit-address, .footer-col ul,
 .consult-text .light, .careers-hero .light, .role-card p {
@@ -757,8 +744,6 @@ html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
 }
 .vm-text { font-size: 1.25rem; line-height: 1.5; }
 .why-card p { font-size: 1.15rem; line-height: 1.5; }
-.wl-sub { font-size: 1.25rem; line-height: 1.5; }
-.wl-face.back p { font-size: clamp(.85rem, 1.1vw, 1.05rem); line-height: 1.4; }
 .acc-tagline { font-size: 1.2rem; }
 .acc-prose p { font-size: 1.15rem; line-height: 1.45; }
 .acc-prose .acc-list li { font-size: 1.05rem; line-height: 1.35; }
@@ -768,7 +753,7 @@ html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
 .footer-col ul { font-size: 1.1rem; }
 .consult-text .light, .careers-hero .light { font-size: 1.2rem; line-height: 1.5; }
 .role-card p { font-size: 1.1rem; line-height: 1.45; }
-html[lang="ar"] :is(.vm-text, .why-card p, .wl-sub, .acc-prose p, .leader-text p, .founder-bio p, .inquiry-copy .light, .consult-text .light, .careers-hero .light, .role-card p) { line-height: 1.8; }
+html[lang="ar"] :is(.vm-text, .why-card p, .acc-prose p, .leader-text p, .founder-bio p, .inquiry-copy .light, .consult-text .light, .careers-hero .light, .role-card p) { line-height: 1.8; }
 
 /* Sectors heading: italic serif at the content's start edge. */
 .portfolio .label { font-style: italic; text-align: start; }

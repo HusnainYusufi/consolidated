@@ -3,7 +3,7 @@
    system): particle preloader, Lenis smooth scroll, GSAP ScrollTrigger,
    cycling hero word, scroll managed dark/light theme, character
    reveal, portfolio marquees with clip reveal, floating value cards
-   with group tilt, accordion, team stack carousel, i18n.
+   flip cards, accordion, team stack carousel, i18n.
    ------------------------------------------------------------------ */
 (function () {
   'use strict';
@@ -138,20 +138,17 @@
       <div class="marquee"><div class="marquee-track right" style="--dur:50s">${dup(b)}</div></div>`;
   }
 
-  // Stat icons: large, slim Lucide line icons standing on their own above each caption (no frame).
+  // Stat icons: thin monochrome line drawings (24-unit grid) in a circle with the site's spinning gradient border.
   // Each stroke has pathLength=1 and the .sd class so CSS can draw it in when the stat enters the viewport.
   const statIcons = {
-    founded: '<path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/>',
-    years: '<path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/>',
-    clients: '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
-    location: '<path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"/>'
+    founded: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15.25 2 2 4-4.25"/>',
+    years: '<path d="M6 3h12M6 21h12"/><path d="M7.5 3v3.2a3 3 0 0 0 .9 2.1L12 12l-3.6 3.7a3 3 0 0 0-.9 2.1V21"/><path d="M16.5 3v3.2a3 3 0 0 1-.9 2.1L12 12l3.6 3.7a3 3 0 0 1 .9 2.1V21"/><path d="M10 18.5h4"/>',
+    clients: '<circle cx="9" cy="8" r="3.5"/><path d="M2.75 20v-1.25a4.25 4.25 0 0 1 4.25-4.25h4a4.25 4.25 0 0 1 4.25 4.25V20"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.7a4.25 4.25 0 0 1 3.25 4.05V20"/>',
+    location: '<path d="M19 10c0 4.6-5 9.3-6.6 10.7a.6.6 0 0 1-.8 0C10 19.3 5 14.6 5 10a7 7 0 0 1 14 0"/><circle cx="12" cy="10" r="2.6"/>'
   };
-  const statIcon = (key) => statIcons[key] ? `<div class="stat-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24">${statIcons[key].replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" class="sd"')}</svg></div>` : '';
+  const statIcon = (key) => statIcons[key] ? `<div class="stat-badge gradient-border-card" aria-hidden="true"><div class="stat-badge-in">
+      <svg viewBox="0 0 24 24">${statIcons[key].replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" class="sd"')}</svg></div></div>` : '';
 
-  // One shared gradient for the stat icons' strokes (userSpaceOnUse so straight lines still get colour).
-  if (!document.getElementById('stat-grad-defs')) document.body.insertAdjacentHTML('beforeend',
-    '<svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"/><stop offset=".5" stop-color="#3064d0"/><stop offset="1" stop-color="#8739d5"/></linearGradient></defs></svg>');
   function renderStats() {
     $('#stats').innerHTML = dict.stats.map((s) => `
       <div class="stat" data-reveal data-reveal-y="56">
@@ -160,26 +157,13 @@
       </div>`).join('');
   }
 
-  // Floating value cards: positions mirror the reference's card layout.
-  // Right-hand cards are placed by their right edge (calc with the card width) so larger cards never run off-screen.
-  const wlLayout = [
-    { x: '2%', y: '1%', rot: -7, delay: 0, dur: 6.2 },
-    { x: 'calc(98% - var(--wl-w))', y: '1%', rot: 7, delay: .6, dur: 5.6 },
-    { x: '8%', y: '35%', rot: 5, delay: 1, dur: 5.8 },
-    { x: 'calc(92% - var(--wl-w))', y: '35%', rot: -6, delay: 1.4, dur: 6.6 },
-    { x: '2%', y: '68%', rot: 8, delay: .3, dur: 6.0 },
-    { x: 'calc(98% - var(--wl-w))', y: '68%', rot: -8, delay: 1.8, dur: 5.4 }
-  ];
   function renderValues() {
-    $('#wl-group').innerHTML = dict.values.cards.map((c, i) => {
-      const L = wlLayout[i % wlLayout.length];
-      return `<div class="wl-card" style="left:${L.x};top:${L.y};--rot:${L.rot}deg" data-rot="${L.rot}" data-delay="${L.delay}" data-dur="${L.dur}" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(c.title)}">
+    $('#wl-group').innerHTML = dict.values.cards.map((c) => `<div class="wl-card" tabindex="0" role="button" aria-pressed="false" aria-label="${esc(c.title)}">
         <div class="wl-card-inner">
-          <div class="wl-face"><img src="/assets/img/${c.img}.jpg" alt=""><h3>${esc(c.title)}</h3></div>
+          <div class="wl-face"><img src="/assets/img/${c.img}.jpg" alt="" loading="lazy"><h3>${esc(c.title)}</h3></div>
           <div class="wl-face back"><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>
-        </div></div>`;
-    }).join('');
-    initWonderland();
+        </div></div>`).join('');
+    initValueCards();
   }
 
   const minusIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M5 12h14"/><path class="v" d="M12 5v14"/></svg>';
@@ -562,31 +546,13 @@
     if (lenis) open ? lenis.stop() : lenis.start();
   });
 
-  /* ---------- Wonderland: floating cards, group tilt, flip ---------- */
-  function initWonderland() {
-    const section = $('#values'), group = $('#wl-group');
-    const cards = $$('.wl-card', group);
+  /* ---------- Core value cards: turn over on hover (mouse) or tap (touch) to show the meaning ---------- */
+  function initValueCards() {
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    // Idle float: each card wobbles around its base rotation on its own delay.
-    cards.forEach((c) => {
-      const r = +c.dataset.rot;
-      if (hasGsap && !reduced) {
-        gsap.set(c, { rotation: r });
-        gsap.to(c, { keyframes: [{ rotation: r + 2 }, { rotation: r - 2 }, { rotation: r + 1 }, { rotation: r }], duration: +c.dataset.dur, repeat: -1, ease: 'sine.inOut', delay: +c.dataset.delay });
-      } else c.style.transform = `rotate(${r}deg)`;
+    $$('#wl-group .wl-card').forEach((c) => {
       const flip = () => { c.classList.toggle('flipped'); c.setAttribute('aria-pressed', String(c.classList.contains('flipped'))); };
-      // Mouse devices turn the card over on hover (CSS); touch devices flip it with a tap.
       if (!fine) c.addEventListener('click', flip);
       c.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
-    });
-    if (!fine || reduced || !hasGsap) return;
-    const rx = gsap.quickTo(group, 'rotationX', { duration: .6, ease: 'power3.out' });
-    const ry = gsap.quickTo(group, 'rotationY', { duration: .6, ease: 'power3.out' });
-    section.addEventListener('pointerleave', () => { rx(0); ry(0); });
-    section.addEventListener('pointermove', (e) => {
-      const r = section.getBoundingClientRect();
-      ry(5 * ((e.clientX - r.left) / r.width * 2 - 1));
-      rx(-(4 * ((e.clientY - r.top) / r.height * 2 - 1)));
     });
   }
 

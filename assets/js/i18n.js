@@ -41,7 +41,7 @@ window.I18N = {
       { icon: 'founded', n: 2015, label: 'Founded · 26 Feb 2015', plain: true, caption: 'Founded since 2015' },
       { icon: 'years', n: 10, suffix: '+', label: 'Years of auditing, tax advisory and financial consulting', caption: '10+ years of auditing, tax advisory and financial consulting' },
       { icon: 'clients', n: 500, suffix: '+', label: 'Corporate, Industrial & NGO Client Partners', caption: '500+ corporate, wealthy individuals & NGO clientele' },
-      { icon: 'location', text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan', caption: 'Amman · Hashemite Kingdom of Jordan' }
+      { icon: 'location', text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan', caption: 'Based in Jordan, serving the MENA region' }
     ],
     vision: { title: 'Our Vision', text: 'To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.', tag: 'Professional excellence · Trusted leadership' },
     mission: { title: 'Our Mission', text: 'To deliver exceptional audit, tax, accounting, and advisory services through professional excellence, integrity, and a client-focused approach. We are committed to building lasting partnerships, providing practical and innovative solutions, and empowering our clients to achieve financial transparency, operational efficiency, and sustainable business growth.', tag: 'Professional integrity · Client success' },
@@ -263,7 +263,7 @@ window.I18N = {
       { icon: 'founded', n: 2015, label: 'التأسيس · 26 شباط 2015', plain: true, caption: 'تأسست منذ عام 2015' },
       { icon: 'years', n: 10, suffix: '+', label: 'سنوات من التدقيق والاستشارات الضريبية والمالية', caption: 'أكثر من 10 سنوات من التدقيق والاستشارات الضريبية والمالية' },
       { icon: 'clients', n: 500, suffix: '+', label: 'شريك من الشركات والمصانع والمنظمات', caption: 'أكثر من 500 عميل من الشركات والأفراد ذوي الملاءة والمنظمات' },
-      { icon: 'location', text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية', caption: 'عمّان · المملكة الأردنية الهاشمية' }
+      { icon: 'location', text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية', caption: 'مقرنا الأردن، ونخدم منطقة الشرق الأوسط وشمال أفريقيا' }
     ],
     vision: { title: 'رؤيتنا', text: 'أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.', tag: 'تميز مهني · قيادة موثوقة' },
     mission: { title: 'مهمتنا', text: 'تقديم خدمات استثنائية في التدقيق والضرائب والمحاسبة والاستشارات من خلال التميز المهني والنزاهة ونهج يركز على العميل. نلتزم ببناء شراكات دائمة، وتقديم حلول عملية ومبتكرة، وتمكين عملائنا من تحقيق الشفافية المالية والكفاءة التشغيلية والنمو المستدام لأعمالهم.', tag: 'نزاهة مهنية · نجاح العملاء' },
