@@ -115,7 +115,7 @@ html[dir="rtl"] .sound-btn { right: auto; left: 1.25rem; }
 .hero-rotor img { width: 100%; height: 100%; object-fit: contain; opacity: .18; filter: blur(8px); }
 @keyframes rotor { from { transform: rotateY(0deg) rotateX(14deg); } to { transform: rotateY(360deg) rotateX(14deg); } }
 .hero-veil { position: absolute; inset: 0; background: rgba(0,0,0,.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
-.hero-dim { position: absolute; inset: 0; background: rgba(22,22,22,.78); opacity: 0; }
+.hero-dim { position: absolute; inset: 0; background: rgba(18,18,18,.62); opacity: 0; }
 .hero-solid { position: absolute; inset: 0; background: var(--bg-light); opacity: 0; }
 
 /* ---------- Header ---------- */
@@ -283,7 +283,7 @@ html[dir="rtl"] .intro-text { align-items: flex-end; }
 .intro-lead { margin: 0; max-width: 62ch; font: italic 400 clamp(1.4rem, 1.9vw, 1.7rem)/1.45 var(--font-head); }
 html[lang="ar"] .intro-lead { font-style: normal; line-height: 1.7; }
 /* About: framed like the vision/mission cards, heading on the start side, copy on the end side. */
-.about-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 2rem 4rem; align-items: start; width: 100%; padding: 3rem; border: 1px solid var(--line); border-radius: 1.5rem; transition: border-color 1s; }
+.about-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 2rem 4rem; align-items: start; width: 100%; padding: 3rem; border: 1px solid var(--line); border-radius: 1.5rem; background: rgba(20,20,20,.45); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
 .about-title { font: italic 400 clamp(2.6rem, 5vw, 4rem)/1 var(--font-head); }
 .intro-big { font-size: clamp(1.5rem, 2.8vw, 2.25rem); line-height: 1.25; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin: 5rem auto 0; padding: 0 1rem; place-items: start center; }
@@ -304,7 +304,7 @@ html[lang="ar"] .vm-tag { letter-spacing: 0; font-size: .85rem; }
 
 /* ---------- Vision and mission ---------- */
 .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 5rem; }
-.vm-card { padding: 2.25rem; border-radius: 1.5rem; border: 1px solid var(--line); transition: border-color 1s; }
+.vm-card { padding: 2.25rem; border-radius: 1.5rem; border: 1px solid var(--line); background: rgba(20,20,20,.45); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
 .vm-title { font-size: 2.2rem; font-style: italic; margin: 0 0 1rem; }
 html[lang="ar"] .vm-title { font-style: normal; }
 .vm-text { font-size: 1.05rem; line-height: 1.5; }

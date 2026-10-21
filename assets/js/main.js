@@ -508,29 +508,12 @@
     });
   }
 
-  /* ---------- Scroll managed background: dark hero → light intro → dark from the sectors onward ---------- */
+  /* ---------- Scroll managed background: one dark look for the whole page ----------
+     The hero's colourful glow stays behind everything; it dims (but never disappears) as the hero scrolls away,
+     so About and the sections after it read as the same page rather than a separate light site. */
   function initTheme() {
-    if (!hasGsap) return;
-    const veil = $('#hero-veil'), solid = $('#hero-solid'), rotor = $('.hero-rotor'), dim = $('#hero-dim'), heroSec = $('#hero');
-    gsap.to(dim, { opacity: 1, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: SCRUB } });
-    const apply = (p) => {
-      // p: 0 = dark hero look, 1 = light cream look
-      const m = gsap.utils.clamp(0, 1, (p - .06) / .94);
-      gsap.set(veil, { opacity: 1 - m });
-      gsap.set(solid, { opacity: m });
-      if (rotor) gsap.set(rotor, { opacity: m <= .25 ? 1 : m >= .72 ? 0 : 1 - (m - .25) / .47 });
-      html.classList.toggle('light', m > .42);
-      // The hero's white type would sit on the light background, so it fades out as the page turns light.
-      if (heroSec) gsap.set(heroSec, { opacity: gsap.utils.clamp(0, 1, 1 - m * 1.6) });
-    };
-    if (reduced) { apply(0); return; }
-    const intro = $('#about'), wl = $('#values');
-    // dark hero → light intro, finished before the About copy reaches reading height
-    ScrollTrigger.create({ trigger: intro, start: 'top 95%', end: 'top 55%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(st.progress) });
-    // light intro → dark wonderland
-    const sectorsSec = $('#sectors') || wl;
-    ScrollTrigger.create({ trigger: sectorsSec, start: 'top 70%', end: 'top 25%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => apply(1 - st.progress) });
-    // From here on the page stays dark: the services rows carry their own colours.
+    if (!hasGsap || reduced) return;
+    gsap.to('#hero-dim', { opacity: 1, ease: 'none', scrollTrigger: { trigger: '.hero', start: '30% top', end: 'bottom top', scrub: SCRUB } });
     // Hero content fades out as the user scrolls away.
     gsap.to('.hero-title, .hero-sub, .hero-cta', { yPercent: -8, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: '45% top', end: 'bottom top', scrub: true } });
   }
