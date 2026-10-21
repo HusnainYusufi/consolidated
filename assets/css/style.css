@@ -492,7 +492,7 @@ html[lang="ar"] .client-card b { letter-spacing: 0; font-size: .72rem; }
 @media (min-width: 768px) { .stack-wrap { flex-direction: row; gap: 3.5rem; padding: 6rem 0; } }
 .stack { position: relative; flex: 0 0 auto; width: 100%; height: 10rem; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); }
 @media (min-width: 768px) { .stack { width: 11.25rem; height: 31rem; -webkit-mask-image: linear-gradient(180deg, transparent, #fff 20%, #fff 80%, transparent); mask-image: linear-gradient(180deg, transparent, #fff 20%, #fff 80%, transparent); } }
-.stack-item { position: absolute; top: 50%; left: 50%; width: 7.5rem; height: 7.5rem; margin: -3.75rem 0 0 -3.75rem; border-radius: 999px; border: 0; background: #0b0b0b; display: grid; place-items: center; cursor: pointer; overflow: hidden; will-change: transform; padding: 0; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
+.stack-item { position: absolute; top: 50%; left: 50%; overflow: hidden; width: 7.5rem; height: 7.5rem; margin: -3.75rem 0 0 -3.75rem; border-radius: 999px; border: 0; background: #0b0b0b; display: grid; place-items: center; cursor: pointer; overflow: hidden; will-change: transform; padding: 0; box-shadow: 0 0 0 1px rgba(255,255,255,.08); }
 @media (min-width: 768px) { .stack-item { width: 11.25rem; height: 11.25rem; margin: -5.625rem 0 0 -5.625rem; } }
 .stack-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 12%; display: block; transform: scale(1.04); }
 .stack-item b { font: 400 2.2rem var(--font-head); color: var(--brand-white); letter-spacing: .04em; }
@@ -669,7 +669,9 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
 /* Founder photo has more headroom than the others: frame it a little lower. */
 .consult-photo { background: #000; }
 .consult-photo img[src*="esam"] { height: auto; transform: none; }
-.stack-item img[src*="esam"] { object-position: center 22%; }
+/* Team thumbnails: each photo is shot at a different distance, so a few are framed individually to match the rest. */
+.stack-item img[src*="esam"] { object-position: center 6%; transform: none; }
+.stack-item img[src*="masoud"] { object-position: center 22%; transform: scale(1.35); transform-origin: 50% 28%; }
 
 
 /* ---------- Responsive ---------- */
@@ -780,17 +782,10 @@ html[lang="ar"] .portfolio .label { font-style: normal; }
 .site-toast.show { opacity: 1; transform: none; }
 
 /* ---------- Section heading underline ----------
-   An angled tick rising at the heading's start, a gradient line under the heading, and a dot at its end. */
-.hd-line { position: relative; width: fit-content; max-width: 100%; padding-bottom: 1.2rem; text-align: start; }
-/* The tick runs from the line up to the foot of the first letter: --tk-rise is the baseline's height above the line
-   (measured: ~28px in English, ~33px in Arabic), and the tick leans 38deg, so it covers rise * tan(38deg) sideways. */
-.hd-line { --tk-rise: 28px; --tk-run: calc(var(--tk-rise) * .78); }
-html[lang="ar"] .hd-line { --tk-rise: 33px; }
-.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: var(--tk-run); width: calc(100% - var(--tk-run) + .3rem); height: 9px;
-  background: radial-gradient(circle at calc(100% - 4.5px) 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(90deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
-.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(var(--tk-run) - 1px); width: 2px; height: calc(var(--tk-rise) * 1.27); border-radius: 2px; background: var(--cyan); transform-origin: 50% 100%; transform: rotate(-38deg); }
-html[dir="rtl"] .hd-line::after { background: radial-gradient(circle at 4.5px 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(270deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
-html[dir="rtl"] .hd-line::before { transform: rotate(38deg); }
+   A simple gradient line exactly as long as the heading text. */
+.hd-line { position: relative; width: fit-content; max-width: 100%; padding-bottom: .9rem; text-align: start; }
+.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, var(--cyan), var(--blue) 55%, var(--purple)); }
+html[dir="rtl"] .hd-line::after { background: linear-gradient(270deg, var(--cyan), var(--blue) 55%, var(--purple)); }
 .about-title.hd-line, .why-head .hd-line { margin-bottom: .4rem; }
 
 /* Framed panels (About, Why Choose Us) reach out by their own padding, so their headings line up with every other
