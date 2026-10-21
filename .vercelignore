@@ -1,0 +1,4 @@
+# Keep CLI deploys identical to Git deploys: never upload local secrets or Vercel link data.
+.env*
+.vercel
+.git
