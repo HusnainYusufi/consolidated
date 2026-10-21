@@ -460,8 +460,9 @@ html[lang="ar"] .badges span { letter-spacing: 0; font-size: .8rem; }
 .leaders-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
 .leader-card { border-radius: 1.5rem; padding: 1px; }
 .leader-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 18rem 1fr; border-radius: 1.5rem; overflow: hidden; background: #1b1b1b; color: var(--brand-white); }
-.leader-photo { position: relative; margin: 0; min-height: 26rem; }
-.leader-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1); transition: filter .8s; }
+.leader-photo { position: relative; margin: 0; min-height: 26rem; background: #000; }
+/* The whole portrait is shown at the card's width, sitting on the bottom edge; the photos' black backdrop fills above. */
+.leader-photo img { position: absolute; inset: auto 0 0 0; width: 100%; height: auto; filter: grayscale(1); transition: filter .8s; }
 .leader-card:hover .leader-photo img { filter: grayscale(0); }
 .leader-photo figcaption { position: absolute; inset-inline: 0; bottom: 0; padding: 7rem 1.25rem 1.5rem; text-align: center; color: #fffbf3; background: linear-gradient(to top, rgba(0,0,0,.92), rgba(0,0,0,.5), transparent); display: flex; flex-direction: column; align-items: center; gap: .4rem; }
 .leader-photo strong { font: 400 1.5rem/1.05 var(--font-head); }
@@ -664,9 +665,10 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
 .consult-text .btn { justify-content: space-between; }
 
 /* Founder photo has more headroom than the others: frame it a little lower. */
-.consult-photo img[src*="esam"] { object-position: center 32%; transform: scale(1); }
+.consult-photo { background: #000; }
+.consult-photo img[src*="esam"] { height: auto; transform: none; }
 .stack-item img[src*="esam"] { object-position: center 22%; }
-.leader-photo img[src*="esam"] { object-position: center 18%; }
+
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
@@ -776,13 +778,13 @@ html[lang="ar"] .portfolio .label { font-style: normal; }
 .site-toast.show { opacity: 1; transform: none; }
 
 /* ---------- Section heading underline ----------
-   A dot, a gradient line running a little past the heading, and an angled tick at the end. */
+   An angled tick rising at the heading's start, a gradient line under the heading, and a dot at its end. */
 .hd-line { position: relative; width: fit-content; max-width: 100%; padding-bottom: 1.2rem; text-align: start; }
-.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: -.3rem; width: calc(100% + 1.8rem); height: 9px;
-  background: radial-gradient(circle at 4.5px 50%, var(--cyan) 3.5px, transparent 4px) no-repeat, linear-gradient(90deg, var(--cyan), var(--blue) 45%, var(--purple)) 0 50% / 100% 2px no-repeat; }
-.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(100% + 1.5rem - 1px); width: 2px; height: 1.9rem; border-radius: 2px; background: var(--purple); transform-origin: 50% 100%; transform: rotate(38deg); }
-html[dir="rtl"] .hd-line::after { background: radial-gradient(circle at calc(100% - 4.5px) 50%, var(--cyan) 3.5px, transparent 4px) no-repeat, linear-gradient(270deg, var(--cyan), var(--blue) 45%, var(--purple)) 0 50% / 100% 2px no-repeat; }
-html[dir="rtl"] .hd-line::before { transform: rotate(-38deg); }
+.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: .85rem; width: calc(100% - .55rem); height: 9px;
+  background: radial-gradient(circle at calc(100% - 4.5px) 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(90deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
+.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(.85rem - 1px); width: 2px; height: 1.4rem; border-radius: 2px; background: var(--cyan); transform-origin: 50% 100%; transform: rotate(-38deg); }
+html[dir="rtl"] .hd-line::after { background: radial-gradient(circle at 4.5px 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(270deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
+html[dir="rtl"] .hd-line::before { transform: rotate(38deg); }
 .about-title.hd-line, .why-head .hd-line { margin-bottom: .4rem; }
 
 /* Framed panels (About, Why Choose Us) reach out by their own padding, so their headings line up with every other
