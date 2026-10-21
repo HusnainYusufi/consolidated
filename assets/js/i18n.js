@@ -81,13 +81,13 @@ window.I18N = {
     team: {
       title: 'The People Behind Our Professional Excellence',
       people: [
-        {"name": "Esam N. Almulazem, CFA, CPA, JCPA, CMA, CIA", "role": "Founder and Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam", "thumb": "esam-thumb"},
+        {"name": "Esam N. Almulazem, CFA, CPA, JCPA, CMA, CIA", "role": "Founder and Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam", "thumb": "esam-thumb-2"},
         {"name": "Abedalaziz F.J Abdelhadi", "role": "Accounting & Tax Partner", "line": "Leads the firm's Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.", "photo": "abdelhadi"},
         {"name": "Kareem Masoud", "role": "External Auditor", "line": "Supervises audit engagements, manages audit teams, reviews working papers, and ensures compliance with professional auditing standards and quality requirements.", "photo": "masoud", "thumb": "masoud-thumb"},
         {"name": "Bashar Hamdan", "role": "Accountant and Tax Officer", "line": "Managing financial records, prepares tax returns, and ensures compliance with accounting standards and tax regulations.", "photo": "hamdan"},
         {"name": "Mohammad Alfares", "role": "External Auditor", "line": "Integrates AI, data analytics, and emerging technologies into audit processes to enhance audit quality, efficiency, and accuracy.", "photo": "alfares"},
         {"name": "Mohammad Abu Hijleh", "role": "External Auditor", "line": "Assist in audit engagements, performs audit procedures, and prepares working papers while ensuring compliance with professional auditing standards.", "photo": "abuhejleh"},
-        {"name": "Lojen Yousef", "role": "HR and Admin Officer", "line": "Manages human resources, employee relations, and administrative operations while ensuring compliance with company policies and labor regulations.", "photo": "lojen"}
+        {"name": "Lojen Yousef", "role": "HR and Admin Officer", "line": "Manages human resources, employee relations, and administrative operations while ensuring compliance with company policies and labor regulations.", "photo": "lojen-2"}
       ]
     },
     leaders: {
@@ -303,13 +303,13 @@ window.I18N = {
     team: {
       title: 'الأشخاص وراء تميزنا المهني',
       people: [
-        {"name": "عصام ن. الملازم، CFA, CPA, JCPA, CMA, CIA", "role": "المؤسس وشريك التدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam", "thumb": "esam-thumb"},
+        {"name": "عصام ن. الملازم، CFA, CPA, JCPA, CMA, CIA", "role": "المؤسس وشريك التدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam", "thumb": "esam-thumb-2"},
         {"name": "عبد العزيز ف. ج. عبد الهادي", "role": "شريك المحاسبة والضرائب", "line": "يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية والامتثال التنظيمي.", "photo": "abdelhadi"},
         {"name": "كريم مسعود", "role": "مدقق خارجي", "line": "يشرف على مهام التدقيق ويدير فرق التدقيق ويراجع أوراق العمل ويضمن الالتزام بمعايير التدقيق المهنية ومتطلبات الجودة.", "photo": "masoud", "thumb": "masoud-thumb"},
         {"name": "بشار حمدان", "role": "محاسب ومسؤول ضرائب", "line": "يدير السجلات المالية ويعد الإقرارات الضريبية ويضمن الالتزام بالمعايير المحاسبية والأنظمة الضريبية.", "photo": "hamdan"},
         {"name": "محمد الفارس", "role": "مدقق خارجي", "line": "يدمج الذكاء الاصطناعي وتحليلات البيانات والتقنيات الناشئة في عمليات التدقيق لتعزيز جودة التدقيق وكفاءته ودقته.", "photo": "alfares"},
         {"name": "محمد أبو حجلة", "role": "مدقق خارجي", "line": "يساعد في مهام التدقيق وينفذ إجراءات التدقيق ويعد أوراق العمل مع ضمان الالتزام بمعايير التدقيق المهنية.", "photo": "abuhejleh"},
-        {"name": "لجين يوسف", "role": "مسؤولة الموارد البشرية والشؤون الإدارية", "line": "تدير الموارد البشرية وعلاقات الموظفين والعمليات الإدارية مع ضمان الالتزام بسياسات الشركة وأنظمة العمل.", "photo": "lojen"}
+        {"name": "لجين يوسف", "role": "مسؤولة الموارد البشرية والشؤون الإدارية", "line": "تدير الموارد البشرية وعلاقات الموظفين والعمليات الإدارية مع ضمان الالتزام بسياسات الشركة وأنظمة العمل.", "photo": "lojen-2"}
       ]
     },
     leaders: {
