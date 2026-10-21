@@ -8,170 +8,173 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@300;400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============ Same language as the website: black, a cyan-blue-purple glow, Instrument Serif ============ */
+  /* ==========================================================================================
+     EDITORIAL EDITION — white paper, one accent (cobalt), set like a printed annual report.
+     Structure comes from type, columns and hairlines; no cards, no icons, no CSS effects that
+     PDF viewers mis-draw (no background-clip text, gradient borders, filters or masks).
+     ========================================================================================== */
   :root{
-    --bg:#0b0b0b; --bg2:#141414; --ink:#ebebe6; --mute:rgba(235,235,230,.72); --dim:rgba(235,235,230,.5);
-    --line:rgba(255,255,255,.14); --glass:rgba(22,22,22,.62);
-    --cyan:#27fcf2; --blue:#3064d0; --purple:#8739d5;
-    --grad:linear-gradient(90deg,#27fcf2,#3064d0 52%,#8739d5);
-    --serif:'Instrument Serif',Georgia,serif; --sans:'Roboto',Arial,sans-serif;
+    --paper:#faf9f6; --ink:#121418; --grey:#5d626a; --soft:#8b8f95; --hair:#d8d6cf;
+    --blue:#2347b8; --blue-d:#1a358f; --on-blue:rgba(255,255,255,.78); --hair-blue:rgba(255,255,255,.28);
+    --display:'Instrument Serif',Georgia,serif; --text:'Newsreader',Georgia,serif; --label:'Inter',Arial,sans-serif;
   }
-  html[lang="ar"]{ --serif:'Amiri','Noto Naskh Arabic',serif; --sans:'IBM Plex Sans Arabic','Segoe UI',sans-serif; }
+  html[lang="ar"]{ --display:'Amiri',serif; --text:'Noto Naskh Arabic',serif; --label:'IBM Plex Sans Arabic',sans-serif; }
   @page{ size:210mm 297mm; margin:0; }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
-  body{ background:#050505; color:var(--ink); font-family:var(--serif); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-  html.print body{ background:var(--bg); }
-  h1,h2,h3,h4,p{ margin:0; font-weight:400; }
+  body{ background:#2a2a2a; color:var(--ink); font-family:var(--text); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html.print body{ background:var(--paper); }
+  h1,h2,h3,h4,p,ul,ol{ margin:0; padding:0; font-weight:400; }
   a{ color:inherit; text-decoration:none; }
+  img{ display:block; }
 
   #doc{ width:210mm; margin:0 auto; }
-  html:not(.print) #doc{ margin:76px auto 40px; display:flex; flex-direction:column; gap:28px; }
-  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--bg); page-break-after:always; break-after:page; isolation:isolate; }
+  html:not(.print) #doc{ margin:76px auto 40px; display:flex; flex-direction:column; gap:26px; }
+  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--paper); page-break-after:always; break-after:page; }
   .page:last-child{ page-break-after:auto; break-after:auto; }
-  html:not(.print) .page{ box-shadow:0 30px 80px rgba(0,0,0,.6); border-radius:4px; }
-  .pad{ position:absolute; inset:18mm 17mm 24mm; display:flex; flex-direction:column; z-index:2; }
+  html:not(.print) .page{ box-shadow:0 24px 70px rgba(0,0,0,.5); }
+  .page.blue{ background:var(--blue); color:#fff; }
 
-  /* ---- signature glow: the logo mark filled with the site's conic gradient, blurred ---- */
-  .glow{ position:absolute; z-index:0; pointer-events:none; aspect-ratio:1; opacity:.62; background:url('/profile/img/glow.png') center/contain no-repeat; }
-  .haze{ position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:radial-gradient(48% 32% at 15% 8%, rgba(135,57,213,.22), transparent 70%),
-               radial-gradient(42% 30% at 92% 40%, rgba(48,100,208,.2), transparent 70%),
-               radial-gradient(40% 26% at 30% 96%, rgba(39,252,242,.12), transparent 70%); }
-  .haze.b{ background:radial-gradient(45% 30% at 88% 6%, rgba(48,100,208,.22), transparent 70%),
-               radial-gradient(40% 30% at 6% 55%, rgba(214,36,159,.14), transparent 70%),
-               radial-gradient(42% 26% at 75% 98%, rgba(135,57,213,.18), transparent 70%); }
+  /* frame: content area, running head and folio */
+  .pad{ position:absolute; inset:24mm 16mm 22mm; display:flex; flex-direction:column; }
+  .rh{ position:absolute; top:10mm; inset-inline:16mm; display:flex; justify-content:space-between; padding-bottom:2.4mm; border-bottom:.6pt solid var(--hair); }
+  .fo{ position:absolute; bottom:10mm; inset-inline:16mm; display:flex; align-items:baseline; justify-content:space-between; }
+  .fo .pn{ font:400 12pt/1 var(--display); }
+  .blue .rh{ border-color:var(--hair-blue); }
 
-  /* ---- photography: black and white, fading into the page ---- */
-  .photo{ position:absolute; overflow:hidden; z-index:1; }
-  .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
-  .photo::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(11,11,11,.05) 0%, rgba(11,11,11,.12) 50%, rgba(11,11,11,.7) 82%, var(--bg) 100%); }
-  .photo.full::after{ background:linear-gradient(180deg, rgba(11,11,11,.55) 0%, rgba(11,11,11,.25) 30%, rgba(11,11,11,.7) 62%, var(--bg) 92%); }
-
-  /* ---- type ---- */
-  .kicker{ display:flex; align-items:center; gap:3mm; font:500 6.8pt/1 var(--sans); letter-spacing:.3em; text-transform:uppercase; color:var(--dim); }
-  .kicker::before{ content:""; width:9mm; height:1.4px; background:var(--grad); flex:0 0 auto; }
-  html[lang="ar"] .kicker{ letter-spacing:0; font-size:8.6pt; }
-  .h1{ font-size:62pt; line-height:.98; }
-  .h2{ font-size:38pt; line-height:1.04; }
+  /* type */
+  .lbl{ font:500 6.4pt/1.3 var(--label); letter-spacing:.17em; text-transform:uppercase; color:var(--grey); }
+  html[lang="ar"] .lbl{ letter-spacing:0; font-size:8pt; }
+  .blue .lbl{ color:var(--on-blue); }
+  .acc{ color:var(--blue); } .blue .acc{ color:#fff; }
+  .disp{ font-family:var(--display); font-weight:400; line-height:.98; letter-spacing:-.005em; }
   .it{ font-style:italic; } html[lang="ar"] .it{ font-style:normal; }
-  .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .rule{ display:inline-block; position:relative; padding-bottom:3.2mm; }
-  .rule::after{ content:""; position:absolute; inset-inline:0; bottom:0; height:1.6px; border-radius:2px; background:var(--grad); }
-  html[dir="rtl"] .rule::after{ background:linear-gradient(270deg,#27fcf2,#3064d0 52%,#8739d5); }
-  .lead{ font-size:14pt; line-height:1.42; color:var(--ink); }
-  .txt{ font-size:10.4pt; line-height:1.5; color:var(--mute); }
-  html[lang="ar"] .txt{ font-size:10pt; line-height:1.75; } html[lang="ar"] .lead{ font-size:12.6pt; line-height:1.65; }
-  .small{ font:400 7pt/1.4 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--dim); }
-  html[lang="ar"] .small{ letter-spacing:0; font-size:8.2pt; }
+  .stand{ font:300 14.5pt/1.38 var(--text); }
+  .body{ font:400 9.5pt/1.55 var(--text); color:#2a2d33; hyphens:auto; }
+  .blue .body{ color:var(--on-blue); }
+  html[lang="ar"] .stand{ font-size:13pt; line-height:1.75; font-weight:400; }
+  html[lang="ar"] .body{ font-size:9.2pt; line-height:1.85; }
+  .cols{ columns:2; column-gap:8mm; }
+  .cols p + p{ margin-top:2.6mm; }
+  .hair{ border-top:.6pt solid var(--hair); }
+  .blue .hair{ border-color:var(--hair-blue); }
+  .dropcap::first-letter{ float:left; font:400 52pt/.78 var(--display); margin:1.4mm 2.6mm 0 0; color:var(--blue); }
+  html[lang="ar"] .dropcap::first-letter{ float:none; font:inherit; margin:0; color:inherit; }
   .ltr{ direction:ltr; unicode-bidi:isolate; display:inline-block; }
 
-  /* ---- surfaces ---- */
-  .glass{ background:var(--glass); border:1px solid var(--line); border-radius:5mm; }
-  /* Gradient circle drawn as an SVG image: PDF viewers (macOS Preview) mis-draw the CSS padding-box/border-box gradient border. */
-  .ring{ display:grid; place-items:center; border-radius:50%; flex:0 0 auto; color:var(--ink); aspect-ratio:1;
-    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2327fcf2'/%3E%3Cstop offset='.5' stop-color='%233064d0'/%3E%3Cstop offset='1' stop-color='%238739d5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='%23141414' stroke='url(%23g)' stroke-width='2.4'/%3E%3C/svg%3E") center/100% 100% no-repeat; }
-  .ring svg{ width:46%; height:46%; stroke-width:1.4; }
-  .tick svg{ color:var(--cyan); }
-  .badge{ display:inline-block; border:1px solid rgba(255,255,255,.55); border-radius:99px; padding:.7mm 2.6mm; font:500 6.6pt/1.2 var(--sans); letter-spacing:.08em; }
+  /* images */
+  .bleed{ position:absolute; overflow:hidden; } .bleed img{ width:100%; height:100%; object-fit:cover; }
 
-  /* ---- logo ---- */
-  .logo{ display:flex; align-items:center; gap:3mm; }
-  .logo .icon{ height:13mm; } .logo .word{ height:7mm; filter:invert(1) brightness(1.15); }
-  .logo .ar{ display:none; flex-direction:column; line-height:1.15; font-family:var(--sans); }
-  .logo .ar b{ font-size:15pt; font-weight:600; } .logo .ar small{ font-size:7.6pt; color:var(--mute); }
+  /* logo */
+  .logo{ display:flex; align-items:center; gap:2.6mm; }
+  .logo .mark{ height:11mm; } .logo .word{ height:6mm; }
+  .logo .ar{ display:none; flex-direction:column; line-height:1.15; font-family:var(--label); }
+  .logo .ar b{ font-size:14pt; font-weight:600; } .logo .ar small{ font-size:7.2pt; opacity:.8; }
   html[lang="ar"] .logo .word{ display:none; } html[lang="ar"] .logo .ar{ display:flex; }
 
-  /* ---- running footer ---- */
-  .foot{ position:absolute; z-index:3; left:17mm; right:17mm; bottom:10mm; display:flex; align-items:center; gap:4mm; }
-  .foot .bar{ flex:1; height:1px; background:linear-gradient(90deg, rgba(255,255,255,.22), rgba(255,255,255,.06)); }
-  html[dir="rtl"] .foot .bar{ background:linear-gradient(270deg, rgba(255,255,255,.22), rgba(255,255,255,.06)); }
-  .foot .pn{ font:italic 400 13pt/1 var(--serif); }
-  html[lang="ar"] .foot .pn{ font-style:normal; }
+  /* chapter opener */
+  .ch-no{ font:400 230pt/.74 var(--display); letter-spacing:-.04em; }
+  .ch-list{ display:flex; flex-direction:column; gap:1.6mm; margin-top:6mm; }
+  .ch-list span{ font:400 10.5pt/1.3 var(--text); color:var(--on-blue); }
 
-  /* ---- page-specific ---- */
-  .cv-words div{ display:block; }
-  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:5mm; text-align:center; }
-  .stats .ring{ width:17mm; height:17mm; margin:0 auto 4mm; }
-  .stats p{ font-size:11pt; line-height:1.3; }
-  .vm{ padding:7mm 9mm; display:flex; flex-direction:column; gap:3mm; }
-  .vm .ring{ width:14mm; height:14mm; }
-  .vm h3{ font-size:25pt; } .vm p.txt{ font-size:11.4pt; color:var(--ink); line-height:1.48; }
-  .vals{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
-  .val{ display:grid; grid-template-columns:28mm 1fr; gap:5mm; align-items:start; padding:4mm; }
-  .val .ring{ width:9mm; height:9mm; }
-  .val .pic{ height:32mm; border-radius:3.5mm; overflow:hidden; } .val .pic img{ width:100%; height:100%; object-fit:cover; }
-  .val h3{ font-size:15.5pt; margin:1mm 0 1.6mm; } .val p{ font-size:8.8pt; line-height:1.42; color:var(--mute); }
-  .whys{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
-  .why{ padding:6mm; display:flex; flex-direction:column; gap:3mm; }
-  .why .top{ display:flex; align-items:center; justify-content:space-between; }
-  .why .ring{ width:12mm; height:12mm; } .why .no{ font:italic 400 15pt/1 var(--serif); }
-  .why h3{ font-size:16pt; } .why p{ font-size:9.4pt; line-height:1.5; color:var(--mute); }
-  .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
-  .svc-tile{ padding:5mm; display:flex; flex-direction:column; gap:3mm; min-height:40mm; }
-  .svc-tile .ring{ width:11mm; height:11mm; } .svc-tile .no{ font:italic 400 11pt/1 var(--serif); color:var(--dim); }
-  .svc-tile h3{ font-size:13.5pt; line-height:1.15; }
-  .figs{ display:flex; gap:12mm; align-items:flex-end; }
-  .fig b{ display:block; font:400 46pt/.9 var(--serif); } .fig > span{ display:block; margin-top:2mm; }
-  .svc-head{ position:absolute; z-index:2; top:62mm; inset-inline:17mm; }
-  .svc-ring{ position:absolute; z-index:3; top:93mm; inset-inline-end:17mm; width:19mm; height:19mm; }
-  .svc-ring svg{ width:9mm; height:9mm; }
-  .ks{ padding:6mm 7mm; }
-  .ks ul{ list-style:none; margin:3.5mm 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:2.2mm 6mm; }
-  .ks li{ display:flex; gap:2.2mm; font-size:9.6pt; line-height:1.3; }
-  .ks li svg{ width:3.8mm; height:3.8mm; flex:0 0 auto; margin-top:.4mm; color:var(--cyan); stroke-width:2.4; }
-  .ks.dense li{ font-size:8.9pt; } .ks.dense ul{ gap:1.7mm 5mm; }
-  .ks .lt{ font:italic 400 12.5pt/1.2 var(--serif); } html[lang="ar"] .ks .lt{ font-style:normal; }
-  .count{ display:inline-flex; align-items:baseline; gap:2mm; }
-  .count b{ font:italic 400 24pt/1 var(--serif); } html[lang="ar"] .count b{ font-style:normal; }
-  .leader{ display:grid; grid-template-columns:56mm 1fr; overflow:hidden; }
-  .leader .ph{ position:relative; background:#000; min-height:100%; }
-  .leader .ph img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
-  .leader .bd{ padding:7mm 8mm; display:flex; flex-direction:column; gap:2.4mm; }
-  .leader h3{ font-size:21pt; } .leader .role{ font:500 6.8pt/1.2 var(--sans); letter-spacing:.2em; text-transform:uppercase; }
-  html[lang="ar"] .leader .role{ letter-spacing:0; font-size:8.4pt; }
-  .leader .bio{ font-size:9pt; line-height:1.48; color:var(--mute); }
-  html[lang="ar"] .leader .bio{ font-size:8.8pt; line-height:1.7; }
-  .team{ display:grid; grid-template-columns:1fr 1fr; gap:5mm; }
-  .member{ display:flex; gap:5mm; align-items:center; padding:5mm; }
-  .member .ph{ width:24mm; height:24mm; border-radius:50%; overflow:hidden; flex:0 0 auto; background:#000; border:1px solid var(--line); }
-  .member .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 14%; }
-  .member h3{ font-size:14pt; } .member .role{ display:block; font:italic 400 10pt/1.3 var(--serif); color:var(--mute); margin:.6mm 0 1.4mm; }
+  /* contents */
+  .toc-row{ display:grid; grid-template-columns:30mm 1fr 14mm; gap:5mm; align-items:start; padding:5.5mm 0; border-top:.6pt solid var(--hair); }
+  .toc-row .n{ font:400 46pt/.8 var(--display); color:var(--blue); }
+  .toc-row h3{ font:400 21pt/1.05 var(--display); margin-bottom:2.2mm; }
+  .toc-row .items{ font:400 9pt/1.5 var(--text); color:var(--grey); }
+  .toc-row .pg{ font:400 15pt/1 var(--display); text-align:end; }
+
+  /* numbers */
+  .nums{ display:grid; grid-template-columns:1fr 1fr; column-gap:10mm; }
+  .num{ padding:5mm 0 6mm; border-top:.6pt solid var(--hair); }
+  .num b{ display:block; font:400 74pt/.86 var(--display); color:var(--blue); }
+  .num p{ margin-top:3mm; font:400 10pt/1.4 var(--text); color:var(--grey); max-width:70mm; }
+
+  /* values / why / expect lists */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; column-gap:10mm; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); column-gap:7mm; }
+  .item{ padding:4.5mm 0 5.5mm; border-top:.6pt solid var(--hair); }
+  .item .k{ font:500 6.4pt/1 var(--label); letter-spacing:.16em; color:var(--blue); }
+  .item h3{ font:400 21pt/1.05 var(--display); margin:2.6mm 0 2.4mm; }
+  .item p{ font:400 9.2pt/1.5 var(--text); color:#2a2d33; }
+  html[lang="ar"] .item p{ line-height:1.8; font-size:9pt; }
+
+  /* why: half-blue split */
+  .why-panel{ position:absolute; top:0; bottom:0; inset-inline-start:0; width:78mm; background:var(--blue); color:#fff; padding:24mm 10mm 22mm 16mm; display:flex; flex-direction:column; }
+  html[dir="rtl"] .why-panel{ padding:24mm 16mm 22mm 10mm; }
+  .why-list{ position:absolute; top:24mm; bottom:22mm; inset-inline-start:90mm; inset-inline-end:16mm; display:flex; flex-direction:column; justify-content:space-between; }
+  .why-row{ display:grid; grid-template-columns:13mm 1fr; gap:3mm; padding-top:3.6mm; border-top:.6pt solid var(--hair); }
+  .why-row .n{ font:400 22pt/.9 var(--display); color:var(--blue); }
+  .why-row h3{ font:400 16pt/1.1 var(--display); margin-bottom:1.6mm; }
+  .why-row p{ font:400 9pt/1.5 var(--text); color:#2a2d33; }
+
+  /* services index */
+  .svc-row{ display:grid; grid-template-columns:14mm 1fr 12mm; gap:4mm; align-items:baseline; padding:3.8mm 0; border-top:.6pt solid var(--hair); }
+  .svc-row .n{ font:400 17pt/1 var(--display); color:var(--blue); }
+  .svc-row h3{ font:400 16pt/1.1 var(--display); }
+  .svc-row p{ font:italic 400 9pt/1.4 var(--text); color:var(--grey); margin-top:1mm; }
+  html[lang="ar"] .svc-row p{ font-style:normal; }
+  .svc-row .pg{ font:400 12pt/1 var(--display); text-align:end; }
+
+  /* service pages */
+  .s-no{ font:400 120pt/.76 var(--display); color:var(--blue); letter-spacing:-.03em; }
+  .s-title{ font:400 31pt/1.02 var(--display); }
+  .s-tag{ font:italic 300 13.5pt/1.35 var(--text); color:var(--ink); }
+  html[lang="ar"] .s-tag{ font-style:normal; font-weight:400; font-size:12pt; line-height:1.7; }
+  .spec-head{ display:flex; justify-content:space-between; align-items:baseline; gap:6mm; padding-bottom:2.4mm; }
+  .spec{ list-style:none; counter-reset:sp; }
+  .spec li{ counter-increment:sp; display:grid; grid-template-columns:8mm 1fr; gap:2mm; padding:1.75mm 0; border-top:.6pt solid var(--hair); font:400 9.2pt/1.32 var(--text); break-inside:avoid; }
+  .spec li::before{ content:counter(sp, decimal-leading-zero); font:500 6.2pt/1.9 var(--label); letter-spacing:.08em; color:var(--blue); }
+  .spec.two{ columns:2; column-gap:8mm; }
+  .spec.tight li{ padding:1.35mm 0; font-size:8.8pt; }
+
+  /* leadership */
+  .lead-ph{ position:absolute; top:0; bottom:0; width:86mm; overflow:hidden; background:#000; }
+  .lead-ph img{ width:100%; height:100%; object-fit:cover; object-position:center 12%; }
+  .lead-tx{ position:absolute; top:24mm; bottom:22mm; display:flex; flex-direction:column; }
+  .creds{ font:500 7.4pt/1 var(--label); letter-spacing:.18em; color:var(--blue); }
+  .lead-tx .bio p{ font:400 9.8pt/1.58 var(--text); color:#2a2d33; }
+  .lead-tx .bio p + p{ margin-top:2.8mm; }
+  html[lang="ar"] .lead-tx .bio p{ font-size:9.4pt; line-height:1.85; }
+  .ct-mini{ display:grid; grid-template-columns:1fr 1fr; gap:3mm 8mm; padding-top:4mm; border-top:.6pt solid var(--hair); }
+  .ct-mini span{ display:block; font:400 9.6pt/1.35 var(--text); margin-top:1mm; }
+  .ct-mini span.lbl{ font:500 6.4pt/1.3 var(--label); margin-top:0; }
+
+  /* team masthead */
+  .team{ display:grid; grid-template-columns:repeat(4,1fr); column-gap:5mm; row-gap:8mm; }
+  .member .ph{ aspect-ratio:1; overflow:hidden; background:#111; }
+  .member .ph img{ width:100%; height:100%; object-fit:cover; }
+  .member h3{ font:400 13pt/1.1 var(--display); margin-top:3mm; }
+  .member .role{ display:block; font:italic 400 8.6pt/1.3 var(--text); color:var(--blue); margin:.8mm 0 1.6mm; }
   html[lang="ar"] .member .role{ font-style:normal; }
-  .member p{ font-size:8.4pt; line-height:1.42; color:var(--mute); }
-  .sectors{ display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
-  .sector{ position:relative; height:42mm; border-radius:4mm; overflow:hidden; border:1px solid var(--line); }
-  .sector img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .sector::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.82)); }
-  .sector .in{ position:absolute; z-index:2; inset-inline:5mm; bottom:4.5mm; display:flex; align-items:center; gap:3mm; }
-  .sector .ring{ width:9mm; height:9mm; } .sector h3{ font-size:15pt; line-height:1.1; }
-  .logos{ display:grid; grid-template-columns:repeat(6,1fr); gap:3.4mm; }
-  .logos div{ position:relative; aspect-ratio:4/3; background:linear-gradient(160deg,#fff 55%,#f1f1ef); border-radius:3mm; overflow:hidden; }
-  .logos img{ position:absolute; inset:16% 12%; width:76%; height:68%; object-fit:contain; mix-blend-mode:multiply; }
-  .exp{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; }
-  .exp > div{ padding:5.5mm; display:flex; flex-direction:column; gap:4mm; min-height:64mm; }
-  .exp p{ font-size:12pt; }
-  .exp .ring{ width:10mm; height:10mm; } .exp p{ font-size:11pt; line-height:1.35; }
-  .exp .no{ font:italic 400 10pt/1 var(--serif); color:var(--dim); }
-  .ct{ display:flex; align-items:center; gap:4mm; padding:3.4mm 0; border-bottom:1px solid var(--line); }
-  .ct .ring{ width:10mm; height:10mm; } .ct span{ font-size:12pt; }
-  .qr{ background:#fff; border-radius:4mm; padding:3.5mm; width:40mm; text-align:center; color:#111; }
-  .qr img{ width:33mm; height:33mm; display:block; margin:0 auto 2mm; }
-  .qr p{ font:500 6.4pt/1.3 var(--sans); letter-spacing:.12em; text-transform:uppercase; }
-  .toc{ display:flex; flex-direction:column; }
-  .toc a{ display:grid; grid-template-columns:24mm 1fr auto; gap:5mm; align-items:center; padding:6.5mm 0; border-bottom:1px solid var(--line); }
-  .toc .n{ font:400 40pt/1 var(--serif); color:transparent; -webkit-text-stroke:1px rgba(235,235,230,.45); }
-  .toc h3{ font-size:22pt; } .toc .sub{ margin-top:1.6mm; }
-  .toc .pg{ font:italic 400 16pt/1 var(--serif); } html[lang="ar"] .toc .pg{ font-style:normal; }
+  .member p{ font:400 7.8pt/1.45 var(--text); color:var(--grey); }
 
-  /* ---- screen chrome (hidden in print) ---- */
-  .ui{ position:fixed; z-index:50; top:0; left:0; right:0; height:56px; display:flex; align-items:center; gap:14px; padding:0 20px; background:rgba(8,8,8,.86); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,.08); font-family:'Roboto',sans-serif; }
+  /* sectors */
+  .sec{ display:grid; grid-template-columns:24mm 1fr; gap:4mm; align-items:center; padding:3.4mm 0; border-top:.6pt solid var(--hair); }
+  .sec .th{ aspect-ratio:1; overflow:hidden; } .sec .th img{ width:100%; height:100%; object-fit:cover; }
+  .sec .k{ font:500 6.2pt/1 var(--label); letter-spacing:.16em; color:var(--blue); }
+  .sec h3{ font:400 15pt/1.1 var(--display); margin-top:1.6mm; }
+
+  /* clients: a ruled table of logos */
+  .logos{ display:grid; grid-template-columns:repeat(6,1fr); border-top:.6pt solid var(--hair); border-inline-start:.6pt solid var(--hair); }
+  .logos div{ position:relative; aspect-ratio:4/3; border-bottom:.6pt solid var(--hair); border-inline-end:.6pt solid var(--hair); background:#fff; }
+  .logos img{ position:absolute; inset:18% 14%; width:72%; height:64%; object-fit:contain; mix-blend-mode:multiply; }
+
+  /* back cover */
+  .ct-row{ display:block; padding:3mm 0; border-top:.6pt solid var(--hair-blue); }
+  .ct-row span{ display:block; font:400 11pt/1.35 var(--text); margin-top:1.2mm; }
+  .ct-row span.lbl{ font:500 6.4pt/1.3 var(--label); margin-top:0; }
+  .qr{ display:block; background:#fff; padding:3.2mm; width:38mm; color:var(--ink); }
+  .qr img{ width:100%; } .qr p{ font:500 5.8pt/1.3 var(--label); letter-spacing:.12em; text-transform:uppercase; text-align:center; margin-top:1.8mm; }
+
+  /* screen chrome */
+  .ui{ position:fixed; z-index:50; top:0; left:0; right:0; height:56px; display:flex; align-items:center; gap:14px; padding:0 20px; background:rgba(20,20,20,.9); backdrop-filter:blur(10px); font-family:'Inter',sans-serif; }
   html.print .ui{ display:none; }
-  .ui img{ height:28px; } .ui .t{ flex:1; font-size:13px; letter-spacing:.06em; color:rgba(235,235,230,.8); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .ui a{ font-size:13px; color:#ebebe6; border:1px solid rgba(255,255,255,.3); border-radius:99px; padding:7px 15px; white-space:nowrap; }
-  .ui a.pri{ background:#ebebe6; color:#0b0b0b; border-color:#ebebe6; font-weight:500; }
+  .ui img{ height:28px; } .ui .t{ flex:1; font-size:13px; letter-spacing:.04em; color:rgba(255,255,255,.8); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ui a{ font-size:13px; color:#fff; border:1px solid rgba(255,255,255,.3); border-radius:99px; padding:7px 15px; white-space:nowrap; }
+  .ui a.pri{ background:#fff; color:#111; border-color:#fff; font-weight:500; }
   @media (max-width:700px){ .ui .t{ display:none; } }
 </style>
 </head>
@@ -179,7 +182,6 @@
 <div class="ui" id="ui"></div>
 <div id="doc"></div>
 <script src="/assets/js/i18n.js"></script>
-<script src="/profile/vendor/lucide.min.js"></script>
 <script>
 (function () {
   const q = new URLSearchParams(location.search);
@@ -187,232 +189,269 @@
   const D = I18N[lang], EN = I18N.en, H = document.documentElement;
   H.lang = lang; H.dir = AR ? 'rtl' : 'ltr'; if (PRINT) H.classList.add('print');
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const ic = (n) => `<i data-lucide="${n}"></i>`;
-  const ring = (n, cls = '') => `<span class="ring ${cls}">${ic(n)}</span>`;
   const pad2 = (i) => String(i).padStart(2, '0');
-  const img = (n) => `/assets/img/${n}.jpg`;
+  const sky = (n) => `/assets/img/sky-${n}.jpg`, duo = (n) => `/profile/img/duo-${n}.jpg`;
+  const skyOf = (img) => sky(String(img).replace('sky-', ''));
 
   const T = AR ? {
-    profile: 'الملف التعريفي 2026', motto: ['نزاهة.', 'شفافية.', 'جودة.'], mottoLine: 'نزاهة • شفافية • جودة',
-    firm: 'الموحدة لتدقيق الحسابات والاستشارات المالية', since: 'منذ 2015 · عمّان، الأردن', contents: 'المحتويات', chapter: 'الفصل',
-    ch: ['من نحن', 'ما نقدمه', 'فريقنا', 'من يثق بنا'], vm: 'الرؤية والمهمة', service: 'الخدمة', specialised: 'خدمة متخصصة',
+    profile: 'الملف التعريفي 2026', firm: 'الموحدة لتدقيق الحسابات والاستشارات المالية', since: 'تأسست 2015 · عمّان، الأردن',
+    contents: 'المحتويات', chapter: 'الفصل', ch: ['من نحن', 'ما نقدمه', 'فريقنا', 'من يثق بنا'], vm: 'الرؤية والمهمة',
+    numbers: 'بالأرقام', glance: 'لمحة سريعة', founded: 'سنة التأسيس', lines: 'خطوط خدمات متكاملة تحت سقف واحد',
+    specialisedAll: 'خدمة متخصصة عبر جميع الممارسات', people: 'مهنيون مؤهلون في فريقنا', service: 'الخدمة', specialised: 'خدمة متخصصة',
     svcLead: 'تسع ممارسات متكاملة تحت سقف واحد، يقودها مهنيون معتمدون دولياً، ترافق عملك من التأسيس إلى النمو والتحول.',
-    lines: 'خطوط خدمات متكاملة', specialisedAll: 'خدمة متخصصة عبر جميع الممارسات', clients: 'عميل', address: 'العنوان', phone: 'الهاتف',
-    email: 'البريد الإلكتروني', website: 'الموقع الإلكتروني', scan: 'امسح الرمز لزيارة موقعنا', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
+    leadership: 'القيادة', address: 'العنوان', phone: 'الهاتف', email: 'البريد الإلكتروني',
+    website: 'الموقع الإلكتروني', scan: 'امسح الرمز لزيارة موقعنا', motto: 'نزاهة • شفافية • جودة', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
   } : {
-    profile: 'Company Profile 2026', motto: ['Integrity.', 'Transparency.', 'Quality.'], mottoLine: 'Integrity • Transparency • Quality',
-    firm: 'Consolidated for Auditing and Financial Consulting', since: 'Since 2015 · Amman, Jordan', contents: 'Contents', chapter: 'Chapter',
-    ch: ['Who We Are', 'What We Do', 'Our People', 'Who Trusts Us'], vm: 'Vision & Mission', service: 'Service', specialised: 'specialised services',
+    profile: 'Company Profile 2026', firm: 'Consolidated for Auditing and Financial Consulting', since: 'Est. 2015 · Amman, Jordan',
+    contents: 'Contents', chapter: 'Chapter', ch: ['Who We Are', 'What We Do', 'Our People', 'Who Trusts Us'], vm: 'Vision & Mission',
+    numbers: 'In Numbers', glance: 'At a glance', founded: 'Year of establishment', lines: 'Integrated service lines under one roof',
+    specialisedAll: 'Specialised services across our practices', people: 'Qualified professionals in our team', service: 'Service', specialised: 'specialised services',
     svcLead: 'Nine integrated practices under one roof, led by internationally certified professionals, supporting your business from formation to growth and transformation.',
-    lines: 'Integrated service lines', specialisedAll: 'Specialised services across our practices', clients: 'Clients', address: 'Address', phone: 'Phone',
-    email: 'Email', website: 'Website', scan: 'Scan to visit our website', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
+    leadership: 'Leadership', address: 'Address', phone: 'Phone', email: 'Email',
+    website: 'Website', scan: 'Scan to visit our website', motto: 'Integrity • Transparency • Quality', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
   };
-  const svcIcons = ['shield-check', 'calculator', 'receipt-text', 'scan-search', 'trending-up', 'building-2', 'briefcase-business', 'graduation-cap', 'monitor-cog'];
-  const valIcons = ['badge-check', 'scale', 'award', 'handshake', 'lock-keyhole', 'lightbulb'];
-  const whyIcons = ['user-check', 'circle-check-big', 'factory', 'heart-handshake', 'cpu', 'rocket'];
-  const expIcons = ['hourglass', 'users-round', 'graduation-cap', 'book-check', 'globe', 'compass', 'lock', 'map-pin', 'star'];
-  const secIcons = ['factory', 'store', 'stethoscope', 'monitor-smartphone', 'heart-handshake', 'hard-hat', 'wheat', 'fuel'];
-  const statIcons = { founded: 'calendar-check', years: 'hourglass', clients: 'users', location: 'map-pin' };
-  const logo = `<div class="logo"><img class="icon" src="/assets/img/icon.png" alt=""><img class="word" src="/assets/img/wordmark.png" alt=""><div class="ar"><b>الموحدة</b><small>لتدقيق الحسابات والاستشارات المالية</small></div></div>`;
+  const logo = (white) => `<div class="logo"><img class="mark" src="/assets/img/icon.png" alt=""><img class="word" src="${white ? '/profile/img/wordmark-white.png' : '/assets/img/wordmark.png'}" alt=""><div class="ar"><b>الموحدة</b><small>لتدقيق الحسابات والاستشارات المالية</small></div></div>`;
   const contact = D.footer.cols.find((c) => (c.links || []).some((l) => l[3] === 'phone')).links;
   const pick = (k) => (contact.find((l) => l[3] === k) || [''])[0];
+  const stripNum = (s) => String(s).replace(/^(أكثر من\s*)?\d+\+?\s*/, '');
+  const st = (k) => D.stats.find((s) => s.icon === k) || {};
 
   // ---------- page model ----------
   const pages = [], anchor = {};
   const mark = (k) => { anchor[k] = pages.length + 1; };
-  const page = (inner, meta = {}) => pages.push(Object.assign({ inner, foot: true, ch: -1 }, meta));
-  const head = (kicker, html, extra = '') => `<div class="kicker">${esc(kicker)}</div><h2 class="h2" style="margin:5mm 0 0;${extra}"><span class="rule">${html}</span></h2>`;
+  const page = (inner, o = {}) => pages.push(Object.assign({ inner, cls: '', head: true, foot: true, section: '' }, o));
+  const title = (lbl, html, size = 52) => `<div class="lbl">${esc(lbl)}</div><h2 class="disp" style="font-size:${size}pt;margin-top:4mm">${html}</h2>`;
+
+  const opener = (n, key, img, standfirst, items) => {
+    mark(key);
+    const side = n % 2 ? 'inset-inline-end:0' : 'inset-inline-start:0';
+    const padSide = n % 2 ? 'inset-inline-end:92mm' : 'inset-inline-start:92mm';
+    page(`<div class="bleed" style="top:0;bottom:0;width:80mm;${side}"><img src="${duo(img)}"></div>
+      <div class="pad" style="${padSide}">
+        <div class="lbl">${esc(T.chapter)} ${pad2(n)}</div>
+        <div class="ch-no" style="margin-top:8mm">${pad2(n)}</div>
+        <div style="margin-top:auto">
+          <h2 class="disp" style="font-size:50pt">${esc(T.ch[n - 1])}</h2>
+          <p class="stand" style="margin-top:6mm;color:#fff">${esc(standfirst)}</p>
+          <div class="ch-list hair" style="padding-top:5mm">${items.map((t) => `<span>${esc(t)}</span>`).join('')}</div>
+        </div>
+      </div>`, { cls: 'blue', head: false, foot: false });
+  };
 
   // 1 · Cover
-  page(`
-    <div class="photo full" style="inset:0"><img src="${img('sky-1')}" style="object-position:center 35%;opacity:.7"></div>
-    <div class="glow" style="width:150mm;top:-22mm;inset-inline-end:-48mm;opacity:.72"></div>
-    <div class="pad" style="justify-content:space-between">
-      ${logo}
-      <div>
-        <div class="kicker">${esc(T.profile)}</div>
-        <h1 class="h1" style="margin:7mm 0 8mm">${T.motto.map((w, i) => `<span style="display:block" class="${i === 1 ? 'it grad' : ''}">${esc(w)}</span>`).join('')}</h1>
-        <p class="lead" style="max-width:150mm;color:var(--mute)">${esc(D.hero.sub)}</p>
-        <div style="height:1.6px;background:var(--grad);margin:11mm 0 5mm"></div>
-        <div style="display:flex;justify-content:space-between" class="small"><span>${esc(T.firm)}</span><span>${esc(T.since)}</span></div>
+  page(`<div class="bleed" style="inset:0"><img src="${duo(1)}" style="object-position:center 30%"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(20,38,110,.15) 30%, rgba(14,28,90,.85) 78%, rgba(14,28,90,.95))"></div>
+    <div class="pad" style="inset:16mm 16mm 16mm">
+      ${logo(true)}
+      <div style="margin-top:auto">
+        <div class="lbl">${esc(T.profile)}</div>
+        <h1 class="disp" style="font-size:88pt;margin:6mm 0 8mm;line-height:.92">${String(D.footer.motto).split('•').map((w, i) => `<span style="display:block" class="${i === 1 ? 'it' : ''}">${esc(w.trim())}</span>`).join('')}</h1>
+        <p class="stand" style="max-width:150mm;color:var(--on-blue);font-size:12.5pt">${esc(D.hero.sub)}</p>
+        <div class="hair" style="margin-top:10mm;padding-top:4mm;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:6mm">
+          <span class="lbl">${esc(T.firm)}</span><span class="lbl">${esc(T.since)}</span><span class="lbl" style="text-align:end"><span class="ltr">www.caudit.net</span></span>
+        </div>
       </div>
-    </div>`, { foot: false });
+    </div>`, { cls: 'blue', head: false, foot: false });
 
   // 2 · Contents
-  const chapters = [
-    { key: 'c1', items: [D.intro.title, T.vm, `${D.values.title1} ${D.values.title2}`, `${D.why.title1} ${D.why.title2}`] },
-    { key: 'c2', items: [D.services.heading, `${D.services.items.length} ${T.lines}`] },
-    { key: 'c3', items: [D.leaders.title, D.team.title] },
-    { key: 'c4', items: [D.sectors.title, D.clients.title, `${D.expect.t1} ${D.expect.t2}`] }
+  const toc = [
+    ['c1', [D.intro.title, T.numbers, T.vm, `${D.values.title1} ${D.values.title2}`, `${D.why.title1} ${D.why.title2}`]],
+    ['c2', [D.services.heading, `${D.services.items.length} ${T.lines}`]],
+    ['c3', [D.leaders.title, D.team.title]],
+    ['c4', [D.sectors.title, D.clients.title, `${D.expect.t1} ${D.expect.t2} ${D.expect.t3}`]]
   ];
-  page(`<div class="haze"></div><div class="glow" style="width:120mm;bottom:-30mm;inset-inline-start:-45mm;opacity:.45"></div>
-    <div class="pad">
-      ${head(T.profile, esc(T.contents))}
-      <div class="toc" style="margin-top:12mm">${chapters.map((c, i) => `<a href="%%L:${c.key}%%"><span class="n">${pad2(i + 1)}</span>
-        <div><h3>${esc(T.ch[i])}</h3><p class="small sub">${c.items.map(esc).join(' · ')}</p></div><span class="pg">%%${c.key}%%</span></a>`).join('')}</div>
-      <p class="lead it" style="margin-top:auto;max-width:130mm">${esc(D.consult.title1)} ${esc(D.consult.title2)}</p>
-    </div>`, { ch: -1 });
-
-  // 3 · About (chapter 1)
-  mark('c1');
-  page(`<div class="photo" style="top:0;left:0;right:0;height:112mm"><img src="${img('sky-5')}" style="object-position:center 40%"></div>
-    <div class="glow" style="width:110mm;top:70mm;inset-inline-start:-40mm;opacity:.4"></div>
-    <div class="pad">
-      <div style="margin-top:96mm">${head(`${T.chapter} 01 · ${T.ch[0]}`, `<span class="it">${esc(D.intro.title)}</span>`)}</div>
-      <p class="lead" style="margin-top:8mm">${esc(D.intro.p1)}</p>
-      <div class="stats" style="margin-top:auto">${D.stats.map((s) => `<div>${ring(statIcons[s.icon] || 'circle')}<p>${esc(s.caption || s.label)}</p></div>`).join('')}</div>
-    </div>`, { ch: 0 });
-
-  // 4 · Vision & Mission
-  page(`<div class="photo" style="top:0;left:0;right:0;height:78mm"><img src="${img('sky-6')}" style="object-position:center 45%"></div><div class="haze b"></div>
-    <div class="pad">
-      <div style="margin-top:52mm">${head(T.ch[0], `<span class="it">${esc(T.vm)}</span>`)}</div>
-      <div style="display:flex;flex-direction:column;gap:6mm;margin-top:auto">
-        <div class="glass vm">${ring('eye')}<h3 class="it">${esc(D.vision.title)}</h3><p class="txt">${esc(D.vision.text)}</p><p class="small">${esc(D.vision.tag)}</p></div>
-        <div class="glass vm">${ring('target')}<h3 class="it">${esc(D.mission.title)}</h3><p class="txt">${esc(D.mission.text)}</p><p class="small">${esc(D.mission.tag)}</p></div>
+  page(`<div class="pad">
+      ${title(T.profile, esc(T.contents), 60)}
+      <p class="stand it" style="margin:7mm 0 10mm;max-width:130mm;color:var(--grey)">${esc(D.consult.title1)} ${esc(D.consult.title2)}</p>
+      <div>${toc.map(([k, items], i) => `<a class="toc-row" href="%%L:${k}%%"><span class="n">${pad2(i + 1)}</span>
+        <div><h3>${esc(T.ch[i])}</h3><p class="items">${items.map(esc).join(' · ')}</p></div><span class="pg">%%${k}%%</span></a>`).join('')}</div>
+      <div style="flex:1;min-height:40mm;margin-top:9mm;display:grid;grid-template-columns:1.4fr 1fr;gap:6mm;align-items:end">
+        <div style="height:100%;overflow:hidden"><img src="${sky(3)}" style="width:100%;height:100%;object-fit:cover"></div>
+        <p class="lbl" style="line-height:1.7">${esc(T.firm)}<br>${esc(T.since)}</p>
       </div>
-    </div>`, { ch: 0 });
+    </div>`, { section: T.contents });
 
-  // 5 · Core values
-  page(`<div class="haze"></div>
-    <div class="pad">
-      ${head(T.ch[0], `${esc(D.values.title1)} <span class="it">${esc(D.values.title2)}</span>`)}
-      <p class="txt" style="margin-top:6mm;font-size:11.5pt;color:var(--ink)">${esc(D.values.sub)}</p>
-      <div class="vals" style="margin-top:auto">${D.values.cards.map((c, i) => `<div class="glass val"><div class="pic"><img src="${img(c.img)}"></div>
-        <div>${ring(valIcons[i], 'v')}<h3 class="it">${esc(c.title)}</h3><p>${esc(c.text)}</p></div></div>`).join('')}</div>
-    </div>`, { ch: 0 });
+  // ===== Chapter 1 =====
+  opener(1, 'c1', 2, D.expect.cards[0].text, toc[0][1]);
 
-  // 6 · Why choose us
-  page(`<div class="haze b"></div><div class="glow" style="width:120mm;top:-30mm;inset-inline-end:-45mm;opacity:.4"></div>
-    <div class="pad">
-      ${head(T.ch[0], `${esc(D.why.title1)} <span class="it">${esc(D.why.title2)}</span>`)}
-      <p class="txt" style="margin-top:6mm;font-size:11.5pt;color:var(--ink)">${esc(D.why.intro)}</p>
-      <div class="whys" style="margin-top:auto">${D.why.items.map((w, i) => `<div class="glass why"><div class="top">${ring(whyIcons[i])}<span class="no grad">${pad2(i + 1)}</span></div><h3 class="it">${esc(w.title)}</h3><p>${esc(w.text)}</p></div>`).join('')}</div>
-    </div>`, { ch: 0 });
+  // About
+  page(`<div class="pad" style="bottom:150mm">
+      ${title(T.ch[0], `<span class="it">${esc(D.intro.title)}</span>`, 60)}
+      <p class="stand dropcap" style="margin-top:8mm;font-size:13.2pt;line-height:1.5">${esc(D.intro.p1)}</p>
+    </div>
+    <div class="bleed" style="left:0;right:0;bottom:0;height:140mm"><img src="${sky(5)}" style="object-position:center 45%"></div>`, { section: T.ch[0], foot: false });
 
-  // 7 · Services overview (chapter 2)
-  mark('c2');
-  const totalSpecialised = D.services.items.reduce((a, s) => a + s.list.length, 0);
-  page(`<div class="haze"></div><div class="glow" style="width:160mm;top:-40mm;inset-inline-end:-60mm;opacity:.55"></div>
-    <div class="pad">
-      ${head(`${T.chapter} 02 · ${T.ch[1]}`, `<span class="it">${esc(D.services.heading)}</span>`)}
-      <p class="lead" style="margin-top:7mm;max-width:150mm">${esc(T.svcLead)}</p>
-      <div class="figs" style="margin-top:9mm"><div class="fig"><b class="grad">${D.services.items.length}</b><span class="small">${esc(T.lines)}</span></div>
-        <div class="fig"><b class="grad">${totalSpecialised}</b><span class="small">${esc(T.specialisedAll)}</span></div></div>
-      <div class="svc-grid" style="margin-top:auto">${D.services.items.map((s, i) => `<a class="glass svc-tile" href="%%L:s${i}%%"><div style="display:flex;justify-content:space-between;align-items:center">${ring(svcIcons[i])}<span class="no">${pad2(i + 1)}</span></div><h3>${esc(s.title)}</h3></a>`).join('')}</div>
-    </div>`, { ch: 1 });
+  // In numbers
+  const nums = [
+    [st('founded').n, T.founded],
+    [`${st('years').n}${st('years').suffix || ''}`, stripNum(st('years').caption)],
+    [`${st('clients').n}${st('clients').suffix || ''}`, stripNum(st('clients').caption)],
+    [D.services.items.length, T.lines],
+    [D.services.items.reduce((a, s) => a + s.list.length, 0), T.specialisedAll],
+    [D.team.people.length, T.people]
+  ];
+  page(`<div class="pad">
+      ${title(T.glance, `<span class="it">${esc(T.numbers)}</span>`, 60)}
+      <div class="nums" style="margin-top:12mm">${nums.map(([n, c]) => `<div class="num"><b>${esc(n)}</b><p>${esc(c)}</p></div>`).join('')}</div>
+      <div class="hair" style="margin-top:auto;padding-top:5mm;display:flex;justify-content:space-between;align-items:baseline;gap:8mm">
+        <p class="disp it" style="font-size:24pt">${esc(st('location').caption)}</p><span class="lbl">${esc(T.since)}</span>
+      </div>
+    </div>`, { section: T.ch[0] });
 
-  // 8-16 · One page per service
-  const svcPos = ['center 45%', 'center 40%', 'center 50%', 'center 40%', 'center 55%', 'center 45%', 'center 35%', 'center 55%', 'center 45%'];
+  // Vision & Mission
+  page(`<div class="bleed" style="top:0;bottom:0;width:58mm;inset-inline-end:0"><img src="${sky(6)}" style="object-position:40% center"></div>
+    <div class="pad" style="inset-inline-end:72mm">
+      <div class="lbl">${esc(T.vm)}</div>
+      ${[D.vision, D.mission].map((v, i) => `<div style="${i ? 'margin-top:auto;' : 'margin-top:10mm;'}" class="${i ? 'hair' : ''}">
+        <h2 class="disp it" style="font-size:46pt;${i ? 'margin-top:8mm' : ''}">${esc(v.title)}</h2>
+        <p class="stand" style="margin-top:5mm;font-size:13.5pt">${esc(v.text)}</p>
+        <p class="lbl acc" style="margin-top:5mm">${esc(v.tag)}</p></div>`).join('')}
+      <div style="height:6mm"></div>
+    </div>`, { section: T.ch[0], frame: ['16mm', '72mm'] });
+
+  // Core values
+  page(`<div class="pad">
+      ${title(D.values.kicker, `${esc(D.values.title1)} <span class="it">${esc(D.values.title2)}</span>`, 54)}
+      <p class="stand" style="margin-top:6mm;font-size:12.5pt;color:var(--grey)">${esc(D.values.sub)}</p>
+      <div class="grid2" style="margin-top:auto">${D.values.cards.map((c, i) => `<div class="item"><span class="k">${pad2(i + 1)}</span><h3>${esc(c.title)}</h3><p>${esc(c.text)}</p></div>`).join('')}</div>
+    </div>`, { section: T.ch[0] });
+
+  // Why choose us (half blue)
+  page(`<div class="why-panel">
+      <div class="lbl">${esc(T.ch[0])}</div>
+      <h2 class="disp" style="font-size:44pt;margin-top:4mm">${esc(D.why.title1)}<br><span class="it">${esc(D.why.title2)}</span></h2>
+      <p class="body" style="margin-top:auto;font-size:10.4pt;color:#fff">${esc(D.why.intro)}</p>
+    </div>
+    <div class="why-list">${D.why.items.map((w, i) => `<div class="why-row"><span class="n">${pad2(i + 1)}</span><div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div></div>`).join('')}</div>`,
+    { section: T.ch[0], head: false, frame: ['90mm', '16mm'] });
+
+  // ===== Chapter 2 =====
+  opener(2, 'c2', 4, T.svcLead, toc[1][1]);
+
+  // Services index
+  page(`<div class="pad">
+      ${title(T.ch[1], `<span class="it">${esc(D.services.heading)}</span>`, 60)}
+      <p class="stand" style="margin:6mm 0 9mm;max-width:150mm">${esc(T.svcLead)}</p>
+      <div style="margin-top:auto">${D.services.items.map((s, i) => `<a class="svc-row" href="%%L:s${i}%%"><span class="n">${pad2(i + 1)}</span>
+        <div><h3>${esc(s.title)}</h3><p>${esc(s.tagline)}</p></div><span class="pg">%%s${i}%%</span></a>`).join('')}</div>
+    </div>`, { section: T.ch[1] });
+
+  // One page per service, alternating two layouts
   D.services.items.forEach((s, i) => {
     mark('s' + i);
-    const dense = s.list.length > 12;
-    page(`<div class="photo" style="top:0;left:0;right:0;height:100mm"><img src="${img(s.img)}" style="object-position:${svcPos[i]}"></div>
-      <div class="haze ${i % 2 ? 'b' : ''}" style="top:90mm"></div>
-      <div class="svc-head" style="display:none"><div class="kicker">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div></div>
-      ${ring(svcIcons[i], 'svc-ring')}
-      <div class="pad" style="top:96mm">
-        <div class="kicker">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
-        <h2 class="h2" style="font-size:30pt;max-width:140mm;margin-top:4mm"><span class="rule">${esc(s.title)}</span></h2>
-        <p class="it" style="font-size:13.5pt;line-height:1.3;margin-top:5mm;color:var(--ink)">${esc(s.tagline)}</p>
-        <p class="txt" style="margin-top:4mm">${esc(s.text[0])}</p>
-        ${s.list.length <= 12 && s.text[1] ? `<p class="txt" style="margin-top:3mm">${esc(s.text[1])}</p>` : ''}
-        <div class="glass ks ${dense ? 'dense' : ''}" style="margin-top:auto">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:6mm"><p class="lt">${esc(s.listTitle)}</p><span class="count"><b class="grad">${pad2(s.list.length)}</b><span class="small">${esc(T.specialised)}</span></span></div>
-          <ul>${s.list.map((li) => `<li>${ic('check')}<span>${esc(li)}</span></li>`).join('')}</ul>
-        </div>
-      </div>`, { ch: 1 });
+    const long = s.list.length > 12;
+    const head = `<div class="lbl">${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>`;
+    const list = (two) => `<div class="spec-head hair" style="padding-top:3mm"><p class="disp it" style="font-size:14pt">${esc(s.listTitle)}</p><span class="lbl acc" style="white-space:nowrap">${pad2(s.list.length)} ${esc(T.specialised)}</span></div>
+      <ol class="spec ${two ? 'two' : ''} ${long ? 'tight' : ''}">${s.list.map((li) => `<li><span>${esc(li)}</span></li>`).join('')}</ol>`;
+    if (i % 2 === 0) {
+      page(`<div class="bleed" style="top:0;left:0;right:0;height:78mm"><img src="${skyOf(s.img)}" style="object-position:center 45%"></div>
+        <div class="pad" style="top:88mm">
+          <div style="display:grid;grid-template-columns:44mm 1fr;gap:6mm;align-items:end">
+            <span class="s-no">${pad2(i + 1)}</span>
+            <div>${head}<h2 class="s-title" style="margin-top:3mm">${esc(s.title)}</h2></div>
+          </div>
+          <p class="s-tag" style="margin-top:6mm">${esc(s.tagline)}</p>
+          <div class="body cols" style="margin-top:5mm">${s.text.slice(0, long ? 1 : 2).map((p) => `<p>${esc(p)}</p>`).join('')}</div>
+          <div style="margin-top:auto">${list(true)}</div>
+        </div>`, { section: T.ch[1], head: false });
+    } else {
+      page(`<div class="bleed" style="top:0;bottom:0;width:62mm;inset-inline-start:0"><img src="${skyOf(s.img)}" style="object-position:center"></div>
+        <div class="pad" style="inset-inline-start:76mm">
+          <span class="s-no">${pad2(i + 1)}</span>
+          <div style="margin-top:6mm">${head}<h2 class="s-title" style="margin-top:3mm">${esc(s.title)}</h2></div>
+          <p class="s-tag" style="margin-top:5mm">${esc(s.tagline)}</p>
+          <div class="body" style="margin-top:5mm"><p>${esc(s.text[0])}</p></div>
+          <div style="margin-top:auto">${list(false)}</div>
+        </div>`, { section: T.ch[1], frame: ['76mm', '16mm'] });
+    }
   });
 
-  // 17 · Leadership (chapter 3)
-  mark('c3');
-  page(`<div class="haze"></div>
-    <div class="pad">
-      ${head(`${T.chapter} 03 · ${T.ch[2]}`, `<span class="it">${esc(D.leaders.title)}</span>`)}
-      <div style="display:flex;flex-direction:column;gap:6mm;margin-top:8mm;flex:1">${D.leaders.people.map((p) => `<div class="glass leader" style="flex:1">
-        <div class="ph"><img src="/profile/img/${p.photo}-bw.jpg"></div>
-        <div class="bd"><h3>${esc(p.name)}</h3><span class="role grad">${esc(p.role)}</span>
-          ${p.certs.length ? `<div style="display:flex;gap:1.6mm;flex-wrap:wrap">${p.certs.map((c) => `<span class="badge">${esc(c)}</span>`).join('')}</div>` : ''}
-          <p class="small" style="text-transform:none;letter-spacing:.02em">${esc(p.degree)}</p>
-          ${p.bio.map((b) => `<p class="bio">${esc(b)}</p>`).join('')}</div></div>`).join('')}</div>
-    </div>`, { ch: 2 });
+  // ===== Chapter 3 =====
+  opener(3, 'c3', 5, D.expect.cards[2].text, toc[2][1]);
 
-  // 18 · Team
-  page(`<div class="haze b"></div><div class="glow" style="width:110mm;bottom:-20mm;inset-inline-end:-40mm;opacity:.35"></div>
-    <div class="pad">
-      ${head(T.ch[2], `<span class="it">${esc(D.team.title)}</span>`, 'font-size:27pt')}
-      <div class="team" style="margin-top:auto">${D.team.people.map((p) => `<div class="glass member"><div class="ph">${p.photo ? `<img src="${img(p.thumb || p.photo)}">` : ''}</div>
-        <div><h3>${esc(p.name)}</h3><span class="role">${esc(p.role)}</span><p>${esc(p.line)}</p></div></div>`).join('')}</div>
-    </div>`, { ch: 2 });
+  // Leadership: one portrait-led page per leader, alternating sides
+  D.leaders.people.forEach((p, i) => {
+    const start = i % 2 === 0;
+    const mail = (p.contact.find((c) => (c.href || '').startsWith('mailto:')) || {}).value || '';
+    const tel = (p.contact.find((c) => (c.href || '').startsWith('tel:')) || {}).value || '';
+    page(`<div class="lead-ph" style="${start ? 'inset-inline-start:0' : 'inset-inline-end:0'}"><img src="/profile/img/${p.photo}-bw.jpg"></div>
+      <div class="lead-tx" style="${start ? 'inset-inline-start:98mm;inset-inline-end:16mm' : 'inset-inline-start:16mm;inset-inline-end:98mm'}">
+        <div class="lbl">${esc(T.leadership)}</div>
+        <h2 class="disp" style="font-size:40pt;margin-top:5mm">${esc(p.name)}</h2>
+        <p class="lbl acc" style="margin-top:4mm">${esc(p.role)}</p>
+        ${p.certs.length ? `<p class="creds" style="margin-top:4mm"><span class="ltr">${p.certs.map(esc).join(' · ')}</span></p>` : ''}
+        <p class="body it" style="margin-top:4mm;color:var(--grey)">${esc(p.degree)}</p>
+        <div class="bio hair" style="margin-top:6mm;padding-top:5mm">${p.bio.map((b, k) => k === 0 ? `<p class="stand" style="font-size:12.5pt;color:var(--ink)">${esc(b)}</p>` : `<p>${esc(b)}</p>`).join('')}</div>
+        <div class="ct-mini" style="margin-top:auto"><div><span class="lbl">${esc(T.email)}</span><span class="ltr">${esc(mail)}</span></div><div><span class="lbl">${esc(T.phone)}</span><span class="ltr">${esc(tel)}</span></div></div>
+      </div>`, { section: T.ch[2], head: false, frame: start ? ['98mm', '16mm'] : ['16mm', '98mm'] });
+  });
 
-  // 19 · Sectors (chapter 4)
-  mark('c4');
-  const st500 = D.stats.find((s) => s.icon === 'clients') || {};
-  page(`<div class="haze"></div>
-    <div class="pad">
-      ${head(`${T.chapter} 04 · ${T.ch[3]}`, `<span class="it">${esc(D.sectors.title)}</span>`)}
-      <div style="display:flex;align-items:flex-end;gap:6mm;margin-top:8mm"><b style="font:400 52pt/.85 var(--serif)" class="grad">${esc(st500.n)}${esc(st500.suffix || '')}</b><p class="txt" style="max-width:110mm;color:var(--ink)">${esc(D.expect.cards[4].text)}</p></div>
-      <div class="sectors" style="margin-top:auto">${D.sectors.cards.map((c, i) => `<div class="sector"><img src="${img(c.img)}"><div class="in">${ring(secIcons[i])}<h3 class="it">${esc(c.title)}</h3></div></div>`).join('')}</div>
-    </div>`, { ch: 3 });
+  // Team masthead
+  const teamImg = ['esam', 'abdelhadi', 'masoud', 'hamdan', 'alfares', 'abuhejleh', 'lojen'];
+  page(`<div class="pad">
+      ${title(T.ch[2], `<span class="it">${esc(D.team.title)}</span>`, 36)}
+      <p class="stand" style="margin-top:6mm;max-width:150mm;color:var(--grey);font-size:12.5pt">${esc(D.expect.cards[2].text)}</p>
+      <div class="team" style="margin-top:auto">${D.team.people.map((p, i) => `<div class="member"><div class="ph"><img src="/profile/img/team-${teamImg[i]}.jpg"></div>
+        <h3>${esc(p.name)}</h3><span class="role">${esc(p.role)}</span><p>${esc(p.line)}</p></div>`).join('')}</div>
+    </div>`, { section: T.ch[2] });
 
-  // 20 · Clients
-  page(`<div class="haze b"></div>
-    <div class="pad">
-      ${head(T.ch[3], `<span class="it">${esc(D.clients.title)}</span>`)}
-      <p class="lead" style="margin-top:7mm;max-width:150mm;color:var(--mute)">${esc(D.expect.cards[1].text)}</p>
-      <div class="logos" style="margin-top:auto">${(EN.clients.logoFiles || []).map((f) => `<div><img src="/assets/img/clients/${f}"></div>`).join('')}</div>
-    </div>`, { ch: 3 });
+  // ===== Chapter 4 =====
+  opener(4, 'c4', 6, D.expect.cards[1].text, toc[3][1]);
 
-  // 21 · What you can expect
-  page(`<div class="haze"></div><div class="glow" style="width:120mm;top:-30mm;inset-inline-start:-45mm;opacity:.4"></div>
-    <div class="pad">
-      ${head(T.ch[3], `<span class="it">${esc(D.expect.t1)} ${esc(D.expect.t2)}</span> ${esc(D.expect.t3)}`, 'font-size:32pt')}
-      <div class="exp" style="margin-top:auto">${D.expect.cards.map((c, i) => `<div class="glass"><div style="display:flex;justify-content:space-between;align-items:center">${ring(expIcons[i])}<span class="no">${pad2(i + 1)}</span></div><p>${esc(c.text)}</p></div>`).join('')}</div>
-    </div>`, { ch: 3 });
-
-  // 22 · Back cover / contact
-  page(`<div class="photo full" style="inset:0"><img src="${img('sky-7')}" style="object-position:center 40%;opacity:.55"></div>
-    <div class="glow" style="width:150mm;top:40mm;inset-inline-end:-50mm;opacity:.6"></div>
-    <div class="pad">
-      ${logo}
-      <div style="margin-top:40mm"><div class="kicker">${esc(D.footer.cols[2].title)}</div>
-        <h1 class="h1" style="font-size:46pt;margin:6mm 0 6mm">${esc(D.consult.title1)}<br><span class="it grad">${esc(D.consult.title2)}</span></h1>
-        <p class="txt" style="max-width:150mm;font-size:11.5pt;color:var(--ink)">${esc(D.consult.sub)}</p></div>
-      <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:auto">
-        <div>
-          <a class="ct" href="${esc(contact.find((l) => l[3] === 'map')?.[1] || '#')}">${ring('map-pin')}<div><p class="small">${esc(T.address)}</p><span>${esc(pick('pin'))}</span></div></a>
-          <a class="ct" href="tel:${esc(pick('phone').replace(/\s+/g, ''))}">${ring('phone')}<div><p class="small">${esc(T.phone)}</p><span class="ltr">${esc(pick('phone'))}</span></div></a>
-          <a class="ct" href="mailto:${esc(pick('mail'))}">${ring('mail')}<div><p class="small">${esc(T.email)}</p><span class="ltr">${esc(pick('mail'))}</span></div></a>
-          <a class="ct" href="https://${esc(pick('globe').replace(/^https?:\/\//, ''))}" style="border-bottom:0">${ring('globe')}<div><p class="small">${esc(T.website)}</p><span class="ltr">${esc(pick('globe'))}</span></div></a>
-        </div>
-        <a class="qr" href="https://www.caudit.net"><img src="/profile/qr-website.svg" alt=""><p>${esc(T.scan)}</p></a>
+  // Sectors
+  page(`<div class="pad">
+      ${title(T.ch[3], `<span class="it">${esc(D.sectors.title)}</span>`, 56)}
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8mm;align-items:end;margin-top:8mm">
+        <b class="disp acc" style="font-size:96pt;line-height:.78;font-weight:400">${esc(st('clients').n)}${esc(st('clients').suffix || '')}</b>
+        <p class="stand" style="font-size:12.5pt;color:var(--grey)">${esc(D.expect.cards[4].text)}</p>
       </div>
-      <div style="height:1.6px;background:var(--grad);margin:8mm 0 4mm"></div>
-      <div style="display:flex;justify-content:space-between" class="small"><span>${esc(T.mottoLine)}</span><span>${esc(T.firm)}</span></div>
-    </div>`, { foot: false });
+      <div class="grid2" style="margin-top:auto">${D.sectors.cards.map((c, i) => `<div class="sec"><div class="th"><img src="${skyOf(c.img)}"></div><div><span class="k">${pad2(i + 1)}</span><h3>${esc(c.title)}</h3></div></div>`).join('')}</div>
+    </div>`, { section: T.ch[3] });
+
+  // Clients
+  page(`<div class="pad">
+      ${title(T.ch[3], `<span class="it">${esc(D.clients.title)}</span>`, 56)}
+      <p class="stand" style="margin-top:6mm;max-width:150mm;color:var(--grey)">${esc(D.expect.cards[1].text)}</p>
+      <div class="logos" style="margin-top:auto">${(EN.clients.logoFiles || []).map((f) => `<div><img src="/assets/img/clients/${f}"></div>`).join('')}</div>
+    </div>`, { section: T.ch[3] });
+
+  // What you can expect
+  page(`<div class="pad">
+      ${title(T.ch[3], `<span class="it">${esc(D.expect.t1)} ${esc(D.expect.t2)}</span> ${esc(D.expect.t3)}`, 48)}
+      <div class="grid3" style="margin-top:auto">${D.expect.cards.map((c, i) => `<div class="item" style="min-height:62mm"><span class="k">${pad2(i + 1)}</span><p class="disp" style="font-size:16pt;line-height:1.18;margin-top:3mm;color:var(--ink)">${esc(c.text)}</p></div>`).join('')}</div>
+    </div>`, { section: T.ch[3] });
+
+  // Back cover
+  page(`<div class="bleed" style="top:0;left:0;right:0;height:120mm"><img src="${duo(7)}" style="object-position:center 40%"></div>
+    <div style="position:absolute;top:60mm;left:0;right:0;height:60mm;background:linear-gradient(180deg, rgba(35,71,184,0), var(--blue))"></div>
+    <div class="pad" style="inset:16mm 16mm 16mm">
+      ${logo(true)}
+      <div style="margin-top:auto">
+        <h2 class="disp" style="font-size:50pt">${esc(D.consult.title1)}<br><span class="it">${esc(D.consult.title2)}</span></h2>
+        <p class="stand" style="margin-top:6mm;font-size:12pt;color:var(--on-blue);max-width:150mm">${esc(D.consult.sub)}</p>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:10mm">
+          <div class="grid2" style="column-gap:8mm">
+            <a class="ct-row" href="${esc((contact.find((l) => l[3] === 'map') || [])[1] || '#')}"><span class="lbl">${esc(T.address)}</span><span>${esc(pick('pin'))}</span></a>
+            <a class="ct-row" href="tel:${esc(pick('phone').replace(/\s+/g, ''))}"><span class="lbl">${esc(T.phone)}</span><span class="ltr">${esc(pick('phone'))}</span></a>
+            <a class="ct-row" href="mailto:${esc(pick('mail'))}"><span class="lbl">${esc(T.email)}</span><span class="ltr">${esc(pick('mail'))}</span></a>
+            <a class="ct-row" href="https://www.caudit.net"><span class="lbl">${esc(T.website)}</span><span class="ltr">${esc(pick('globe'))}</span></a>
+          </div>
+          <a class="qr" href="https://www.caudit.net"><img src="/profile/qr-website.svg" alt=""><p>${esc(T.scan)}</p></a>
+        </div>
+        <div class="hair" style="margin-top:8mm;padding-top:4mm;display:flex;justify-content:space-between"><span class="lbl">${esc(T.motto)}</span><span class="lbl">${esc(T.firm)}</span></div>
+      </div>
+    </div>`, { cls: 'blue', head: false, foot: false });
 
   // ---------- render ----------
   let out = pages.map((p, i) => {
-    const foot = p.foot ? `<div class="foot"><span class="small">${esc(p.ch >= 0 ? `${pad2(p.ch + 1)} · ${T.ch[p.ch]}` : T.profile)}</span><span class="bar"></span><span class="pn">${pad2(i + 1)}</span></div>` : '';
-    return `<section class="page" id="pg${i + 1}">${p.inner}${foot}</section>`;
+    const fr = p.frame ? ` style="inset-inline-start:${p.frame[0]};inset-inline-end:${p.frame[1]}"` : '';
+    const rh = p.head ? `<div class="rh"${fr}><span class="lbl">${esc(T.firm)}</span><span class="lbl">${esc(p.section)}</span></div>` : '';
+    const fo = p.foot ? `<div class="fo"${fr}><span class="lbl">${esc(T.profile)}</span><span class="pn">${pad2(i + 1)}</span></div>` : '';
+    return `<section class="page ${p.cls}" id="pg${i + 1}">${p.inner}${rh}${fo}</section>`;
   }).join('');
   out = out.replace(/%%L:(\w+)%%/g, (_, k) => '#pg' + (anchor[k] || 1)).replace(/%%(\w+)%%/g, (_, k) => pad2(anchor[k] || 0));
   const doc = document.getElementById('doc');
   doc.innerHTML = out;
-  lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
-
-  // Gradient text: PDF viewers such as macOS Preview mis-draw CSS background-clip:text (a solid bar over the word),
-  // so each letter gets its own colour along cyan -> blue -> purple. Arabic is coloured per word to keep letters joined.
-  const stops = [[39, 252, 242], [48, 100, 208], [135, 57, 213]];
-  const mix = (t) => { const seg = t < .5 ? 0 : 1, u = seg ? (t - .5) / .5 : t / .5, a = stops[seg], b = stops[seg + 1];
-    return `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * u)).join(',')})`; };
-  document.querySelectorAll('.grad').forEach((el) => {
-    const text = el.textContent; const arabic = /[\u0600-\u06FF]/.test(text);
-    const parts = arabic ? text.split(/(\s+)/) : Array.from(text);
-    const n = Math.max(1, parts.filter((x) => x.trim()).length - 1); let k = 0;
-    el.innerHTML = parts.map((x) => x.trim() ? `<span style="color:${mix(Math.min(1, (k++) / n))}">${esc(x)}</span>` : esc(x)).join('');
-    el.classList.remove('grad'); el.classList.add('grad-done');
-  });
 
   if (!PRINT) {
     document.getElementById('ui').innerHTML = `<img src="/assets/img/icon.png" alt=""><span class="t">${esc(T.firm)} · ${esc(T.profile)}</span>
