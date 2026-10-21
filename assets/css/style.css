@@ -735,3 +735,28 @@ html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
 .check input { margin-top: .25rem; accent-color: var(--cyan); }
 .careers-page .footer { margin-top: 2rem; }
 @media (max-width: 860px) { .careers-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Reading text: upright serif ----------
+   Paragraphs, lists and card copy use the heading serif in its upright style (Instrument Serif; Amiri in Arabic).
+   Headings keep their own styles, and small interface text (menu, buttons, form fields, uppercase labels) stays
+   in the body sans for legibility. The serif runs small, so sizes are set a step larger than the sans they replace. */
+.hero-sub, .intro-lead, .vm-text, .why-intro, .why-card p, .wl-sub, .wl-face.back p,
+.acc-tagline, .acc-prose p, .acc-prose .acc-list li, .leader-text p, .founder-bio p, .clients-intro,
+.ecard-body p, .inquiry-copy .light, .inquiry-points li, .visit-address, .footer-col ul,
+.consult-text .light, .careers-hero .light, .role-card p {
+  font-family: var(--font-head); font-style: normal; font-weight: 400;
+}
+.vm-text { font-size: 1.25rem; line-height: 1.5; }
+.why-card p { font-size: 1.15rem; line-height: 1.5; }
+.wl-sub { font-size: 1.25rem; line-height: 1.5; }
+.wl-face.back p { font-size: clamp(.85rem, 1.1vw, 1.05rem); line-height: 1.4; }
+.acc-tagline { font-size: 1.2rem; }
+.acc-prose p { font-size: 1.15rem; line-height: 1.45; }
+.acc-prose .acc-list li { font-size: 1.05rem; line-height: 1.35; }
+.leader-text p, .founder-bio p { font-size: 1.15rem; line-height: 1.5; }
+.inquiry-copy .light { font-size: 1.25rem; line-height: 1.45; }
+.inquiry-points li { font-size: 1.15rem; }
+.footer-col ul { font-size: 1.1rem; }
+.consult-text .light, .careers-hero .light { font-size: 1.2rem; line-height: 1.5; }
+.role-card p { font-size: 1.1rem; line-height: 1.45; }
+html[lang="ar"] :is(.vm-text, .why-card p, .wl-sub, .acc-prose p, .leader-text p, .founder-bio p, .inquiry-copy .light, .consult-text .light, .careers-hero .light, .role-card p) { line-height: 1.8; }
