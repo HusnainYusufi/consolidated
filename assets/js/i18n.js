@@ -219,7 +219,7 @@ window.I18N = {
       title2: 'Expert Support.',
       sub: 'We help businesses manage their finances, meet legal and tax requirements, reduce risks, and make better business decisions. Our experienced team is here to provide the professional advice and support your business needs.',
       b1: 'Speak with', b2: 'Our Experts', b3: '',
-      cta: 'Schedule a Consultation',
+      cta: 'Book a Consultation',
       waText: 'Hi Consolidated, I would like to book a consultation with Mr. Esam N. Almulazem.'
     }
   },
