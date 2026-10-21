@@ -143,8 +143,11 @@ html[lang="ar"] .brand-text small { letter-spacing: 0; font-size: .65rem; text-t
 html.light .nav-pill ul { background: rgba(255,251,243,.94); }
 .nav-pill a, .nav-pill .lang-toggle {
   display: inline-block; padding: .417rem 1rem; border-radius: 999px; border: 0; background: transparent; cursor: pointer;
-  font-size: .833rem; font-weight: 500; letter-spacing: .04em; color: var(--brand-white); transition: background .3s, color .3s;
+  font: 400 1.05rem/1.2 var(--font-head); letter-spacing: .02em; color: var(--brand-white); transition: background .3s, color .3s;
 }
+html[lang="en"] .nav-pill .lang-toggle { font-family: 'Amiri', serif; }
+html[lang="ar"] .nav-pill .lang-toggle { font-family: 'Instrument Serif', serif; }
+html[lang="ar"] .nav-pill a { font-size: 1.1rem; letter-spacing: 0; }
 html.light .nav-pill a, html.light .nav-pill .lang-toggle { color: var(--ink); }
 .nav-pill a:hover, .nav-pill .lang-toggle:hover { background: rgba(255,255,255,.1); }
 html.light .nav-pill a:hover, html.light .nav-pill .lang-toggle:hover { background: rgba(0,0,0,.06); }
@@ -261,7 +264,7 @@ html[dir="rtl"] .marquee-track > * { direction: rtl; }
 
 /* ---------- Portfolio (sector cards) ---------- */
 .portfolio { padding: 3rem 0 8rem; overflow: hidden; }
-.portfolio .label { margin-bottom: 2.5rem; }
+.portfolio .label { margin-bottom: 2.5rem; font: 400 clamp(2.4rem, 4.5vw, 3.6rem)/1.1 var(--font-head); letter-spacing: 0; text-transform: none; }
 .portfolio-rows { display: grid; gap: 1.25rem; }
 .portfolio-rows .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .portfolio-rows .marquee-track { gap: 1.25rem; }
@@ -490,8 +493,9 @@ html[lang="ar"] .client-card b { letter-spacing: 0; font-size: .72rem; }
 .stack-text { flex: 1; padding: 1rem 0; }
 .stack-text h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.2; letter-spacing: .02em; }
 .stack-meta { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .2rem; }
-.stack-meta strong { font-weight: 600; letter-spacing: .04em; }
-.stack-meta span { color: var(--muted); }
+.stack-meta strong { font: 400 1.6rem/1.15 var(--font-head); letter-spacing: .01em; }
+.stack-meta span { font: italic 400 1.2rem/1.3 var(--font-head); color: var(--muted); }
+html[lang="ar"] .stack-meta span { font-style: normal; }
 .stack-nav { display: flex; gap: .6rem; margin-top: 2rem; }
 .round-btn { width: 3rem; height: 3rem; border-radius: 999px; border: 1px solid var(--foreground); background: transparent; color: var(--foreground); cursor: pointer; display: grid; place-items: center; transition: background .3s, color .3s; }
 .round-btn:hover { background: var(--foreground); color: var(--background); }
