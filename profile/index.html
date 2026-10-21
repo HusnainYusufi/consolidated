@@ -70,8 +70,9 @@
 
   /* ---- surfaces ---- */
   .glass{ background:var(--glass); border:1px solid var(--line); border-radius:5mm; }
-  .ring{ display:grid; place-items:center; border-radius:50%; flex:0 0 auto; color:var(--ink);
-    background:linear-gradient(var(--bg2),var(--bg2)) padding-box, linear-gradient(135deg,#27fcf2,#3064d0,#8739d5) border-box; border:1.2px solid transparent; }
+  /* Gradient circle drawn as an SVG image: PDF viewers (macOS Preview) mis-draw the CSS padding-box/border-box gradient border. */
+  .ring{ display:grid; place-items:center; border-radius:50%; flex:0 0 auto; color:var(--ink); aspect-ratio:1;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2327fcf2'/%3E%3Cstop offset='.5' stop-color='%233064d0'/%3E%3Cstop offset='1' stop-color='%238739d5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='%23141414' stroke='url(%23g)' stroke-width='2.4'/%3E%3C/svg%3E") center/100% 100% no-repeat; }
   .ring svg{ width:46%; height:46%; stroke-width:1.4; }
   .tick svg{ color:var(--cyan); }
   .badge{ display:inline-block; border:1px solid rgba(255,255,255,.55); border-radius:99px; padding:.7mm 2.6mm; font:500 6.6pt/1.2 var(--sans); letter-spacing:.08em; }
@@ -113,7 +114,7 @@
   .svc-tile .ring{ width:11mm; height:11mm; } .svc-tile .no{ font:italic 400 11pt/1 var(--serif); color:var(--dim); }
   .svc-tile h3{ font-size:13.5pt; line-height:1.15; }
   .figs{ display:flex; gap:12mm; align-items:flex-end; }
-  .fig b{ display:block; font:400 46pt/.9 var(--serif); } .fig span{ display:block; margin-top:2mm; }
+  .fig b{ display:block; font:400 46pt/.9 var(--serif); } .fig > span{ display:block; margin-top:2mm; }
   .svc-head{ position:absolute; z-index:2; top:62mm; inset-inline:17mm; }
   .svc-ring{ position:absolute; z-index:3; top:93mm; inset-inline-end:17mm; width:19mm; height:19mm; }
   .svc-ring svg{ width:9mm; height:9mm; }
@@ -399,6 +400,19 @@
   const doc = document.getElementById('doc');
   doc.innerHTML = out;
   lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+  // Gradient text: PDF viewers such as macOS Preview mis-draw CSS background-clip:text (a solid bar over the word),
+  // so each letter gets its own colour along cyan -> blue -> purple. Arabic is coloured per word to keep letters joined.
+  const stops = [[39, 252, 242], [48, 100, 208], [135, 57, 213]];
+  const mix = (t) => { const seg = t < .5 ? 0 : 1, u = seg ? (t - .5) / .5 : t / .5, a = stops[seg], b = stops[seg + 1];
+    return `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * u)).join(',')})`; };
+  document.querySelectorAll('.grad').forEach((el) => {
+    const text = el.textContent; const arabic = /[\u0600-\u06FF]/.test(text);
+    const parts = arabic ? text.split(/(\s+)/) : Array.from(text);
+    const n = Math.max(1, parts.filter((x) => x.trim()).length - 1); let k = 0;
+    el.innerHTML = parts.map((x) => x.trim() ? `<span style="color:${mix(Math.min(1, (k++) / n))}">${esc(x)}</span>` : esc(x)).join('');
+    el.classList.remove('grad'); el.classList.add('grad-done');
+  });
 
   if (!PRINT) {
     document.getElementById('ui').innerHTML = `<img src="/assets/img/icon.png" alt=""><span class="t">${esc(T.firm)} · ${esc(T.profile)}</span>
