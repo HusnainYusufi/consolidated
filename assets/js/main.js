@@ -138,17 +138,20 @@
       <div class="marquee"><div class="marquee-track right" style="--dur:50s">${dup(b)}</div></div>`;
   }
 
-  // Stat icons: thin monochrome line drawings (24-unit grid) in a circle with the site's spinning gradient border.
+  // Stat icons: large, slim Lucide line icons standing on their own above each caption (no frame).
   // Each stroke has pathLength=1 and the .sd class so CSS can draw it in when the stat enters the viewport.
   const statIcons = {
-    founded: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15.25 2 2 4-4.25"/>',
-    years: '<path d="M6 3h12M6 21h12"/><path d="M7.5 3v3.2a3 3 0 0 0 .9 2.1L12 12l-3.6 3.7a3 3 0 0 0-.9 2.1V21"/><path d="M16.5 3v3.2a3 3 0 0 1-.9 2.1L12 12l3.6 3.7a3 3 0 0 1 .9 2.1V21"/><path d="M10 18.5h4"/>',
-    clients: '<circle cx="9" cy="8" r="3.5"/><path d="M2.75 20v-1.25a4.25 4.25 0 0 1 4.25-4.25h4a4.25 4.25 0 0 1 4.25 4.25V20"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.7a4.25 4.25 0 0 1 3.25 4.05V20"/>',
-    location: '<path d="M19 10c0 4.6-5 9.3-6.6 10.7a.6.6 0 0 1-.8 0C10 19.3 5 14.6 5 10a7 7 0 0 1 14 0"/><circle cx="12" cy="10" r="2.6"/>'
+    founded: '<path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/>',
+    years: '<path d="M12 16v5"/><path d="M16 14v7"/><path d="M20 10v11"/><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15"/><path d="M4 18v3"/><path d="M8 14v7"/>',
+    clients: '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
+    location: '<path d="M18 8c0 3.613-3.869 7.429-5.393 8.795a1 1 0 0 1-1.214 0C9.87 15.429 6 11.613 6 8a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M8.714 14h-3.71a1 1 0 0 0-.948.683l-2.004 6A1 1 0 0 0 3 22h18a1 1 0 0 0 .948-1.316l-2-6a1 1 0 0 0-.949-.684h-3.712"/>'
   };
-  const statIcon = (key) => statIcons[key] ? `<div class="stat-badge gradient-border-card" aria-hidden="true"><div class="stat-badge-in">
-      <svg viewBox="0 0 24 24">${statIcons[key].replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" class="sd"')}</svg></div></div>` : '';
+  const statIcon = (key) => statIcons[key] ? `<div class="stat-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24">${statIcons[key].replace(/<(path|circle|rect)\b/g, '<$1 pathLength="1" class="sd"')}</svg></div>` : '';
 
+  // One shared gradient for the stat icons' strokes (userSpaceOnUse so straight lines still get colour).
+  if (!document.getElementById('stat-grad-defs')) document.body.insertAdjacentHTML('beforeend',
+    '<svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"/><stop offset=".5" stop-color="#3064d0"/><stop offset="1" stop-color="#8739d5"/></linearGradient></defs></svg>');
   function renderStats() {
     $('#stats').innerHTML = dict.stats.map((s) => `
       <div class="stat" data-reveal data-reveal-y="56">
@@ -249,7 +252,7 @@
     map: '<path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/>',
     phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
     mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
-    firm: '<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>',
+    firm: '<line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/>',
     team: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
     partners: '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
     careers: '<path d="M12 12h.01"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M22 13a18.15 18.15 0 0 1-20 0"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
