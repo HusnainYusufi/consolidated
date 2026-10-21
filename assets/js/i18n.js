@@ -30,7 +30,7 @@ window.I18N = {
     },
     intro: {
       title: 'About Us',
-      p1: "Established in 2015 in Amman, Jordan, Consolidated for Auditing & Tax Services is a professional firm providing a comprehensive range of audit, assurance, accounting, taxation, and business advisory services. Since our establishment, we have been committed to delivering high-quality professional services built on integrity, independence, technical expertise, and a thorough understanding of our clients’ business needs. Our team of qualified and experienced professionals serves businesses and organizations across various industries, providing practical, tailored solutions that enhance financial transparency, strengthen regulatory compliance, improve operational efficiency, and support sustainable growth. At Consolidated, we believe in building long-term relationships based on trust, professionalism, and a shared commitment to our clients’ success.",
+      p1: "Established in 2015 in Amman, Jordan, as a professional firm providing a comprehensive range of audit, assurance, accounting, taxation, and business advisory services. Since our establishment, we have been committed to delivering high-quality professional services built on integrity, independence, technical expertise, and a thorough understanding of our clients’ business needs. Our team of qualified and experienced professionals serves businesses and organizations across various industries, providing practical, tailored solutions that enhance financial transparency, strengthen regulatory compliance, improve operational efficiency, and support sustainable growth.",
       points: [
         { title: 'Elite Professional Caliber', text: 'Staffed by seasoned auditors and advisors with international certifications.' },
         { title: 'Broad Institutional Scope', text: 'Serving a diverse clientele across public and private enterprises, international organizations, non-profit institutions, and high-net-worth individuals.' },
@@ -250,7 +250,7 @@ window.I18N = {
     },
     intro: {
       title: 'من نحن',
-      p1: 'تأسست الموحدة لتدقيق الحسابات والخدمات الضريبية عام 2015 في عمّان، الأردن، وهي مؤسسة مهنية تقدم مجموعة شاملة من خدمات التدقيق والتأكيد والمحاسبة والضرائب والاستشارات الإدارية. ومنذ تأسيسنا، التزمنا بتقديم خدمات مهنية عالية الجودة قائمة على النزاهة والاستقلالية والخبرة الفنية والفهم العميق لاحتياجات أعمال عملائنا. يخدم فريقنا من المهنيين المؤهلين وذوي الخبرة الشركات والمؤسسات في مختلف القطاعات، مقدماً حلولاً عملية مصممة خصيصاً لتعزيز الشفافية المالية وترسيخ الامتثال التنظيمي وتحسين الكفاءة التشغيلية ودعم النمو المستدام. في الموحدة، نؤمن ببناء علاقات طويلة الأمد قائمة على الثقة والاحترافية والالتزام المشترك بنجاح عملائنا.',
+      p1: 'تأسسنا عام 2015 في عمّان، الأردن، كمؤسسة مهنية تقدم مجموعة شاملة من خدمات التدقيق والتأكيد والمحاسبة والضرائب والاستشارات الإدارية. ومنذ تأسيسنا، التزمنا بتقديم خدمات مهنية عالية الجودة قائمة على النزاهة والاستقلالية والخبرة الفنية والفهم العميق لاحتياجات أعمال عملائنا. يخدم فريقنا من المهنيين المؤهلين وذوي الخبرة الشركات والمؤسسات في مختلف القطاعات، مقدماً حلولاً عملية مصممة خصيصاً لتعزيز الشفافية المالية وترسيخ الامتثال التنظيمي وتحسين الكفاءة التشغيلية ودعم النمو المستدام.',
       points: [
         { title: 'كفاءة مهنية رفيعة', text: 'كادر من المدققين والمستشارين المخضرمين الحاصلين على شهادات دولية.' },
         { title: 'نطاق مؤسسي واسع', text: 'نخدم قاعدة متنوعة من العملاء تشمل المنشآت العامة والخاصة والمنظمات الدولية والمؤسسات غير الربحية والأفراد ذوي الملاءة العالية.' },
