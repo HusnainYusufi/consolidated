@@ -485,7 +485,8 @@ html[lang="ar"] .client-card b { letter-spacing: 0; font-size: .72rem; }
 
 /* ---------- Team stack (testimonial component) ---------- */
 .team { margin-top: 5rem; }
-.team .h2 { max-width: 28ch; margin-bottom: 2.5rem; line-height: 1.3; }
+.team .h2 { margin-bottom: 2.5rem; line-height: 1.2; font-size: clamp(2.4rem, 4.5vw, 3.6rem); }
+@media (min-width: 900px) { .team .h2 { white-space: nowrap; } }
 .stack-wrap { position: relative; display: flex; flex-direction: column; gap: 1.75rem; align-items: center; min-height: 36rem; padding: 3rem 0; }
 @media (min-width: 768px) { .stack-wrap { flex-direction: row; gap: 3.5rem; padding: 6rem 0; } }
 .stack { position: relative; flex: 0 0 auto; width: 100%; height: 10rem; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); }
