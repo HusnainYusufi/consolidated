@@ -388,7 +388,7 @@ html[lang="ar"] .why-card h3 { font-style: normal; }
 .why-card.open .why-panel { grid-template-rows: 1fr; }
 .why-card.open p { opacity: 1; transform: none; transition-delay: .12s; }
 .why-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: -4px; border-radius: 1.4rem; }
-@media (max-width: 860px) { .why-head { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem; } .why-grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .why-head { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1.75rem; } .why-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Solutions accordion ---------- */
 .solutions { margin-top: 10rem; overflow-x: clip; }
@@ -484,7 +484,7 @@ html[lang="ar"] .client-card b { letter-spacing: 0; font-size: .72rem; }
 
 /* ---------- Team stack (testimonial component) ---------- */
 .team { margin-top: 5rem; }
-.team .h2 { max-width: 28ch; margin-inline: auto; margin-bottom: 1rem; line-height: 1.3; }
+.team .h2 { max-width: 28ch; margin-bottom: 2.5rem; line-height: 1.3; }
 .stack-wrap { position: relative; display: flex; flex-direction: column; gap: 1.75rem; align-items: center; min-height: 36rem; padding: 3rem 0; }
 @media (min-width: 768px) { .stack-wrap { flex-direction: row; gap: 3.5rem; padding: 6rem 0; } }
 .stack { position: relative; flex: 0 0 auto; width: 100%; height: 10rem; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent); }
@@ -673,7 +673,7 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
-  .about-panel { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem; }
+  .about-panel { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 1.75rem; }
   #header { grid-template-columns: 1fr auto; padding: 0 1rem; }
   .brand-icon { height: 2.6rem; }
   .brand-wordmark { height: 1.7rem; }
@@ -770,13 +770,21 @@ html[lang="ar"] :is(.vm-text, .why-card p, .wl-sub, .acc-prose p, .leader-text p
 .portfolio .label { font-style: italic; text-align: start; }
 html[lang="ar"] .portfolio .label { font-style: normal; }
 
-/* "Our Services": italic, at the content's start edge, with a thin line that runs from the heading to the screen edge. */
-.services-title { position: relative; font-style: italic; text-align: start; padding-bottom: 1.1rem; }
-html[lang="ar"] .services-title { font-style: normal; }
-.services-title::after { content: ""; position: absolute; bottom: 0; inset-inline-start: 0; inset-inline-end: calc((100% - 100vw) / 2); height: 2px;
-  background: linear-gradient(90deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
-html[dir="rtl"] .services-title::after { background: linear-gradient(270deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
 
 /* Small status message (e.g. "Email address copied"). */
 .site-toast { position: fixed; inset-inline: 1rem; bottom: 1.5rem; z-index: 10070; width: fit-content; max-width: min(34rem, calc(100% - 2rem)); margin-inline: auto; padding: .85rem 1.2rem; border-radius: 1rem; background: rgba(20,20,20,.92); border: 1px solid var(--line); color: var(--brand-white); font: 400 1.05rem/1.4 var(--font-head); text-align: center; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .3s var(--ease); pointer-events: none; }
 .site-toast.show { opacity: 1; transform: none; }
+
+/* ---------- Section heading underline ----------
+   A dot, a gradient line running a little past the heading, and an angled tick at the end. */
+.hd-line { position: relative; width: fit-content; max-width: 100%; padding-bottom: 1.2rem; text-align: start; }
+.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: -.3rem; width: calc(100% + 1.8rem); height: 9px;
+  background: radial-gradient(circle at 4.5px 50%, var(--cyan) 3.5px, transparent 4px) no-repeat, linear-gradient(90deg, var(--cyan), var(--blue) 45%, var(--purple)) 0 50% / 100% 2px no-repeat; }
+.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(100% + 1.5rem - 1px); width: 2px; height: 1.9rem; border-radius: 2px; background: var(--purple); transform-origin: 50% 100%; transform: rotate(38deg); }
+html[dir="rtl"] .hd-line::after { background: radial-gradient(circle at calc(100% - 4.5px) 50%, var(--cyan) 3.5px, transparent 4px) no-repeat, linear-gradient(270deg, var(--cyan), var(--blue) 45%, var(--purple)) 0 50% / 100% 2px no-repeat; }
+html[dir="rtl"] .hd-line::before { transform: rotate(-38deg); }
+.about-title.hd-line, .why-head .hd-line { margin-bottom: .4rem; }
+
+/* Framed panels (About, Why Choose Us) reach out by their own padding, so their headings line up with every other
+   section heading on the content's start edge. --pp never exceeds the space beside the content column. */
+.about-panel, .why-head { --pp: clamp(1.25rem, (100vw - 75rem) / 2 - .5rem, 3rem); padding-inline: var(--pp); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); max-width: none; }
