@@ -206,7 +206,7 @@ window.I18N = {
       copied: 'Email address copied: {email}. If no email app opened, paste it into your email.',
       cols: [
         { title: 'Our Services', services: [0, 2, 1, 3, 4], all: 'All Services' },
-        { title: 'Our Firm', links: [['About Us', '#about'], ['Our Team', '#team'], ['Our Partners', '#clients'], ['Careers', '/careers/']] },
+        { title: 'Our Firm', links: [['About Us', '#about', false, 'firm'], ['Our Team', '#team', false, 'team'], ['Our Partners', '#clients', false, 'partners'], ['Careers', '/careers/', false, 'careers']] },
         { title: 'Contact Us', links: [["King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan", null, false, 'pin'], ['View on Google Maps', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426", false, 'map'], ['+962 79 687 5200', 'tel:+962796875200', true, 'phone'], ['info@caudit.net', 'mailto:info@caudit.net', true, 'mail'], ['www.caudit.net', 'https://www.caudit.net', true, 'globe']] }
       ],
       led: 'Executive governance',
@@ -426,7 +426,7 @@ window.I18N = {
       copied: 'تم نسخ البريد الإلكتروني: {email}. إذا لم يُفتح تطبيق البريد، الصقه في بريدك.',
       cols: [
         { title: 'خدماتنا', services: [0, 2, 1, 3, 4], all: 'جميع الخدمات' },
-        { title: 'مؤسستنا', links: [['من نحن', '#about'], ['فريقنا', '#team'], ['شركاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },
+        { title: 'مؤسستنا', links: [['من نحن', '#about', false, 'firm'], ['فريقنا', '#team', false, 'team'], ['شركاؤنا', '#clients', false, 'partners'], ['الوظائف', '/ar/careers/', false, 'careers']] },
         { title: 'تواصل معنا', links: [["شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن", null, false, 'pin'], ['موقعنا على خرائط جوجل', "https://www.google.com/maps/search/?api=1&query=31.941254,35.849426", false, 'map'], ['+962 79 687 5200', 'tel:+962796875200', true, 'phone'], ['info@caudit.net', 'mailto:info@caudit.net', true, 'mail'], ['www.caudit.net', 'https://www.caudit.net', true, 'globe']] }
       ],
       led: 'الحوكمة التنفيذية',
