@@ -105,9 +105,6 @@
 
   /* ---------- Renderers ---------- */
   function renderFeatured() {
-    const t = $('#featured-track');
-    t.style.setProperty('--dur', '38s');
-    t.innerHTML = dup(dict.hero.certs.map(([k, v]) => `<span class="cert-mark">${esc(k)}<small>${esc(v)}</small></span>`).join(''));
     // Every phrase sits invisibly in the same cell, so the line is always as tall as the longest one.
     $('.cycle-reserve').innerHTML = heroWords().map((w) => `<span>${esc(w)}</span>`).join('');
   }

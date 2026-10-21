@@ -51,10 +51,14 @@ async def render(lang, path='index.html'):
         browser = await p.chromium.launch()
         ctx = await browser.new_context(viewport={'width': 1440, 'height': 900}, reduced_motion='reduce')
         page = await ctx.new_page()
+        errors = []
+        page.on('pageerror', lambda e: errors.append(str(e)))
         await page.goto(f'http://127.0.0.1:{PORT}/{path}?lang={lang}&prerender=1', wait_until='networkidle')
         await page.wait_for_timeout(1500)
         # If a script failed to load, the page keeps the previous static content; never write that out.
         ok = await page.evaluate(f"() => typeof I18N !== 'undefined' && document.documentElement.lang === '{lang}'")
+        if errors:
+            raise RuntimeError(f'{path} ({lang}) threw a script error, so it was not written: {errors[0]}')
         if not ok:
             raise RuntimeError(f'{path} ({lang}) did not render; scripts failed to load')
         html = await page.evaluate('''() => {
