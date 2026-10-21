@@ -288,7 +288,7 @@ html[lang="ar"] .intro-lead { font-style: normal; line-height: 1.7; }
 .intro-big { font-size: clamp(1.5rem, 2.8vw, 2.25rem); line-height: 1.25; }
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin: 5rem auto 0; padding: 0 1rem; place-items: start center; }
 .stat { display: flex; flex-direction: column; align-items: center; gap: .25rem; }
-.stat > span { max-width: 30ch; line-height: 1.5; font-size: .938rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--foreground); transition: color 1s; text-align: center; }
+.stat > span { max-width: 26ch; font: 400 1.35rem/1.35 var(--font-head); letter-spacing: .01em; color: var(--foreground); transition: color 1s; text-align: center; }
 html[lang="ar"] .stat span { letter-spacing: 0; }
 
 /* Stat icons: thin strokes in the text colour, inside a circle with the site's spinning gradient border. */
