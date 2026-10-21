@@ -7,7 +7,6 @@ window.I18N = {
     nav: { services: 'Services', sectors: 'Sectors', team: 'Leadership', clients: 'Clients', about: 'About', careers: 'Careers', cta: 'Book a Consultation', lang: 'عربي' },
     hero: {
       line1: 'Delivering',
-      words: ['Audit & Assurance Services', 'Accounting & Bookkeeping Services', 'Tax Advisory Services', 'Internal Audit & Risk Advisory', 'Financial Consulting Services', 'Corporate Advisory Services', 'Outsourcing & Back-Office Services', 'Training & Professional Development', 'ERP Solutions & Digital Transformation'],
       line2: 'Across',
       line3: 'Jordan & MENA',
       sub: 'A professional audit and advisory firm delivering comprehensive audit and assurance, accounting, taxation, financial advisory, risk management, and technology solutions to businesses and organizations across Jordan and the MENA region.',
@@ -39,9 +38,9 @@ window.I18N = {
       ]
     },
     stats: [
-      { icon: 'founded', n: 2015, label: 'Founded · 26 Feb 2015', plain: true, caption: 'Founded · 26 Feb 2015' },
+      { icon: 'founded', n: 2015, label: 'Founded · 26 Feb 2015', plain: true, caption: 'Founded since 2015' },
       { icon: 'years', n: 10, suffix: '+', label: 'Years of auditing, tax advisory and financial consulting', caption: '10+ years of auditing, tax advisory and financial consulting' },
-      { icon: 'clients', n: 500, suffix: '+', label: 'Corporate, Industrial & NGO Client Partners', caption: '500+ corporate, industrial & NGO client partners' },
+      { icon: 'clients', n: 500, suffix: '+', label: 'Corporate, Industrial & NGO Client Partners', caption: '500+ corporate, wealthy individuals & NGO clientele' },
       { icon: 'location', text: 'Amman', label: 'Location · Hashemite Kingdom of Jordan', caption: 'Amman · Hashemite Kingdom of Jordan' }
     ],
     vision: { title: 'Our Vision', text: 'To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.', tag: 'Professional excellence · Trusted leadership' },
@@ -228,7 +227,6 @@ window.I18N = {
     nav: { services: 'خدماتنا', sectors: 'القطاعات', team: 'القيادة', clients: 'عملاؤنا', about: 'من نحن', careers: 'الوظائف', cta: 'احجز استشارة', lang: 'EN' },
     hero: {
       line1: 'نقدم',
-      words: ['خدمات التدقيق والتأكيد', 'خدمات المحاسبة ومسك الدفاتر', 'الاستشارات الضريبية', 'التدقيق الداخلي واستشارات المخاطر', 'خدمات الاستشارات المالية', 'خدمات استشارات الشركات', 'خدمات الإسناد الخارجي والدعم المكتبي', 'التدريب والتطوير المهني', 'حلول تخطيط موارد المؤسسات والتحول الرقمي'],
       line2: 'في',
       line3: 'الأردن والمنطقة',
       sub: 'مؤسسة مهنية للتدقيق والاستشارات تقدم حلولاً شاملة في التدقيق والتأكيد والمحاسبة والضرائب والاستشارات المالية وإدارة المخاطر والحلول التقنية للشركات والمؤسسات في الأردن ومنطقة الشرق الأوسط وشمال أفريقيا.',
@@ -260,9 +258,9 @@ window.I18N = {
       ]
     },
     stats: [
-      { icon: 'founded', n: 2015, label: 'التأسيس · 26 شباط 2015', plain: true, caption: 'التأسيس · 26 شباط 2015' },
+      { icon: 'founded', n: 2015, label: 'التأسيس · 26 شباط 2015', plain: true, caption: 'تأسست منذ عام 2015' },
       { icon: 'years', n: 10, suffix: '+', label: 'سنوات من التدقيق والاستشارات الضريبية والمالية', caption: 'أكثر من 10 سنوات من التدقيق والاستشارات الضريبية والمالية' },
-      { icon: 'clients', n: 500, suffix: '+', label: 'شريك من الشركات والمصانع والمنظمات', caption: 'أكثر من 500 شريك من الشركات والمصانع والمنظمات' },
+      { icon: 'clients', n: 500, suffix: '+', label: 'شريك من الشركات والمصانع والمنظمات', caption: 'أكثر من 500 عميل من الشركات والأفراد ذوي الملاءة والمنظمات' },
       { icon: 'location', text: 'عمّان', label: 'الموقع · المملكة الأردنية الهاشمية', caption: 'عمّان · المملكة الأردنية الهاشمية' }
     ],
     vision: { title: 'رؤيتنا', text: 'أن نكون مؤسسة خدمات مهنية رائدة ومعياراً للتميز في الأردن والمنطقة، متميزين بخبرتنا الفنية والتزامنا الراسخ بالنزاهة المهنية وحلولنا المبتكرة التي تبعث الثقة وتمكّن الأعمال وتسهم في النمو الاقتصادي المستدام.', tag: 'تميز مهني · قيادة موثوقة' },

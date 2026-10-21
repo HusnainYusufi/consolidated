@@ -227,7 +227,7 @@ html[dir="rtl"] .hero-rule { margin: 0 .3em 0 0; }
 .cycle span { display: inline-block; will-change: transform; }
 html[lang="ar"] .cycle span { display: inline; }
 /* Service names are long: they take their own line and wrap between words. */
-.hero-title .line-cycle { white-space: normal; font-size: .64em; line-height: 1.08; }
+.hero-title .line-cycle { white-space: normal; font-size: .56em; line-height: 1.08; }
 .line-cycle .cycle-wrap { width: auto; max-width: 100%; clip-path: none; }
 .line-cycle .cycle-reserve { display: grid; white-space: normal; }
 .line-cycle .cycle-reserve > span { grid-area: 1 / 1; }
@@ -280,7 +280,8 @@ html[dir="rtl"] .marquee-track > * { direction: rtl; }
 .intro { padding: 2rem 0 0; color: var(--foreground); transition: color 1s; }
 .intro-text { display: flex; flex-direction: column; align-items: flex-start; }
 html[dir="rtl"] .intro-text { align-items: flex-end; }
-.intro-lead { font-size: 1.25rem; line-height: 1.55; margin: 0; max-width: 70ch; }
+.intro-lead { margin: 0; max-width: 62ch; font: italic 400 clamp(1.4rem, 1.9vw, 1.7rem)/1.45 var(--font-head); }
+html[lang="ar"] .intro-lead { font-style: normal; line-height: 1.7; }
 /* About: framed like the vision/mission cards, heading on the start side, copy on the end side. */
 .about-panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 2rem 4rem; align-items: start; width: 100%; padding: 3rem; border: 1px solid var(--line); border-radius: 1.5rem; transition: border-color 1s; }
 .about-title { font: italic 400 clamp(2.6rem, 5vw, 4rem)/1 var(--font-head); }
@@ -352,10 +353,6 @@ html[lang="ar"] .wl-face h3 { font-style: normal; }
 html[lang="ar"] .wl-kicker { letter-spacing: 0; font-size: .9rem; }
 .wl-title { display: flex; flex-direction: column; align-items: center; gap: .1em; font-size: clamp(3rem, 7vw, 6rem); line-height: .95; color: var(--brand-white); }
 .wl-sub { color: rgba(235,235,230,.75); margin: 1.2rem auto .6rem; max-width: 58ch; padding-inline: 1.5rem; }
-.wl-cursor { position: fixed; top: 0; left: 0; z-index: 10060; pointer-events: none; opacity: 0; }
-.wl-cursor img { width: 3.5rem; height: 3.5rem; object-fit: contain; filter: drop-shadow(0 8px 20px rgba(0,0,0,.35)); animation: spin 1.4s linear infinite; }
-.wl-glow { position: absolute; inset: -3rem; border-radius: 999px; background: radial-gradient(circle, rgba(255,244,214,.2) 0%, rgba(255,244,214,.08) 38%, transparent 72%); filter: blur(12px); }
-.wonderland.cursor-active { cursor: none; }
 
 /* ---------- Why choose us ---------- */
 .why { margin-top: 2rem; padding-block: 4rem 2rem; }
@@ -706,7 +703,7 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gradient-border-card::before, .gradient-border-card::after, .marquee-track, .hero-rotor img, .wl-cursor img { animation: none !important; }
+  .gradient-border-card::before, .gradient-border-card::after, .marquee-track, .hero-rotor img { animation: none !important; }
   .ch { opacity: 1 !important; }
 }
 

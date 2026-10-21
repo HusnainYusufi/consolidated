@@ -3,7 +3,7 @@
    system): particle preloader, Lenis smooth scroll, GSAP ScrollTrigger,
    cycling hero word, scroll managed dark/light theme, character
    reveal, portfolio marquees with clip reveal, floating value cards
-   with flashlight cursor, accordion, team stack carousel, i18n.
+   with group tilt, accordion, team stack carousel, i18n.
    ------------------------------------------------------------------ */
 (function () {
   'use strict';
@@ -100,13 +100,16 @@
   const dup = (h) => h + h;
   const initials = (name) => name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
 
+  // The hero word after "Delivering" cycles through the service names, so it always matches the services list.
+  const heroWords = () => dict.services.items.map((s) => s.title);
+
   /* ---------- Renderers ---------- */
   function renderFeatured() {
     const t = $('#featured-track');
     t.style.setProperty('--dur', '38s');
     t.innerHTML = dup(dict.hero.certs.map(([k, v]) => `<span class="cert-mark">${esc(k)}<small>${esc(v)}</small></span>`).join(''));
     // Every phrase sits invisibly in the same cell, so the line is always as tall as the longest one.
-    $('.cycle-reserve').innerHTML = dict.hero.words.map((w) => `<span>${esc(w)}</span>`).join('');
+    $('.cycle-reserve').innerHTML = heroWords().map((w) => `<span>${esc(w)}</span>`).join('');
   }
 
   function renderSectors() {
@@ -413,7 +416,7 @@
     const host = $('[data-cycle]');
     if (!host) return;
     clearTimeout(cycleTimer);
-    const words = dict.hero.words;
+    const words = heroWords();
     const isAr = lang === 'ar';
     let idx = 0, spans = [];
     // Letters are grouped per word so a long phrase wraps between words, never inside one.
@@ -555,17 +558,9 @@
     if (lenis) open ? lenis.stop() : lenis.start();
   });
 
-  /* ---------- Wonderland: floating cards, group tilt, custom cursor, flip ---------- */
+  /* ---------- Wonderland: floating cards, group tilt, flip ---------- */
   function initWonderland() {
     const section = $('#values'), group = $('#wl-group');
-    // The section has a 3D perspective, which would make a fixed cursor position relative to it, so the cursor
-    // lives directly under body. It is created here if the markup does not carry it (prerendered pages strip it).
-    let cursor = $('#wl-cursor');
-    if (!cursor) {
-      cursor = document.createElement('div'); cursor.id = 'wl-cursor'; cursor.className = 'wl-cursor'; cursor.setAttribute('aria-hidden', 'true');
-      cursor.innerHTML = '<span class="wl-glow"></span><img src="/assets/img/icon.png" alt="">';
-    }
-    if (cursor.parentNode !== document.body) document.body.appendChild(cursor);
     const cards = $$('.wl-card', group);
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     // Idle float: each card wobbles around its base rotation on its own delay.
@@ -582,16 +577,11 @@
     if (!fine || reduced || !hasGsap) return;
     const rx = gsap.quickTo(group, 'rotationX', { duration: .6, ease: 'power3.out' });
     const ry = gsap.quickTo(group, 'rotationY', { duration: .6, ease: 'power3.out' });
-    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
-    const cx = gsap.quickTo(cursor, 'x', { duration: .12, ease: 'power3.out' });
-    const cy = gsap.quickTo(cursor, 'y', { duration: .12, ease: 'power3.out' });
-    section.addEventListener('pointerenter', () => { section.classList.add('cursor-active'); gsap.to(cursor, { opacity: 1, duration: .25 }); });
-    section.addEventListener('pointerleave', () => { section.classList.remove('cursor-active'); gsap.to(cursor, { opacity: 0, duration: .25 }); rx(0); ry(0); });
+    section.addEventListener('pointerleave', () => { rx(0); ry(0); });
     section.addEventListener('pointermove', (e) => {
       const r = section.getBoundingClientRect();
       ry(5 * ((e.clientX - r.left) / r.width * 2 - 1));
       rx(-(4 * ((e.clientY - r.top) / r.height * 2 - 1)));
-      cx(e.clientX); cy(e.clientY);
     });
   }
 
