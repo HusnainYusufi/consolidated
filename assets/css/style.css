@@ -390,7 +390,7 @@ html[lang="ar"] .why-card h3 { font-style: normal; }
 @media (max-width: 860px) { .why-head { grid-template-columns: 1fr; gap: 1.25rem; padding: 1.75rem; } .why-grid { grid-template-columns: 1fr; } }
 
 /* ---------- Solutions accordion ---------- */
-.solutions { margin-top: 10rem; }
+.solutions { margin-top: 10rem; overflow-x: clip; }
 .sol-intro { font-size: 1rem; display: grid; gap: 1rem; color: var(--foreground); }
 .sol-intro a, .sol-intro strong { color: #27fcf2; }
 html.light .sol-intro strong { color: #0084cc; }
@@ -768,3 +768,10 @@ html[lang="ar"] :is(.vm-text, .why-card p, .wl-sub, .acc-prose p, .leader-text p
 /* Sectors heading: italic serif at the content's start edge. */
 .portfolio .label { font-style: italic; text-align: start; }
 html[lang="ar"] .portfolio .label { font-style: normal; }
+
+/* "Our Services": italic, at the content's start edge, with a thin line that runs from the heading to the screen edge. */
+.services-title { position: relative; font-style: italic; text-align: start; padding-bottom: 1.1rem; }
+html[lang="ar"] .services-title { font-style: normal; }
+.services-title::after { content: ""; position: absolute; bottom: 0; inset-inline-start: 0; inset-inline-end: calc((100% - 100vw) / 2); height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
+html[dir="rtl"] .services-title::after { background: linear-gradient(270deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
