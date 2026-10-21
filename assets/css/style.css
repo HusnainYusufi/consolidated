@@ -780,9 +780,13 @@ html[lang="ar"] .portfolio .label { font-style: normal; }
 /* ---------- Section heading underline ----------
    An angled tick rising at the heading's start, a gradient line under the heading, and a dot at its end. */
 .hd-line { position: relative; width: fit-content; max-width: 100%; padding-bottom: 1.2rem; text-align: start; }
-.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: .85rem; width: calc(100% - .55rem); height: 9px;
+/* The tick runs from the line up to the foot of the first letter: --tk-rise is the baseline's height above the line
+   (measured: ~28px in English, ~33px in Arabic), and the tick leans 38deg, so it covers rise * tan(38deg) sideways. */
+.hd-line { --tk-rise: 28px; --tk-run: calc(var(--tk-rise) * .78); }
+html[lang="ar"] .hd-line { --tk-rise: 33px; }
+.hd-line::after { content: ""; position: absolute; bottom: 0; inset-inline-start: var(--tk-run); width: calc(100% - var(--tk-run) + .3rem); height: 9px;
   background: radial-gradient(circle at calc(100% - 4.5px) 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(90deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
-.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(.85rem - 1px); width: 2px; height: 1.4rem; border-radius: 2px; background: var(--cyan); transform-origin: 50% 100%; transform: rotate(-38deg); }
+.hd-line::before { content: ""; position: absolute; bottom: 3.5px; inset-inline-start: calc(var(--tk-run) - 1px); width: 2px; height: calc(var(--tk-rise) * 1.27); border-radius: 2px; background: var(--cyan); transform-origin: 50% 100%; transform: rotate(-38deg); }
 html[dir="rtl"] .hd-line::after { background: radial-gradient(circle at 4.5px 50%, var(--purple) 3.5px, transparent 4px) no-repeat, linear-gradient(270deg, var(--cyan), var(--blue) 55%, var(--purple)) 0 50% / 100% 2px no-repeat; }
 html[dir="rtl"] .hd-line::before { transform: rotate(38deg); }
 .about-title.hd-line, .why-head .hd-line { margin-bottom: .4rem; }
