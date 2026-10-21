@@ -148,8 +148,8 @@
   const wlLayout = [
     { x: '2%', y: '1%', rot: -7, delay: 0, dur: 6.2 },
     { x: 'calc(98% - var(--wl-w))', y: '1%', rot: 7, delay: .6, dur: 5.6 },
-    { x: '12%', y: '35%', rot: 5, delay: 1, dur: 5.8 },
-    { x: 'calc(88% - var(--wl-w))', y: '35%', rot: -6, delay: 1.4, dur: 6.6 },
+    { x: '8%', y: '35%', rot: 5, delay: 1, dur: 5.8 },
+    { x: 'calc(92% - var(--wl-w))', y: '35%', rot: -6, delay: 1.4, dur: 6.6 },
     { x: '2%', y: '68%', rot: 8, delay: .3, dur: 6.0 },
     { x: 'calc(98% - var(--wl-w))', y: '68%', rot: -8, delay: 1.8, dur: 5.4 }
   ];
@@ -554,7 +554,8 @@
         gsap.to(c, { keyframes: [{ rotation: r + 2 }, { rotation: r - 2 }, { rotation: r + 1 }, { rotation: r }], duration: +c.dataset.dur, repeat: -1, ease: 'sine.inOut', delay: +c.dataset.delay });
       } else c.style.transform = `rotate(${r}deg)`;
       const flip = () => { c.classList.toggle('flipped'); c.setAttribute('aria-pressed', String(c.classList.contains('flipped'))); };
-      c.addEventListener('click', flip);
+      // Mouse devices turn the card over on hover (CSS); touch devices flip it with a tap.
+      if (!fine) c.addEventListener('click', flip);
       c.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); } });
     });
     if (!fine || reduced || !hasGsap) return;

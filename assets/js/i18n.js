@@ -63,6 +63,7 @@ window.I18N = {
     services: {
       title1: 'Audit, Tax Governance',
       title2: 'and Advisory in One Team',
+      heading: 'Our Services',
       overviewTitle: "Service Overview",
       discuss: 'Discuss This Service',
       items: [
@@ -80,8 +81,8 @@ window.I18N = {
     team: {
       title: 'The People Behind Our Professional Excellence',
       people: [
-        {"name": "Esam N. Almulazem, CFA, CPA", "role": "Founder and Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam"},
-        {"name": "Mr. Abedalaziz F.J Abdelhadi", "role": "Accounting & Tax Partner", "line": "Leads the firm's Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.", "photo": "abdelhadi"},
+        {"name": "Esam N. Almulazem, CFA, CPA, JCPA, CMA, CIA", "role": "Founder and Audit Partner", "line": "Established Consolidated for Auditing and Tax Consultation following extensive external audit tenure at top-tier international audit practices. Possesses multifaceted consulting expertise across healthcare, wholesale commerce, industrial manufacturing, and non-profit sectors.", "photo": "esam"},
+        {"name": "Abedalaziz F.J Abdelhadi", "role": "Accounting & Tax Partner", "line": "Leads the firm's Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.", "photo": "abdelhadi"},
         {"name": "Kareem Masoud", "role": "External Auditor", "line": "Supervises audit engagements, manages audit teams, reviews working papers, and ensures compliance with professional auditing standards and quality requirements.", "photo": "masoud"},
         {"name": "Bashar Hamdan", "role": "Accountant and Tax Officer", "line": "Managing financial records, prepares tax returns, and ensures compliance with accounting standards and tax regulations.", "photo": "hamdan"},
         {"name": "Mohammad Alfares", "role": "External Auditor", "line": "Integrates AI, data analytics, and emerging technologies into audit processes to enhance audit quality, efficiency, and accuracy.", "photo": "alfares"},
@@ -95,7 +96,7 @@ window.I18N = {
       people: [
         {
           name: 'Esam N. Almulazem', role: 'Founder and Audit Partner', photo: 'esam',
-          certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'Bachelor of Accounting - University of Jordan',
+          certs: ['CFA', 'CPA', 'JCPA', 'CMA', 'CIA'], degree: 'Bachelor of Accounting - University of Jordan',
           bio: ["An accomplished External Audit Partner with over 17 years of professional experience in external audit and assurance, financial reporting, financial management, corporate advisory, and professional training.", "Possesses extensive expertise in leading and overseeing audit engagements, managing diversified client portfolios, and providing technical guidance on complex accounting, auditing, and financial reporting matters in accordance with International Standards on Auditing (ISAs), IFRS, and IFRS for SMEs.", "His professional background includes senior financial management positions across various industries, alongside extensive external audit experience with International Audit Firms.", "Throughout his career, he has developed substantial expertise in auditing public companies, multinational and cross-border businesses, holding companies, and consolidated financial statements, with a strong commitment to audit quality, professional independence, and client service excellence."],
           contact: [
             { label: 'Headquarters', value: "King Abdallah II Street, Alnahda Complex, 7th floor, Amman, Jordan" },
@@ -105,7 +106,7 @@ window.I18N = {
           ]
         },
         {
-          name: 'Mr. Abedalaziz F.J Abdelhadi', role: 'Accounting & Tax Partner', photo: 'abdelhadi',
+          name: 'Abedalaziz F.J Abdelhadi', role: 'Accounting & Tax Partner', photo: 'abdelhadi',
           certs: [], degree: 'Bachelor of Accounting - Al Ahliyya Amman University',
           bio: ['Leads the firm\'s Accounting Advisory and Tax Compliance practice, bringing over 14 years of specialized expertise in corporate taxation, financial reporting under IFRS, and regulatory compliance.', 'Directs technical engagements spanning corporate income tax, sales/VAT filings, withholding tax audits, and strategic tax planning for diverse industries. Proven track record in representing corporate clients before tax authorities during field audits, objections, and dispute resolutions, safeguarding client interests while optimizing tax positions and mitigating statutory exposure.'],
           contact: [
@@ -283,6 +284,7 @@ window.I18N = {
     services: {
       title1: 'تدقيق وحوكمة ضريبية',
       title2: 'واستشارات في فريق واحد',
+      heading: 'خدماتنا',
       overviewTitle: "نظرة عامة على الخدمة",
       discuss: 'استفسر عن هذه الخدمة',
       items: [
@@ -300,8 +302,8 @@ window.I18N = {
     team: {
       title: 'الأشخاص وراء تميزنا المهني',
       people: [
-        {"name": "عصام ن. الملازم، CFA, CPA", "role": "المؤسس وشريك التدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam"},
-        {"name": "السيد عبد العزيز ف. ج. عبد الهادي", "role": "شريك المحاسبة والضرائب", "line": "يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية والامتثال التنظيمي.", "photo": "abdelhadi"},
+        {"name": "عصام ن. الملازم، CFA, CPA, JCPA, CMA, CIA", "role": "المؤسس وشريك التدقيق", "line": "أسس الموحدة لتدقيق الحسابات والاستشارات الضريبية بعد خبرة واسعة في التدقيق الخارجي لدى كبرى شركات التدقيق الدولية. يمتلك خبرة استشارية متعددة الجوانب في قطاعات الرعاية الصحية وتجارة الجملة والتصنيع والمنظمات غير الربحية.", "photo": "esam"},
+        {"name": "عبد العزيز ف. ج. عبد الهادي", "role": "شريك المحاسبة والضرائب", "line": "يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية والامتثال التنظيمي.", "photo": "abdelhadi"},
         {"name": "كريم مسعود", "role": "مدقق خارجي", "line": "يشرف على مهام التدقيق ويدير فرق التدقيق ويراجع أوراق العمل ويضمن الالتزام بمعايير التدقيق المهنية ومتطلبات الجودة.", "photo": "masoud"},
         {"name": "بشار حمدان", "role": "محاسب ومسؤول ضرائب", "line": "يدير السجلات المالية ويعد الإقرارات الضريبية ويضمن الالتزام بالمعايير المحاسبية والأنظمة الضريبية.", "photo": "hamdan"},
         {"name": "محمد الفارس", "role": "مدقق خارجي", "line": "يدمج الذكاء الاصطناعي وتحليلات البيانات والتقنيات الناشئة في عمليات التدقيق لتعزيز جودة التدقيق وكفاءته ودقته.", "photo": "alfares"},
@@ -315,7 +317,7 @@ window.I18N = {
       people: [
         {
           name: 'عصام ن. الملازم', role: 'المؤسس وشريك التدقيق', photo: 'esam',
-          certs: ['JCPA', 'CFA', 'CPA', 'CMA', 'CIA'], degree: 'بكالوريوس المحاسبة - الجامعة الأردنية',
+          certs: ['CFA', 'CPA', 'JCPA', 'CMA', 'CIA'], degree: 'بكالوريوس المحاسبة - الجامعة الأردنية',
           bio: ["شريك تدقيق خارجي متمرس يتمتع بخبرة مهنية تزيد عن 17 عاماً في التدقيق الخارجي والتأكيد والتقارير المالية والإدارة المالية واستشارات الشركات والتدريب المهني.", "يمتلك خبرة واسعة في قيادة مهام التدقيق والإشراف عليها وإدارة محافظ عملاء متنوعة وتقديم التوجيه الفني في المسائل المحاسبية والتدقيقية والتقارير المالية المعقدة وفقاً لمعايير التدقيق الدولية (ISAs) والمعايير الدولية للتقارير المالية (IFRS) والمعيار الدولي للمنشآت الصغيرة والمتوسطة.", "تشمل خلفيته المهنية مناصب إدارية مالية عليا في قطاعات متعددة، إلى جانب خبرة واسعة في التدقيق الخارجي لدى شركات التدقيق الدولية.", "طوّر على مدار مسيرته المهنية خبرة كبيرة في تدقيق الشركات المساهمة العامة والشركات متعددة الجنسيات والعابرة للحدود والشركات القابضة والبيانات المالية الموحدة، مع التزام راسخ بجودة التدقيق والاستقلالية المهنية والتميز في خدمة العملاء."],
           contact: [
             { label: 'المقر الرئيسي', value: "شارع الملك عبدالله الثاني، مجمع النهضة، الطابق السابع، عمّان، الأردن" },
@@ -325,7 +327,7 @@ window.I18N = {
           ]
         },
         {
-          name: 'السيد عبد العزيز ف. ج. عبد الهادي', role: 'شريك المحاسبة والضرائب', photo: 'abdelhadi',
+          name: 'عبد العزيز ف. ج. عبد الهادي', role: 'شريك المحاسبة والضرائب', photo: 'abdelhadi',
           certs: [], degree: 'بكالوريوس المحاسبة - جامعة عمّان الأهلية',
           bio: ['يقود ممارسة الاستشارات المحاسبية والامتثال الضريبي في المؤسسة، بخبرة متخصصة تتجاوز 14 عاماً في ضرائب الشركات والتقارير المالية وفق المعايير الدولية للتقارير المالية والامتثال التنظيمي.', 'يدير التكليفات الفنية التي تشمل ضريبة دخل الشركات وإقرارات ضريبة المبيعات والقيمة المضافة وتدقيقات الضريبة المقتطعة والتخطيط الضريبي الاستراتيجي لمختلف القطاعات. سجل حافل في تمثيل الشركات أمام السلطات الضريبية خلال التدقيق الميداني والاعتراضات وتسوية النزاعات، بما يحمي مصالح العملاء ويحسّن أوضاعهم الضريبية ويقلل من المخاطر القانونية.'],
           contact: [
