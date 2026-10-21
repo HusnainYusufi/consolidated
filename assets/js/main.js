@@ -228,7 +228,7 @@
 
   function renderTeam() {
     $('#team-stack').innerHTML = dict.team.people.map((p, i) => `
-      <button type="button" class="stack-item" data-i="${i}" aria-label="${esc(p.name)}">${p.photo ? `<img src="/assets/img/${p.photo}.jpg" alt="">` : `<b>${esc(initials(p.name))}</b>`}</button>`).join('');
+      <button type="button" class="stack-item" data-i="${i}" aria-label="${esc(p.name)}">${p.photo ? `<img src="/assets/img/${p.thumb || p.photo}.jpg" alt="">` : `<b>${esc(initials(p.name))}</b>`}</button>`).join('');
     initStack();
   }
 

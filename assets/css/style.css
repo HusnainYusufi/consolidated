@@ -668,9 +668,8 @@ html[lang="ar"] .consult-photo figcaption > span { letter-spacing: 0; font-size:
 /* Founder photo has more headroom than the others: frame it a little lower. */
 .consult-photo { background: #000; }
 .consult-photo img[src*="esam"] { height: auto; transform: none; }
-/* Team thumbnails: each photo is shot at a different distance, so a few are framed individually to match the rest. */
-.stack-item img[src*="esam"] { object-position: center 6%; transform: none; }
-.stack-item img[src*="masoud"] { object-position: center 22%; transform: scale(1.35); transform-origin: 50% 28%; }
+/* Team thumbnails shot at a different distance from the rest use pre-framed square crops (thumb in i18n.js). */
+.stack-item img[src*="-thumb"] { object-position: center; transform: none; }
 
 
 /* ---------- Responsive ---------- */
