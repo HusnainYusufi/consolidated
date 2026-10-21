@@ -775,3 +775,7 @@ html[lang="ar"] .services-title { font-style: normal; }
 .services-title::after { content: ""; position: absolute; bottom: 0; inset-inline-start: 0; inset-inline-end: calc((100% - 100vw) / 2); height: 2px;
   background: linear-gradient(90deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
 html[dir="rtl"] .services-title::after { background: linear-gradient(270deg, var(--cyan), var(--blue) 18%, var(--purple) 36%, rgba(255,255,255,.18) 62%, rgba(255,255,255,.18)); }
+
+/* Small status message (e.g. "Email address copied"). */
+.site-toast { position: fixed; inset-inline: 1rem; bottom: 1.5rem; z-index: 10070; width: fit-content; max-width: min(34rem, calc(100% - 2rem)); margin-inline: auto; padding: .85rem 1.2rem; border-radius: 1rem; background: rgba(20,20,20,.92); border: 1px solid var(--line); color: var(--brand-white); font: 400 1.05rem/1.4 var(--font-head); text-align: center; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; transform: translateY(12px); transition: opacity .3s, transform .3s var(--ease); pointer-events: none; }
+.site-toast.show { opacity: 1; transform: none; }

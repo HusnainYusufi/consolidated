@@ -203,6 +203,7 @@ window.I18N = {
     },
     footer: {
       email: 'Send Us An Email',
+      copied: 'Email address copied: {email}. If no email app opened, paste it into your email.',
       cols: [
         { title: 'Our Services', services: [0, 2, 1, 3, 4], all: 'All Services' },
         { title: 'Our Firm', links: [['About Us', '#about'], ['Our Team', '#team'], ['Our Partners', '#clients'], ['Careers', '/careers/']] },
@@ -422,6 +423,7 @@ window.I18N = {
     },
     footer: {
       email: 'أرسل لنا بريداً إلكترونياً',
+      copied: 'تم نسخ البريد الإلكتروني: {email}. إذا لم يُفتح تطبيق البريد، الصقه في بريدك.',
       cols: [
         { title: 'خدماتنا', services: [0, 2, 1, 3, 4], all: 'جميع الخدمات' },
         { title: 'مؤسستنا', links: [['من نحن', '#about'], ['فريقنا', '#team'], ['شركاؤنا', '#clients'], ['الوظائف', '/ar/careers/']] },

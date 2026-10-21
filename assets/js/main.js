@@ -45,6 +45,23 @@
     else target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
   });
 
+  /* ---------- Email links: also copy the address ----------
+     mailto: only works when the visitor has an email app set up; with webmail nothing happens. So every email link
+     also copies the address and says so, and the visitor can paste it into whatever email they use. */
+  let toastTimer = null;
+  function toast(msg) {
+    let t = $('#site-toast');
+    if (!t) { t = document.createElement('div'); t.id = 'site-toast'; t.className = 'site-toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 4500);
+  }
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="mailto:"]'); if (!a) return;
+    const email = decodeURIComponent(a.getAttribute('href').slice(7).split('?')[0]);
+    const done = () => toast(dict.footer.copied.replace('{email}', email));
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, done); else done();
+  });
+
   /* ---------- Language ---------- */
   function getLang() {
     const q = new URLSearchParams(location.search).get('lang');
