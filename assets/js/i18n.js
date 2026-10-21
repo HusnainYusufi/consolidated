@@ -86,7 +86,7 @@ window.I18N = {
         {"name": "Bashar Hamdan", "role": "Accountant and Tax Officer", "line": "Managing financial records, prepares tax returns, and ensures compliance with accounting standards and tax regulations.", "photo": "hamdan"},
         {"name": "Mohammad Alfares", "role": "External Auditor", "line": "Integrates AI, data analytics, and emerging technologies into audit processes to enhance audit quality, efficiency, and accuracy.", "photo": "alfares"},
         {"name": "Mohammad Abu Hijleh", "role": "External Auditor", "line": "Assist in audit engagements, performs audit procedures, and prepares working papers while ensuring compliance with professional auditing standards.", "photo": "abuhejleh"},
-        {"name": "Lojen Yousef", "role": "HR and Admin Officer", "line": "Manages human resources, employee relations, and administrative operations while ensuring compliance with company policies and labor regulations."}
+        {"name": "Lojen Yousef", "role": "HR and Admin Officer", "line": "Manages human resources, employee relations, and administrative operations while ensuring compliance with company policies and labor regulations.", "photo": "lojen"}
       ]
     },
     leaders: {
@@ -306,7 +306,7 @@ window.I18N = {
         {"name": "بشار حمدان", "role": "محاسب ومسؤول ضرائب", "line": "يدير السجلات المالية ويعد الإقرارات الضريبية ويضمن الالتزام بالمعايير المحاسبية والأنظمة الضريبية.", "photo": "hamdan"},
         {"name": "محمد الفارس", "role": "مدقق خارجي", "line": "يدمج الذكاء الاصطناعي وتحليلات البيانات والتقنيات الناشئة في عمليات التدقيق لتعزيز جودة التدقيق وكفاءته ودقته.", "photo": "alfares"},
         {"name": "محمد أبو حجلة", "role": "مدقق خارجي", "line": "يساعد في مهام التدقيق وينفذ إجراءات التدقيق ويعد أوراق العمل مع ضمان الالتزام بمعايير التدقيق المهنية.", "photo": "abuhejleh"},
-        {"name": "لجين يوسف", "role": "مسؤولة الموارد البشرية والشؤون الإدارية", "line": "تدير الموارد البشرية وعلاقات الموظفين والعمليات الإدارية مع ضمان الالتزام بسياسات الشركة وأنظمة العمل."}
+        {"name": "لجين يوسف", "role": "مسؤولة الموارد البشرية والشؤون الإدارية", "line": "تدير الموارد البشرية وعلاقات الموظفين والعمليات الإدارية مع ضمان الالتزام بسياسات الشركة وأنظمة العمل.", "photo": "lojen"}
       ]
     },
     leaders: {
