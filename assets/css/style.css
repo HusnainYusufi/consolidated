@@ -772,4 +772,6 @@ html[dir="rtl"] .hd-line::after { background: linear-gradient(270deg, var(--cyan
 
 /* Framed panels (About, Why Choose Us) reach out by their own padding, so their headings line up with every other
    section heading on the content's start edge. --pp never exceeds the space beside the content column. */
-.about-panel, .why-head { --pp: clamp(1.25rem, (100vw - 75rem) / 2 - .5rem, 3rem); padding-inline: var(--pp); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); max-width: none; }
+.about-panel, .why-head { --pp: clamp(.75rem, (100vw - 75rem) / 2 - .5rem, 3rem); padding-inline: var(--pp); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); max-width: none; }
+/* Vision / Mission cards line up with the About panel's outer edges (same outward offset). */
+.vm-grid { --pp: clamp(.75rem, (100vw - 75rem) / 2 - .5rem, 3rem); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); }

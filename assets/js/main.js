@@ -88,6 +88,11 @@
     const wa = encodeURIComponent(dict.consult.waText);
     $$('[data-wa]').forEach((a) => { a.href = WA + '?text=' + wa; });
     $$('[data-careers-link]').forEach((a) => { a.href = lang === 'ar' ? '/ar/careers/' : '/careers/'; });
+    // Screen-reader labels and image descriptions follow the page language.
+    [['.brand', 'aria-label', 'home'], ['.brand-wordmark', 'alt', 'logo'], ['.nav-pill', 'aria-label', 'primary'], ['#menu-btn', 'aria-label', 'menu'],
+     ['#sound-btn', 'aria-label', 'sound'], ['#team-prev', 'aria-label', 'prev'], ['#team-next', 'aria-label', 'next'],
+     ['.socials a[data-wa]', 'aria-label', 'whatsapp'], ['.socials a[href^="mailto:"]', 'aria-label', 'email'], ['.consult-photo > img', 'alt', 'founder']]
+      .forEach(([sel, attr, key]) => $$(sel).forEach((el) => el.setAttribute(attr, dict.a11y[key])));
     $$('a[href^="mailto:"]').forEach((a) => { if (!a.closest('.leader-contact, .footer-col')) a.href = 'mailto:' + CFG.inquiryEmail; });
   }
 

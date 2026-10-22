@@ -30,6 +30,11 @@
     $$('[data-home-link]').forEach((a) => a.href = home);
     $$('[data-home-anchor]').forEach((a) => a.href = home + '#' + a.dataset.homeAnchor);
     $$('[data-careers-link]').forEach((a) => a.href = lang === 'ar' ? '/ar/careers/' : '/careers/');
+    // Screen-reader labels and image descriptions follow the page language.
+    [['.brand', 'aria-label', 'home'], ['.brand-wordmark', 'alt', 'logo'], ['.nav-pill', 'aria-label', 'primary'], ['#menu-btn', 'aria-label', 'menu'],
+     ['#sound-btn', 'aria-label', 'sound'], ['#team-prev', 'aria-label', 'prev'], ['#team-next', 'aria-label', 'next'],
+     ['.socials a[data-wa]', 'aria-label', 'whatsapp'], ['.socials a[href^="mailto:"]', 'aria-label', 'email'], ['.consult-photo > img', 'alt', 'founder']]
+      .forEach(([sel, attr, key]) => $$(sel).forEach((el) => el.setAttribute(attr, dict.a11y[key])));
     $$('[data-wa]').forEach((a) => a.href = 'https://wa.me/' + CFG.whatsapp + '?text=' + encodeURIComponent(dict.consult.waText));
     const c = dict.careers;
     $('#roles').innerHTML = c.roles.map((r, i) => `<article class="role-card" data-role="${i}" tabindex="0"><h3>${esc(r.title)}</h3><p>${esc(r.text)}</p><small>${esc(r.tag)}</small></article>`).join('');
