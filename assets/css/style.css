@@ -261,7 +261,7 @@ html[dir="rtl"] .marquee-track > * { direction: rtl; }
 .cert-mark small { font-family: var(--font-body); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .7; margin-inline-start: .5rem; }
 
 /* ---------- Portfolio (sector cards) ---------- */
-.portfolio { padding: 3rem 0 8rem; overflow: hidden; }
+.portfolio { padding: 8rem 0 8rem; overflow: hidden; }
 .portfolio .label, .section-title { margin-bottom: 2.5rem; font: 400 clamp(2.4rem, 4.5vw, 3.6rem)/1.1 var(--font-head); letter-spacing: 0; text-transform: none; }
 .portfolio-rows { display: grid; gap: 1.25rem; }
 .portfolio-rows .marquee { -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
