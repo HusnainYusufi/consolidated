@@ -27,7 +27,7 @@ def serve():
 async def render(lang, out):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        page = await browser.new_page(viewport={'width': 1123, 'height': 794})
+        page = await browser.new_page(viewport={'width': 794, 'height': 1123})
         await page.goto(f'http://127.0.0.1:{PORT}/profile/index.html?lang={lang}&print=1', wait_until='networkidle')
         await page.wait_for_function('window.__profileReady === true')
         await page.evaluate('document.fonts.ready')
@@ -45,7 +45,7 @@ async def render(lang, out):
             await page.wait_for_timeout(1500)
         await page.wait_for_timeout(800)
         n = await page.evaluate("document.querySelectorAll('.page').length")
-        await page.pdf(path=out, width='297mm', height='210mm', print_background=True, prefer_css_page_size=True, margin={'top': '0', 'right': '0', 'bottom': '0', 'left': '0'})
+        await page.pdf(path=out, width='210mm', height='297mm', print_background=True, prefer_css_page_size=True, margin={'top': '0', 'right': '0', 'bottom': '0', 'left': '0'})
         await browser.close()
         return n
 
