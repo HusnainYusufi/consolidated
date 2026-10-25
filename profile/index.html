@@ -98,8 +98,8 @@
   html:not([lang="ar"]) .cv-words div:nth-child(2) span:last-child{ font-style:italic; color:var(--brass2); }
 
   /* CONTENTS */
-  .ch-row{ display:grid; grid-template-columns:44mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
-  .ch-thumb{ position:relative; height:30mm; border-radius:4mm; overflow:hidden; }
+  .ch-row{ display:grid; grid-template-columns:32mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
+  .ch-thumb{ position:relative; width:28mm; height:28mm; border-radius:50%; overflow:hidden; outline:1px solid var(--brass); outline-offset:1.6mm; margin:2mm; }
   .ch-num{ font-family:var(--head); font-size:30pt; color:var(--brass); line-height:1; }
   .ch-row h3{ font-size:20pt; margin-bottom:2mm; }
   .ch-items{ display:flex; flex-wrap:wrap; gap:1mm 5mm; font-size:8.4pt; color:var(--ink2); }
@@ -108,17 +108,17 @@
   /* DIVIDER */
   .dv-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,22,29,.25) 10%, rgba(10,22,29,.55) 45%, rgba(10,22,29,.96)); }
   .dv-no{ position:absolute; top:12mm; inset-inline-end:12mm; font-family:var(--head); font-size:230pt; line-height:.8; color:transparent; -webkit-text-stroke:1.2px rgba(229,196,141,.75); }
-  .dv-body{ position:absolute; left:16mm; right:16mm; bottom:28mm; color:#fff; }
+  .dv-body{ position:absolute; left:16mm; right:16mm; bottom:28mm; color:var(--ink); }
   .dv-title{ font-size:58pt; margin:5mm 0 9mm; }
   .dv-quote{ display:flex; gap:4mm; max-width:150mm; }
-  .dv-quote svg{ width:8mm; height:8mm; color:var(--brass2); flex:0 0 auto; }
-  .dv-quote p{ font-family:var(--head); font-size:16pt; line-height:1.35; color:rgba(255,255,255,.9); }
+  .dv-quote svg{ width:8mm; height:8mm; color:var(--brass); flex:0 0 auto; }
+  .dv-quote p{ font-family:var(--head); font-size:16pt; line-height:1.35; color:var(--ink2); }
   html:not([lang="ar"]) .dv-quote p{ font-style:italic; }
   html[dir="rtl"] .dv-quote svg{ transform:scaleX(-1); }
 
   /* ABOUT */
   .band{ position:absolute; top:0; left:0; right:0; overflow:hidden; border-end-end-radius:30mm; }
-  .est{ position:absolute; width:34mm; height:34mm; border-radius:50%; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; box-shadow:0 5mm 12mm rgba(0,0,0,.25); }
+  .est{ position:absolute; width:34mm; height:34mm; border-radius:50%; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
   .est b{ font-family:var(--head); font-weight:400; font-size:26pt; line-height:1; }
   .est span{ font-size:6.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--brass2); margin-top:1.5mm; font-weight:600; }
   html[lang="ar"] .est span{ letter-spacing:0; font-size:8pt; }
@@ -202,9 +202,9 @@
   .sv-hero-text{ position:absolute; left:16mm; right:44mm; bottom:13mm; color:#fff; z-index:2; }
   html[dir="rtl"] .sv-hero-text{ left:44mm; right:16mm; }
   .sv-hero-text h2{ font-size:33pt; margin-top:4mm; }
-  .sv-badge{ position:absolute; top:115.5mm; inset-inline-end:16mm; width:21mm; height:21mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); color:var(--brass2); display:grid; place-items:center; box-shadow:0 4mm 10mm rgba(10,22,29,.3); }
-  .sv-badge svg{ width:9.5mm; height:9.5mm; stroke-width:1.5; }
-  .sv-body{ position:absolute; top:138mm; left:16mm; right:16mm; bottom:22mm; display:flex; flex-direction:column; }
+  .sv-badge{ position:absolute; width:20mm; height:20mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); color:var(--brass2); display:grid; place-items:center; }
+  .sv-badge svg{ width:8.5mm; height:8.5mm; stroke-width:1.5; }
+  .sv-body{ position:absolute; top:117mm; left:16mm; right:16mm; bottom:22mm; display:flex; flex-direction:column; }
   .tagline{ font-family:var(--head); font-size:16pt; line-height:1.25; color:var(--blue); }
   html:not([lang="ar"]) .tagline{ font-style:italic; }
   .count{ display:flex; align-items:baseline; gap:2mm; }
@@ -230,10 +230,9 @@
   .svb-body .ks.dense li{ font-size:7.6pt; }
 
   /* PEOPLE */
-  .leader{ display:grid; grid-template-columns:64mm 1fr; gap:9mm; align-items:start; }
-  .leader .ph{ position:relative; height:84mm; border-radius:6mm; overflow:hidden; }
+  .leader{ display:grid; grid-template-columns:60mm 1fr; gap:9mm; align-items:start; }
+  .leader .ph{ position:relative; width:56mm; height:56mm; margin:2mm; border-radius:50%; overflow:hidden; outline:1px solid var(--brass); outline-offset:2mm; }
   .leader .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 15%; }
-  .leader .ph::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:2.2px; background:var(--brass); }
   .leader h3{ font-size:24pt; }
   .leader .role{ margin:2mm 0 3.5mm; font-size:7.8pt; letter-spacing:.2em; text-transform:uppercase; font-weight:600; color:var(--blue); }
   html[lang="ar"] .leader .role{ letter-spacing:0; font-size:9pt; }
@@ -242,7 +241,7 @@
   .leader p.bio{ font-size:9pt; line-height:1.58; color:var(--ink2); margin-bottom:2.5mm; }
   .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:6mm 8mm; }
   .member{ display:flex; gap:5mm; align-items:flex-start; padding-top:5mm; border-top:1px solid rgba(255,255,255,.12); }
-  .member .ph{ width:28mm; height:34mm; border-radius:4mm; overflow:hidden; flex:0 0 auto; background:var(--navy2); display:grid; place-items:center; font-family:var(--head); font-size:22pt; color:var(--brass2); }
+  .member .ph{ width:25mm; height:25mm; margin:1.5mm; border-radius:50%; outline:1px solid var(--brass2); outline-offset:1.4mm; overflow:hidden; flex:0 0 auto; background:var(--navy2); display:grid; place-items:center; font-family:var(--head); font-size:22pt; color:var(--brass2); }
   .member .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 15%; }
   .member h3{ font-size:13.5pt; }
   .member .role{ display:block; margin:1.2mm 0 2mm; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--brass2); }
@@ -267,6 +266,15 @@
   .qr img{ width:36mm; height:36mm; display:block; margin:0 auto 2.5mm; }
   .qr p{ font-size:7.2pt; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
   html[lang="ar"] .qr p{ letter-spacing:0; font-size:8.4pt; }
+
+  /* LENS: every photo is seen through a round lens with a brass focus ring */
+  svg.lens{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .lens-ring{ position:absolute; pointer-events:none; color:var(--brass); }
+  .dark .lens-ring{ color:var(--brass2); }
+  .lens-ring svg{ display:block; width:100%; height:100%; overflow:visible; }
+  .sv-big{ font-family:var(--head); font-size:96pt; line-height:.8; margin:7mm 0 6mm; color:transparent; -webkit-text-stroke:1px var(--brass); }
+  .sv-title{ font-size:30pt; margin-bottom:4mm; }
+  .dv-n{ position:absolute; top:0; inset-inline-end:0; font-family:var(--head); font-size:72pt; line-height:.8; color:transparent; -webkit-text-stroke:1px var(--brass); }
 
   /* ============ SCREEN-ONLY CHROME ============ */
   .ui{ position:fixed; z-index:50; font-family:var(--body); }
@@ -371,18 +379,30 @@
   const tel  = (cc.links.find(l => String(l[1] || '').startsWith('tel:')) || [''])[0];
   const mail = (cc.links.find(l => String(l[1] || '').startsWith('mailto:')) || [''])[0];
   const web  = (cc.links.find(l => /^https:\/\/www\.caudit/.test(String(l[1] || ''))) || ['www.caudit.net'])[0];
+  const ringSvg = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/>${[[50, -2.6, 50, 2.6], [97.4, 50, 102.6, 50], [50, 97.4, 50, 102.6], [-2.6, 50, 2.6, 50]].map(([a, b, c, d]) => `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>`).join('')}</svg>`;
+  const mx = (x) => AR ? 210 - x : x;   // layouts are drawn left-to-right in mm and mirrored for Arabic
+  // The lens is drawn as a page-sized SVG with a circular clip: CSS clipping of photos that bleed off
+  // the page edge does not survive Chromium's PDF output.
+  const DIM = { 17743494: [1000, 1500], 18717725: [1000, 1500], 19128263: [801, 1500], 30791306: [1200, 1500], 6992158: [1160, 1500], 6779567: [1500, 843], 6779571: [1500, 843] };
+  const posFrac = (pos) => { const t = pos.split(/\s+/).map(v => v === 'center' ? .5 : parseFloat(v) / 100); return [t[0], t.length > 1 ? t[1] : .5]; };
+  let lensId = 0;
+  const lens = (id, d, cx, cy, pos = 'center') => { const x = mx(cx), g = 4, r = d / 2, k = ++lensId;
+    const [iw, ih] = DIM[id] || [1500, 1000], f = Math.max(d / iw, d / ih), w = iw * f, h = ih * f, [fx, fy] = posFrac(pos);
+    return `<svg class="lens" viewBox="0 0 210 297" preserveAspectRatio="none"><defs><clipPath id="lc${k}"><circle cx="${x}" cy="${cy}" r="${r}"/></clipPath></defs>
+        <circle cx="${x}" cy="${cy}" r="${r}" fill="#ece5d8"/><image href="/profile/img/t-${id}.jpg" x="${x - r - (w - d) * fx}" y="${cy - r - (h - d) * fy}" width="${w}" height="${h}" preserveAspectRatio="none" clip-path="url(#lc${k})"/></svg>
+      <div class="lens-ring" style="left:${x - r - g}mm;top:${cy - r - g}mm;width:${d + 2 * g}mm;height:${d + 2 * g}mm">${ringSvg}</div>`; };
+  const rim = (cx, cy, r, deg) => { const a = deg * Math.PI / 180; return [mx(cx + r * Math.cos(a)), cy + r * Math.sin(a)]; };
   const lastSentence = (t) => { const parts = t.split(/(?<=[.!؟])\s+/).filter(Boolean); return parts[parts.length - 1]; };
   const st = D.stats;
 
-  const divider = (no, title, quote, img, pos, chIdx) => page('dark', `
-    ${photo(img, pos)}<div class="dv-shade"></div>
-    <span class="dv-no">${pad2(no)}</span>
-    <div class="dv-body"><div class="kicker"${N(true)}>${esc(T.chapter)} ${pad2(no)}</div><h2 class="dv-title">${esc(title)}</h2>
-      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`, { title, ch: chIdx, thread: 'swing' });
+  const divider = (no, title, quote, img, pos, chIdx) => page('ledger', `
+    ${lens(img, 136, 122, 104, pos)}
+    <div class="dv-body"><span class="dv-n">${pad2(no)}</span><div class="kicker"${N(true)}>${esc(T.chapter)} ${pad2(no)}</div><h2 class="dv-title">${esc(title)}</h2>
+      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`, { title, ch: chIdx, thread: 'orbit', orbit: [122, 104, 72] });
 
   // ============ 1 COVER ============
   page('dark', `
-    ${photo(IMG.cover, 'center 20%')}<div class="cv-shade"></div>
+    ${lens(IMG.cover, 190, 172, 84, 'center 25%')}
     <div class="pad" style="display:flex;flex-direction:column;justify-content:space-between">
       ${logo}
       <div>
@@ -412,10 +432,11 @@
   mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), IMG.ch1, 'center 60%', 0);
 
   mark('about');
+  const [ex, ey] = rim(140, 50, 84, 135);
   page('', `
-    <div class="band" style="height:122mm">${photo(IMG.about, 'center 55%')}</div>
-    <div class="est" style="top:106mm;inset-inline-end:22mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
-    <div class="z" style="position:absolute;top:132mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
+    ${lens(IMG.about, 160, 140, 50, 'center 55%')}
+    <div class="est" style="left:${ex - 17}mm;top:${ey - 17}mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
+    <div class="z" style="position:absolute;top:146mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(T.about)}</div>
       <h2 class="h2" style="margin:5mm 0 6mm">${esc(T.whoTitle)} <span class="it ac">${esc(T.whoTitle2)}</span></h2>
       <p class="txt" style="font-size:10pt;color:var(--ink)">${esc(D.intro.p1)}</p>
@@ -446,11 +467,13 @@
     </div>`, { title: `${T.glanceTitle} ${T.glanceTitle2}`, ch: 0 });
 
   mark('vm');
-  page('sand', `
-    <div class="vm-top">${photo(IMG.vision, 'center 40%')}<div class="shade"></div>
-      <div style="position:absolute;top:11mm;inset-inline-start:11mm;z-index:2"><div class="kicker light"${N()}>${esc(T.vm)}</div></div>
-      <div class="vm-in"><h2 class="vm-title">${esc(D.vision.title)}</h2><p class="vm-text">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--brass2)">${esc(D.vision.tag)}</p></div></div>
-    <div class="vm-bottom"><h2 class="vm-title" style="margin-top:0">${esc(D.mission.title)}</h2><p class="vm-text" style="color:var(--ink)">${esc(D.mission.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.mission.tag)}</p></div>`, { title: T.vm, ch: 0 });
+  page('', `
+    ${lens(IMG.vision, 118, 152, 98, 'center 40%')}
+    <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:66mm">
+      <div class="kicker"${N()}>${esc(T.vm)}</div>
+      <h2 class="vm-title" style="margin-top:24mm">${esc(D.vision.title)}</h2><p class="vm-text" style="font-size:11pt">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.vision.tag)}</p></div>
+    <div class="z hair" style="position:absolute;top:176mm;left:16mm;right:16mm;padding-top:9mm">
+      <h2 class="vm-title" style="margin-top:0">${esc(D.mission.title)}</h2><p class="vm-text">${esc(D.mission.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.mission.tag)}</p></div>`, { title: T.vm, ch: 0 });
 
   mark('values');
   page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
@@ -463,8 +486,7 @@
 
   mark('why');
   page('dark', `
-    <div class="why-img">${photo(IMG.why, AR ? '30% center' : '55% center')}
-      <div style="position:absolute;inset:0;background:linear-gradient(${AR ? '270deg' : '90deg'}, rgba(15,31,41,0) 60%, rgba(15,31,41,1))"></div></div>
+    ${lens(IMG.why, 190, -25, 150, AR ? '25% center' : '65% center')}
     <div class="why-body" style="display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(D.why.kicker)}</div>
       <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
@@ -495,33 +517,19 @@
     const dense = s.list.length > 12 ? 'dense' : '';
     const count = `<div class="count"><b class="cnt" data-to="${s.list.length}" data-pad="1">${pad2(s.list.length)}</b><span>${esc(T.specialisedServices)}</span></div>`;
     const list = `<div class="ks ${dense}"><div class="kicker">${esc(s.listTitle)}</div><ul>${s.list.map(li => `<li><span>${esc(li)}</span></li>`).join('')}</ul></div>`;
-    const img = IMG.svc[i];
-    if (i % 2 === 0) {
-      page('', `
-        <div class="sv-hero">${photo(img, imgPos[i])}<div class="sv-grad"></div>
-          <span class="sv-no">${pad2(i + 1)}</span>
-          <div class="sv-hero-text"><div class="kicker light"${N()}>${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div><h2>${esc(s.title)}</h2></div></div>
-        <div class="sv-badge">${ic(svcIcons[i])}</div>
-        <div class="sv-body">
-          <p class="tagline" style="padding-inline-end:26mm">${esc(s.tagline)}</p>
-          <p class="txt" style="margin-top:5mm;color:var(--ink)">${esc(s.text[0])}</p>
-          <div style="margin-top:6mm">${count}</div>
-          ${list}
-        </div>`, { title: s.title, ch: 1 });
-    } else {
-      page('sand', `
-        <div class="svb-photo">${photo(img, imgPos[i])}
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(10,22,29,.25), rgba(10,22,29,.7))"></div>
-          <div class="icn">${ic(svcIcons[i])}</div><span class="sv-no">${pad2(i + 1)}</span></div>
-        <div class="svb-body">
-          <div class="kicker"${N()}>${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
-          <h2>${esc(s.title)}</h2>
-          <p class="tagline">${esc(s.tagline)}</p>
-          <p class="txt" style="margin-top:5mm;color:var(--ink)">${esc(s.text[0])}</p>
-          <div style="margin-top:6mm">${count}</div>
-          ${list}
-        </div>`, { title: s.title, ch: 1 });
-    }
+    const [bx, by] = rim(150, 44, 69, 135);
+    page(i % 2 ? 'sand' : '', `
+      ${lens(IMG.svc[i], 130, 150, 44, imgPos[i])}
+      <div class="sv-badge" style="left:${bx - 10}mm;top:${by - 10}mm">${ic(svcIcons[i])}</div>
+      <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:60mm">
+        <div class="kicker"${N()}>${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
+        <div class="sv-big">${pad2(i + 1)}</div>${count}</div>
+      <div class="sv-body">
+        <h2 class="sv-title">${esc(s.title)}</h2>
+        <p class="tagline">${esc(s.tagline)}</p>
+        <p class="txt" style="margin-top:4mm;color:var(--ink)">${esc(s.text[0])}</p>
+        ${list}
+      </div>`, { title: s.title, ch: 1 });
   });
 
   // ============ CHAPTER 3 ============
@@ -581,11 +589,10 @@
 
   mark('contact');
   page('dark', `
-    <div style="position:absolute;top:0;left:0;right:0;height:122mm;overflow:hidden">${photo(IMG.back, 'center 45%')}
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,31,41,.25), rgba(15,31,41,1))"></div></div>
+    ${lens(IMG.back, 160, 160, 46, 'center 40%')}
     <div class="pad" style="display:flex;flex-direction:column">
       ${logo}
-      <div style="margin-top:62mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
+      <div style="margin-top:98mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
         <h2 class="h2" style="margin:5mm 0 5mm;font-size:38pt">${esc(D.consult.title1)} <span class="it ac">${esc(D.consult.title2)}</span></h2>
         <p class="txt" style="max-width:150mm">${esc(D.consult.sub)}</p></div>
       <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:auto">
@@ -610,7 +617,7 @@
         <span class="chn">${esc(chName(p.ch))}</span><span class="bar"></span>
         ${nxt ? `<span class="nx">${esc(T.next)}: ${esc(nxt.title)} ${ic('arrow-right')}</span>` : ''}
         <span class="pn">${pad2(i + 1)}</span></div>` : '';
-    return `<section class="page ${p.cls}" id="pg${i + 1}" data-ch="${p.ch}" data-thread="${p.thread}" data-title="${esc(p.title)}">${p.inner}${foot}</section>`;
+    return `<section class="page ${p.cls}" id="pg${i + 1}" data-ch="${p.ch}" data-thread="${p.thread}" data-orbit="${p.orbit ? p.orbit.join(',') : ''}" data-title="${esc(p.title)}">${p.inner}${foot}</section>`;
   }).join('');
   html = html.replace(/%%(\w+)%%/g, (_, k) => pad2(anchor[k] || 0));
   const doc = document.getElementById('doc');
@@ -639,7 +646,12 @@
       const yStart = first ? (nodes[0] ? nodes[0].y : 0) : 0;
       const yEnd = type === 'end' ? (nodes[0] ? nodes[0].y : 297) : 297;
       let d = `M${xIn},${yStart}`;
-      if (type === 'swing') {
+      if (type === 'orbit') {
+        // the thread loops around the far side of the chapter lens, then returns to the margin
+        const [ocx, ocy, R] = pg.dataset.orbit.split(',').map(Number); const cx = AR ? 210 - ocx : ocx;
+        const top = ocy - R, bot = ocy + R, dir = AR ? -1 : 1;
+        d += ` C${xIn},${top * .8} ${cx - dir * R * .55},${top} ${cx},${top} A${R},${R} 0 0 ${AR ? 0 : 1} ${cx},${bot} C${cx - dir * R * .55},${bot} ${G},${bot + 4} ${G},${bot + 26} L${G},297`;
+      } else if (type === 'swing') {
         const far = AR ? 45 : 165;
         d += ` C${xIn},55 ${far},35 ${far},95 S${G},150 ${G},172 L${G},297`;
       } else {
@@ -698,6 +710,7 @@
       gsap.from(pg.querySelectorAll('svg.thread .nd, svg.thread .tk'), { opacity: 0, duration: .6, stagger: .1, scrollTrigger: { trigger: pg, start: 'top 55%' } });
       // photos settle
       pg.querySelectorAll('.img').forEach(img => gsap.fromTo(img, { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: pg, start: 'top bottom', end: 'bottom top', scrub: true } }));
+      pg.querySelectorAll('.lens-ring').forEach(r => gsap.from(r, { rotate: -45, opacity: 0, duration: 1.6, ease: 'power3.out', scrollTrigger: { trigger: pg, start: 'top 70%' } }));
       // content reveals
       const items = pg.querySelectorAll('.kicker, h2, .lead, .txt, .tagline, .strength, .big-n > div, .why-row, .vgrid > div, .stage, .svc-pill, .ks li, .member, .leader, .exp > div, .logos > div, .ct-row, .ch-row, .vm-in, .vm-bottom, .count, .chip, .dv-quote, .qr');
       if (items.length) gsap.from(items, { y: 24, opacity: 0, duration: .8, ease: 'power3.out', stagger: .045, scrollTrigger: { trigger: pg, start: 'top 72%' } });
