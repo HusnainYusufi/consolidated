@@ -316,7 +316,8 @@
   const pad2 = (i) => String(i).padStart(2, '0');
   // Photography: Amman landmarks and close-ups of the work, all in one warm ink tone (profile/img/t-*.jpg).
   const photo = (id, pos = 'center') => `<img class="img" src="/profile/img/t-${id}.jpg" style="object-position:${pos}">`;
-  const IMG = { cover: 17743494, ch1: 30791306, ch2: 19128263, ch3: 18717725, ch4: 6992158, about: 18717582, vision: 32549230, why: 18717644, back: 18717635,
+  // Jordan's landmarks: Petra (Treasury, Siq, Monastery, carved tombs), Jerash, Wadi Rum, Amman.
+  const IMG = { cover: 18717329, ch1: 18717601, ch2: 19128263, ch3: 5104079, ch4: 6992158, about: 36283912, vision: 6664477, why: 28086996, back: 28344019,
     svc: [33175651, 7821914, 7821672, 6779567, 7821708, 6779571, 7658352, 8296974, 7821540] };
 
   const T = AR ? {
@@ -383,7 +384,7 @@
   const mx = (x) => AR ? 210 - x : x;   // layouts are drawn left-to-right in mm and mirrored for Arabic
   // The lens is drawn as a page-sized SVG with a circular clip: CSS clipping of photos that bleed off
   // the page edge does not survive Chromium's PDF output.
-  const DIM = { 17743494: [1000, 1500], 18717725: [1000, 1500], 19128263: [801, 1500], 30791306: [1200, 1500], 6992158: [1160, 1500], 6779567: [1500, 843], 6779571: [1500, 843] };
+  const DIM = { 18717329: [1000, 1500], 6664477: [1125, 1500], 28344019: [1500, 1125], 19128263: [801, 1500], 6992158: [1160, 1500], 6779567: [1500, 843], 6779571: [1500, 843] };
   const posFrac = (pos) => { const t = pos.split(/\s+/).map(v => v === 'center' ? .5 : parseFloat(v) / 100); return [t[0], t.length > 1 ? t[1] : .5]; };
   let lensId = 0;
   const lens = (id, d, cx, cy, pos = 'center') => { const x = mx(cx), g = 4, r = d / 2, k = ++lensId;
@@ -402,7 +403,7 @@
 
   // ============ 1 COVER ============
   page('dark', `
-    ${lens(IMG.cover, 190, 172, 84, 'center 25%')}
+    ${lens(IMG.cover, 190, 172, 84, 'center 45%')}
     <div class="pad" style="display:flex;flex-direction:column;justify-content:space-between">
       ${logo}
       <div>
@@ -415,9 +416,9 @@
 
   // ============ 2 CONTENTS ============
   const chapters = [
-    { img: IMG.ch1, pos: 'center 60%', items: [[T.about, 'about'], [`${T.glanceTitle} ${T.glanceTitle2}`, 'numbers'], [T.vm, 'vm'], [`${D.values.title1} ${D.values.title2}`, 'values'], [`${D.why.title1} ${D.why.title2}`, 'why']], key: 'c1' },
+    { img: IMG.ch1, pos: 'center', items: [[T.about, 'about'], [`${T.glanceTitle} ${T.glanceTitle2}`, 'numbers'], [T.vm, 'vm'], [`${D.values.title1} ${D.values.title2}`, 'values'], [`${D.why.title1} ${D.why.title2}`, 'why']], key: 'c1' },
     { img: IMG.ch2, pos: 'center 30%', items: [[T.lifeKicker, 'life'], [T.services, 'svc']], key: 'c2' },
-    { img: IMG.ch3, pos: 'center 70%', items: [[T.leadership, 'lead'], [T.team, 'team']], key: 'c3' },
+    { img: IMG.ch3, pos: 'center 55%', items: [[T.leadership, 'lead'], [T.team, 'team']], key: 'c3' },
     { img: IMG.ch4, pos: 'center 35%', items: [[T.sectors, 'sectors'], [T.clients, 'logos'], [T.expect, 'expect'], [T.contact, 'contact']], key: 'c4' },
   ];
   page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
@@ -429,12 +430,12 @@
     </div>`, { title: T.contents, ch: -1 });
 
   // ============ CHAPTER 1 ============
-  mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), IMG.ch1, 'center 60%', 0);
+  mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), IMG.ch1, 'center', 0);
 
   mark('about');
   const [ex, ey] = rim(140, 50, 84, 135);
   page('', `
-    ${lens(IMG.about, 160, 140, 50, 'center 55%')}
+    ${lens(IMG.about, 160, 140, 50, '45% center')}
     <div class="est" style="left:${ex - 17}mm;top:${ey - 17}mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
     <div class="z" style="position:absolute;top:146mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(T.about)}</div>
@@ -468,7 +469,7 @@
 
   mark('vm');
   page('', `
-    ${lens(IMG.vision, 118, 152, 98, 'center 40%')}
+    ${lens(IMG.vision, 118, 152, 98, 'center 55%')}
     <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:66mm">
       <div class="kicker"${N()}>${esc(T.vm)}</div>
       <h2 class="vm-title" style="margin-top:24mm">${esc(D.vision.title)}</h2><p class="vm-text" style="font-size:11pt">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.vision.tag)}</p></div>
@@ -486,7 +487,7 @@
 
   mark('why');
   page('dark', `
-    ${lens(IMG.why, 190, -25, 150, AR ? '25% center' : '65% center')}
+    ${lens(IMG.why, 190, -25, 150, AR ? '20% center' : '80% center')}
     <div class="why-body" style="display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(D.why.kicker)}</div>
       <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
@@ -533,7 +534,7 @@
   });
 
   // ============ CHAPTER 3 ============
-  mark('c3'); divider(3, T.ch[2], D.team.title, IMG.ch3, 'center 70%', 2);
+  mark('c3'); divider(3, T.ch[2], D.team.title, IMG.ch3, 'center 55%', 2);
 
   mark('lead');
   page('sand', `<div class="pad" style="display:flex;flex-direction:column">
@@ -589,7 +590,7 @@
 
   mark('contact');
   page('dark', `
-    ${lens(IMG.back, 160, 160, 46, 'center 40%')}
+    ${lens(IMG.back, 160, 160, 46, 'center')}
     <div class="pad" style="display:flex;flex-direction:column">
       ${logo}
       <div style="margin-top:98mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
