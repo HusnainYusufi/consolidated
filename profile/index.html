@@ -98,8 +98,8 @@
   html:not([lang="ar"]) .cv-words div:nth-child(2) span:last-child{ font-style:italic; color:var(--brass2); }
 
   /* CONTENTS */
-  .ch-row{ display:grid; grid-template-columns:32mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
-  .ch-thumb{ position:relative; width:28mm; height:28mm; border-radius:50%; overflow:hidden; outline:1px solid var(--brass); outline-offset:1.6mm; margin:2mm; }
+  .ch-row{ display:grid; grid-template-columns:42mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
+  .ch-thumb{ position:relative; height:26mm; overflow:hidden; outline:1px solid var(--brass); outline-offset:1.4mm; margin:2mm; }
   .ch-num{ font-family:var(--head); font-size:30pt; color:var(--brass); line-height:1; }
   .ch-row h3{ font-size:20pt; margin-bottom:2mm; }
   .ch-items{ display:flex; flex-wrap:wrap; gap:1mm 5mm; font-size:8.4pt; color:var(--ink2); }
@@ -173,7 +173,7 @@
 
   /* WHY */
   .why-img{ position:absolute; top:0; bottom:0; inset-inline-start:0; width:70mm; overflow:hidden; }
-  .why-body{ position:absolute; top:16mm; bottom:22mm; inset-inline-start:82mm; inset-inline-end:16mm; }
+  .why-body{ position:absolute; top:16mm; bottom:22mm; inset-inline-start:16mm; inset-inline-end:16mm; }
   .why-row{ display:flex; gap:5mm; padding:4.6mm 0; border-bottom:1px solid rgba(255,255,255,.12); }
   .why-row .num{ width:8mm; flex:0 0 auto; font-size:15pt; color:var(--brass2); padding-top:.4mm; }
   .why-row h3{ font-size:13.5pt; margin-bottom:1.2mm; } html:not([lang="ar"]) .why-row h3{ font-style:italic; }
@@ -204,7 +204,7 @@
   .sv-hero-text h2{ font-size:33pt; margin-top:4mm; }
   .sv-badge{ position:absolute; width:20mm; height:20mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); color:var(--brass2); display:grid; place-items:center; }
   .sv-badge svg{ width:8.5mm; height:8.5mm; stroke-width:1.5; }
-  .sv-body{ position:absolute; top:117mm; left:16mm; right:16mm; bottom:22mm; display:flex; flex-direction:column; }
+  .sv-body{ position:absolute; top:112mm; left:16mm; right:16mm; bottom:22mm; display:flex; flex-direction:column; }
   .tagline{ font-family:var(--head); font-size:16pt; line-height:1.25; color:var(--blue); }
   html:not([lang="ar"]) .tagline{ font-style:italic; }
   .count{ display:flex; align-items:baseline; gap:2mm; }
@@ -269,6 +269,10 @@
 
   /* LENS: every photo is seen through a round lens with a brass focus ring */
   svg.lens{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  /* FRAME: every photo is shown whole, at its own proportions, inside a thin brass border */
+  .frame{ position:absolute; outline:1px solid var(--brass); outline-offset:2.6mm; }
+  .dark .frame{ outline-color:var(--brass2); }
+  .frame.bleed{ outline:0; }
   .lens-ring{ position:absolute; pointer-events:none; color:var(--brass); }
   .dark .lens-ring{ color:var(--brass2); }
   .lens-ring svg{ display:block; width:100%; height:100%; overflow:visible; }
@@ -393,18 +397,22 @@
     return `<svg class="lens" viewBox="0 0 210 297" preserveAspectRatio="none"><defs><clipPath id="lc${k}"><circle cx="${x}" cy="${cy}" r="${r}"/></clipPath></defs>
         <circle cx="${x}" cy="${cy}" r="${r}" fill="#ece5d8"/><image href="/profile/img/t-${id}.jpg" x="${x - r - (w - d) * fx}" y="${cy - r - (h - d) * fy}" width="${w}" height="${h}" preserveAspectRatio="none" clip-path="url(#lc${k})"/></svg>
       <div class="lens-ring" style="left:${x - r - g}mm;top:${cy - r - g}mm;width:${d + 2 * g}mm;height:${d + 2 * g}mm">${ringSvg}</div>`; };
+  // Whole photo at its own aspect ratio (nothing cropped); x, y, w in mm, laid out left-to-right and mirrored for Arabic.
+  const fh = (id, w) => { const [iw, ih] = DIM[id] || [1500, 1000]; return w * ih / iw; };
+  const frame = (id, x, y, w, cls = '') => `<div class="frame ${cls}" style="left:${AR ? 210 - x - w : x}mm;top:${y}mm;width:${w}mm;height:${fh(id, w)}mm">${photo(id)}</div>`;
   const rim = (cx, cy, r, deg) => { const a = deg * Math.PI / 180; return [mx(cx + r * Math.cos(a)), cy + r * Math.sin(a)]; };
   const lastSentence = (t) => { const parts = t.split(/(?<=[.!؟])\s+/).filter(Boolean); return parts[parts.length - 1]; };
   const st = D.stats;
 
-  const divider = (no, title, quote, img, pos, chIdx) => page('ledger', `
-    ${lens(img, 136, 122, 104, pos)}
+  const divider = (no, title, quote, img, pos, chIdx) => { const [iw, ih] = DIM[img] || [1500, 1000], wide = iw > ih, w = wide ? 178 : 160 * iw / ih;
+    return page('ledger', `
+    ${frame(img, wide ? 16 : 105 - w / 2, wide ? 34 : 20, w)}
     <div class="dv-body"><span class="dv-n">${pad2(no)}</span><div class="kicker"${N(true)}>${esc(T.chapter)} ${pad2(no)}</div><h2 class="dv-title">${esc(title)}</h2>
-      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`, { title, ch: chIdx, thread: 'orbit', orbit: [122, 104, 72] });
+      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`, { title, ch: chIdx }); };
 
   // ============ 1 COVER ============
   page('dark', `
-    ${lens(IMG.cover, 190, 172, 84, 'center 45%')}
+    ${frame(IMG.cover, 90, 16, 104)}
     <div class="pad" style="display:flex;flex-direction:column;justify-content:space-between">
       ${logo}
       <div>
@@ -425,7 +433,7 @@
   page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(T.contents)}</div>
       <h2 class="h2" style="margin:5mm 0 12mm;font-size:44pt">${esc(T.contents)}</h2>
-      ${chapters.map((c, i) => `<div class="ch-row"><div class="ch-thumb">${photo(c.img, c.pos)}</div><div class="ch-num">${pad2(i + 1)}</div>
+      ${chapters.map((c, i) => `<div class="ch-row"><div class="ch-thumb" style="width:${26 / fh(c.img, 1)}mm">${photo(c.img)}</div><div class="ch-num">${pad2(i + 1)}</div>
         <div><h3>${esc(T.ch[i])} <span class="ac" style="font-size:12pt">${P(c.key)}</span></h3><div class="ch-items">${c.items.map(it => `<span>${esc(it[0])}<b>${P(it[1])}</b></span>`).join('')}</div></div></div>`).join('')}
       <div style="margin-top:auto;display:flex;justify-content:flex-end"><img src="/assets/img/icon.png" style="height:14mm;opacity:.85"></div>
     </div>`, { title: T.contents, ch: -1 });
@@ -434,11 +442,11 @@
   mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), IMG.ch1, 'center', 0);
 
   mark('about');
-  const [ex, ey] = rim(140, 50, 84, 135);
+  const aboutH = fh(IMG.about, 210);
   page('', `
-    ${lens(IMG.about, 160, 140, 50, '45% center')}
-    <div class="est" style="left:${ex - 17}mm;top:${ey - 17}mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
-    <div class="z" style="position:absolute;top:146mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
+    ${frame(IMG.about, 0, 0, 210, 'bleed')}
+    <div class="est" style="top:${aboutH - 17}mm;inset-inline-end:22mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
+    <div class="z" style="position:absolute;top:${aboutH + 12}mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
       <div class="kicker"${N()}>${esc(T.about)}</div>
       <h2 class="h2" style="margin:5mm 0 6mm">${esc(T.whoTitle)} <span class="it ac">${esc(T.whoTitle2)}</span></h2>
       <p class="txt" style="font-size:10pt;color:var(--ink)">${esc(D.intro.p1)}</p>
@@ -470,8 +478,8 @@
 
   mark('vm');
   page('', `
-    ${lens(IMG.vision, 118, 152, 98, 'center 55%')}
-    <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:66mm">
+    ${frame(IMG.vision, 104, 18, 90)}
+    <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:76mm">
       <div class="kicker"${N()}>${esc(T.vm)}</div>
       <h2 class="vm-title" style="margin-top:24mm">${esc(D.vision.title)}</h2><p class="vm-text" style="font-size:11pt">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.vision.tag)}</p></div>
     <div class="z hair" style="position:absolute;top:176mm;left:16mm;right:16mm;padding-top:9mm">
@@ -488,11 +496,12 @@
 
   mark('why');
   page('dark', `
-    ${lens(IMG.why, 190, -25, 150, AR ? '20% center' : '80% center')}
+    ${frame(IMG.why, 98, 18, 96)}
     <div class="why-body" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(D.why.kicker)}</div>
-      <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
-      <p class="txt" style="margin-bottom:6mm">${esc(D.why.intro)}</p>
+      <div style="width:74mm;min-height:${fh(IMG.why, 96) + 10}mm">
+        <div class="kicker"${N()}>${esc(D.why.kicker)}</div>
+        <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
+        <p class="txt">${esc(D.why.intro)}</p></div>
       <div class="kicker" style="color:var(--mute);margin-bottom:1mm">${esc(D.why.subtitle)}</div>
       <div>${D.why.items.map((w, i) => `<div class="why-row"><span class="num">${pad2(i + 1)}</span><div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div></div>`).join('')}</div>
     </div>`, { title: `${D.why.title1} ${D.why.title2}`, ch: 0 });
@@ -519,11 +528,11 @@
     const dense = s.list.length > 12 ? 'dense' : '';
     const count = `<div class="count"><b class="cnt" data-to="${s.list.length}" data-pad="1">${pad2(s.list.length)}</b><span>${esc(T.specialisedServices)}</span></div>`;
     const list = `<div class="ks ${dense}"><div class="kicker">${esc(s.listTitle)}</div><ul>${s.list.map(li => `<li><span>${esc(li)}</span></li>`).join('')}</ul></div>`;
-    const [bx, by] = rim(150, 44, 69, 135);
+    const sh = fh(IMG.svc[i], 116);
     page(i % 2 ? 'sand' : '', `
-      ${lens(IMG.svc[i], 130, 150, 44, imgPos[i])}
-      <div class="sv-badge" style="left:${bx - 10}mm;top:${by - 10}mm">${ic(svcIcons[i])}</div>
-      <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:60mm">
+      ${frame(IMG.svc[i], 78, 16, 116)}
+      <div class="sv-badge" style="left:${mx(78) - 10}mm;top:${16 + sh - 10}mm">${ic(svcIcons[i])}</div>
+      <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:54mm">
         <div class="kicker"${N()}>${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
         <div class="sv-big">${pad2(i + 1)}</div>${count}</div>
       <div class="sv-body">
@@ -591,11 +600,11 @@
 
   mark('contact');
   page('dark', `
-    ${lens(IMG.back, 160, 160, 46, 'center 50%')}
+    ${frame(IMG.back, 112, 18, 82)}
     <div class="pad" style="display:flex;flex-direction:column">
       ${logo}
-      <div style="margin-top:98mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
-        <h2 class="h2" style="margin:5mm 0 5mm;font-size:38pt">${esc(D.consult.title1)} <span class="it ac">${esc(D.consult.title2)}</span></h2>
+      <div style="margin-top:${18 + fh(IMG.back, 82) - 18}mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
+        <h2 class="h2" style="margin:5mm 0 5mm;font-size:34pt">${esc(D.consult.title1)} <span class="it ac">${esc(D.consult.title2)}</span></h2>
         <p class="txt" style="max-width:150mm">${esc(D.consult.sub)}</p></div>
       <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:auto">
         <div>
