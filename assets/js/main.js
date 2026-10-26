@@ -102,7 +102,7 @@
     try { localStorage.setItem('cf-lang', lang); } catch (e) {}
     applyText();
     renderAll();
-    initReveals(); initCharReveal(); initCycle(); initStats();
+    initReveals(); initCharReveal(); initCycle(); initStats(); initBlockText();
     if (!first) setLangUrl();
     if (!first && hasGsap) requestAnimationFrame(() => ScrollTrigger.refresh());
   }
@@ -506,6 +506,49 @@
       charTriggers.push(ScrollTrigger.create({ trigger: el, start: 'top 85%', end: 'top 25%', scrub: SCRUB, invalidateOnRefresh: true, onUpdate: (st) => set(st.progress) }));
     });
   }
+
+  /* ---------- Block text: justified paragraphs whose last line also reaches the far edge ----------
+     CSS justify leaves the last line short. The client wants text as a solid block, so the last line is
+     justified too, but only when it is already long enough not to open wide gaps. The hero paragraph is
+     narrowed a few pixels at a time until its last line is nearly full, so it always reads as a block. */
+  const BLOCK_SEL = '.hero-sub, .intro-lead, .vm-text, .why-intro, .why-card p, .wl-face.back p, .acc-prose p, .leader-text p, .founder-bio p, .clients-intro, .ecard-body p, .inquiry-copy .light, .careers-hero .light, .role-card p';
+  // Natural (unjustified) width of each line as a share of the available width.
+  function lineFills(el) {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const lines = [];
+    [...r.getClientRects()].filter((b) => b.width > 0).forEach((b) => {
+      const l = lines.find((x) => Math.abs(x.top - b.top) < 4);
+      if (l) { l.left = Math.min(l.left, b.left); l.right = Math.max(l.right, b.right); }
+      else lines.push({ top: b.top, left: b.left, right: b.right });
+    });
+    const cs = getComputedStyle(el), inner = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    return lines.map((l) => (l.right - l.left) / inner);
+  }
+  // Tries widths down to `minFrac` of the full width and keeps the one whose emptiest line is fullest,
+  // so spacing stays even once every line, the last included, is stretched to both edges.
+  function initBlockText() {
+    $$(BLOCK_SEL).forEach((el) => {
+      if (!el.getClientRects().length) return;
+      const hero = el.classList.contains('hero-sub');
+      // The hero may use its whole column (not just its CSS cap) so there are more line breaks to choose from.
+      el.style.maxWidth = hero ? 'none' : ''; el.style.textAlign = 'start'; el.style.textAlignLast = 'start';
+      const full = Math.min(el.getBoundingClientRect().width, hero ? 560 : Infinity);
+      const minFrac = hero ? .6 : .85;
+      let best = { w: full, score: -1 };
+      for (let w = full; w >= full * minFrac; w -= 3) {
+        el.style.maxWidth = w + 'px';
+        const f = lineFills(el);
+        const score = f.length < 2 ? -1 : Math.min(...f);
+        if (score > best.score + .005) best = { w, score };
+      }
+      el.style.maxWidth = best.w === full && !hero ? '' : best.w + 'px';
+      el.style.textAlign = '';
+      el.style.textAlignLast = best.score >= (hero ? .75 : .88) ? 'justify' : 'start';
+    });
+  }
+  let blockTimer;
+  window.addEventListener('resize', () => { clearTimeout(blockTimer); blockTimer = setTimeout(initBlockText, 150); });
+  if (document.fonts) document.fonts.ready.then(initBlockText);
 
   /* ---------- Stat icons draw in when each stat enters the viewport ---------- */
   let statTriggers = [];

@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Roboto:wght@300;400;500;700&amp;family=Amiri:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20261027a">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20261027e">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -210,6 +210,11 @@
   
   
   
+  
+  
+  
+  
+  
 
   <!-- Unmute / sound toggle placeholder (bottom right, like the reference) -->
   <button class="sound-btn" id="sound-btn" type="button" aria-label="Toggle hover sounds" aria-pressed="false">
@@ -274,7 +279,7 @@
         <span class="line end italic" data-i18n="hero.line3">Jordan &amp; MENA</span>
       </h1>
       <div class="hero-side">
-        <p class="hero-sub" data-i18n="hero.sub">A professional audit and advisory firm delivering comprehensive audit and assurance, accounting, taxation, financial advisory, risk management, and technology solutions to businesses and organizations across Jordan and the MENA region.</p>
+        <p class="hero-sub" data-i18n="hero.sub" style="">A professional audit and advisory firm delivering comprehensive audit and assurance, accounting, taxation, financial advisory, risk management, and technology solutions to businesses and organizations across Jordan and the MENA region.</p>
         <div class="hero-cta">
           <a class="btn" href="#services"><span class="btn-label" data-i18n="hero.cta">How We Serve You</span><span class="btn-icon"><i class="btn-dot"></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span></a>
         </div>
@@ -313,12 +318,12 @@
       </div></div>
 
       <div class="vm-grid" id="vision">
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <h3 class="vm-title" data-i18n="vision.title">Our Vision</h3>
           <p class="vm-text" data-i18n="vision.text">To be recognized as a premier professional services firm and a benchmark for excellence in Jordan and across the region, distinguished by our technical expertise, unwavering commitment to professional integrity, and innovative solutions that inspire confidence, empower businesses, and contribute to sustainable economic growth.</p>
           <p class="vm-tag" data-i18n="vision.tag">Professional excellence · Trusted leadership</p>
         </article>
-        <article class="vm-card" data-reveal="" style="">
+        <article class="vm-card" data-reveal="">
           <h3 class="vm-title" data-i18n="mission.title">Our Mission</h3>
           <p class="vm-text" data-i18n="mission.text">To deliver exceptional audit, tax, accounting, and advisory services through professional excellence, integrity, and a client-focused approach. We are committed to building lasting partnerships, providing practical and innovative solutions, and empowering our clients to achieve financial transparency, operational efficiency, and sustainable business growth.</p>
           <p class="vm-tag" data-i18n="mission.tag">Professional integrity · Client success</p>
@@ -440,7 +445,7 @@
     <section class="section why container" id="why">
       <div class="why-head">
         <h2 class="h2 hd-line"><span data-i18n="why.title1">Why</span> <span class="italic" data-i18n="why.title2">Choose Us</span></h2>
-        <p class="why-intro" data-i18n="why.intro" data-reveal="" style="">We combine professional expertise, industry knowledge, and a client-focused approach to deliver reliable, practical, and value-driven solutions. Our commitment to quality, independence, and continuous improvement enables us to build lasting relationships and support our clients in achieving their business objectives.</p>
+        <p class="why-intro" data-i18n="why.intro" data-reveal="">We combine professional expertise, industry knowledge, and a client-focused approach to deliver reliable, practical, and value-driven solutions. Our commitment to quality, independence, and continuous improvement enables us to build lasting relationships and support our clients in achieving their business objectives.</p>
       </div>
       <div class="why-grid" id="why-grid" hidden="">
       <article class="why-card gradient-border-card open" data-reveal="" style="">
@@ -740,7 +745,7 @@
     <!-- 8. You can expect that we are -->
     <section class="section expect" id="expect">
       <div class="expect-inner">
-        <div class="expect-head" data-reveal="" style="">
+        <div class="expect-head" data-reveal="">
           <h2 class="expect-title"><span class="italic" data-i18n="expect.t1">You Can</span><span class="italic big" data-i18n="expect.t2">Expect</span><span class="italic" data-i18n="expect.t3">That We Are</span></h2>
         </div>
         <div class="marquee expect-marquee"><div class="marquee-track benefits" id="expect-track" style="--dur: 30s;">
@@ -768,7 +773,7 @@
     <!-- 8b. Inquiry form -->
     <section class="section inquiry container" id="inquiry">
       <div class="inquiry-grid">
-        <div class="inquiry-copy" data-reveal="" style="">
+        <div class="inquiry-copy" data-reveal="">
           <h2 class="h2"><span data-i18n="inquiry.title1">Tell us about</span> <span class="italic" data-i18n="inquiry.title2">your business.</span></h2>
           <p class="light" data-i18n="inquiry.sub">Share a few details about your business or professional requirements, and one of our partners or qualified professionals will respond by email or WhatsApp within one business day.</p>
           <ul class="inquiry-points" id="inquiry-points"><li>Complimentary initial consultation with no obligation</li><li>Direct communication with our partners or qualified professionals</li><li>Strict confidentiality of all information shared</li></ul>
@@ -856,8 +861,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="/assets/js/config.js"></script>
-  <script src="/assets/js/i18n.js?v=20261027a"></script>
-  <script src="/assets/js/main.js?v=20261027a"></script><svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"></stop><stop offset=".5" stop-color="#3064d0"></stop><stop offset="1" stop-color="#8739d5"></stop></linearGradient></defs></svg><svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"></stop><stop offset=".5" stop-color="#3064d0"></stop><stop offset="1" stop-color="#8739d5"></stop></linearGradient></defs></svg>
+  <script src="/assets/js/i18n.js?v=20261027e"></script>
+  <script src="/assets/js/main.js?v=20261027e"></script><svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"></stop><stop offset=".5" stop-color="#3064d0"></stop><stop offset="1" stop-color="#8739d5"></stop></linearGradient></defs></svg><svg id="stat-grad-defs" width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="stat-grad" gradientUnits="userSpaceOnUse" x1="2" y1="2" x2="22" y2="22"><stop offset="0" stop-color="#27fcf2"></stop><stop offset=".5" stop-color="#3064d0"></stop><stop offset="1" stop-color="#8739d5"></stop></linearGradient></defs></svg>
 
 
 </body></html>

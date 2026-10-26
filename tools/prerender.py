@@ -65,6 +65,8 @@ async def render(lang, path='index.html'):
           // Strip runtime-only inline styles so the static page starts clean.
           document.querySelectorAll('[data-reveal], .ch, .wl-card, .stack-item, #team-text, .hero-title, .hero-sub, .hero-cta, #hero, #hero-veil, #hero-solid, #hero-dim, .hero-rotor').forEach(el => el.removeAttribute('style'));
           document.querySelectorAll('.acc-panel').forEach(el => el.removeAttribute('style'));
+          // Block-text widths are measured per screen at runtime; do not bake the desktop values in.
+          document.querySelectorAll('[style*="text-align-last"]').forEach(el => { el.style.removeProperty('max-width'); el.style.removeProperty('text-align'); el.style.removeProperty('text-align-last'); if (!el.getAttribute('style')) el.removeAttribute('style'); });
           document.querySelectorAll('[data-cycle] span').forEach(el => el.removeAttribute('style'));
           document.documentElement.classList.remove('light');
           const hd = document.querySelector('#header'); if (hd) hd.removeAttribute('style');

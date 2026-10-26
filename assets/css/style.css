@@ -761,6 +761,8 @@ html[lang="ar"] :is(.vm-text, .why-card p, .acc-prose p, .leader-text p, .founde
   text-align: justify; text-align-last: start; text-justify: inter-word;
 }
 @media (min-width: 768px) { .consult-text .light { text-align: justify; text-align-last: start; } }
+/* The hero runs large in a narrow column: spread the extra space between letters, not only words, so no wide gaps open. */
+html[lang="en"] .hero-sub { text-justify: inter-character; }
 
 /* Sectors heading: italic serif at the content's start edge. */
 .portfolio .label { font-style: italic; text-align: start; }
