@@ -240,7 +240,7 @@ html[lang="ar"] .cycle { display: block; }
 /* The hero uses more of the screen than the rest of the page: headline near the start edge, copy near the end edge. */
 .hero-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 26rem); gap: 3rem 4rem; align-items: center; width: min(100% - clamp(2.5rem, 7vw, 8rem), 104rem); margin-inline: auto; }
 .hero-side { display: flex; flex-direction: column; align-items: flex-start; }
-.hero-sub { max-width: 34ch; margin: 0 0 1.6rem; font: italic 400 1.6rem/1.35 var(--font-head); color: #ebebe6; }
+.hero-sub { max-width: 36ch; margin: 0 0 1.6rem; font: italic 400 1.6rem/1.35 var(--font-head); color: #ebebe6; }
 html[lang="ar"] .hero-sub { font-style: normal; font-size: 1.45rem; line-height: 1.6; }
 
 
@@ -753,6 +753,14 @@ html[lang="ar"] .role-card small { letter-spacing: 0; font-size: .8rem; }
 .consult-text .light, .careers-hero .light { font-size: 1.2rem; line-height: 1.5; }
 .role-card p { font-size: 1.1rem; line-height: 1.45; }
 html[lang="ar"] :is(.vm-text, .why-card p, .acc-prose p, .leader-text p, .founder-bio p, .inquiry-copy .light, .consult-text .light, .careers-hero .light, .role-card p) { line-height: 1.8; }
+
+/* Justified reading text (client request): paragraphs are flush on both the left and right edges.
+   The last line of each paragraph stays at the start edge. */
+.hero-sub, .intro-lead, .vm-text, .why-intro, .why-card p, .wl-face.back p, .acc-prose p, .leader-text p,
+.founder-bio p, .clients-intro, .ecard-body p, .inquiry-copy .light, .careers-hero .light, .role-card p {
+  text-align: justify; text-align-last: start; text-justify: inter-word;
+}
+@media (min-width: 768px) { .consult-text .light { text-align: justify; text-align-last: start; } }
 
 /* Sectors heading: italic serif at the content's start edge. */
 .portfolio .label { font-style: italic; text-align: start; }
