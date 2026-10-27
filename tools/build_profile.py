@@ -3,8 +3,7 @@
 The template renders pages from the same content dictionary the website uses
 (assets/js/i18n.js), so the profile always matches the approved website copy.
 
-    python tools/build_profile.py          # the profile, English and Arabic
-    python tools/build_profile.py theme    # the theme draft (profile/theme.html) for client approval
+    python tools/build_profile.py
 
 Outputs: profile/Consolidated-Company-Profile-EN.pdf and -AR.pdf
 Requires: pip install playwright && python -m playwright install chromium
@@ -53,11 +52,6 @@ async def render(lang, out, path='/profile/index.html'):
 def main():
     httpd = serve()
     try:
-        if sys.argv[1:] == ['theme']:
-            out = os.path.join(ROOT, 'profile', 'Consolidated-Profile-Theme.pdf')
-            n = asyncio.run(render('en', out, '/profile/theme.html'))
-            print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
-            return
         for lang in ['en', 'ar']:
             out = os.path.join(ROOT, 'profile', f'Consolidated-Company-Profile-{lang.upper()}.pdf')
             n = asyncio.run(render(lang, out))

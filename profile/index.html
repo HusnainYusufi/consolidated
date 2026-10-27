@@ -8,745 +8,363 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@300;400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* ============ THEME: ink · ivory · brass, teal accent ============ */
+  /* ============ Consolidated company profile ============
+     White pages in the logo's colours: navy and steel blue from the blades, silver gray, tinted white.
+     No stock photography: big icons, the firm's own numbers and the people's portraits carry the pages.
+     Every word comes from the website copy (assets/js/i18n.js), English and Arabic (?lang=ar). */
   :root{
-    --navy:#0f1f29; --navy2:#16303c; --deep:#0a161d; --paper:#f6f2ea; --sand:#ece5d8; --ink:#14181b; --ink2:#5a5f63;
-    --line:rgba(20,24,27,.12); --white:#f8f5ee; --mute:rgba(248,245,238,.72);
-    --cyan:#5fd0c1; --blue:#1f7f86; --brass:#c79d5d; --brass2:#e5c48d;
-    --grad:linear-gradient(100deg,#5fd0c1,#2f8a9a 50%,#c79d5d);
-    --head:'Instrument Serif',Georgia,serif; --body:'Roboto',Arial,sans-serif;
+    --navy: oklch(0.31 0.055 252);
+    --navy-deep: oklch(0.24 0.045 252);
+    --steel: oklch(0.48 0.06 250);
+    --steel-soft: oklch(0.74 0.03 250);
+    --silver: oklch(0.64 0.006 250);
+    --ink: oklch(0.25 0.012 252);
+    --ink2: oklch(0.44 0.012 252);
+    --paper: oklch(0.995 0.002 250);
+    --mist: oklch(0.966 0.007 250);
+    --line: oklch(0.905 0.008 250);
+    --on-navy: oklch(0.97 0.006 250);
+    --on-navy2: oklch(0.80 0.025 250);
+    --blade: linear-gradient(135deg, oklch(0.53 0.06 250), oklch(0.27 0.05 252) 75%);
+    --head: 'Instrument Serif', Georgia, serif;
+    --body: 'Manrope', 'Segoe UI', sans-serif;
+    --leaf: 6.5mm;
   }
-  html[lang="ar"]{ --head:'Amiri','Noto Naskh Arabic',serif; --body:'IBM Plex Sans Arabic','Segoe UI',sans-serif; }
+  html[lang="ar"]{ --head:'Noto Kufi Arabic', 'IBM Plex Sans Arabic', sans-serif; --body:'IBM Plex Sans Arabic', 'Segoe UI', sans-serif; }
   @page{ size:210mm 297mm; margin:0; }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
-  body{ font-family:var(--body); font-weight:300; -webkit-print-color-adjust:exact; print-color-adjust:exact; background:#0a161d; }
-  html.print body{ background:#fff; }
-  h1,h2,h3,h4{ font-family:var(--head); font-weight:400; margin:0; line-height:1.04; }
-  p{ margin:0; }
-  .it{ font-style:italic; } html[lang="ar"] .it{ font-style:normal; }
-  .ac{ color:var(--blue); } .dark .ac{ color:var(--brass2); }
-
-  #doc{ margin:0 auto; width:210mm; }
-  html:not(.print) #doc{ box-shadow:0 0 60px rgba(0,0,0,.5); }
-  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; page-break-after:always; break-after:page; background:var(--paper); color:var(--ink); }
-  .page:last-child{ page-break-after:auto; break-after:auto; }
-  .page.dark{ background:var(--navy); color:var(--white); }
-  .page.sand{ background:var(--sand); }
-  .page.ledger{ background:var(--paper); }
-  .num{ font-family:var(--head); color:var(--brass); font-size:13pt; line-height:1; }
-  .hair{ border-top:1px solid var(--line); }
-  .dark .hair{ border-top-color:rgba(255,255,255,.14); }
-  .pad{ position:absolute; inset:16mm 16mm 22mm; }
-  .z{ position:relative; z-index:2; }
-  .pad, .dv-body, .sv-body, .svb-body, .why-body, .vm-in, .vm-bottom, .foot, .est, .sv-badge { z-index:2; }
-
-  /* golden thread */
-  svg.thread{ position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none; overflow:visible; }
-
-  /* footer: chapter tracker + next teaser */
-  .foot{ position:absolute; left:16mm; right:16mm; bottom:9mm; display:flex; align-items:center; gap:4mm; font-size:6.8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--ink2); }
-  html[lang="ar"] .foot{ letter-spacing:0; font-size:8pt; }
-  .dark .foot{ color:var(--mute); }
-  .foot .trk{ display:flex; gap:1.4mm; align-items:center; }
-  .foot .trk i{ width:5mm; height:1.6px; background:currentColor; opacity:.3; }
-  .foot .trk i.on{ opacity:1; background:var(--brass); width:9mm; height:2px; }
-  .foot .chn{ font-weight:600; }
-  .foot .bar{ flex:1; height:1px; background:currentColor; opacity:.2; }
-  .foot .nx{ display:flex; align-items:center; gap:1.5mm; }
-  .foot .nx svg{ width:3.4mm; height:3.4mm; color:var(--brass); }
-  html[dir="rtl"] .foot .nx svg{ transform:scaleX(-1); }
-  .foot .pn{ font-family:var(--head); font-size:12pt; letter-spacing:0; color:var(--brass); }
-
-  .kicker{ display:inline-flex; align-items:center; gap:3mm; font-size:7.6pt; letter-spacing:.3em; text-transform:uppercase; font-weight:600; color:var(--blue); }
-  html[lang="ar"] .kicker{ letter-spacing:0; font-size:9.5pt; }
-  .kicker::before{ content:""; width:9mm; height:2px; background:var(--brass); flex:0 0 auto; }
-  .dark .kicker, .kicker.light{ color:var(--brass2); }
-  .h2{ font-size:36pt; }
-  .lead{ font-size:11.6pt; line-height:1.62; }
-  .txt{ font-size:9.6pt; line-height:1.62; color:var(--ink2); }
-  .dark .txt{ color:var(--mute); }
-  .img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .gradbar{ height:2px; background:var(--grad); }
-  .swirl{ position:absolute; pointer-events:none; }
-
-  .ib{ width:13mm; height:13mm; border-radius:50%; display:grid; place-items:center; flex:0 0 auto; color:var(--blue);
-       background:linear-gradient(#fff,#fff) padding-box, var(--grad) border-box; border:1.4px solid transparent; }
-  .ib svg{ width:6mm; height:6mm; }
-  .dark .ib, .ib.on-dark{ color:var(--brass2); background:linear-gradient(var(--navy),var(--navy)) padding-box, var(--grad) border-box; }
-  .chip{ display:inline-flex; align-items:center; gap:1.6mm; border:1px solid var(--line); border-radius:99px; padding:1.3mm 3.4mm; font-size:7.8pt; background:rgba(255,255,255,.6); }
-  .chip svg{ width:3.6mm; height:3.6mm; color:var(--blue); }
-  .dark .chip{ border-color:rgba(255,255,255,.22); background:rgba(255,255,255,.05); }
-  .dark .chip svg{ color:var(--brass2); }
-  .badge{ display:inline-block; border:1px solid currentColor; border-radius:99px; padding:.8mm 2.8mm; font-size:7.4pt; font-weight:600; letter-spacing:.1em; }
+  body{ font-family:var(--body); font-weight:400; color:var(--ink2); background:oklch(0.42 0.02 252); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html.print body{ background:var(--paper); }
+  #doc{ width:210mm; margin:0 auto; }
+  html:not(.print) #doc{ padding:24px 0 60px; display:flex; flex-direction:column; gap:24px; }
+  h1,h2,h3,h4,p{ margin:0; }
+  h1,h2{ font-family:var(--head); font-weight:400; color:var(--navy); line-height:1.02; letter-spacing:-.005em; }
+  html[lang="ar"] h1, html[lang="ar"] h2{ font-weight:500; line-height:1.35; letter-spacing:0; }
+  h3,h4{ font-family:var(--body); font-weight:600; color:var(--ink); letter-spacing:-.005em; }
+  em{ font-style:italic; color:var(--silver); } html[lang="ar"] em{ font-style:normal; color:var(--steel); }
   .ltr{ direction:ltr; unicode-bidi:isolate; display:inline-block; }
 
-  .logo{ display:flex; align-items:center; gap:3.5mm; }
-  .logo .icon{ height:15mm; } .logo .word{ height:9mm; filter:invert(1) brightness(1.15); }
-  .logo .ar-word{ display:none; flex-direction:column; line-height:1.1; }
-  .logo .ar-word b{ font-size:16pt; font-weight:600; } .logo .ar-word small{ font-size:8pt; opacity:.8; }
-  html[lang="ar"] .logo .word{ display:none; } html[lang="ar"] .logo .ar-word{ display:flex; }
+  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--paper); page-break-after:always; break-after:page; }
+  .page:last-child{ page-break-after:auto; break-after:auto; }
+  html:not(.print) .page{ box-shadow:0 14px 50px oklch(0.15 0.03 252 / .45); }
 
-  /* COVER */
-  .cv-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,22,29,.35), rgba(10,22,29,.1) 30%, rgba(10,22,29,.85) 64%, var(--deep)); }
-  .cv-words{ font-family:var(--head); font-size:60pt; line-height:.98; }
-  .cv-words div{ display:flex; align-items:center; gap:5mm; overflow:hidden; }
-  .cv-words .tick{ width:11mm; height:11mm; border-radius:50%; background:var(--brass); display:grid; place-items:center; color:var(--deep); flex:0 0 auto; }
-  .cv-words .tick svg{ width:6mm; height:6mm; stroke-width:2.6; }
-  html:not([lang="ar"]) .cv-words div:nth-child(2) span:last-child{ font-style:italic; color:var(--brass2); }
+  /* ---------- running header, footer, index tabs ---------- */
+  .hd{ position:absolute; top:13mm; inset-inline:18mm 22mm; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:2.4mm; }
+  .brand .ic{ height:7mm; } .brand .wm{ height:3.7mm; }
+  .hd .sec{ font-size:6.8pt; letter-spacing:.26em; text-transform:uppercase; color:var(--silver); font-weight:600; }
+  html[lang="ar"] .hd .sec{ letter-spacing:0; font-size:8pt; }
+  .ft{ position:absolute; bottom:11mm; inset-inline:18mm 22mm; display:flex; align-items:center; gap:4mm; font-size:6.6pt; letter-spacing:.18em; text-transform:uppercase; color:var(--silver); font-weight:500; }
+  html[lang="ar"] .ft{ letter-spacing:0; font-size:7.8pt; }
+  .ft .rule{ flex:1; height:1px; background:var(--line); }
+  .ft .pn{ font-family:'Instrument Serif',serif; font-size:17pt; letter-spacing:0; color:var(--navy); line-height:1; }
+  /* index tabs on the outer edge, like the dividers of an audit file: the current section's tab is navy */
+  .tabs{ position:absolute; top:46mm; inset-inline-end:0; display:flex; flex-direction:column; gap:2.4mm; }
+  .tabs span{ width:7.5mm; height:36mm; display:flex; align-items:center; justify-content:center; writing-mode:vertical-rl; font-size:6.4pt; letter-spacing:.2em; text-transform:uppercase; font-weight:600; background:var(--mist); color:var(--silver); }
+  html[lang="ar"] .tabs span{ letter-spacing:0; font-size:7.6pt; }
+  html:not([lang="ar"]) .tabs span{ transform:rotate(180deg); }
+  .tabs span.on{ background:var(--navy); color:var(--on-navy); }
+  .body{ position:absolute; top:30mm; bottom:24mm; inset-inline:18mm 22mm; display:flex; flex-direction:column; }
 
-  /* CONTENTS */
-  .ch-row{ display:grid; grid-template-columns:42mm 14mm 1fr; gap:5mm; align-items:center; padding:5mm 0; border-bottom:1px solid var(--line); }
-  .ch-thumb{ position:relative; height:26mm; overflow:hidden; outline:1px solid var(--brass); outline-offset:1.4mm; margin:2mm; }
-  .ch-num{ font-family:var(--head); font-size:30pt; color:var(--brass); line-height:1; }
-  .ch-row h3{ font-size:20pt; margin-bottom:2mm; }
-  .ch-items{ display:flex; flex-wrap:wrap; gap:1mm 5mm; font-size:8.4pt; color:var(--ink2); }
-  .ch-items span b{ font-weight:600; color:var(--ink); margin-inline-start:1.2mm; font-family:var(--head); font-size:10pt; }
+  /* ---------- type ---------- */
+  .kicker{ display:flex; align-items:center; gap:3mm; font-size:7.2pt; letter-spacing:.3em; text-transform:uppercase; font-weight:700; color:var(--steel); }
+  html[lang="ar"] .kicker{ letter-spacing:0; font-size:9pt; }
+  .kicker::before{ content:""; width:9mm; height:2px; background:var(--navy); flex:0 0 auto; }
+  .on-navy .kicker{ color:var(--on-navy2); } .on-navy .kicker::before{ background:var(--on-navy2); }
+  .h2{ font-size:36pt; margin:3.5mm 0 5mm; }
+  html[lang="ar"] .h2{ font-size:25pt; }
+  .lead{ font-size:10.4pt; line-height:1.62; color:var(--ink2); text-align:justify; }
+  .txt{ font-size:8.7pt; line-height:1.58; color:var(--ink2); text-align:justify; }
+  html[lang="ar"] .lead{ font-size:10.6pt; line-height:1.85; } html[lang="ar"] .txt{ font-size:9pt; line-height:1.8; }
+  .label{ font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase; font-weight:600; color:var(--silver); }
+  html[lang="ar"] .label{ letter-spacing:0; font-size:8pt; }
+  .num{ font-family:'Instrument Serif',serif; color:var(--silver); font-size:14pt; line-height:1; }
+  .big{ font-family:'Instrument Serif',serif; font-weight:400; color:var(--navy); line-height:.9; }
+  .big small{ font-size:.5em; color:var(--steel); }
 
-  /* DIVIDER */
-  .dv-shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,22,29,.25) 10%, rgba(10,22,29,.55) 45%, rgba(10,22,29,.96)); }
-  .dv-no{ position:absolute; top:12mm; inset-inline-end:12mm; font-family:var(--head); font-size:230pt; line-height:.8; color:transparent; -webkit-text-stroke:1.2px rgba(229,196,141,.75); }
-  .dv-body{ position:absolute; left:16mm; right:16mm; bottom:28mm; color:var(--ink); }
-  .dv-title{ font-size:58pt; margin:5mm 0 9mm; }
-  .dv-quote{ display:flex; gap:4mm; max-width:150mm; }
-  .dv-quote svg{ width:8mm; height:8mm; color:var(--brass); flex:0 0 auto; }
-  .dv-quote p{ font-family:var(--head); font-size:16pt; line-height:1.35; color:var(--ink2); }
-  html:not([lang="ar"]) .dv-quote p{ font-style:italic; }
-  html[dir="rtl"] .dv-quote svg{ transform:scaleX(-1); }
+  /* ---------- big icon tiles: leaf-cut corners echo the blades of the logo ---------- */
+  .tile{ width:19mm; height:19mm; display:grid; place-items:center; flex:0 0 auto; background:var(--blade); color:var(--on-navy); border-start-end-radius:var(--leaf); border-end-start-radius:var(--leaf); }
+  .tile svg{ width:9.4mm; height:9.4mm; stroke-width:1.35; }
+  .tile.line{ background:var(--paper); color:var(--navy); border:1.3px solid var(--navy); }
+  .tile.lg{ width:24mm; height:24mm; --leaf:8mm; } .tile.lg svg{ width:12mm; height:12mm; }
+  .tile.sm{ width:13mm; height:13mm; --leaf:4.5mm; } .tile.sm svg{ width:6.6mm; height:6.6mm; }
+  .tile.xs{ width:9mm; height:9mm; --leaf:3mm; } .tile.xs svg{ width:4.6mm; height:4.6mm; }
 
-  /* ABOUT */
-  .band{ position:absolute; top:0; left:0; right:0; overflow:hidden; border-end-end-radius:30mm; }
-  .est{ position:absolute; width:34mm; height:34mm; border-radius:50%; background:var(--navy); color:var(--white); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
-  .est b{ font-family:var(--head); font-weight:400; font-size:26pt; line-height:1; }
-  .est span{ font-size:6.5pt; letter-spacing:.22em; text-transform:uppercase; color:var(--brass2); margin-top:1.5mm; font-weight:600; }
-  html[lang="ar"] .est span{ letter-spacing:0; font-size:8pt; }
-  .strengths{ display:grid; grid-template-columns:repeat(3,1fr); gap:8mm; }
-  .strength{ border-top:1px solid var(--line); padding-top:4mm; display:flex; flex-direction:column; gap:2.5mm; }
-  .strength h3{ font-size:14pt; line-height:1.15; } html:not([lang="ar"]) .strength h3{ font-style:italic; }
+  .card{ position:relative; border:1px solid var(--line); border-top:2px solid var(--navy); background:var(--paper); padding:6mm; }
+  .panel{ background:var(--navy); color:var(--on-navy); }
+  .panel h2, .panel h3, .panel .big{ color:var(--on-navy); }
+  .panel .big small{ color:var(--on-navy2); }
+  .panel .txt, .panel .lead{ color:var(--on-navy2); }
+  .chip{ display:inline-flex; align-items:center; border:1px solid var(--navy); color:var(--navy); font-size:7pt; font-weight:700; letter-spacing:.1em; padding:.7mm 2.4mm; direction:ltr; }
+  .panel .chip{ border-color:var(--on-navy2); color:var(--on-navy); }
+  .hair{ height:1px; background:var(--line); }
+  .grid{ display:grid; gap:5mm; }
+  ul.ticks{ list-style:none; margin:0; padding:0; display:grid; gap:1.7mm 5mm; }
+  ul.ticks li{ display:flex; gap:2mm; font-size:7.7pt; line-height:1.35; color:var(--ink); }
+  html[lang="ar"] ul.ticks li{ font-size:8.4pt; line-height:1.5; }
+  ul.ticks li::before{ content:""; flex:0 0 auto; width:1.6mm; height:1.6mm; margin-top:1.15mm; background:var(--steel); border-start-end-radius:.8mm; border-end-start-radius:.8mm; }
+  .watermark{ position:absolute; pointer-events:none; opacity:.06; }
 
-  /* NUMBERS */
-  .big-n{ display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,.14); }
-  .big-n > div{ padding:7mm 5mm 7mm 0; border-bottom:1px solid rgba(255,255,255,.14); }
-  html[dir="rtl"] .big-n > div{ padding:7mm 0 7mm 5mm; }
-  .big-n b{ display:block; font-family:var(--head); font-weight:400; font-size:50pt; line-height:.9; }
-  .big-n b small{ font-size:.5em; color:var(--brass2); }
-  .big-n > div > span:not(.ib){ display:block; margin-top:3mm; font-size:7.4pt; letter-spacing:.14em; text-transform:uppercase; font-weight:500; color:var(--mute); line-height:1.45; }
-  html[lang="ar"] .big-n > div > span:not(.ib){ letter-spacing:0; font-size:8.6pt; }
-  .big-n > div{ padding-top:10mm; padding-bottom:10mm; }
-  .decade{ position:relative; margin-top:6mm; }
-  .decade .track{ height:3px; background:rgba(255,255,255,.14); border-radius:2px; position:relative; }
-  .decade .fill{ position:absolute; inset:0; background:var(--grad); border-radius:2px; transform-origin:left center; }
-  html[dir="rtl"] .decade .fill{ transform-origin:right center; }
-  .decade .yrs{ display:flex; justify-content:space-between; margin-top:2.5mm; }
-  .decade .yrs span{ font-size:7pt; color:var(--mute); width:0; display:flex; justify-content:center; white-space:nowrap; }
-  .decade .yrs span.k{ color:#fff; font-weight:600; font-size:8pt; }
-  .decade .dots{ position:absolute; left:0; right:0; top:-1.6mm; display:flex; justify-content:space-between; }
-  .decade .dots i{ width:3.4mm; height:3.4mm; border-radius:50%; background:var(--navy); border:1.2px solid var(--brass2); }
-  .decade .dots i.k{ background:var(--brass2); }
-
-  /* VISION / MISSION */
-  .vm-top{ position:absolute; top:16mm; left:16mm; right:16mm; height:142mm; border-radius:7mm; overflow:hidden; color:var(--white); }
-  .vm-top .shade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,31,41,.25), rgba(15,31,41,.92) 70%); }
-  .vm-in{ position:absolute; left:11mm; right:11mm; bottom:11mm; }
-  .vm-bottom{ position:absolute; top:166mm; left:16mm; right:16mm; height:105mm; border-radius:7mm; background:#fff; padding:11mm; }
-  .vm-title{ font-size:34pt; margin:5mm 0 5mm; } html:not([lang="ar"]) .vm-title{ font-style:italic; }
-  .vm-text{ font-size:12.4pt; line-height:1.6; }
-  .vm-tag{ margin-top:6mm; font-size:7.6pt; letter-spacing:.24em; text-transform:uppercase; font-weight:600; }
-  html[lang="ar"] .vm-tag{ letter-spacing:0; font-size:9pt; }
-
-  /* RING */
-  .ring{ position:relative; margin:0 auto; }
-  .ring svg.rg{ position:absolute; inset:0; width:100%; height:100%; }
-  .ring .core{ position:absolute; transform:translate(-50%,-50%); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
-  .ring .node{ position:absolute; transform:translate(-50%,-50%); width:13mm; height:13mm; border-radius:50%; display:grid; place-items:center; background:var(--paper); border:1px solid var(--brass); color:var(--blue); }
-  .dark .ring .node{ background:var(--navy); color:var(--brass2); }
-  .ring .node svg{ width:5.4mm; height:5.4mm; stroke-width:1.4; }
-  .ring .lbl{ position:absolute; transform:translate(-50%,-50%); width:38mm; text-align:center; font-family:var(--head); font-size:14.5pt; line-height:1.1; }
-  html:not([lang="ar"]) .ring .lbl{ font-style:italic; }
-  .ring .lbl small{ display:block; font-family:var(--body); font-style:normal; font-size:6.6pt; letter-spacing:.18em; color:var(--brass); font-weight:600; margin-bottom:1mm; }
-  .vgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:4mm 6mm; }
-  .vgrid div{ border-top:1px solid var(--line); padding-top:3mm; }
-  .vgrid h4{ font-size:11.5pt; margin-bottom:1.5mm; } html:not([lang="ar"]) .vgrid h4{ font-style:italic; }
-  .vgrid p{ font-size:8.3pt; line-height:1.48; color:var(--ink2); }
-
-  /* WHY */
-  .why-img{ position:absolute; top:0; bottom:0; inset-inline-start:0; width:70mm; overflow:hidden; }
-  .why-body{ position:absolute; top:16mm; bottom:22mm; inset-inline-start:16mm; inset-inline-end:16mm; }
-  .why-row{ display:flex; gap:5mm; padding:4.6mm 0; border-bottom:1px solid rgba(255,255,255,.12); }
-  .why-row .num{ width:8mm; flex:0 0 auto; font-size:15pt; color:var(--brass2); padding-top:.4mm; }
-  .why-row h3{ font-size:13.5pt; margin-bottom:1.2mm; } html:not([lang="ar"]) .why-row h3{ font-style:italic; }
-  .why-row p{ font-size:8.6pt; line-height:1.5; color:var(--mute); }
-
-  /* LIFECYCLE */
-  .life{ display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; position:relative; }
-  .life-line{ position:absolute; top:6.5mm; left:6mm; right:6mm; height:2px; background:var(--grad); transform-origin:left center; }
-  html[dir="rtl"] .life-line{ transform-origin:right center; }
-  .stage{ position:relative; display:flex; flex-direction:column; gap:3mm; }
-  .stage .step{ width:13mm; height:13mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); display:grid; place-items:center; color:var(--brass2); z-index:1; position:relative; }
-  .stage .step svg{ width:6mm; height:6mm; }
-  .stage .sno{ font-size:6.8pt; letter-spacing:.2em; text-transform:uppercase; color:var(--brass2); font-weight:600; margin-top:2mm; }
-  html[lang="ar"] .stage .sno{ letter-spacing:0; font-size:8pt; }
-  .stage h3{ font-size:19pt; } html:not([lang="ar"]) .stage h3{ font-style:italic; }
-  .stage > p{ font-size:9pt; line-height:1.45; color:var(--mute); min-height:18mm; }
-  .svc-pill{ display:flex; gap:3mm; align-items:center; border-top:1px solid rgba(255,255,255,.14); padding:3.4mm 0; }
-  .svc-pill i{ font-style:normal; font-family:var(--head); font-size:10pt; color:var(--brass2); }
-  .svc-pill span{ font-size:9pt; line-height:1.28; }
-  .svc-pill svg{ width:4.6mm; height:4.6mm; color:var(--cyan); flex:0 0 auto; }
-
-  /* SERVICE A */
-  .sv-hero{ position:absolute; top:0; left:0; right:0; height:126mm; overflow:hidden; }
-  .sv-grad{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,22,29,.15) 20%, rgba(10,22,29,.88)); }
-  .sv-no{ position:absolute; top:8mm; inset-inline-end:12mm; font-family:var(--head); font-size:120pt; line-height:.8; color:transparent; -webkit-text-stroke:1.1px rgba(229,196,141,.8); }
-  .sv-hero-text{ position:absolute; left:16mm; right:44mm; bottom:13mm; color:#fff; z-index:2; }
-  html[dir="rtl"] .sv-hero-text{ left:44mm; right:16mm; }
-  .sv-hero-text h2{ font-size:33pt; margin-top:4mm; }
-  .sv-badge{ position:absolute; width:20mm; height:20mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); color:var(--brass2); display:grid; place-items:center; }
-  .sv-badge svg{ width:8.5mm; height:8.5mm; stroke-width:1.5; }
-  .sv-body{ position:absolute; top:112mm; left:16mm; right:16mm; bottom:22mm; display:flex; flex-direction:column; }
-  .tagline{ font-family:var(--head); font-size:16pt; line-height:1.25; color:var(--blue); }
-  html:not([lang="ar"]) .tagline{ font-style:italic; }
-  .count{ display:flex; align-items:baseline; gap:2mm; }
-  .count b{ font-family:var(--head); font-weight:400; font-size:30pt; line-height:1; color:var(--brass); }
-  .count span{ font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--ink2); max-width:26mm; line-height:1.3; }
-  html[lang="ar"] .count span{ letter-spacing:0; font-size:8pt; }
-  .ks{ margin-top:8mm; border-top:1px solid var(--line); padding-top:5mm; }
-  .ks ul{ list-style:none; margin:4mm 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:2.4mm 8mm; }
-  .ks li{ display:flex; gap:2.6mm; font-size:8.6pt; line-height:1.35; color:var(--ink); }
-  .ks li::before{ content:""; width:2.6mm; height:1px; background:var(--brass); flex:0 0 auto; margin-top:2mm; }
-  .ks.dense li{ font-size:8.1pt; } .ks.dense ul{ gap:1.6mm 6mm; }
-
-  /* SERVICE B */
-  .svb-photo{ position:absolute; top:0; bottom:0; inset-inline-end:0; width:72mm; overflow:hidden; }
-  .svb-photo .sv-no{ top:auto; bottom:16mm; inset-inline-end:auto; inset-inline-start:8mm; font-size:110pt; }
-  .svb-photo .icn{ position:absolute; top:16mm; inset-inline-start:10mm; width:20mm; height:20mm; border-radius:50%; background:var(--navy); border:2px solid var(--brass2); display:grid; place-items:center; color:var(--brass2); box-shadow:0 4mm 10mm rgba(0,0,0,.35); }
-  .svb-photo .icn svg{ width:9mm; height:9mm; stroke-width:1.5; }
-  .svb-body{ position:absolute; top:16mm; bottom:22mm; inset-inline-start:16mm; inset-inline-end:84mm; display:flex; flex-direction:column; }
-  .svb-body h2{ font-size:31pt; margin:5mm 0 4mm; }
-  .svb-body .ks{ margin-top:auto; }
-  .svb-body .ks ul{ grid-template-columns:1fr; gap:1.8mm; }
-  .svb-body .ks.dense ul{ grid-template-columns:1fr 1fr; gap:1.4mm 4mm; }
-  .svb-body .ks.dense li{ font-size:7.6pt; }
-
-  /* PEOPLE */
-  .leader{ display:grid; grid-template-columns:60mm 1fr; gap:9mm; align-items:start; }
-  .leader .ph{ position:relative; width:56mm; height:56mm; margin:2mm; border-radius:50%; overflow:hidden; outline:1px solid var(--brass); outline-offset:2mm; }
-  .leader .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 15%; }
-  .leader h3{ font-size:24pt; }
-  .leader .role{ margin:2mm 0 3.5mm; font-size:7.8pt; letter-spacing:.2em; text-transform:uppercase; font-weight:600; color:var(--blue); }
-  html[lang="ar"] .leader .role{ letter-spacing:0; font-size:9pt; }
-  .leader .deg{ display:flex; gap:2mm; align-items:center; font-size:8.4pt; color:var(--ink2); margin:3mm 0 4mm; }
-  .leader .deg svg{ width:4mm; height:4mm; color:var(--brass); }
-  .leader p.bio{ font-size:9pt; line-height:1.58; color:var(--ink2); margin-bottom:2.5mm; }
-  .team{ display:grid; grid-template-columns:repeat(2,1fr); gap:6mm 8mm; }
-  .member{ display:flex; gap:5mm; align-items:flex-start; padding-top:5mm; border-top:1px solid rgba(255,255,255,.12); }
-  .member .ph{ width:25mm; height:25mm; margin:1.5mm; border-radius:50%; outline:1px solid var(--brass2); outline-offset:1.4mm; overflow:hidden; flex:0 0 auto; background:var(--navy2); display:grid; place-items:center; font-family:var(--head); font-size:22pt; color:var(--brass2); }
-  .member .ph img{ width:100%; height:100%; object-fit:cover; object-position:center 15%; }
-  .member h3{ font-size:13.5pt; }
-  .member .role{ display:block; margin:1.2mm 0 2mm; font-size:7pt; letter-spacing:.16em; text-transform:uppercase; font-weight:600; color:var(--brass2); }
-  html[lang="ar"] .member .role{ letter-spacing:0; font-size:8.4pt; }
-  .member p{ font-size:8pt; line-height:1.48; color:var(--mute); }
-
-  /* CLIENTS / COMMITMENTS */
-  .logos{ display:grid; grid-template-columns:repeat(6,1fr); gap:3mm 4mm; }
-  .logos div{ position:relative; aspect-ratio:1/1; overflow:hidden; mix-blend-mode:multiply; }
-  .logos img{ position:absolute; inset:2.5mm; width:calc(100% - 5mm); height:calc(100% - 5mm); object-fit:contain; }
-  .exp{ display:grid; grid-template-columns:repeat(3,1fr); gap:0 9mm; }
-  .exp > div{ border-top:1px solid var(--line); padding:5mm 0 9mm; display:flex; flex-direction:column; gap:3mm; }
-  .exp p{ font-family:var(--head); font-size:13pt; line-height:1.3; }
-  html:not([lang="ar"]) .exp p{ font-style:italic; }
-
-  /* CONTACT */
-  .ct-row{ display:flex; gap:4.5mm; align-items:center; padding:4.2mm 0; border-bottom:1px solid rgba(255,255,255,.14); }
-  .ct-row small{ display:block; font-size:6.8pt; letter-spacing:.22em; text-transform:uppercase; color:var(--brass2); font-weight:600; margin-bottom:1mm; }
-  html[lang="ar"] .ct-row small{ letter-spacing:0; font-size:8pt; }
-  .ct-row span{ font-size:11pt; }
-  .qr{ background:#fff; border-radius:5mm; padding:4mm; width:44mm; text-align:center; color:var(--ink); }
-  .qr img{ width:36mm; height:36mm; display:block; margin:0 auto 2.5mm; }
-  .qr p{ font-size:7.2pt; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
-  html[lang="ar"] .qr p{ letter-spacing:0; font-size:8.4pt; }
-
-  /* LENS: every photo is seen through a round lens with a brass focus ring */
-  svg.lens{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
-  /* FRAME: every photo is shown whole, at its own proportions, inside a thin brass border */
-  .frame{ position:absolute; outline:1px solid var(--brass); outline-offset:2.6mm; }
-  .dark .frame{ outline-color:var(--brass2); }
-  .frame.bleed{ outline:0; }
-  .lens-ring{ position:absolute; pointer-events:none; color:var(--brass); }
-  .dark .lens-ring{ color:var(--brass2); }
-  .lens-ring svg{ display:block; width:100%; height:100%; overflow:visible; }
-  .sv-big{ font-family:var(--head); font-size:96pt; line-height:.8; margin:7mm 0 6mm; color:transparent; -webkit-text-stroke:1px var(--brass); }
-  .sv-title{ font-size:30pt; margin-bottom:4mm; }
-  .dv-n{ position:absolute; top:0; inset-inline-end:0; font-family:var(--head); font-size:72pt; line-height:.8; color:transparent; -webkit-text-stroke:1px var(--brass); }
-
-  /* ============ SCREEN-ONLY CHROME ============ */
-  .ui{ position:fixed; z-index:50; font-family:var(--body); }
+  /* screen-only bar */
+  .ui{ position:sticky; top:0; z-index:9; display:flex; gap:12px; align-items:center; padding:10px 18px; background:var(--navy-deep); color:var(--on-navy); font:14px var(--body); }
+  .ui img{ height:24px; } .ui .t{ flex:1; opacity:.8; }
+  .ui a{ color:var(--on-navy); border:1px solid oklch(1 0 0 / .35); padding:6px 12px; text-decoration:none; }
   html.print .ui{ display:none; }
-  .ui-top{ top:0; left:0; right:0; height:56px; display:flex; align-items:center; gap:14px; padding:0 18px; background:rgba(10,22,29,.86); backdrop-filter:blur(10px); color:#f8f5ee; border-bottom:1px solid rgba(255,255,255,.08); }
-  .ui-top img{ height:26px; }
-  .ui-top .t{ font-size:13px; letter-spacing:.06em; opacity:.85; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .ui-top a{ color:#f8f5ee; text-decoration:none; font-size:13px; border:1px solid rgba(255,255,255,.25); border-radius:99px; padding:7px 14px; white-space:nowrap; }
-  .ui-top a.pri{ background:var(--brass); color:#0a161d; border-color:var(--brass); font-weight:500; }
-  .ui-progress{ top:56px; left:0; height:2px; width:100%; background:var(--brass); transform-origin:left; transform:scaleX(0); }
-  html[dir="rtl"] .ui-progress{ transform-origin:right; }
-  .ui-rail{ top:50%; transform:translateY(-50%); inset-inline-end:18px; display:flex; flex-direction:column; gap:10px; }
-  .ui-rail a{ display:flex; align-items:center; gap:8px; justify-content:flex-end; color:rgba(248,245,238,.55); text-decoration:none; font-size:12px; }
-  .ui-rail a span{ opacity:0; transition:opacity .3s; }
-  .ui-rail a:hover span, .ui-rail a.on span{ opacity:1; }
-  .ui-rail a i{ width:10px; height:10px; border-radius:50%; border:1.5px solid var(--brass); }
-  .ui-rail a.on{ color:#f8f5ee; } .ui-rail a.on i{ background:var(--brass); }
-  @media (max-width: 1100px){ .ui-rail{ display:none; } .ui-top .t{ display:none; } }
-  html:not(.print) #doc{ margin-top:56px; }
 </style>
 </head>
 <body>
-<div class="ui ui-top" id="ui-top"></div>
-<div class="ui ui-progress" id="ui-progress"></div>
-<div class="ui ui-rail" id="ui-rail"></div>
+<div class="ui" id="ui"></div>
 <div id="doc"></div>
 <script src="/assets/js/i18n.js"></script>
 <script src="/profile/vendor/lucide.min.js"></script>
 <script>
-(function(){
+(function () {
   const q = new URLSearchParams(location.search);
-  const lang = q.get('lang') === 'ar' ? 'ar' : 'en';
-  const PRINT = q.has('print');
-  const D = I18N[lang], EN = I18N.en, AR = lang === 'ar';
-  const H = document.documentElement;
+  const lang = q.get('lang') === 'ar' ? 'ar' : 'en', AR = lang === 'ar', PRINT = q.has('print');
+  const D = I18N[lang], EN = I18N.en, H = document.documentElement;
   H.lang = lang; H.dir = AR ? 'rtl' : 'ltr'; if (PRINT) H.classList.add('print');
-  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const ic = (n) => `<i data-lucide="${n}"></i>`;
-  const pad2 = (i) => String(i).padStart(2, '0');
-  // Photography: Amman landmarks and close-ups of the work, all in one warm ink tone (profile/img/t-*.jpg).
-  const photo = (id, pos = 'center') => `<img class="img" src="/profile/img/t-${id}.jpg" style="object-position:${pos}">`;
-  // Jordan's landmarks: Petra (Treasury, Siq, Monastery), Jerash, Ajloun Castle, Amman's Roman Theatre and
-  // Umayyad Palace, Wadi Rum and the Red Sea at Aqaba.
-  const IMG = { cover: 18717329, ch1: 18717601, ch2: 15997320, ch3: 18682598, ch4: 6992158, about: 36283912, vision: 6664477, why: 28086996, back: 14924469,
-    svc: [33175651, 7821914, 7821672, 6779567, 7821708, 6779571, 7658352, 8296974, 7821540] };
+  const pad = (i) => String(i).padStart(2, '0');
 
   const T = AR ? {
-    footer:'الموحدة', profile:'الملف التعريفي 2026', motto:['نزاهة.','شفافية.','جودة.'], mottoLine:'نزاهة • شفافية • جودة', since:'منذ 2015 · عمّان، الأردن',
-    firm:'الموحدة لتدقيق الحسابات والاستشارات المالية', next:'التالي', intro:'مقدمة', contents:'المحتويات', chapter:'الفصل',
-    ch:[ 'من نحن', 'ما نقدمه', 'فريقنا', 'من يثق بنا' ],
-    about:'من نحن', whoTitle:'شريك موثوق', whoTitle2:'لأعمالك', est:'تأسست', amman:'عمّان · الأردن',
-    glance:'لمحة سريعة', glanceTitle:'الموحدة', glanceTitle2:'بالأرقام', lines:'خطوط خدمات متكاملة', people:'مهنيون مؤهلون', specialised:'خدمة متخصصة عبر جميع الممارسات', decade:'أكثر من عقد من الخبرة', creds:'الاعتمادات المهنية لقيادتنا', standards:'معايير نعمل وفقها',
-    vm:'الرؤية والمهمة', values:'القيم', services:'خدماتنا', service:'الخدمة', specialisedServices:'خدمة متخصصة',
-    lifeKicker:'دورة حياة الأعمال', lifeTitle:'شريك واحد', lifeTitle2:'في كل مرحلة', lifeIntro:'تسع ممارسات متكاملة ترافق عملك من التأسيس إلى النمو والتحول، بحيث يجد كل احتياج مالي أو تنظيمي خبيراً مختصاً تحت سقف واحد.',
-    stages:[ ['التأسيس','نبني الهيكل الصحيح من اليوم الأول.'], ['التشغيل','سجلات دقيقة وعمليات مالية سلسة.'], ['الامتثال والتأكيد','نفي بكل التزام بثقة واستقلالية.'], ['النمو والتحول','قرارات أذكى واستثمار وتحديث.'] ],
-    stage:'المرحلة',
-    leadership:'قيادتنا', team:'فريقنا', expect:'التزاماتنا', clients:'عملاؤنا', sectors:'القطاعات التي نخدمها', clientsCore:'عميل', contact:'تواصل معنا',
-    address:'العنوان', phone:'الهاتف', email:'البريد الإلكتروني', website:'الموقع الإلكتروني', scan:'امسح الرمز لزيارة موقعنا', more:'تفاصيل كاملة لكل خدمة على موقعنا',
-    dl:'تحميل PDF', other:'English', otherHref:'?lang=en', start:'البداية'
+    profile: 'الملف التعريفي 2026', firm: 'الموحدة لتدقيق الحسابات والاستشارات المالية', motto: ['نزاهة', 'شفافية', 'جودة'], site: 'www.caudit.net',
+    tabs: ['من نحن', 'ما نقدمه', 'فريقنا', 'من يثق بنا', 'تواصل معنا'],
+    about: 'من نحن', whoTitle: 'شريك موثوق', whoTitle2: 'لأعمالك', journey: 'مسيرتنا', est: 'التأسيس', today: 'اليوم', strengths: 'نقاط قوتنا',
+    creds: 'الاعتمادات المهنية لقيادتنا', standards: 'معايير نعمل وفقها',
+    vmv: 'الرؤية والمهمة والقيم', vmvTitle: 'الرؤية والمهمة', vmvTitle2: 'والقيم',
+    whyStats: ['عميل', 'سنوات من الخبرة', 'خطوط خدمات متكاملة'],
+    services: 'خدماتنا', specialised: 'خدمة متخصصة', across: 'خدمة متخصصة عبر تسع ممارسات متكاملة', service: 'الخدمة', svcDetail: 'تفاصيل الخدمات',
+    leadership: 'قيادتنا', team: 'فريقنا', join: 'انضم إلى فريقنا', joinText: 'نرحب دائماً بالمدققين والمحاسبين والمتخصصين في الضرائب والمتدربين الطموحين.', apply: 'caudit.net/careers',
+    sectors: 'القطاعات التي نخدمها', clients: 'عملاؤنا', clientsN: 'عميل من الشركات والمصانع والمنظمات غير الحكومية', expect: 'التزاماتنا',
+    contact: 'تواصل معنا', address: 'العنوان', phone: 'الهاتف', email: 'البريد الإلكتروني', website: 'الموقع الإلكتروني', scan: 'امسح الرمز لزيارة موقعنا', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
   } : {
-    footer:'Consolidated', profile:'Company Profile 2026', motto:['Integrity.','Transparency.','Quality.'], mottoLine:'Integrity • Transparency • Quality', since:'Since 2015 · Amman, Jordan',
-    firm:'Consolidated for Auditing and Financial Consulting', next:'Next', intro:'Introduction', contents:'Contents', chapter:'Chapter',
-    ch:[ 'Who We Are', 'What We Do', 'Our People', 'Who Trusts Us' ],
-    about:'About Us', whoTitle:'A trusted partner', whoTitle2:'for your business', est:'Est.', amman:'Amman · Jordan',
-    glance:'At a Glance', glanceTitle:'Consolidated', glanceTitle2:'in Numbers', lines:'Integrated service lines', people:'Qualified professionals', specialised:'Specialised services across our practices', decade:'More than a decade of practice', creds:'Professional credentials held by our leadership', standards:'Standards we work by',
-    vm:'Vision & Mission', values:'Values', services:'Our Services', service:'Service', specialisedServices:'Specialised services',
-    lifeKicker:'The Business Lifecycle', lifeTitle:'One partner,', lifeTitle2:'every stage', lifeIntro:'Nine integrated practices follow your business from formation to growth and transformation, so every financial and regulatory need has a dedicated specialist under one roof.',
-    stages:[ ['Establish','The right structure from day one.'], ['Operate','Accurate books and smooth finance operations.'], ['Comply & Assure','Every obligation met with independence and confidence.'], ['Grow & Transform','Smarter decisions, investment and modernisation.'] ],
-    stage:'Stage',
-    leadership:'Our Leadership', team:'Our Team', expect:'Our Commitments', clients:'Our Clients', sectors:'Sectors we serve', clientsCore:'Clients', contact:'Contact Us',
-    address:'Address', phone:'Phone', email:'Email', website:'Website', scan:'Scan to visit our website', more:'Full details of every service at www.caudit.net',
-    dl:'Download PDF', other:'العربية', otherHref:'?lang=ar', start:'Start'
+    profile: 'Company Profile 2026', firm: 'Consolidated for Auditing and Financial Consulting', motto: ['Integrity', 'Transparency', 'Quality'], site: 'www.caudit.net',
+    tabs: ['Who We Are', 'What We Do', 'Our People', 'Who Trusts Us', 'Contact'],
+    about: 'About Us', whoTitle: 'A trusted partner', whoTitle2: 'for your business', journey: 'Our Journey', est: 'Established', today: 'Today', strengths: 'Our Strengths',
+    creds: 'Credentials held by our leadership', standards: 'Standards we work by',
+    vmv: 'Vision, Mission & Values', vmvTitle: 'Vision, Mission', vmvTitle2: '& Values',
+    whyStats: ['Clients served', 'Years of practice', 'Integrated service lines'],
+    services: 'Our Services', specialised: 'Specialised services', across: 'Specialised services across nine integrated practices', service: 'Service', svcDetail: 'Service Details',
+    leadership: 'Our Leadership', team: 'Our Team', join: 'Join Our Team', joinText: 'We are always glad to hear from auditors, accountants, tax specialists and ambitious trainees.', apply: 'caudit.net/careers',
+    sectors: 'Sectors We Serve', clients: 'Our Clients', clientsN: 'Corporate, industrial & NGO client partners', expect: 'Our Commitments',
+    contact: 'Contact Us', address: 'Address', phone: 'Phone', email: 'Email', website: 'Website', scan: 'Scan to visit our website', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
   };
-  const stageMap = [[5],[1,6],[0,2,3],[4,8,7]];
-  const svcIcons = ['shield-check','calculator','receipt-text','scan-search','trending-up','building-2','briefcase-business','graduation-cap','monitor-cog'];
-  const valIcons = ['badge-check','scale','award','handshake','lock-keyhole','lightbulb'];
-  const whyIcons = ['user-check','circle-check-big','factory','heart-handshake','cpu','rocket'];
-  const ptIcons  = ['medal','network','clipboard-check'];
-  const expIcons = ['hourglass','users-round','graduation-cap','book-check','globe','compass','lock','map-pin','star'];
-  const secIcons = ['factory','store','stethoscope','monitor-smartphone','heart-handshake','hard-hat','wheat','fuel'];
-  const stageIcons = ['flag','settings','shield-half','sprout'];
-  const imgPos   = ['center 45%','60% center','center 45%','45% center','center 50%','40% center','center 45%','70% center','center 50%'];
-  const logo = `<div class="logo"><img class="icon" src="/assets/img/icon.png"><img class="word" src="/assets/img/wordmark.png"><div class="ar-word"><b>الموحدة</b><small>لتدقيق الحسابات والاستشارات المالية</small></div></div>`;
+  const svcIcons = ['shield-check', 'calculator', 'receipt-text', 'scan-search', 'trending-up', 'building-2', 'briefcase-business', 'graduation-cap', 'monitor-cog'];
+  const valIcons = ['badge-check', 'scale', 'award', 'handshake', 'lock-keyhole', 'lightbulb'];
+  const whyIcons = ['user-check', 'circle-check-big', 'factory', 'heart-handshake', 'cpu', 'rocket'];
+  const ptIcons = ['medal', 'network', 'clipboard-check'];
+  const secIcons = ['factory', 'store', 'stethoscope', 'monitor-smartphone', 'heart-handshake', 'hard-hat', 'wheat', 'fuel'];
+  const expIcons = ['hourglass', 'users-round', 'graduation-cap', 'book-check', 'globe', 'compass', 'lock', 'map-pin', 'star'];
 
-  // ---------- page model ----------
-  const pages = []; const anchor = {};
-  const mark = (k) => { anchor[k] = pages.length + 1; };
-  const page = (cls, inner, meta) => pages.push(Object.assign({ cls, inner, foot: true, thread: 'gutter' }, meta));
-  const P = (k) => `%%${k}%%`;
-  const N = (big) => ` data-node="${big ? 'big' : '1'}"`;
+  const st = D.stats, S = D.services.items;
+  const totalSpec = S.reduce((a, s) => a + s.list.length, 0), maxList = Math.max(...S.map((s) => s.list.length));
+  const cc = D.footer.cols.find((c) => (c.links || []).some((l) => String(l[1] || '').startsWith('tel:')));
+  const link = (k) => (cc.links.find((l) => l[3] === k) || [''])[0];
+  const brand = (light) => `<div class="brand"><img class="ic" src="/assets/img/icon.png" alt=""><img class="wm" src="${light ? '/profile/img/wordmark-white.png' : '/assets/img/wordmark.png'}" alt=""></div>`;
 
-  const ring = (items, o) => {
-    const W = o.w, Hh = o.h, cx = W / 2, cy = Hh / 2, n = items.length;
-    const pos = (r, i) => { const a = (-90 + i * 360 / n) * Math.PI / 180; const dx = r * Math.cos(a); return [cx + (AR ? -dx : dx), cy + r * Math.sin(a)]; };
-    const nodes = items.map((it, i) => { const [x, y] = pos(o.rNode, i), [lx, ly] = pos(o.rLabel, i);
-      return `<div class="node" style="left:${x}mm;top:${y}mm">${ic(it.icon)}</div><div class="lbl" style="left:${lx}mm;top:${ly}mm"><small>${pad2(i + 1)}</small>${esc(it.title)}</div>`; }).join('');
-    return `<div class="ring" style="width:${W}mm;height:${Hh}mm">
-      <svg class="rg" viewBox="0 0 ${W} ${Hh}"><circle class="ring-c" cx="${cx}" cy="${cy}" r="${o.rNode}" fill="none" stroke="#c79d5d" stroke-width=".3"/></svg>
-      <div class="core" style="left:${cx}mm;top:${cy}mm;width:${o.core}mm;height:${o.core}mm;${o.coreStyle}">${o.coreHtml}</div>${nodes}</div>`;
-  };
+  const pages = [];
+  const page = (tab, sec, inner, opt = {}) => pages.push({ tab, sec, inner, opt });
+  const head = (kicker, h, sub) => `<div class="kicker">${esc(kicker)}</div><h2 class="h2">${esc(h)}${sub ? ` <em>${esc(sub)}</em>` : ''}</h2>`;
 
-  const cc = D.footer.cols.find(c => (c.links || []).some(l => String(l[1] || '').startsWith('tel:'))) || D.footer.cols[D.footer.cols.length - 1];
-  const addr = cc.links[0][0];
-  const tel  = (cc.links.find(l => String(l[1] || '').startsWith('tel:')) || [''])[0];
-  const mail = (cc.links.find(l => String(l[1] || '').startsWith('mailto:')) || [''])[0];
-  const web  = (cc.links.find(l => /^https:\/\/www\.caudit/.test(String(l[1] || ''))) || ['www.caudit.net'])[0];
-  const ringSvg = `<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/>${[[50, -2.6, 50, 2.6], [97.4, 50, 102.6, 50], [50, 97.4, 50, 102.6], [-2.6, 50, 2.6, 50]].map(([a, b, c, d]) => `<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="currentColor" stroke-width="1.4" vector-effect="non-scaling-stroke"/>`).join('')}</svg>`;
-  const mx = (x) => AR ? 210 - x : x;   // layouts are drawn left-to-right in mm and mirrored for Arabic
-  // The lens is drawn as a page-sized SVG with a circular clip: CSS clipping of photos that bleed off
-  // the page edge does not survive Chromium's PDF output.
-  const DIM = { 18717329: [1000, 1500], 6664477: [1125, 1500], 15997320: [1000, 1500], 14924469: [1000, 1500], 6992158: [1160, 1500], 6779567: [1500, 843], 6779571: [1500, 843] };
-  const posFrac = (pos) => { const t = pos.split(/\s+/).map(v => v === 'center' ? .5 : parseFloat(v) / 100); return [t[0], t.length > 1 ? t[1] : .5]; };
-  let lensId = 0;
-  const lens = (id, d, cx, cy, pos = 'center') => { const x = mx(cx), g = 4, r = d / 2, k = ++lensId;
-    const [iw, ih] = DIM[id] || [1500, 1000], f = Math.max(d / iw, d / ih), w = iw * f, h = ih * f, [fx, fy] = posFrac(pos);
-    return `<svg class="lens" viewBox="0 0 210 297" preserveAspectRatio="none"><defs><clipPath id="lc${k}"><circle cx="${x}" cy="${cy}" r="${r}"/></clipPath></defs>
-        <circle cx="${x}" cy="${cy}" r="${r}" fill="#ece5d8"/><image href="/profile/img/t-${id}.jpg" x="${x - r - (w - d) * fx}" y="${cy - r - (h - d) * fy}" width="${w}" height="${h}" preserveAspectRatio="none" clip-path="url(#lc${k})"/></svg>
-      <div class="lens-ring" style="left:${x - r - g}mm;top:${cy - r - g}mm;width:${d + 2 * g}mm;height:${d + 2 * g}mm">${ringSvg}</div>`; };
-  // Whole photo at its own aspect ratio (nothing cropped); x, y, w in mm, laid out left-to-right and mirrored for Arabic.
-  const fh = (id, w) => { const [iw, ih] = DIM[id] || [1500, 1000]; return w * ih / iw; };
-  const frame = (id, x, y, w, cls = '') => `<div class="frame ${cls}" style="left:${AR ? 210 - x - w : x}mm;top:${y}mm;width:${w}mm;height:${fh(id, w)}mm">${photo(id)}</div>`;
-  const rim = (cx, cy, r, deg) => { const a = deg * Math.PI / 180; return [mx(cx + r * Math.cos(a)), cy + r * Math.sin(a)]; };
-  const lastSentence = (t) => { const parts = t.split(/(?<=[.!؟])\s+/).filter(Boolean); return parts[parts.length - 1]; };
-  const st = D.stats;
+  // ============ 1 · COVER ============
+  page(0, '', `
+    <img class="watermark" src="/assets/img/icon.png" style="width:150mm;top:18mm;inset-inline-end:-46mm;opacity:.07">
+    <div style="position:absolute;top:18mm;inset-inline:18mm;display:flex;align-items:center;justify-content:space-between">
+      <div class="brand" style="gap:4mm"><img src="/assets/img/icon.png" style="height:17mm"><img src="/assets/img/wordmark.png" style="height:8.6mm"></div>
+    </div>
+    <div style="position:absolute;top:66mm;inset-inline:18mm 22mm">
+      <div class="kicker">${esc(T.profile)}</div>
+      <h1 style="font-size:${AR ? 34 : 54}pt;margin:6mm 0 0;max-width:150mm">${esc(D.services.title1)} <em>${esc(D.services.title2)}</em></h1>
+      <div style="display:flex;gap:7mm;margin-top:9mm">${T.motto.map((m) => `<span style="display:flex;align-items:center;gap:2.4mm;font-size:${AR ? 11 : 9.6}pt;font-weight:600;color:var(--navy);letter-spacing:${AR ? 0 : '.06em'}"><span class="tile xs">${ic('check')}</span>${esc(m)}</span>`).join('')}</div>
+      <p class="lead" style="margin-top:9mm;max-width:150mm">${esc(D.hero.sub)}</p>
+    </div>
+    <div class="panel on-navy" style="position:absolute;inset-inline:0;bottom:0;height:92mm;padding:13mm 22mm 0 18mm">
+      <div class="kicker">${esc(T.firm)}</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm;margin-top:8mm">${st.map((s) => `
+        <div style="border-top:1px solid oklch(1 0 0 / .2);padding-top:4mm">
+          <b class="big" style="font-size:${s.text && AR ? 26 : 34}pt;display:block">${esc(s.text || s.n)}${s.suffix ? `<small>${esc(s.suffix)}</small>` : ''}</b>
+          <p style="font-size:7.4pt;line-height:1.45;margin-top:2.5mm;color:var(--on-navy2)">${esc(s.label)}</p></div>`).join('')}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:9mm;padding-top:5mm;border-top:1px solid oklch(1 0 0 / .2)">
+        <div style="display:flex;gap:1.8mm">${D.hero.certs.map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>
+        <span class="label" style="color:var(--on-navy2)">${esc(T.site)}</span></div>
+    </div>`, { bare: true });
 
-  const divider = (no, title, quote, img, pos, chIdx) => { const [iw, ih] = DIM[img] || [1500, 1000], wide = iw > ih, w = wide ? 178 : 160 * iw / ih;
-    return page('ledger', `
-    ${frame(img, wide ? 16 : 105 - w / 2, wide ? 34 : 20, w)}
-    <div class="dv-body"><span class="dv-n">${pad2(no)}</span><div class="kicker"${N(true)}>${esc(T.chapter)} ${pad2(no)}</div><h2 class="dv-title">${esc(title)}</h2>
-      <div class="dv-quote">${ic('quote')}<p>${esc(quote)}</p></div></div>`, { title, ch: chIdx }); };
-
-  // ============ 1 COVER ============
-  page('dark', `
-    ${frame(IMG.cover, 90, 16, 104)}
-    <div class="pad" style="display:flex;flex-direction:column;justify-content:space-between">
-      ${logo}
-      <div>
-        <div class="kicker"${N(true)}>${esc(T.profile)}</div>
-        <div class="cv-words" style="margin-top:7mm">${T.motto.map(w => `<div><span class="tick">${ic('check')}</span><span>${esc(w)}</span></div>`).join('')}</div>
-        <div style="height:1px;background:var(--brass);opacity:.6;margin-top:14mm"></div>
-        <div style="display:flex;justify-content:space-between;margin-top:5mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(T.firm)}</span><span>${esc(T.since)}</span></div>
-      </div>
-    </div>`, { title: T.profile, ch: -1, foot: false });
-
-  // ============ 2 CONTENTS ============
-  const chapters = [
-    { img: IMG.ch1, pos: 'center', items: [[T.about, 'about'], [`${T.glanceTitle} ${T.glanceTitle2}`, 'numbers'], [T.vm, 'vm'], [`${D.values.title1} ${D.values.title2}`, 'values'], [`${D.why.title1} ${D.why.title2}`, 'why']], key: 'c1' },
-    { img: IMG.ch2, pos: 'center 55%', items: [[T.lifeKicker, 'life'], [T.services, 'svc']], key: 'c2' },
-    { img: IMG.ch3, pos: 'center 60%', items: [[T.leadership, 'lead'], [T.team, 'team']], key: 'c3' },
-    { img: IMG.ch4, pos: 'center 35%', items: [[T.sectors, 'sectors'], [T.clients, 'logos'], [T.expect, 'expect'], [T.contact, 'contact']], key: 'c4' },
-  ];
-  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.contents)}</div>
-      <h2 class="h2" style="margin:5mm 0 12mm;font-size:44pt">${esc(T.contents)}</h2>
-      ${chapters.map((c, i) => `<div class="ch-row"><div class="ch-thumb" style="width:${26 / fh(c.img, 1)}mm">${photo(c.img)}</div><div class="ch-num">${pad2(i + 1)}</div>
-        <div><h3>${esc(T.ch[i])} <span class="ac" style="font-size:12pt">${P(c.key)}</span></h3><div class="ch-items">${c.items.map(it => `<span>${esc(it[0])}<b>${P(it[1])}</b></span>`).join('')}</div></div></div>`).join('')}
-      <div style="margin-top:auto;display:flex;justify-content:flex-end"><img src="/assets/img/icon.png" style="height:14mm;opacity:.85"></div>
-    </div>`, { title: T.contents, ch: -1 });
-
-  // ============ CHAPTER 1 ============
-  mark('c1'); divider(1, T.ch[0], lastSentence(D.intro.p1), IMG.ch1, 'center', 0);
-
-  mark('about');
-  const aboutH = fh(IMG.about, 210);
-  page('', `
-    ${frame(IMG.about, 0, 0, 210, 'bleed')}
-    <div class="est" style="top:${aboutH - 17}mm;inset-inline-end:22mm"><span>${esc(T.est)}</span><b>2015</b><span>${esc(T.amman)}</span></div>
-    <div class="z" style="position:absolute;top:${aboutH + 12}mm;left:16mm;right:16mm;bottom:22mm;display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.about)}</div>
-      <h2 class="h2" style="margin:5mm 0 6mm">${esc(T.whoTitle)} <span class="it ac">${esc(T.whoTitle2)}</span></h2>
-      <p class="txt" style="font-size:10pt;color:var(--ink)">${esc(D.intro.p1)}</p>
-      <div class="strengths" style="margin-top:auto">${D.intro.points.map((p, i) => `<div class="strength"><span class="num">${pad2(i + 1)}</span><h3>${esc(p.title)}</h3></div>`).join('')}</div>
-    </div>`, { title: T.about, ch: 0 });
-
-  mark('numbers');
-  const totalSpecialised = D.services.items.reduce((a, s) => a + s.list.length, 0);
-  const nums = [
-    { icon:'calendar-check', v: st[0].n, label: st[0].label, plain: true },
-    { icon:'clock', v: st[1].n, suf: st[1].suffix, label: st[1].label },
-    { icon:'users', v: st[2].n, suf: st[2].suffix, label: st[2].label },
-    { icon:'layers', v: D.services.items.length, label: T.lines },
-    { icon:'check-check', v: totalSpecialised, label: T.specialised },
-    { icon:'user-round', v: D.team.people.length, label: T.people },
-  ];
+  // ============ 2 · ABOUT US ============
   const years = Array.from({ length: 12 }, (_, i) => 2015 + i);
-  page('dark', `
-    <div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.glance)}</div>
-      <h2 class="h2" style="margin:5mm 0 16mm;font-size:42pt">${esc(T.glanceTitle)} <span class="it ac">${esc(T.glanceTitle2)}</span></h2>
-      <div class="big-n">${nums.map(g => `<div><b><span class="cnt" data-to="${g.v}" data-plain="${g.plain ? 1 : 0}">${esc(g.v)}</span>${g.suf ? `<small>${esc(g.suf)}</small>` : ''}</b><span>${esc(g.label)}</span></div>`).join('')}</div>
-      <div style="margin-top:auto"><div class="kicker" style="color:var(--mute)">${esc(T.decade)}</div>
-        <div class="decade"><div class="track"><div class="fill"></div></div>
-          <div class="dots">${years.map(y => `<i class="${y === 2015 || y === 2026 ? 'k' : ''}"></i>`).join('')}</div>
-          <div class="yrs">${years.map(y => `<span class="${y === 2015 || y === 2026 ? 'k' : ''}">${y}</span>`).join('')}</div></div>
-        <p style="font-family:var(--head);font-size:17pt;margin-top:14mm;color:var(--brass2)">${esc(T.mottoLine)}</p></div>
-    </div>`, { title: `${T.glanceTitle} ${T.glanceTitle2}`, ch: 0 });
+  page(0, T.about, `
+    ${head(T.tabs[0], T.whoTitle, T.whoTitle2)}
+    <p class="lead" style="columns:2;column-gap:9mm">${esc(D.intro.p1)}</p>
+    <div style="margin-top:9mm"><div class="kicker">${esc(T.journey)}</div>
+      <div style="position:relative;margin-top:7mm;height:20mm">
+        <div style="position:absolute;top:5mm;inset-inline:0;height:2px;background:var(--line)"></div>
+        <div style="position:absolute;top:5mm;inset-inline:0;height:2px;background:var(--blade)"></div>
+        <div style="position:absolute;inset-inline:0;top:0;display:flex;justify-content:space-between">${years.map((y, i) => `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2.4mm;width:0">
+            <span style="width:${i === 0 || i === years.length - 1 ? 4.2 : 2.6}mm;height:${i === 0 || i === years.length - 1 ? 4.2 : 2.6}mm;margin-top:${i === 0 || i === years.length - 1 ? 3.9 : 4.7}mm;border-radius:50%;background:${i === 0 || i === years.length - 1 ? 'var(--navy)' : 'var(--paper)'};border:1.2px solid var(--navy)"></span>
+            <span style="font-size:${i === 0 || i === years.length - 1 ? 8.4 : 6.8}pt;font-weight:${i === 0 || i === years.length - 1 ? 700 : 500};color:${i === 0 || i === years.length - 1 ? 'var(--navy)' : 'var(--silver)'};white-space:nowrap">${y}</span>
+            ${i === 0 ? `<span class="label" style="white-space:nowrap">${esc(T.est)}</span>` : i === years.length - 1 ? `<span class="label" style="white-space:nowrap">${esc(T.today)}</span>` : ''}</div>`).join('')}</div></div></div>
+    <div class="kicker" style="margin-top:7mm">${esc(T.strengths)}</div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:5mm">${D.intro.points.map((p, i) => `
+      <div class="card" style="display:flex;flex-direction:column;gap:3.5mm"><span class="tile">${ic(ptIcons[i])}</span><h3 style="font-size:10.6pt">${esc(p.title)}</h3><p class="txt" style="text-align:start">${esc(p.text)}</p></div>`).join('')}</div>
+    <div class="grid" style="grid-template-columns:1.25fr 1fr;gap:6mm;margin-top:auto">
+      <div style="border-top:2px solid var(--navy);padding-top:4mm"><span class="label">${esc(T.creds)}</span>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2mm;margin-top:3.5mm">${D.hero.certs.slice(0, 5).map((c) => `<div><b class="big" style="font-size:19pt;display:block">${esc(c[0])}</b><span style="font-size:6.6pt;line-height:1.3;display:block;margin-top:1mm">${esc(c[1])}</span></div>`).join('')}</div></div>
+      <div style="border-top:2px solid var(--navy);padding-top:4mm"><span class="label">${esc(T.standards)}</span>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2mm;margin-top:3.5mm">${D.hero.certs.slice(5).map((c) => `<div><b class="big" style="font-size:19pt;display:block">${esc(c[0])}</b><span style="font-size:6.6pt;line-height:1.3;display:block;margin-top:1mm">${esc(c[1])}</span></div>`).join('')}</div></div>
+    </div>`);
 
-  mark('vm');
-  page('', `
-    ${frame(IMG.vision, 104, 18, 90)}
-    <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:76mm">
-      <div class="kicker"${N()}>${esc(T.vm)}</div>
-      <h2 class="vm-title" style="margin-top:24mm">${esc(D.vision.title)}</h2><p class="vm-text" style="font-size:11pt">${esc(D.vision.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.vision.tag)}</p></div>
-    <div class="z hair" style="position:absolute;top:176mm;left:16mm;right:16mm;padding-top:9mm">
-      <h2 class="vm-title" style="margin-top:0">${esc(D.mission.title)}</h2><p class="vm-text">${esc(D.mission.text)}</p><p class="vm-tag" style="color:var(--blue)">${esc(D.mission.tag)}</p></div>`, { title: T.vm, ch: 0 });
+  // ============ 3 · VISION, MISSION & VALUES ============
+  page(0, T.vmv, `
+    ${head(D.values.kicker, T.vmvTitle, T.vmvTitle2)}
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:5mm">${[['eye', D.vision], ['target', D.mission]].map(([i, v], k) => `
+      <div class="${k ? 'card' : 'panel on-navy'}" style="padding:6mm;${k ? '' : 'border-top:2px solid var(--navy)'}">
+        <div style="display:flex;align-items:center;gap:4.5mm"><span class="tile ${k ? '' : 'line'}" style="${k ? '' : 'background:var(--paper)'}">${ic(i)}</span><h3 style="font-family:var(--head);font-weight:400;font-size:${AR ? 17 : 23}pt;color:${k ? 'var(--navy)' : 'var(--on-navy)'}">${esc(v.title)}</h3></div>
+        <p class="txt" style="margin-top:3.4mm;font-size:8.3pt;${k ? '' : 'color:var(--on-navy2)'}">${esc(v.text)}</p>
+        <p class="label" style="margin-top:3mm;color:${k ? 'var(--steel)' : 'var(--on-navy2)'}">${esc(v.tag)}</p></div>`).join('')}</div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:6mm"><div class="kicker">${esc(D.values.title1)} ${esc(D.values.title2)}</div><span class="label">${pad(D.values.cards.length)}</span></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:4mm 5mm;margin-top:4mm;flex:1;grid-auto-rows:1fr;min-height:0">${D.values.cards.map((c, k) => `
+      <div class="card" style="display:flex;gap:4.5mm;padding:4.6mm 5mm;align-items:flex-start"><span class="tile ${k % 2 ? 'line' : ''}">${ic(valIcons[k])}</span>
+        <div style="flex:1"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="font-size:10.6pt">${esc(c.title)}</h3><span class="num">${pad(k + 1)}</span></div><p class="txt" style="font-size:7.8pt;line-height:1.48;margin-top:1.4mm;text-align:start">${esc(c.text)}</p></div></div>`).join('')}</div>`);
 
-  mark('values');
-  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(D.values.kicker)}</div>
-      <h2 class="h2" style="margin:5mm 0 3mm">${esc(D.values.title1)} <span class="it ac">${esc(D.values.title2)}</span></h2>
-      ${ring(D.values.cards.map((c, i) => ({ title: c.title, icon: valIcons[i] })), { w: 178, h: 166, rNode: 50, rLabel: 72, core: 46,
-          coreStyle: 'background:var(--navy);', coreHtml: `<img src="/assets/img/icon.png" style="height:20mm"><span style="color:#fff;font-family:var(--head);font-size:11pt;margin-top:1.5mm">${esc(T.values)}</span>` })}
-      <div class="vgrid" style="margin-top:auto">${D.values.cards.map(c => `<div><h4>${esc(c.title)}</h4><p>${esc(c.text)}</p></div>`).join('')}</div>
-    </div>`, { title: `${D.values.title1} ${D.values.title2}`, ch: 0 });
+  // ============ 4 · WHY CHOOSE US ============
+  const whyNums = [[st[2].n, st[2].suffix, T.whyStats[0]], [st[1].n, st[1].suffix, T.whyStats[1]], [S.length, '', T.whyStats[2]], [totalSpec, '', T.specialised]];
+  page(0, `${D.why.title1} ${D.why.title2}`.trim(), `
+    <div style="display:grid;grid-template-columns:52mm 1fr;gap:8mm;flex:1">
+      <div class="panel on-navy" style="margin-inline-start:-18mm;padding:9mm 7mm 9mm 18mm;padding-inline:18mm 7mm;display:flex;flex-direction:column;justify-content:space-between">
+        ${whyNums.map(([n, s, l]) => `<div><b class="big" style="font-size:40pt;display:block">${n}${s ? `<small>${esc(s)}</small>` : ''}</b><p style="font-size:7.4pt;line-height:1.4;margin-top:2mm;color:var(--on-navy2)">${esc(l)}</p></div>`).join('<div style="height:1px;background:oklch(1 0 0 / .2)"></div>')}
+        <img src="/assets/img/icon.png" style="height:14mm;width:14mm;object-fit:contain;filter:brightness(0) invert(1);opacity:.85">
+      </div>
+      <div style="display:flex;flex-direction:column">
+        ${head(D.why.subtitle, D.why.title1, D.why.title2)}
+        <p class="lead">${esc(D.why.intro)}</p>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1;margin-top:6mm">${D.why.items.map((w, k) => `
+          <div style="display:flex;gap:5mm;align-items:flex-start;border-top:1px solid var(--line);padding-top:4.2mm">
+            <span class="tile ${k % 2 ? 'line' : ''}">${ic(whyIcons[k])}</span>
+            <div style="flex:1"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="font-size:11pt">${esc(w.title)}</h3><span class="num">${pad(k + 1)}</span></div><p class="txt" style="margin-top:1.6mm">${esc(w.text)}</p></div></div>`).join('')}</div>
+      </div>
+    </div>`);
 
-  mark('why');
-  page('dark', `
-    ${frame(IMG.why, 98, 18, 96)}
-    <div class="why-body" style="display:flex;flex-direction:column">
-      <div style="width:74mm;min-height:${fh(IMG.why, 96) + 10}mm">
-        <div class="kicker"${N()}>${esc(D.why.kicker)}</div>
-        <h2 class="h2" style="margin:5mm 0 5mm">${esc(D.why.title1)} <span class="it ac">${esc(D.why.title2)}</span></h2>
-        <p class="txt">${esc(D.why.intro)}</p></div>
-      <div class="kicker" style="color:var(--mute);margin-bottom:1mm">${esc(D.why.subtitle)}</div>
-      <div>${D.why.items.map((w, i) => `<div class="why-row"><span class="num">${pad2(i + 1)}</span><div><h3>${esc(w.title)}</h3><p>${esc(w.text)}</p></div></div>`).join('')}</div>
-    </div>`, { title: `${D.why.title1} ${D.why.title2}`, ch: 0 });
+  // ============ 5 · SERVICES OVERVIEW: the practices, measured by their specialised services ============
+  page(1, T.services, `
+    <div style="display:grid;grid-template-columns:1fr auto;gap:8mm;align-items:end">
+      <div>${head(T.services, D.services.title1, D.services.title2)}</div>
+      <div style="text-align:end;padding-bottom:5mm"><b class="big" style="font-size:58pt;display:block">${totalSpec}</b><span class="label" style="display:block;max-width:44mm;margin-top:1.5mm;line-height:1.5">${esc(T.across)}</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1;border-top:2px solid var(--navy);padding-top:1mm">${S.map((s, k) => `
+      <div style="display:grid;grid-template-columns:13mm 1fr 44mm;gap:5mm;align-items:center;padding:2.2mm 0;border-bottom:1px solid var(--line)">
+        <span class="tile sm ${k % 2 ? 'line' : ''}">${ic(svcIcons[k])}</span>
+        <div><div style="display:flex;gap:2.4mm;align-items:baseline"><span class="num" style="font-size:11pt">${pad(k + 1)}</span><h3 style="font-size:10.4pt">${esc(s.title)}</h3></div>
+          <p style="font-family:var(--head);font-size:${AR ? 9 : 10.5}pt;font-style:${AR ? 'normal' : 'italic'};color:var(--steel);margin-top:.8mm;line-height:1.3">${esc(s.tagline)}</p></div>
+        <div><div style="display:flex;justify-content:space-between;align-items:baseline"><span class="label" style="font-size:6pt">${esc(T.specialised)}</span><b class="big" style="font-size:16pt">${pad(s.list.length)}</b></div>
+          <div style="height:2.2mm;background:var(--mist);margin-top:1.4mm"><div style="height:100%;width:${(s.list.length / maxList) * 100}%;background:var(--blade)"></div></div></div>
+      </div>`).join('')}</div>`);
 
-  // ============ CHAPTER 2 ============
-  mark('c2'); divider(2, T.ch[1], `${D.services.title1} ${D.services.title2}`, IMG.ch2, 'center 55%', 1);
-
-  mark('life');
-  page('dark', `
-    <div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.lifeKicker)}</div>
-      <h2 class="h2" style="margin:5mm 0 5mm;font-size:42pt">${esc(T.lifeTitle)} <span class="it ac">${esc(T.lifeTitle2)}</span></h2>
-      <p class="txt" style="max-width:160mm;margin-bottom:12mm;font-size:10pt">${esc(T.lifeIntro)}</p>
-      <div class="life"><div class="life-line"></div>${T.stages.map((s, i) => `
-        <div class="stage"><span class="step">${ic(stageIcons[i])}</span><span class="sno">${esc(T.stage)} ${pad2(i + 1)}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p>
-          ${stageMap[i].map(k => `<div class="svc-pill"><span><i>${pad2(k + 1)}</i>&nbsp; ${esc(D.services.items[k].title)}</span></div>`).join('')}</div>`).join('')}</div>
-      <div style="margin-top:auto;display:flex;align-items:baseline;gap:5mm">
-        <b style="font-family:var(--head);font-weight:400;font-size:54pt;line-height:.9;color:#fff">${D.services.items.length}</b>
-        <span style="font-family:var(--head);font-size:17pt;color:var(--brass2)">${esc(T.lines)}</span></div>
-    </div>`, { title: T.lifeKicker, ch: 1 });
-
-  mark('svc');
-  D.services.items.forEach((s, i) => {
-    const dense = s.list.length > 12 ? 'dense' : '';
-    const count = `<div class="count"><b class="cnt" data-to="${s.list.length}" data-pad="1">${pad2(s.list.length)}</b><span>${esc(T.specialisedServices)}</span></div>`;
-    const list = `<div class="ks ${dense}"><div class="kicker">${esc(s.listTitle)}</div><ul>${s.list.map(li => `<li><span>${esc(li)}</span></li>`).join('')}</ul></div>`;
-    const sh = fh(IMG.svc[i], 116);
-    page(i % 2 ? 'sand' : '', `
-      ${frame(IMG.svc[i], 78, 16, 116)}
-      <div class="sv-badge" style="left:${mx(78) - 10}mm;top:${16 + sh - 10}mm">${ic(svcIcons[i])}</div>
-      <div class="z" style="position:absolute;top:16mm;inset-inline-start:16mm;width:54mm">
-        <div class="kicker"${N()}>${esc(T.service)} ${pad2(i + 1)} / ${pad2(D.services.items.length)}</div>
-        <div class="sv-big">${pad2(i + 1)}</div>${count}</div>
-      <div class="sv-body">
-        <h2 class="sv-title">${esc(s.title)}</h2>
-        <p class="tagline">${esc(s.tagline)}</p>
-        <p class="txt" style="margin-top:4mm;color:var(--ink)">${esc(s.text[0])}</p>
-        ${list}
-      </div>`, { title: s.title, ch: 1 });
+  // ============ 6-9 · SERVICE DETAILS: three practices on the first page (compact), then two per page ============
+  [[0, 1, 2], [3, 4], [5, 6], [7, 8]].forEach((group) => {
+    const c = group.length === 3;
+    page(1, `${T.svcDetail} ${pad(group[0] + 1)}–${pad(group[group.length - 1] + 1)}`, `
+      <div style="display:flex;flex-direction:column;flex:1;justify-content:space-between">${group.map((k, r) => { const s = S[k]; return `
+        <div style="border-top:2px solid var(--navy);padding-top:${c ? 3.6 : 5}mm">
+          <div style="display:grid;grid-template-columns:${c ? 15 : 24}mm 1fr auto;gap:${c ? 4.5 : 5.5}mm;align-items:start">
+            <span class="tile ${c ? 'sm' : 'lg'} ${r === 1 ? 'line' : ''}">${ic(svcIcons[k])}</span>
+            <div><span class="label">${esc(T.service)} ${pad(k + 1)} / ${pad(S.length)}</span>
+              <h3 style="font-family:var(--head);font-weight:${AR ? 500 : 400};font-size:${AR ? (c ? 12.5 : 15) : (c ? 17 : 21)}pt;color:var(--navy);margin-top:1mm;line-height:1.1">${esc(s.title)}</h3>
+              <p style="font-family:var(--head);font-size:${AR ? (c ? 8.6 : 9.4) : (c ? 10 : 11.5)}pt;font-style:${AR ? 'normal' : 'italic'};color:var(--steel);margin-top:1mm;line-height:1.3">${esc(s.tagline)}</p></div>
+            <div style="text-align:end"><b class="big" style="font-size:${c ? 22 : 30}pt">${pad(s.list.length)}</b><span class="label" style="display:block;font-size:5.8pt;margin-top:1mm">${esc(T.specialised)}</span></div></div>
+          <p class="txt" style="margin-top:${c ? 2.2 : 3.5}mm;font-size:${c ? 7.9 : 9}pt;line-height:${c ? 1.5 : 1.58}">${esc(s.text[0])}</p>
+          <div style="${c ? 'border-top:1px solid var(--line);padding-top:2.4mm;margin-top:2.6mm' : 'background:var(--mist);padding:3.6mm 4mm;margin-top:3.2mm'}"><span class="label" style="color:var(--steel)">${esc(s.listTitle)}</span>
+            <ul class="ticks" style="margin-top:${c ? 1.8 : 2.4}mm;grid-template-columns:repeat(${c ? 3 : 2},1fr);gap:${c ? '.8mm 4mm' : '2.2mm 6mm'}">${s.list.map((li) => `<li style="${c ? 'font-size:6.9pt;line-height:1.28' : ''}"><span>${esc(li)}</span></li>`).join('')}</ul></div>
+        </div>`; }).join('')}</div>`);
   });
 
-  // ============ CHAPTER 3 ============
-  mark('c3'); divider(3, T.ch[2], D.team.title, IMG.ch3, 'center 60%', 2);
+  // ============ 9 · LEADERSHIP ============
+  page(2, T.leadership, `
+    ${head(T.team, D.leaders.title)}
+    <div style="display:flex;flex-direction:column;justify-content:space-between;flex:1">${D.leaders.people.map((p, k) => `
+      <div style="display:grid;grid-template-columns:52mm 1fr;gap:8mm;border-top:2px solid var(--navy);padding-top:6mm">
+        <div><div style="height:66mm;overflow:hidden;border-start-end-radius:10mm;border-end-start-radius:10mm;background:var(--mist)"><img src="/assets/img/${p.photo}.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center 18%"></div>
+          <div style="display:flex;flex-direction:column;gap:2mm;margin-top:4mm">${p.contact.filter((c) => c.ltr && !/caudit\.net$/.test(c.value) || /@/.test(c.value)).map((c) => `<span style="display:flex;gap:2.2mm;align-items:center;font-size:7.8pt;color:var(--ink)"><span class="tile xs line" style="width:6.5mm;height:6.5mm;--leaf:2.2mm">${ic(/@/.test(c.value) ? 'mail' : 'phone')}</span><span class="ltr">${esc(c.value)}</span></span>`).join('')}</div></div>
+        <div><h3 style="font-family:var(--head);font-weight:${AR ? 500 : 400};font-size:${AR ? 17 : 25}pt;color:var(--navy)">${esc(p.name)}</h3>
+          <p class="label" style="color:var(--steel);margin:1.6mm 0 3.4mm">${esc(p.role)}</p>
+          ${p.certs.length ? `<div style="display:flex;gap:1.6mm;flex-wrap:wrap">${p.certs.map((c) => `<span class="chip">${esc(c)}</span>`).join('')}</div>` : ''}
+          <div style="display:flex;gap:2.2mm;align-items:center;margin:3.4mm 0 3.4mm;font-size:8.2pt;color:var(--ink)"><span class="tile xs">${ic('graduation-cap')}</span>${esc(p.degree)}</div>
+          ${p.bio.map((b) => `<p class="txt" style="margin-top:2.2mm">${esc(b)}</p>`).join('')}</div>
+      </div>`).join('')}</div>`);
 
-  mark('lead');
-  page('sand', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.leadership)}</div>
-      <h2 class="h2" style="margin:5mm 0 9mm">${esc(D.leaders.title)}</h2>
-      <div style="display:flex;flex-direction:column;gap:10mm">${D.leaders.people.map(p => `
-        <div class="leader"><div class="ph"><img src="/assets/img/${p.photo}.jpg"></div>
-          <div><h3>${esc(p.name)}</h3><div class="role">${esc(p.role)}</div>
-            ${p.certs.length ? `<div style="display:flex;gap:2mm;color:var(--blue)">${p.certs.map(c => `<span class="badge">${esc(c)}</span>`).join('')}</div>` : ''}
-            <div class="deg">${ic('graduation-cap')}<span>${esc(p.degree)}</span></div>
-            ${p.bio.slice(0, 2).map(b => `<p class="bio">${esc(b)}</p>`).join('')}</div></div>`).join('')}</div>
-    </div>`, { title: T.leadership, ch: 2 });
+  // ============ 10 · TEAM ============
+  page(2, T.team, `
+    <div class="kicker">${esc(T.team)}</div><h2 class="h2" style="font-size:${AR ? 21 : 28}pt">${esc(D.team.title)}</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:4mm 5mm;flex:1;grid-auto-rows:1fr">${D.team.people.map((p) => `
+      <div class="card" style="display:flex;gap:4.5mm;padding:4.6mm">
+        <div style="width:21mm;height:26mm;flex:0 0 auto;overflow:hidden;border-start-end-radius:5mm;border-end-start-radius:5mm;background:var(--mist)"><img src="/assets/img/${p.thumb || p.photo}.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center 18%"></div>
+        <div><h3 style="font-size:9.8pt;line-height:1.25">${esc(p.name)}</h3><p class="label" style="color:var(--steel);margin:1.2mm 0 1.8mm;font-size:6.2pt">${esc(p.role)}</p><p class="txt" style="font-size:7.2pt;line-height:1.45">${esc(p.line)}</p></div></div>`).join('')}
+      <div class="panel on-navy" style="padding:6mm;display:flex;gap:4.5mm;align-items:flex-start">
+        <span class="tile line" style="background:var(--paper)">${ic('user-plus')}</span>
+        <div><h3 style="font-size:12pt;color:var(--on-navy)">${esc(T.join)}</h3><p class="txt" style="margin-top:2mm;color:var(--on-navy2);text-align:start">${esc(T.joinText)}</p><p class="label" style="margin-top:3mm;color:var(--on-navy)"><span class="ltr">${esc(T.apply)}</span></p></div></div>
+    </div>`);
 
-  mark('team');
-  const initials = (name) => name.replace(/^Mr\.\s*/, '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('');
-  page('dark', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.team)}</div>
-      <h2 class="h2" style="margin:5mm 0 9mm;font-size:31pt">${esc(D.team.title)}</h2>
-      <div class="team">${D.team.people.map((p, i) => `<div class="member"><div class="ph">${p.photo ? `<img src="/assets/img/${p.photo}.jpg">` : esc(initials(EN.team.people[i].name))}</div>
-        <div><h3>${esc(p.name)}</h3><span class="role">${esc(p.role)}</span><p>${esc(p.line)}</p></div></div>`).join('')}</div>
-    </div>`, { title: T.team, ch: 2 });
-
-  // ============ CHAPTER 4 ============
-  mark('c4'); divider(4, T.ch[3], D.expect.cards[1].text, IMG.ch4, 'center 35%', 3);
-
-  mark('sectors');
-  page('dark', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.sectors)}</div>
-      <h2 class="h2" style="margin:5mm 0 8mm">${esc(T.ch[3])}</h2>
-      ${ring(D.sectors.cards.map((c, i) => ({ title: c.title, icon: secIcons[i] })), { w: 178, h: 178, rNode: 52, rLabel: 76, core: 52,
-          coreStyle: 'border:1px solid var(--brass);',
-          coreHtml: `<b style="font-family:var(--head);font-weight:400;font-size:38pt;line-height:1;color:#fff"><span class="cnt" data-to="${st[2].n}">${esc(st[2].n)}</span><span style="color:var(--brass2);font-size:.55em">${esc(st[2].suffix)}</span></b><span style="font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:var(--brass2);font-weight:600;margin-top:2mm">${esc(T.clientsCore)}</span>` })}
-    </div>`, { title: T.sectors, ch: 3 });
-
-  mark('logos');
+  // ============ 11 · SECTORS & CLIENTS ============
   const logos = EN.clients.logoFiles || [];
-  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.clients)}</div>
-      <h2 class="h2" style="margin:5mm 0 10mm">${esc(D.clients.title)}</h2>
-      <div class="logos">${logos.map(f => `<div><img src="/assets/img/clients/${f}"></div>`).join('')}</div>
-      <div class="hair" style="margin-top:auto;padding-top:6mm;display:flex;gap:6mm;align-items:baseline">
-        <b style="font-family:var(--head);font-weight:400;font-size:40pt;line-height:.9;flex:0 0 auto">${esc(st[2].n)}<span style="color:var(--brass);font-size:.5em">${esc(st[2].suffix)}</span></b>
-        <span class="txt">${esc(st[2].label)}</span>
+  page(3, `${T.sectors} · ${T.clients}`, `
+    ${head(T.sectors, D.sectors.title)}
+    <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:4mm">${D.sectors.cards.map((c, k) => `
+      <div class="card" style="display:flex;flex-direction:column;gap:3mm;padding:5mm 4.5mm"><span class="tile ${k % 2 ? 'line' : ''}">${ic(secIcons[k])}</span><span style="font-size:8.8pt;font-weight:600;color:var(--ink);line-height:1.3">${esc(c.title)}</span></div>`).join('')}</div>
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:end;gap:6mm;margin-top:8mm">
+      <div><div class="kicker">${esc(T.clients)}</div><h2 class="h2" style="font-size:${AR ? 20 : 28}pt;margin-bottom:0">${esc(D.clients.title)}</h2></div>
+      <div style="text-align:end"><b class="big" style="font-size:40pt">${st[2].n}<small>${esc(st[2].suffix)}</small></b><span class="label" style="display:block;max-width:52mm;line-height:1.45;margin-top:1mm">${esc(T.clientsN)}</span></div></div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--navy);border-inline-start:1px solid var(--line);margin-top:5mm;flex:1;grid-auto-rows:1fr">${logos.map((f) => `
+      <div style="position:relative;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line)"><img src="/assets/img/clients/${f}" style="position:absolute;inset:3mm;width:calc(100% - 6mm);height:calc(100% - 6mm);object-fit:contain"></div>`).join('')}</div>`);
+
+  // ============ 12 · COMMITMENTS ============
+  page(3, T.expect, `
+    <div class="kicker">${esc(T.expect)}</div>
+    <h2 class="h2">${esc(D.expect.t1)} <em>${esc(D.expect.t2)}</em> ${esc(D.expect.t3)}</h2>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:4mm;flex:1;grid-auto-rows:1fr;min-height:0">${D.expect.cards.map((c, k) => `
+      <div class="card" style="display:flex;flex-direction:column;gap:3mm;padding:5mm"><div style="display:flex;justify-content:space-between;align-items:flex-start"><span class="tile ${k % 2 ? 'line' : ''}">${ic(expIcons[k])}</span><span class="num">${pad(k + 1)}</span></div>
+        <p style="font-size:${AR ? 8.8 : 8.6}pt;line-height:1.48;color:var(--ink);font-weight:500">${esc(c.text)}</p></div>`).join('')}</div>
+    <div class="panel on-navy" style="margin-top:5mm;padding:6mm 8mm;display:grid;grid-template-columns:1fr auto;gap:8mm;align-items:center">
+      <div><h2 style="font-size:${AR ? 16 : 21}pt;color:var(--on-navy)">${esc(D.consult.title1)} <em style="color:var(--on-navy2)">${esc(D.consult.title2)}</em></h2><p class="txt" style="margin-top:2mm;font-size:8.2pt;color:var(--on-navy2)">${esc(D.consult.sub)}</p></div>
+      <img src="/assets/img/icon.png" style="height:17mm;filter:brightness(0) invert(1);opacity:.9"></div>`);
+
+  // ============ 13 · CONTACT (back cover) ============
+  const rows = [['map-pin', T.address, link('pin'), false], ['phone', T.phone, link('phone'), true], ['mail', T.email, link('mail'), true], ['globe', T.website, link('globe'), true]];
+  page(4, T.contact, `
+    <img class="watermark" src="/assets/img/icon.png" style="width:150mm;top:20mm;inset-inline-end:-46mm;opacity:.07">
+    <div style="position:absolute;top:22mm;inset-inline:18mm 22mm">
+      <div class="brand" style="gap:4mm"><img src="/assets/img/icon.png" style="height:17mm"><img src="/assets/img/wordmark.png" style="height:8.6mm"></div>
+      <div class="kicker" style="margin-top:22mm">${esc(T.contact)}</div>
+      <h1 style="font-size:${AR ? 30 : 46}pt;margin-top:5mm;max-width:150mm">${esc(D.consult.title1)} <em>${esc(D.consult.title2)}</em></h1>
+      <div style="display:flex;gap:7mm;margin-top:8mm">${T.motto.map((m) => `<span style="display:flex;align-items:center;gap:2.4mm;font-size:${AR ? 11 : 9.6}pt;font-weight:600;color:var(--navy)"><span class="tile xs">${ic('check')}</span>${esc(m)}</span>`).join('')}</div>
+    </div>
+    <div class="panel on-navy" style="position:absolute;inset-inline:0;bottom:0;height:128mm;padding:12mm 22mm 0 18mm;padding-inline:18mm 22mm">
+      <div style="display:grid;grid-template-columns:1fr 46mm;gap:10mm">
+        <div>${rows.map(([i, l, v, ltr]) => `
+          <div style="display:flex;gap:5mm;align-items:center;padding:4mm 0;border-bottom:1px solid oklch(1 0 0 / .16)">
+            <span class="tile sm line" style="background:var(--paper)">${ic(i)}</span>
+            <div><p class="label" style="color:var(--on-navy2)">${esc(l)}</p><p style="font-size:11pt;color:var(--on-navy);margin-top:1mm;line-height:1.4">${ltr ? `<span class="ltr">${esc(v)}</span>` : esc(v)}</p></div></div>`).join('')}</div>
+        <div style="background:var(--paper);padding:4.5mm;align-self:start;text-align:center;border-start-end-radius:6mm;border-end-start-radius:6mm">
+          <img src="/profile/qr-website.svg" style="width:37mm;height:37mm;display:block;margin:0 auto">
+          <p class="label" style="color:var(--navy);margin-top:2.5mm;line-height:1.45">${esc(T.scan)}</p></div>
       </div>
-    </div>`, { title: T.clients, ch: 3 });
+      <div style="position:absolute;inset-inline:18mm 22mm;bottom:11mm;display:flex;justify-content:space-between;align-items:center;border-top:1px solid oklch(1 0 0 / .2);padding-top:4.5mm">
+        ${brand(true)}<span class="label" style="color:var(--on-navy2)">${esc(T.firm)}</span></div>
+    </div>`, { bare: true });
 
-  mark('expect');
-  page('ledger', `<div class="pad" style="display:flex;flex-direction:column">
-      <div class="kicker"${N()}>${esc(T.expect)}</div>
-      <h2 class="h2" style="margin:5mm 0 9mm"><span class="it ac">${esc(D.expect.t1)} ${esc(D.expect.t2)}</span> ${esc(D.expect.t3)}</h2>
-      <div class="exp" style="margin-top:12mm">${D.expect.cards.map((c, i) => `<div><span class="num">${pad2(i + 1)}</span><p>${esc(c.text)}</p></div>`).join('')}</div>
-    </div>`, { title: T.expect, ch: 3 });
+  // ---------- render ----------
+  const tabs = (on) => `<div class="tabs">${T.tabs.map((t, i) => `<span class="${i === on ? 'on' : ''}">${pad(i + 1)} · ${esc(t)}</span>`).join('')}</div>`;
+  document.getElementById('doc').innerHTML = pages.map((p, i) => `<section class="page" id="pg${i + 1}">
+      ${p.opt.bare ? p.inner : `<div class="hd">${brand()}<span class="sec">${esc(p.sec)}</span></div><div class="body">${p.inner}</div>
+        <div class="ft"><span class="pn">${pad(i + 1)}</span><span class="rule"></span><span>${esc(T.firm)}</span><span>·</span><span class="ltr">${T.site}</span></div>`}
+      ${tabs(p.tab)}</section>`).join('');
+  lucide.createIcons({ attrs: { 'stroke-width': 1.35 } });
 
-  mark('contact');
-  page('dark', `
-    ${frame(IMG.back, 112, 18, 82)}
-    <div class="pad" style="display:flex;flex-direction:column">
-      ${logo}
-      <div style="margin-top:${18 + fh(IMG.back, 82) - 18}mm"><div class="kicker"${N(true)}>${esc(T.contact)}</div>
-        <h2 class="h2" style="margin:5mm 0 5mm;font-size:34pt">${esc(D.consult.title1)} <span class="it ac">${esc(D.consult.title2)}</span></h2>
-        <p class="txt" style="max-width:150mm">${esc(D.consult.sub)}</p></div>
-      <div style="display:grid;grid-template-columns:1fr auto;gap:10mm;align-items:end;margin-top:auto">
-        <div>
-          <div class="ct-row"><span class="ib">${ic('map-pin')}</span><div><small>${esc(T.address)}</small><span>${esc(addr)}</span></div></div>
-          <div class="ct-row"><span class="ib">${ic('phone')}</span><div><small>${esc(T.phone)}</small><span class="ltr">${esc(tel)}</span></div></div>
-          <div class="ct-row"><span class="ib">${ic('mail')}</span><div><small>${esc(T.email)}</small><span class="ltr">${esc(mail)}</span></div></div>
-          <div class="ct-row" style="border-bottom:0"><span class="ib">${ic('globe')}</span><div><small>${esc(T.website)}</small><span class="ltr">${esc(web)}</span></div></div>
-        </div>
-        <div class="qr"><img src="/profile/qr-website.svg"><p>${esc(T.scan)}</p></div>
-      </div>
-      <div style="height:1px;background:var(--brass);opacity:.6;margin-top:8mm"></div>
-      <div style="display:flex;justify-content:space-between;margin-top:4mm;font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)"><span>${esc(T.mottoLine)}</span><span>${esc(T.more)}</span></div>
-    </div>`, { title: T.contact, ch: 3, foot: false, thread: 'end' });
-
-  // ---------- render with connected footers ----------
-  const chName = (c) => c < 0 ? T.intro : `${pad2(c + 1)} · ${T.ch[c]}`;
-  let html = pages.map((p, i) => {
-    const nxt = pages[i + 1];
-    const foot = p.foot ? `<div class="foot">
-        <span class="trk">${[0, 1, 2, 3].map(c => `<i class="${c === p.ch ? 'on' : ''}"></i>`).join('')}</span>
-        <span class="chn">${esc(chName(p.ch))}</span><span class="bar"></span>
-        ${nxt ? `<span class="nx">${esc(T.next)}: ${esc(nxt.title)} ${ic('arrow-right')}</span>` : ''}
-        <span class="pn">${pad2(i + 1)}</span></div>` : '';
-    return `<section class="page ${p.cls}" id="pg${i + 1}" data-ch="${p.ch}" data-thread="${p.thread}" data-orbit="${p.orbit ? p.orbit.join(',') : ''}" data-title="${esc(p.title)}">${p.inner}${foot}</section>`;
-  }).join('');
-  html = html.replace(/%%(\w+)%%/g, (_, k) => pad2(anchor[k] || 0));
-  const doc = document.getElementById('doc');
-  doc.innerHTML = html;
-  lucide.createIcons({ attrs: { 'stroke-width': 1.6 } });
-
-  // ---------- screen chrome ----------
-  if (!PRINT) {
-    document.getElementById('ui-top').innerHTML = `<img src="/assets/img/icon.png" alt=""><span class="t">${esc(T.firm)} · ${esc(T.profile)}</span>
-      <a href="${T.otherHref}">${esc(T.other)}</a><a class="pri" href="/profile/Consolidated-Company-Profile-${AR ? 'AR' : 'EN'}.pdf" download>${esc(T.dl)}</a>`;
-    document.getElementById('ui-rail').innerHTML = [['pg1', T.start]].concat(['c1', 'c2', 'c3', 'c4'].map((k, i) => ['pg' + anchor[k], `${pad2(i + 1)} ${T.ch[i]}`]))
-      .map(([id, label]) => `<a href="#${id}" data-target="${id}"><span>${esc(label)}</span><i></i></a>`).join('');
-  }
-
-  // ---------- golden thread (one continuous line through every page) ----------
-  const G = AR ? 202 : 8, EDGE = AR ? 194 : 16;
-  const BRASS = '#c79d5d';
-  function drawThreads() {
-    const pgs = [...document.querySelectorAll('.page')];
-    let xIn = G;
-    pgs.forEach((pg, i) => {
-      pg.querySelectorAll('svg.thread').forEach(s => s.remove());
-      const r = pg.getBoundingClientRect(); const k = 297 / r.height;
-      const nodes = [...pg.querySelectorAll('[data-node]')].map(el => { const b = el.getBoundingClientRect(); return { y: (b.top - r.top + b.height / 2) * k, x: ((AR ? b.right : b.left) - r.left) * k, big: el.dataset.node === 'big' }; }).sort((a, b) => a.y - b.y);
-      const type = pg.dataset.thread; const first = i === 0;
-      const yStart = first ? (nodes[0] ? nodes[0].y : 0) : 0;
-      const yEnd = type === 'end' ? (nodes[0] ? nodes[0].y : 297) : 297;
-      let d = `M${xIn},${yStart}`;
-      if (type === 'orbit') {
-        // the thread loops around the far side of the chapter lens, then returns to the margin
-        const [ocx, ocy, R] = pg.dataset.orbit.split(',').map(Number); const cx = AR ? 210 - ocx : ocx;
-        const top = ocy - R, bot = ocy + R, dir = AR ? -1 : 1;
-        d += ` C${xIn},${top * .8} ${cx - dir * R * .55},${top} ${cx},${top} A${R},${R} 0 0 ${AR ? 0 : 1} ${cx},${bot} C${cx - dir * R * .55},${bot} ${G},${bot + 4} ${G},${bot + 26} L${G},297`;
-      } else if (type === 'swing') {
-        const far = AR ? 45 : 165;
-        d += ` C${xIn},55 ${far},35 ${far},95 S${G},150 ${G},172 L${G},297`;
-      } else {
-        const pts = []; let y = yStart, side = 1;
-        while (y + 55 < yEnd) { y += 55; pts.push([G + side * 1.8, y]); side *= -1; }
-        pts.push([G, yEnd]);
-        let px = xIn, py = yStart;
-        pts.forEach(([x, yy]) => { const m = (yy - py) / 2; d += ` C${px},${py + m} ${x},${yy - m} ${x},${yy}`; px = x; py = yy; });
-      }
-      const dark = pg.classList.contains('dark');
-      const fill = dark ? '#0f1f29' : (pg.classList.contains('sand') ? '#ece5d8' : '#f6f2ea');
-      const ticks = nodes.map(n => { const tx = n.x; const tick = Math.abs(tx - G) > 2 ? `<line class="tk" x1="${G}" y1="${n.y}" x2="${tx}" y2="${n.y}" stroke="${BRASS}" stroke-width=".3" opacity=".8"/>` : '';
-        return `${tick}<circle class="nd" cx="${G}" cy="${n.y}" r="${n.big ? 2.6 : 1.7}" fill="${fill}" stroke="${BRASS}" stroke-width=".55"/>${n.big ? `<circle class="nd" cx="${G}" cy="${n.y}" r="1" fill="${BRASS}"/>` : ''}`; }).join('');
-      const svg = `<svg class="thread" viewBox="0 0 210 297" preserveAspectRatio="none"><defs><linearGradient id="tg${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e5c48d"/><stop offset="1" stop-color="#c79d5d"/></linearGradient></defs>
-        <path class="th" d="${d}" fill="none" stroke="url(#tg${i})" stroke-width=".55" stroke-linecap="round"/>${ticks}</svg>`;
-      pg.insertAdjacentHTML('beforeend', svg);
-      xIn = G;
-    });
-  }
-
-  // ---------- screen sizing ----------
-  function fit() { if (PRINT) return; const z = Math.min(1.3, (window.innerWidth - (window.innerWidth > 1100 ? 160 : 0)) / 794); doc.style.zoom = z; }
-  fit();
-
-  function finish() {
-    drawThreads();
-    window.__profileReady = true;
-    if (!PRINT) animate();
-  }
-  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(finish));
-
-  // ---------- animations (screen only) ----------
-  function animate() {
-    const s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
-    s.onload = () => { const t = document.createElement('script'); t.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js'; t.onload = run; document.head.appendChild(t); };
-    document.head.appendChild(s);
-  }
-  function run() {
-    const gsap = window.gsap, ST = window.ScrollTrigger; gsap.registerPlugin(ST);
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    // progress bar + rail
-    const prog = document.getElementById('ui-progress');
-    ST.create({ start: 0, end: 'max', onUpdate: (self) => { prog.style.transform = `scaleX(${self.progress})`; } });
-    const railLinks = [...document.querySelectorAll('#ui-rail a')];
-    document.querySelectorAll('.page').forEach(pg => ST.create({ trigger: pg, start: 'top 50%', end: 'bottom 50%', onToggle: (self) => {
-      if (!self.isActive) return; const ch = +pg.dataset.ch;
-      railLinks.forEach((a, i) => a.classList.toggle('on', i === ch + 1 || (ch < 0 && i === 0)));
-    } }));
-    if (reduced) return;
-
-    // thread draws as you scroll, page after page
-    document.querySelectorAll('.page').forEach((pg) => {
-      const path = pg.querySelector('svg.thread .th'); if (!path) return;
-      const len = path.getTotalLength(); path.style.strokeDasharray = len; path.style.strokeDashoffset = len;
-      gsap.to(path, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: pg, start: 'top 80%', end: 'bottom 80%', scrub: .6 } });
-      gsap.from(pg.querySelectorAll('svg.thread .nd, svg.thread .tk'), { opacity: 0, duration: .6, stagger: .1, scrollTrigger: { trigger: pg, start: 'top 55%' } });
-      // photos settle
-      pg.querySelectorAll('.img').forEach(img => gsap.fromTo(img, { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: pg, start: 'top bottom', end: 'bottom top', scrub: true } }));
-      pg.querySelectorAll('.lens-ring').forEach(r => gsap.from(r, { rotate: -45, opacity: 0, duration: 1.6, ease: 'power3.out', scrollTrigger: { trigger: pg, start: 'top 70%' } }));
-      // content reveals
-      const items = pg.querySelectorAll('.kicker, h2, .lead, .txt, .tagline, .strength, .big-n > div, .why-row, .vgrid > div, .stage, .svc-pill, .ks li, .member, .leader, .exp > div, .logos > div, .ct-row, .ch-row, .vm-in, .vm-bottom, .count, .chip, .dv-quote, .qr');
-      if (items.length) gsap.from(items, { y: 24, opacity: 0, duration: .8, ease: 'power3.out', stagger: .045, scrollTrigger: { trigger: pg, start: 'top 72%' } });
-      // rings assemble
-      pg.querySelectorAll('.ring').forEach(rg => {
-        const c = rg.querySelector('.ring-c'); if (c) { const L = 2 * Math.PI * +c.getAttribute('r'); c.style.strokeDasharray = L; c.style.strokeDashoffset = L; gsap.to(c, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut', scrollTrigger: { trigger: rg, start: 'top 75%' } }); }
-        gsap.from(rg.querySelectorAll('.node'), { scale: 0, opacity: 0, duration: .6, ease: 'back.out(1.8)', stagger: .12, delay: .4, scrollTrigger: { trigger: rg, start: 'top 75%' } });
-        gsap.from(rg.querySelectorAll('.lbl'), { opacity: 0, y: 8, duration: .5, stagger: .12, delay: .6, scrollTrigger: { trigger: rg, start: 'top 75%' } });
-        gsap.from(rg.querySelector('.core'), { scale: .6, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: rg, start: 'top 75%' } });
-      });
-      // lifecycle + timeline lines draw
-      pg.querySelectorAll('.life-line, .decade .fill').forEach(l => gsap.from(l, { scaleX: 0, duration: 1.4, ease: 'power2.inOut', scrollTrigger: { trigger: l, start: 'top 80%' } }));
-      pg.querySelectorAll('.decade .dots i').forEach((d, j) => gsap.from(d, { scale: 0, duration: .35, delay: .1 * j, scrollTrigger: { trigger: d, start: 'top 85%' } }));
-      // counters
-      pg.querySelectorAll('.cnt').forEach(el => {
-        const to = +el.dataset.to; if (!to || el.dataset.plain === '1') return; const o = { v: 0 };
-        gsap.to(o, { v: to, duration: 1.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%' }, onUpdate: () => { const v = Math.round(o.v); el.textContent = el.dataset.pad ? pad2(v) : v; } });
-      });
-    });
-    // cover entrance
-    const cover = document.getElementById('pg1');
-    gsap.from(cover.querySelectorAll('.cv-words div > span'), { yPercent: 110, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .12, delay: .2 });
-    gsap.from(cover.querySelectorAll('.logo, .kicker'), { opacity: 0, y: 16, duration: 1, stagger: .1, delay: .5 });
-    window.addEventListener('resize', () => { fit(); drawThreads(); ST.refresh(); });
-  }
+  if (!PRINT) document.getElementById('ui').innerHTML = `<img src="/assets/img/icon.png" alt=""><span class="t">${esc(T.firm)} · ${esc(T.profile)}</span>
+    <a href="${T.otherHref}">${esc(T.other)}</a><a href="/profile/Consolidated-Company-Profile-${AR ? 'AR' : 'EN'}.pdf" download>${esc(T.dl)}</a>`;
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(() => { window.__profileReady = true; }));
 })();
 </script>
 </body>
