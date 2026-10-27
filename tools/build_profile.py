@@ -3,12 +3,13 @@
 The template renders pages from the same content dictionary the website uses
 (assets/js/i18n.js), so the profile always matches the approved website copy.
 
-    python tools/build_profile.py
+    python tools/build_profile.py          # the profile, English and Arabic
+    python tools/build_profile.py theme    # the theme draft (profile/theme.html) for client approval
 
 Outputs: profile/Consolidated-Company-Profile-EN.pdf and -AR.pdf
 Requires: pip install playwright && python -m playwright install chromium
 """
-import asyncio, functools, http.server, os, socketserver, threading
+import asyncio, functools, http.server, os, socketserver, sys, threading
 from playwright.async_api import async_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,11 +25,11 @@ def serve():
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
 
-async def render(lang, out):
+async def render(lang, out, path='/profile/index.html'):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(viewport={'width': 794, 'height': 1123})
-        await page.goto(f'http://127.0.0.1:{PORT}/profile/index.html?lang={lang}&print=1', wait_until='networkidle')
+        await page.goto(f'http://127.0.0.1:{PORT}{path}?lang={lang}&print=1', wait_until='networkidle')
         await page.wait_for_function('window.__profileReady === true')
         await page.evaluate('document.fonts.ready')
         # Make sure every image has loaded (retry any that failed) before printing.
@@ -52,6 +53,11 @@ async def render(lang, out):
 def main():
     httpd = serve()
     try:
+        if sys.argv[1:] == ['theme']:
+            out = os.path.join(ROOT, 'profile', 'Consolidated-Profile-Theme.pdf')
+            n = asyncio.run(render('en', out, '/profile/theme.html'))
+            print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
+            return
         for lang in ['en', 'ar']:
             out = os.path.join(ROOT, 'profile', f'Consolidated-Company-Profile-{lang.upper()}.pdf')
             n = asyncio.run(render(lang, out))
