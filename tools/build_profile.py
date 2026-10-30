@@ -4,7 +4,7 @@ The template renders pages from the same content dictionary the website uses
 (assets/js/i18n.js), so the profile always matches the approved website copy.
 
     python tools/build_profile.py          # the profile, English and Arabic
-    python tools/build_profile.py themes   # the four theme samples (profile/themes.html -> profile/themes/)
+    python tools/build_profile.py themes   # the theme samples (profile/themes.html -> profile/themes/)
 
 Outputs: profile/Consolidated-Company-Profile-EN.pdf and -AR.pdf
 Requires: pip install playwright && python -m playwright install chromium
@@ -55,7 +55,7 @@ def main():
     try:
         if sys.argv[1:] == ['themes']:
             os.makedirs(os.path.join(ROOT, 'profile', 'themes'), exist_ok=True)
-            for t, name in [(1, 'Executive'), (2, 'Geometric'), (3, 'Editorial'), (4, 'Dark-Luxe')]:
+            for t, name in [(1, 'Executive'), (2, 'Geometric'), (3, 'Editorial'), (4, 'Dark-Luxe'), (5, 'Ledger'), (6, 'Blueprint'), (7, 'Certificate'), (8, 'Broadsheet')]:
                 out = os.path.join(ROOT, 'profile', 'themes', f'Theme-{t}-{name}.pdf')
                 n = asyncio.run(render('en', out, f'/profile/themes.html?t={t}'))
                 print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
