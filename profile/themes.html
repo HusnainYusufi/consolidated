@@ -8,190 +8,202 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Sora:wght@300;400;600&family=Plus+Jakarta+Sans:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Sora:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style id="pagesize"></style>
 <style>
-  /* Theme sampler for the company profile: six design directions, three sample pages each, placeholder
-     copy only. Logo colours throughout; every photo is shown whole (never cropped). */
-  :root{
-    --navy:#1d3a57; --navy2:#16304a; --steel:#2f6390; --sky:#8fb0cc; --silver:#9aa3ac; --ink:#262b30; --ink2:#5b636b;
-    --line:#dde2e7; --mist:#f2f5f8; --paper:#fdfdfe;
-  }
-  @page{ size:210mm 297mm; margin:0; }
+  /* Four complete profile themes with placeholder text; ?t=1..4 picks the theme.
+     Logo colours throughout; photos are always shown whole (never cropped). */
+  :root{ --navy:#1d3a57; --navy2:#142b42; --steel:#2f6390; --sky:#8fb0cc; --silver:#9aa3ac; --ink:#262b30; --ink2:#5b636b; --line:#dde2e7; --mist:#f2f5f8; }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
-  body{ font-family:'Source Sans 3',sans-serif; color:var(--ink2); background:#c9cfd5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ background:#c9cfd5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   html.print body{ background:#fff; }
-  #doc{ width:210mm; margin:0 auto; }
-  html:not(.print) #doc{ padding:24px 0 60px; display:flex; flex-direction:column; gap:24px; }
+  #doc{ margin:0 auto; }
+  html:not(.print) #doc{ padding:24px 0 60px; display:flex; flex-direction:column; gap:24px; align-items:center; }
   h1,h2,h3,p{ margin:0; }
-  .page{ position:relative; width:210mm; height:297mm; overflow:hidden; background:var(--paper); page-break-after:always; break-after:page; }
+  .page{ position:relative; overflow:hidden; page-break-after:always; break-after:page; }
   .page:last-child{ page-break-after:auto; break-after:auto; }
   html:not(.print) .page{ box-shadow:0 12px 40px rgba(20,30,45,.25); }
   .abs{ position:absolute; }
-  .tagline{ position:absolute; bottom:3.6mm; left:0; right:0; text-align:center; font:600 6.4pt 'Source Sans 3',sans-serif; letter-spacing:.2em; text-transform:uppercase; color:#b0b7be; z-index:9; }
-  .ic svg{ width:100%; height:100%; }
+  .ic{ display:inline-block; flex:0 0 auto; } .ic svg{ width:100%; height:100%; }
   img.whole{ display:block; height:auto; }
-  .ui{ position:sticky; top:0; z-index:20; padding:10px 18px; background:var(--navy); color:#fff; font:14px 'Source Sans 3',sans-serif; display:flex; gap:12px; align-items:center; }
-  .ui span{ flex:1; } .ui a{ color:#fff; border:1px solid rgba(255,255,255,.4); padding:6px 12px; text-decoration:none; }
+  .ph{ display:grid; place-items:center; }
+  .ui{ position:sticky; top:0; z-index:20; padding:10px 18px; background:#1d3a57; color:#fff; font:14px 'Source Sans 3',sans-serif; display:flex; gap:10px; align-items:center; }
+  .ui b{ margin-right:auto; } .ui a{ color:#fff; border:1px solid rgba(255,255,255,.4); padding:6px 12px; text-decoration:none; } .ui a.on{ background:#fff; color:#1d3a57; }
   html.print .ui{ display:none; }
 </style>
 </head>
 <body>
-<div class="ui"><b>Company Profile — theme sampler</b><span>Six directions, placeholder text. Pick one; we then fill it with your content.</span><a href="/profile/Consolidated-Profile-Themes.pdf" download>Download PDF</a></div>
+<div class="ui" id="ui"></div>
 <div id="doc"></div>
 <script src="/profile/mark.js"></script>
 <script src="/profile/photos.js"></script>
 <script src="/profile/vendor/lucide.min.js"></script>
 <script>
 (function () {
-  if (new URLSearchParams(location.search).has('print')) document.documentElement.classList.add('print');
+  const q = new URLSearchParams(location.search), PRINT = q.has('print'), TN = Math.min(4, Math.max(1, +q.get('t') || 1));
+  if (PRINT) document.documentElement.classList.add('print');
   const LOREM = 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
   const L = (n, s = 0) => { const w = []; for (let i = 0; i < n; i++) w.push(LOREM[(i + s) % LOREM.length]); const t = w.join(' '); return t[0].toUpperCase() + t.slice(1) + '.'; };
   const A = (x, y, w, html, st = '') => `<div class="abs" style="left:${x}mm;top:${y}mm;${w ? `width:${w}mm;` : ''}${st}">${html}</div>`;
-  const ic = (n, mm, color, sw = 1.5) => `<span class="ic" style="display:inline-block;width:${mm}mm;height:${mm}mm;color:${color};flex:0 0 auto"><i data-lucide="${n}" style="stroke-width:${sw}"></i></span>`;
+  const ic = (n, mm, color, sw = 1.5) => `<span class="ic" style="width:${mm}mm;height:${mm}mm;color:${color}"><i data-lucide="${n}" style="stroke-width:${sw}"></i></span>`;
   const img = (id, w, st = '') => `<img class="whole" src="/profile/img/c-${id}.jpg" style="width:${w}mm;${st}">`;
   const H = (id, w) => { const [a, b] = PHOTO_DIM[id]; return w * b / a; };
   const logo = (h, white) => `<div style="display:flex;align-items:center;gap:${h * .25}mm"><img src="/assets/img/icon.png" style="height:${h}mm;${white ? 'filter:brightness(0) invert(1)' : ''}"><img src="${white ? '/profile/img/wordmark-white.png' : '/assets/img/wordmark.png'}" style="height:${h * .5}mm"></div>`;
   const GR = { silver: ['#c6ccd2', '#7d858d'], navy: ['#3d678c', '#13253a'], char: ['#3e4248', '#1a1c1f'] };
   let gid = 0;
   const mark = (style, mono) => { const id = ++gid; return `<svg viewBox="0 0 ${MARK.w} ${MARK.h}" style="${style}"><defs>${Object.entries(GR).map(([k, [a, b]]) => `<linearGradient id="m${id}${k}" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`).join('')}</defs>${MARK.blades.map((b) => `<path d="${b.d}" fill="${mono || `url(#m${id}${b.role})`}"/>`).join('')}</svg>`; };
+  const portrait = (w, h, bg, fg) => `<div class="ph" style="width:${w}mm;height:${h}mm;background:${bg};color:${fg}">${ic('user-round', Math.min(w, h) * .38, fg, 1)}</div>`;
+  const qr = (mm, fg = '#1d3a57', bg = '#fff') => { let c = ''; for (let y = 0; y < 21; y++) for (let x = 0; x < 21; x++) { const f = (x < 7 && y < 7) || (x > 13 && y < 7) || (x < 7 && y > 13); const on = f ? ((x % 6 === 0 || y % 6 === 0 || (x % 14 > 1 && x % 14 < 5 && y % 14 > 1 && y % 14 < 5)) && !((x === 6 || y === 6) && false)) : ((x * 7 + y * 13 + x * y) % 3 === 0); if (on) c += `<rect x="${x}" y="${y}" width="1" height="1"/>`; } return `<svg viewBox="-1 -1 23 23" style="width:${mm}mm;height:${mm}mm;background:${bg}"><g fill="${fg}">${c}</g></svg>`; };
   const svc = ['shield-check', 'calculator', 'receipt-text', 'scan-search', 'trending-up', 'building-2', 'briefcase-business', 'graduation-cap', 'monitor-cog'];
   const vals = ['badge-check', 'scale', 'award', 'handshake', 'lock-keyhole', 'lightbulb'];
-  const stats = [['00', '', 'Year founded'], ['00', '+', 'Years of practice'], ['000', '+', 'Clients served'], ['000', '', 'Services']];
-  const pages = [];
-  const P = (theme, n, html, bg = '') => pages.push(`<section class="page" style="${bg}">${html}<div class="tagline" style="${/dark|#1d3a57|#16304a/.test(bg) ? 'color:rgba(255,255,255,.45)' : ''}">${theme} · sample ${n} / 3</div></section>`);
-  const svcNames = ['Audit & Assurance', 'Accounting & Bookkeeping', 'Tax Advisory', 'Internal Audit & Risk', 'Financial Consulting', 'Corporate Advisory', 'Outsourcing', 'Training', 'ERP & Digital'];
+  const svcNames = ['Service Name One', 'Service Name Two', 'Service Name Three', 'Service Name Four', 'Service Name Five', 'Service Name Six', 'Service Name Seven', 'Service Name Eight', 'Service Name Nine'];
+  const stats = [['0000', '', 'Year founded'], ['00', '+', 'Years of practice'], ['000', '+', 'Clients served'], ['000', '', 'Specialised services']];
+  const toc = ['About Us', 'Vision, Mission & Values', 'Why Choose Us', 'Our Services', 'Our Leadership', 'Our Team', 'Sectors & Clients', 'Contact Us'];
+  const contactRows = [['map-pin', 'Street address, building, floor, city'], ['phone', '+000 00 000 0000'], ['mail', 'name@company.com'], ['globe', 'www.company.com']];
 
-  // ================= INDEX =================
-  const themes = [['A', 'Corporate Classic', 'Big-4 style. Navy bands, a structured grid, clear and reassuring.'], ['B', 'Bold Geometric', 'Large navy and steel triangles from the logo angles. Modern, few photos.'],
-    ['C', 'Minimal Editorial', 'Elegant serif titles, generous white space, fine rules. Quiet luxury.'], ['D', 'Dark Premium', 'Navy pages with silver accents and framed photos. High-end.'],
-    ['E', 'Infographic', 'Icons, charts and numbers on soft tiles. Data-led and friendly.'], ['F', 'Photo Magazine', 'Large complete photos with magazine headlines. Warm and human.']];
-  pages.push(`<section class="page">
-    ${A(18, 20, 0, logo(14))}
-    ${A(18, 62, 174, `<p style="font:700 8pt 'Source Sans 3';letter-spacing:.24em;color:var(--steel);text-transform:uppercase">Company Profile 2026</p><h1 style="font:300 40pt 'Source Sans 3';color:var(--navy);margin-top:4mm;line-height:1.05">Choose a theme</h1>
-      <p style="font-size:11pt;line-height:1.6;margin-top:6mm;max-width:150mm">Six design directions for the new company profile, each shown on three sample pages with placeholder text. Choose the one that feels right, or tell us which parts of two themes to combine. We then fill it with your real content, in English and Arabic.</p>`)}
-    ${A(18, 128, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:9mm 10mm">${themes.map(([k, n, d], i) => `<div style="display:flex;gap:5mm;border-top:2px solid var(--navy);padding-top:5mm"><b style="font:300 34pt 'Source Sans 3';color:var(--steel);line-height:.9">${k}</b><div><p style="font:700 12pt 'Source Sans 3';color:var(--navy)">${n}</p><p style="font-size:9.4pt;line-height:1.5;margin-top:1.6mm">${d}</p><p style="font-size:8pt;color:var(--silver);margin-top:2mm">Pages ${2 + i * 3}–${4 + i * 3}</p></div></div>`).join('')}</div>`)}
-    ${mark('position:absolute;width:30mm;top:16mm;right:18mm')}</section>`);
+  const THEMES = {};
 
-  // ================= A · CORPORATE CLASSIC =================
-  const tA = 'Theme A · Corporate Classic', fA = "'Source Sans 3',sans-serif";
-  P(tA, 1, `<div style="font-family:${fA}">
-    ${A(18, 18, 0, logo(12))}${A(150, 22, 42, `<p style="text-align:right;font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:8pt">2026</p>`)}
-    ${A(18, 42, 0, img(8939052, 174))}
-    <div class="abs" style="left:0;right:0;top:${42 + H(8939052, 174) + 10}mm;bottom:0;background:var(--navy);padding:14mm 18mm 0">
-      <p style="color:var(--sky);font-weight:700;letter-spacing:.24em;font-size:8pt">COMPANY PROFILE</p>
-      <h1 style="color:#fff;font-weight:300;font-size:38pt;line-height:1.05;margin-top:4mm">Headline of the<br><b style="font-weight:700">company profile</b></h1>
-      <p style="color:#c7d3df;font-size:10.5pt;line-height:1.6;margin-top:6mm;max-width:140mm">${L(26)}</p>
-      <div style="display:flex;gap:8mm;margin-top:9mm;color:#fff;font-weight:600;font-size:9pt;letter-spacing:.1em">INTEGRITY<span style="color:var(--sky)">|</span>TRANSPARENCY<span style="color:var(--sky)">|</span>QUALITY</div></div></div>`);
-  P(tA, 2, `<div style="font-family:${fA}">
-    <div class="abs" style="left:0;right:0;top:0;height:9mm;background:var(--navy)"></div>
-    ${A(18, 22, 174, `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:8pt">01 — ABOUT US</p><h2 style="font-weight:700;color:var(--navy);font-size:26pt;margin-top:3mm">Section headline goes here</h2>`)}
-    ${A(18, 52, 108, `<p style="font-size:9.6pt;line-height:1.65;text-align:justify">${L(70)}</p><p style="font-size:9.6pt;line-height:1.65;text-align:justify;margin-top:4mm">${L(55, 9)}</p>`)}
-    ${A(134, 52, 58, `<div style="background:var(--navy);color:#fff;padding:7mm"><p style="font-size:30pt;line-height:.6;color:var(--sky)">“</p><p style="font-size:11pt;line-height:1.5;font-weight:300">${L(22, 4)}</p><p style="font-size:8pt;margin-top:4mm;color:var(--sky);font-weight:700">NAME SURNAME · TITLE</p></div>`)}
-    ${A(18, 150, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--navy);border-bottom:1px solid var(--line)">${stats.map(([n, s, l], i) => `<div style="padding:6mm 4mm;${i ? 'border-left:1px solid var(--line)' : ''}"><b style="font-weight:300;font-size:34pt;color:var(--navy)">${n}<small style="font-size:.5em;color:var(--steel)">${s}</small></b><p style="font-size:8pt;font-weight:700;letter-spacing:.1em;color:var(--steel);margin-top:1.6mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}
-    ${A(18, 196, 100, `<p style="font-weight:700;color:var(--navy);font-size:12pt">Our strengths</p>${[0, 1, 2].map((i) => `<div style="display:flex;gap:4mm;margin-top:5mm">${ic(vals[i], 9, 'var(--steel)')}<div><p style="font-weight:700;color:var(--ink);font-size:10pt">Strength title</p><p style="font-size:8.6pt;line-height:1.5;margin-top:.6mm">${L(16, i * 5)}</p></div></div>`).join('')}`)}
-    ${A(128, 198, 0, img(7654131, 64))}</div>`);
-  P(tA, 3, `<div style="font-family:${fA}">
-    <div class="abs" style="left:0;right:0;top:0;height:9mm;background:var(--navy)"></div>
-    ${A(18, 22, 174, `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:8pt">02 — OUR SERVICES</p><h2 style="font-weight:700;color:var(--navy);font-size:26pt;margin-top:3mm">What we offer</h2><p style="font-size:10pt;line-height:1.6;margin-top:3mm;max-width:150mm">${L(28)}</p>`)}
-    ${A(18, 76, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 8mm">${svcNames.map((n, i) => `<div style="border-top:${i < 3 ? '2px solid var(--navy)' : '1px solid var(--line)'};padding:6mm 0 9mm"><div style="display:flex;justify-content:space-between">${ic(svc[i], 11, 'var(--steel)')}<b style="font-weight:300;font-size:16pt;color:var(--silver)">0${i + 1}</b></div><p style="font-weight:700;color:var(--navy);font-size:11pt;margin-top:4mm">${n}</p><p style="font-size:8.6pt;line-height:1.55;margin-top:2mm">${L(22, i * 4)}</p></div>`).join('')}</div>`)}</div>`);
+  // =====================================================================
+  // THEME 1 · EXECUTIVE — portrait, white and navy, Big-4 corporate
+  // =====================================================================
+  THEMES[1] = { name: 'Executive', w: 210, h: 297, bg: '#fdfdfe', pages: [] };
+  { const f = "font-family:'Source Sans 3',sans-serif;color:#5b636b", T = THEMES[1].pages;
+    const kick = (t) => `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:8pt;text-transform:uppercase">${t}</p>`;
+    const h2 = (t) => `<h2 style="font-weight:700;color:var(--navy);font-size:26pt;line-height:1.1;margin-top:3mm">${t}</h2>`;
+    const band = `<div class="abs" style="left:0;right:0;top:0;height:8mm;background:var(--navy)"></div>`;
+    const foot = (n) => A(18, 284, 174, `<div style="display:flex;justify-content:space-between;font-size:7pt;color:#9aa3ac;border-top:1px solid var(--line);padding-top:2.4mm"><span>Company name · Company Profile</span><b style="color:var(--navy)">${String(n).padStart(2, '0')}</b></div>`);
+    T.push(`<div style="${f}">${A(18, 18, 0, logo(12))}${A(150, 22, 42, `<p style="text-align:right;font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:8pt">0000</p>`)}
+      ${A(18, 40, 0, img(8939052, 174))}
+      <div class="abs" style="left:0;right:0;top:${40 + H(8939052, 174) + 10}mm;bottom:0;background:var(--navy);padding:15mm 18mm 0">
+        <p style="color:var(--sky);font-weight:700;letter-spacing:.24em;font-size:8pt">COMPANY PROFILE</p>
+        <h1 style="color:#fff;font-weight:300;font-size:38pt;line-height:1.05;margin-top:4mm">Headline of the<br><b style="font-weight:700">company profile</b></h1>
+        <p style="color:#c7d3df;font-size:10.5pt;line-height:1.6;margin-top:6mm;max-width:140mm">${L(26)}</p>
+        <div style="display:flex;gap:8mm;margin-top:9mm;color:#fff;font-weight:600;font-size:9pt;letter-spacing:.1em">VALUE ONE<span style="color:var(--sky)">|</span>VALUE TWO<span style="color:var(--sky)">|</span>VALUE THREE</div></div></div>`);
+    T.push(`<div style="${f}">${band}${A(18, 22, 70, `${kick('Inside')}${h2('Contents')}<div style="margin-top:7mm">${toc.map((t, i) => `<div style="display:flex;gap:4mm;align-items:baseline;padding:3.6mm 0;border-bottom:1px solid var(--line)"><b style="color:var(--steel);font-weight:300;font-size:13pt;width:9mm">${String(i + 1).padStart(2, '0')}</b><span style="flex:1;color:#262b30;font-size:10pt">${t}</span><b style="color:var(--navy);font-size:9pt">${String(3 + i).padStart(2, '0')}</b></div>`).join('')}</div>`)}
+      ${A(100, 22, 92, `${kick('A message from our founder')}${h2('Founder’s message')}<p style="font-size:30pt;line-height:.7;color:var(--sky);margin-top:6mm">“</p><p style="font-size:10pt;line-height:1.7;text-align:justify">${L(70)}</p><p style="font-size:10pt;line-height:1.7;text-align:justify;margin-top:4mm">${L(50, 11)}</p>
+        <div style="display:flex;gap:5mm;align-items:center;margin-top:8mm;border-top:2px solid var(--navy);padding-top:5mm">${portrait(22, 26, '#e7ecf1', '#8fa3b6')}<div><p style="font-weight:700;color:var(--navy);font-size:11pt">Name Surname</p><p style="font-size:8pt;letter-spacing:.14em;color:var(--steel);margin-top:1mm">FOUNDER · TITLE</p></div></div>`)}
+      ${A(18, 196, 70, img(7654131, 70))}${foot(2)}</div>`);
+    T.push(`<div style="${f}">${band}${A(18, 22, 174, `${kick('01 — About Us')}${h2('Section headline goes here')}`)}
+      ${A(18, 52, 108, `<p style="font-size:9.6pt;line-height:1.65;text-align:justify">${L(70)}</p><p style="font-size:9.6pt;line-height:1.65;text-align:justify;margin-top:4mm">${L(55, 9)}</p>`)}
+      ${A(134, 52, 58, `<div style="background:var(--navy);color:#fff;padding:7mm"><p style="font-size:30pt;line-height:.6;color:var(--sky)">“</p><p style="font-size:11pt;line-height:1.5;font-weight:300">${L(22, 4)}</p><p style="font-size:8pt;margin-top:4mm;color:var(--sky);font-weight:700">NAME SURNAME · TITLE</p></div>`)}
+      ${A(18, 150, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--navy);border-bottom:1px solid var(--line)">${stats.map(([n, s, l], i) => `<div style="padding:6mm 4mm;${i ? 'border-left:1px solid var(--line)' : ''}"><b style="font-weight:300;font-size:32pt;color:var(--navy)">${n}<small style="font-size:.5em;color:var(--steel)">${s}</small></b><p style="font-size:8pt;font-weight:700;letter-spacing:.1em;color:var(--steel);margin-top:1.6mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}
+      ${A(18, 196, 100, `<p style="font-weight:700;color:var(--navy);font-size:12pt">Our strengths</p>${[0, 1, 2].map((i) => `<div style="display:flex;gap:4mm;margin-top:5mm">${ic(vals[i], 9, 'var(--steel)')}<div><p style="font-weight:700;color:#262b30;font-size:10pt">Strength title</p><p style="font-size:8.6pt;line-height:1.5;margin-top:.6mm">${L(16, i * 5)}</p></div></div>`).join('')}`)}
+      ${A(128, 198, 0, img(8938631, 64))}${foot(3)}</div>`);
+    T.push(`<div style="${f}">${band}${A(18, 22, 174, `${kick('02 — Our Services')}${h2('What we offer')}<p style="font-size:10pt;line-height:1.6;margin-top:3mm;max-width:150mm">${L(28)}</p>`)}
+      ${A(18, 72, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 8mm">${svcNames.map((n, i) => `<div style="border-top:${i < 3 ? '2px solid var(--navy)' : '1px solid var(--line)'};padding:6mm 0 9mm"><div style="display:flex;justify-content:space-between">${ic(svc[i], 11, 'var(--steel)')}<b style="font-weight:300;font-size:16pt;color:#9aa3ac">0${i + 1}</b></div><p style="font-weight:700;color:var(--navy);font-size:11pt;margin-top:4mm">${n}</p><p style="font-size:8.6pt;line-height:1.55;margin-top:2mm">${L(22, i * 4)}</p></div>`).join('')}</div>`)}${foot(4)}</div>`);
+    T.push(`<div style="${f}">${band}${A(18, 22, 174, `${kick('03 — Our People')}${h2('The team behind our work')}`)}
+      ${A(18, 50, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9mm 6mm">${Array.from({ length: 8 }, (_, i) => `<div>${portrait(39.5, 46, i < 2 ? '#1d3a57' : '#e7ecf1', i < 2 ? '#8fb0cc' : '#8fa3b6')}<p style="font-weight:700;color:var(--navy);font-size:10pt;margin-top:3mm">Name Surname</p><p style="font-size:7.4pt;letter-spacing:.12em;color:var(--steel);margin-top:.8mm">POSITION TITLE</p><p style="font-size:8pt;line-height:1.5;margin-top:1.6mm">${L(12, i * 3)}</p></div>`).join('')}</div>`)}${foot(5)}</div>`);
+    T.push(`<div style="${f};position:absolute;inset:0;background:var(--navy);color:#c7d3df">${A(18, 26, 0, logo(16, true))}
+      ${A(18, 120, 150, `<h2 style="color:#fff;font-weight:300;font-size:30pt;line-height:1.1">Closing statement<br><b style="font-weight:700">goes here</b></h2><p style="font-size:10pt;line-height:1.6;margin-top:5mm">${L(24)}</p>`)}
+      ${A(18, 206, 174, `<div style="display:grid;grid-template-columns:1fr 34mm;gap:10mm;align-items:end;border-top:1px solid rgba(255,255,255,.25);padding-top:7mm"><div style="display:flex;flex-direction:column;gap:3.4mm">${contactRows.map(([i, v]) => `<div style="display:flex;gap:3.4mm;align-items:center;color:#fff;font-size:10pt">${ic(i, 5.4, '#8fb0cc', 1.6)}${v}</div>`).join('')}</div>${qr(34)}</div>`)}</div>`);
+  }
 
-  // ================= B · BOLD GEOMETRIC =================
-  const tB = 'Theme B · Bold Geometric', fB = "'Montserrat',sans-serif";
-  const tri = (pts, fill, op = 1) => `<polygon points="${pts}" fill="${fill}" opacity="${op}"/>`;
-  P(tB, 1, `<div style="font-family:${fB}">
-    <svg class="abs" viewBox="0 0 210 297" style="inset:0;width:100%;height:100%">${tri('210,0 210,190 100,0', '#1d3a57')}${tri('210,120 210,250 135,250', '#2f6390')}${tri('100,0 155,95 45,95', '#9aa3ac', .55)}${tri('0,297 0,215 48,297', '#2f6390')}</svg>
-    ${mark('position:absolute;width:62mm;top:30mm;right:22mm', '#ffffff')}
-    ${A(18, 18, 0, logo(11))}
-    ${A(18, 166, 120, `<p style="font-weight:700;color:var(--steel);letter-spacing:.3em;font-size:7.6pt">COMPANY PROFILE 2026</p><h1 style="font-weight:800;color:var(--navy);font-size:40pt;line-height:1;margin-top:5mm;text-transform:uppercase">Head<br>line<br><span style="color:var(--steel)">here</span></h1>`)}
-    ${A(60, 262, 132, `<p style="font-size:8.6pt;line-height:1.6;text-align:right">${L(20)}</p>`)}</div>`);
-  P(tB, 2, `<div style="font-family:${fB}">
-    <svg class="abs" viewBox="0 0 210 297" style="inset:0;width:100%;height:100%">${tri('0,297 0,170 73,297', '#1d3a57')}${tri('210,0 210,60 175,0', '#2f6390')}</svg>
-    ${A(18, 24, 150, `<p style="font-weight:700;color:var(--steel);letter-spacing:.3em;font-size:7.6pt">01 / ABOUT US</p><h2 style="font-weight:800;color:var(--navy);font-size:25pt;line-height:1.08;margin-top:4mm;text-transform:uppercase">Section headline<br>goes here</h2>`)}
-    ${A(18, 64, 174, `<div style="columns:2;column-gap:10mm;font-size:9.2pt;line-height:1.65;text-align:justify">${L(110)}</div>`)}
-    ${A(18, 136, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">${stats.map(([n, s, l], i) => `<div style="position:relative;height:40mm"><svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><polygon points="0,100 100,100 100,0" fill="${i % 2 ? '#2f6390' : '#1d3a57'}"/></svg><div style="position:absolute;right:3mm;bottom:3mm;text-align:right;color:#fff"><b style="font-weight:800;font-size:22pt">${n}${s}</b><p style="font-size:6.6pt;font-weight:500;letter-spacing:.1em;text-transform:uppercase">${l}</p></div></div>`).join('')}</div>`)}
-    ${A(84, 196, 108, `<p style="font-weight:800;color:var(--navy);font-size:15pt;line-height:1.3;text-transform:uppercase">“${L(14, 3).slice(0, -1)}.”</p><p style="font-size:9pt;line-height:1.6;margin-top:5mm">${L(40, 7)}</p>`)}</div>`);
-  P(tB, 3, `<div style="font-family:${fB}">
-    <svg class="abs" viewBox="0 0 210 297" style="inset:0;width:100%;height:100%">${tri('0,0 210,0 210,40 0,62', '#1d3a57')}</svg>
-    ${A(18, 18, 160, `<p style="font-weight:700;color:var(--sky);letter-spacing:.3em;font-size:7.6pt">02 / OUR SERVICES</p><h2 style="font-weight:800;color:#fff;font-size:24pt;margin-top:3mm;text-transform:uppercase">What we offer</h2>`)}
-    ${A(18, 80, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9mm 8mm">${svcNames.map((n, i) => `<div><div style="position:relative;width:17mm;height:17mm"><svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%"><polygon points="50,2 95,27 95,73 50,98 5,73 5,27" fill="${i % 2 ? '#2f6390' : '#1d3a57'}"/></svg><div style="position:absolute;inset:0;display:grid;place-items:center">${ic(svc[i], 7.4, '#fff', 1.8)}</div></div><p style="font-weight:700;color:var(--navy);font-size:10pt;margin-top:4mm;text-transform:uppercase">${n}</p><p style="font-size:8.4pt;line-height:1.55;margin-top:2mm">${L(20, i * 3)}</p></div>`).join('')}</div>`)}</div>`);
+  // =====================================================================
+  // THEME 2 · GEOMETRIC — landscape, bold triangles and hexagons
+  // =====================================================================
+  THEMES[2] = { name: 'Geometric', w: 297, h: 210, bg: '#ffffff', pages: [] };
+  { const f = "font-family:'Montserrat',sans-serif;color:#5b636b", T = THEMES[2].pages;
+    const tri = (pts, fill, op = 1) => `<polygon points="${pts}" fill="${fill}" opacity="${op}"/>`;
+    const svgBg = (shapes) => `<svg class="abs" viewBox="0 0 297 210" style="inset:0;width:100%;height:100%">${shapes}</svg>`;
+    const hex = (mm, fill, inner) => `<div style="position:relative;width:${mm}mm;height:${mm}mm;flex:0 0 auto"><svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%"><polygon points="50,2 95,27 95,73 50,98 5,73 5,27" fill="${fill}"/></svg><div style="position:absolute;inset:0;display:grid;place-items:center">${inner}</div></div>`;
+    const kick = (t, c = 'var(--steel)') => `<p style="font-weight:700;color:${c};letter-spacing:.32em;font-size:7.4pt;text-transform:uppercase">${t}</p>`;
+    const h2 = (t, c = 'var(--navy)') => `<h2 style="font-weight:900;color:${c};font-size:28pt;line-height:1.02;margin-top:3mm;text-transform:uppercase">${t}</h2>`;
+    const pn = (n, c = '#9aa3ac') => A(271, 196, 10, `<b style="font-weight:800;color:${c};font-size:9pt">${String(n).padStart(2, '0')}</b>`);
+    T.push(`<div style="${f}">${svgBg(tri('297,0 297,210 150,210 230,0', '#1d3a57') + tri('230,0 297,0 297,95', '#2f6390') + tri('150,210 205,115 245,210', '#9aa3ac', .55) + tri('0,0 70,0 0,60', '#2f6390'))}
+      ${mark('position:absolute;width:70mm;top:44mm;right:30mm', '#ffffff')}
+      ${A(20, 74, 140, `${kick('Company Profile · 0000')}<h1 style="font-weight:900;color:var(--navy);font-size:46pt;line-height:.98;margin-top:5mm;text-transform:uppercase">Headline<br><span style="color:var(--steel)">goes here</span></h1><p style="font-size:9.4pt;line-height:1.6;margin-top:7mm;max-width:110mm">${L(24)}</p>`)}
+      ${A(20, 182, 0, logo(10))}</div>`);
+    T.push(`<div style="${f}">${svgBg(tri('0,210 0,120 90,210', '#1d3a57') + tri('297,0 297,70 255,0', '#2f6390'))}
+      ${A(20, 20, 160, `${kick('Contents')}${h2('Inside this profile')}`)}
+      ${A(20, 58, 160, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm 12mm">${toc.map((t, i) => `<div style="display:flex;gap:4mm;align-items:center;padding:3mm 0;border-bottom:2px solid #e3e8ed">${hex(9, i % 2 ? '#2f6390' : '#1d3a57', `<b style="color:#fff;font-size:7.6pt">${i + 1}</b>`)}<span style="font-weight:700;color:var(--navy);font-size:9.6pt;text-transform:uppercase">${t}</span></div>`).join('')}</div>`)}
+      ${A(196, 26, 80, `<div style="background:var(--navy);padding:9mm;color:#c7d3df"><p style="font-weight:900;color:#fff;font-size:15pt;line-height:1.25;text-transform:uppercase">“A bold statement from our founder.”</p><p style="font-size:8.4pt;line-height:1.6;margin-top:5mm">${L(40)}</p><p style="font-weight:700;color:var(--sky);font-size:7.6pt;letter-spacing:.2em;margin-top:5mm">NAME SURNAME · FOUNDER</p></div>`)}${pn(2)}</div>`);
+    T.push(`<div style="${f}">${svgBg(tri('297,210 297,110 200,210', '#2f6390') + tri('297,110 297,40 255,110', '#1d3a57', .9))}
+      ${A(20, 20, 150, `${kick('01 / About Us')}${h2('Section headline<br>goes here')}`)}
+      ${A(20, 62, 150, `<div style="columns:2;column-gap:9mm;font-size:8.8pt;line-height:1.65;text-align:justify">${L(130)}</div>`)}
+      ${A(186, 22, 90, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:4mm">${stats.map(([n, s, l], i) => `<div style="position:relative;height:36mm"><svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><polygon points="0,100 100,100 100,0" fill="${i % 3 ? '#2f6390' : '#1d3a57'}"/></svg><div style="position:absolute;right:3mm;bottom:3mm;text-align:right;color:#fff"><b style="font-weight:900;font-size:19pt">${n}${s}</b><p style="font-size:6.2pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase">${l}</p></div></div>`).join('')}</div>`)}
+      ${A(20, 152, 150, `<div style="display:flex;gap:6mm">${vals.slice(0, 4).map((v, i) => `<div style="flex:1">${hex(13, i % 2 ? '#2f6390' : '#1d3a57', ic(v, 6, '#fff', 1.8))}<p style="font-weight:800;color:var(--navy);font-size:8.4pt;margin-top:2.4mm;text-transform:uppercase">Value title</p><p style="font-size:7.6pt;line-height:1.5;margin-top:1mm">${L(10, i * 3)}</p></div>`).join('')}</div>`)}${pn(3, '#fff')}</div>`);
+    T.push(`<div style="${f}">${svgBg(tri('0,0 297,0 297,34 0,52', '#1d3a57'))}
+      ${A(20, 13, 200, `${kick('02 / Our Services', 'var(--sky)')}${h2('What we offer', '#fff')}`)}
+      ${A(20, 64, 257, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8mm 10mm">${svcNames.map((n, i) => `<div style="display:flex;gap:4.4mm">${hex(16, i % 2 ? '#2f6390' : '#1d3a57', ic(svc[i], 7, '#fff', 1.8))}<div><p style="font-weight:800;color:var(--navy);font-size:9.4pt;text-transform:uppercase">${n}</p><p style="font-size:7.8pt;line-height:1.5;margin-top:1.4mm">${L(18, i * 3)}</p></div></div>`).join('')}</div>`)}${pn(4)}</div>`);
+    T.push(`<div style="${f}">${svgBg(tri('297,0 297,210 262,210', '#2f6390'))}
+      ${A(20, 20, 200, `${kick('03 / Our People')}${h2('The team')}`)}
+      ${A(20, 54, 236, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8mm 8mm">${Array.from({ length: 8 }, (_, i) => `<div style="display:flex;gap:4mm;align-items:center"><div style="width:22mm;height:22mm;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:${i < 2 ? '#1d3a57' : '#e3e8ed'};display:grid;place-items:center">${ic('user-round', 9, i < 2 ? '#8fb0cc' : '#8fa3b6', 1.2)}</div><div><p style="font-weight:800;color:var(--navy);font-size:8.6pt;text-transform:uppercase">Name Surname</p><p style="font-size:7pt;font-weight:500;letter-spacing:.1em;color:var(--steel);margin-top:1mm">POSITION</p></div></div>`).join('')}</div>`)}
+      ${A(20, 150, 230, `<div style="background:#f2f5f8;padding:7mm 9mm;display:flex;gap:10mm;align-items:center"><p style="font-weight:900;color:var(--navy);font-size:13pt;text-transform:uppercase;flex:0 0 70mm">Join our team</p><p style="font-size:8.6pt;line-height:1.6">${L(36)}</p></div>`)}${pn(5)}</div>`);
+    T.push(`<div style="${f}">${svgBg(tri('0,0 297,0 297,210 0,210', '#1d3a57') + tri('297,0 297,210 190,210', '#2f6390') + tri('0,210 0,130 60,210', '#9aa3ac', .4))}
+      ${mark('position:absolute;width:56mm;top:30mm;right:34mm', '#ffffff')}
+      ${A(20, 26, 0, logo(13, true))}
+      ${A(20, 92, 150, `<h2 style="font-weight:900;color:#fff;font-size:26pt;line-height:1.05;text-transform:uppercase">Let’s talk</h2><div style="display:flex;flex-direction:column;gap:3.4mm;margin-top:7mm">${contactRows.map(([i, v]) => `<div style="display:flex;gap:3.4mm;align-items:center;color:#fff;font-size:9.4pt;font-weight:500">${hex(8, '#2f6390', ic(i, 3.8, '#fff', 1.8))}${v}</div>`).join('')}</div>`)}
+      ${A(196, 140, 0, qr(36))}</div>`);
+  }
 
-  // ================= C · MINIMAL EDITORIAL =================
-  const tC = 'Theme C · Minimal Editorial', serif = "'Cormorant Garamond',serif";
-  P(tC, 1, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(0, 26, 210, `<div style="display:flex;justify-content:center">${logo(11)}</div>`)}
-    ${A(18, 64, 174, `<p style="text-align:center;font-size:8pt;letter-spacing:.4em;color:var(--steel)">COMPANY PROFILE · 2026</p><h1 style="font-family:${serif};font-weight:400;color:var(--navy);font-size:52pt;line-height:1.02;text-align:center;margin-top:6mm">The headline<br><i>of our profile</i></h1>
-      <div style="width:24mm;height:1px;background:var(--navy);margin:9mm auto"></div>`)}
-    ${A(55, 150, 0, img(7821716, 100))}
-    ${A(18, 262, 174, `<p style="text-align:center;font-family:${serif};font-size:13pt;color:var(--navy);letter-spacing:.2em">INTEGRITY · TRANSPARENCY · QUALITY</p>`)}</div>`);
-  P(tC, 2, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(18, 24, 174, `<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--navy);padding-bottom:3mm;font-size:7.6pt;letter-spacing:.3em;color:var(--steel)"><span>I · ABOUT US</span><span>CONSOLIDATED</span></div>`)}
-    ${A(18, 42, 174, `<h2 style="font-family:${serif};font-weight:400;color:var(--navy);font-size:38pt;line-height:1.05">A considered headline,<br><i>set with care</i></h2>`)}
-    ${A(18, 86, 82, `<p style="font-size:9.6pt;line-height:1.75;text-align:justify"><span style="float:left;font-family:${serif};font-size:44pt;line-height:.8;color:var(--navy);margin:1mm 2.4mm 0 0">L</span>${L(90).slice(1)}</p>`)}
-    ${A(110, 86, 82, `${img(8938631, 82)}<p style="font-size:7.6pt;color:var(--silver);margin-top:2mm;font-style:italic">Caption for the photograph.</p><p style="font-family:${serif};font-style:italic;font-size:17pt;line-height:1.3;color:var(--navy);margin-top:8mm">“${L(16, 5).slice(0, -1)}.”</p>`)}
-    ${A(18, 222, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--navy);padding-top:6mm">${stats.map(([n, s, l]) => `<div><b style="font-family:${serif};font-weight:400;font-size:34pt;color:var(--navy)">${n}${s}</b><p style="font-size:7.4pt;letter-spacing:.2em;color:var(--steel);margin-top:1mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}</div>`);
-  P(tC, 3, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(18, 24, 174, `<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--navy);padding-bottom:3mm;font-size:7.6pt;letter-spacing:.3em;color:var(--steel)"><span>II · OUR SERVICES</span><span>CONSOLIDATED</span></div>`)}
-    ${A(18, 42, 174, `<h2 style="font-family:${serif};font-weight:400;color:var(--navy);font-size:38pt;line-height:1.05">Nine practices,<br><i>one standard</i></h2>`)}
-    ${A(18, 92, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12mm">${svcNames.map((n, i) => `<div style="display:flex;gap:5mm;padding:4.6mm 0;border-bottom:1px solid var(--line)"><b style="font-family:${serif};font-weight:400;font-size:24pt;color:var(--steel);line-height:.9;width:9mm">${i + 1}</b><div><p style="font-family:${serif};font-size:15pt;color:var(--navy);font-weight:600">${n}</p><p style="font-size:8.6pt;line-height:1.6;margin-top:1mm">${L(18, i * 3)}</p></div></div>`).join('')}</div>`)}</div>`);
+  // =====================================================================
+  // THEME 3 · EDITORIAL — portrait, cream paper, serif, quiet luxury
+  // =====================================================================
+  THEMES[3] = { name: 'Editorial', w: 210, h: 297, bg: '#f7f4ee', pages: [] };
+  { const sans = "font-family:'Source Sans 3',sans-serif;color:#5a5f63", serif = "'Cormorant Garamond',serif", T = THEMES[3].pages, ink = '#24303c';
+    const run = (l, n) => A(20, 20, 170, `<div style="display:flex;justify-content:space-between;border-bottom:1px solid ${ink};padding-bottom:3mm;font-size:7.4pt;letter-spacing:.32em;color:#7b6f5f"><span>${l}</span><span>${n}</span></div>`);
+    const h2 = (a, b) => `<h2 style="font-family:${serif};font-weight:400;color:${ink};font-size:40pt;line-height:1.02">${a}<br><i style="color:#2f6390">${b}</i></h2>`;
+    const frame = (id, w) => `<div style="padding:3mm;background:#fff;box-shadow:0 .6mm 2mm rgba(60,50,30,.12);width:${w + 6}mm">${img(id, w)}</div>`;
+    T.push(`<div style="${sans}">${A(0, 30, 210, `<div style="display:flex;justify-content:center">${logo(11)}</div>`)}
+      ${A(20, 72, 170, `<p style="text-align:center;font-size:8pt;letter-spacing:.42em;color:#7b6f5f">COMPANY PROFILE · 0000</p><h1 style="font-family:${serif};font-weight:400;color:${ink};font-size:56pt;line-height:1;text-align:center;margin-top:7mm">The headline<br><i style="color:#2f6390">of our profile</i></h1><div style="width:22mm;height:1px;background:${ink};margin:10mm auto"></div>`)}
+      ${A(52, 158, 0, frame(7821716, 100))}
+      ${A(20, 262, 170, `<p style="text-align:center;font-family:${serif};font-size:13pt;color:${ink};letter-spacing:.24em">VALUE · VALUE · VALUE</p>`)}</div>`);
+    T.push(`<div style="${sans}">${run('CONTENTS', 'COMPANY NAME')}${A(20, 40, 170, h2('Within', 'these pages'))}
+      ${A(20, 92, 170, `${toc.map((t, i) => `<div style="display:flex;align-items:baseline;gap:6mm;padding:4.2mm 0;border-bottom:1px solid #d9d2c5"><span style="font-family:${serif};font-size:20pt;color:#2f6390;width:14mm">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'][i]}</span><span style="font-family:${serif};font-size:17pt;color:${ink};flex:1">${t}</span><span style="font-size:8pt;letter-spacing:.2em;color:#7b6f5f">${String(3 + i).padStart(2, '0')}</span></div>`).join('')}`)}</div>`);
+    T.push(`<div style="${sans}">${run('I · ABOUT US', 'COMPANY NAME')}${A(20, 38, 170, h2('A considered headline,', 'set with care'))}
+      ${A(20, 84, 80, `<p style="font-size:9.6pt;line-height:1.8;text-align:justify"><span style="float:left;font-family:${serif};font-size:46pt;line-height:.8;color:${ink};margin:1mm 2.6mm 0 0">L</span>${L(92).slice(1)}</p>`)}
+      ${A(108, 84, 82, `${frame(8938631, 76)}<p style="font-size:7.6pt;color:#9a8f80;margin-top:2.4mm;font-style:italic">Caption for the photograph.</p><p style="font-family:${serif};font-style:italic;font-size:18pt;line-height:1.3;color:${ink};margin-top:8mm">“${L(15, 5).slice(0, -1)}.”</p>`)}
+      ${A(20, 226, 170, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid ${ink};padding-top:6mm">${stats.map(([n, s, l]) => `<div><b style="font-family:${serif};font-weight:500;font-size:34pt;color:${ink}">${n}${s}</b><p style="font-size:7.2pt;letter-spacing:.22em;color:#7b6f5f;margin-top:1mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${sans}">${run('II · OUR SERVICES', 'COMPANY NAME')}${A(20, 38, 170, h2('Nine practices,', 'one standard'))}
+      ${A(20, 90, 170, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 12mm">${svcNames.map((n, i) => `<div style="display:flex;gap:5mm;padding:4.8mm 0;border-bottom:1px solid #d9d2c5"><b style="font-family:${serif};font-weight:400;font-size:26pt;color:#2f6390;line-height:.9;width:9mm">${i + 1}</b><div><p style="font-family:${serif};font-size:16pt;color:${ink};font-weight:600">${n}</p><p style="font-size:8.6pt;line-height:1.6;margin-top:1mm">${L(18, i * 3)}</p></div></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${sans}">${run('III · OUR PEOPLE', 'COMPANY NAME')}${A(20, 38, 170, h2('The people', 'behind the work'))}
+      ${A(20, 92, 170, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:9mm 14mm">${Array.from({ length: 6 }, (_, i) => `<div style="display:flex;gap:5mm"><div style="padding:2mm;background:#fff;box-shadow:0 .6mm 2mm rgba(60,50,30,.12)">${portrait(26, 32, '#ece6da', '#a89c88')}</div><div><p style="font-family:${serif};font-size:16pt;color:${ink};font-weight:600">Name Surname</p><p style="font-size:7.4pt;letter-spacing:.2em;color:#2f6390;margin-top:1mm">POSITION TITLE</p><p style="font-size:8.4pt;line-height:1.6;margin-top:2mm">${L(16, i * 3)}</p></div></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${sans}">${A(0, 92, 210, `<div style="display:flex;justify-content:center">${logo(14)}</div>`)}
+      ${A(30, 130, 150, `<p style="text-align:center;font-family:${serif};font-style:italic;font-size:22pt;color:${ink};line-height:1.3">A closing line, quietly confident.</p><div style="width:22mm;height:1px;background:${ink};margin:9mm auto"></div>
+        <div style="text-align:center;font-size:9.4pt;line-height:2;color:${ink}">${contactRows.map(([, v]) => v).join('<br>')}</div>`)}
+      ${A(88, 236, 0, qr(34, ink, '#f7f4ee'))}</div>`);
+  }
 
-  // ================= D · DARK PREMIUM =================
-  const tD = 'Theme D · Dark Premium', fD = "'Sora',sans-serif", dark = 'background:#16304a';
-  const frame = (id, w) => `<div style="position:relative;width:${w}mm"><div style="position:absolute;inset:-3mm;border:1px solid rgba(201,210,220,.55)"></div>${img(id, w)}</div>`;
-  P(tD, 1, `<div style="font-family:${fD};color:#dbe3ea">
-    ${mark('position:absolute;width:190mm;top:-30mm;right:-70mm;opacity:.09', '#ffffff')}
-    ${A(18, 18, 0, logo(12, true))}
-    ${A(18, 70, 0, frame(7984490, 120))}
-    ${A(18, 190, 170, `<p style="font-size:7.4pt;letter-spacing:.34em;color:#9fb6cc">COMPANY PROFILE · 2026</p><h1 style="font-weight:300;font-size:38pt;color:#fff;line-height:1.08;margin-top:5mm">Headline of the<br><span style="color:#b9c6d2">company profile</span></h1><div style="width:30mm;height:1px;background:#9aa3ac;margin-top:8mm"></div><p style="font-size:9pt;line-height:1.7;margin-top:6mm;max-width:130mm">${L(24)}</p>`)}</div>`, dark);
-  P(tD, 2, `<div style="font-family:${fD};color:#cbd5de">
-    ${A(18, 22, 174, `<p style="font-size:7.4pt;letter-spacing:.34em;color:#9fb6cc">01 · ABOUT US</p><h2 style="font-weight:300;font-size:28pt;color:#fff;margin-top:4mm">Section headline<br><span style="color:#b9c6d2">goes here</span></h2>`)}
-    ${A(18, 66, 100, `<p style="font-size:9pt;line-height:1.75;text-align:justify">${L(85)}</p>`)}
-    ${A(130, 70, 0, frame(8939110, 62))}
-    ${A(18, 170, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(201,210,220,.35);border-bottom:1px solid rgba(201,210,220,.35)">${stats.map(([n, s, l], i) => `<div style="padding:7mm 4mm;${i ? 'border-left:1px solid rgba(201,210,220,.25)' : ''}"><b style="font-weight:300;font-size:30pt;color:#fff">${n}${s}</b><p style="font-size:6.8pt;letter-spacing:.2em;color:#9fb6cc;margin-top:2mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}
-    ${A(18, 218, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8mm">${[0, 1, 2].map((i) => `<div>${ic(vals[i], 10, '#c9d2dc', 1.2)}<p style="color:#fff;font-size:10pt;margin-top:3mm">Value title</p><p style="font-size:8pt;line-height:1.6;margin-top:1.4mm">${L(16, i * 4)}</p></div>`).join('')}</div>`)}</div>`, dark);
-  P(tD, 3, `<div style="font-family:${fD};color:#cbd5de">
-    ${A(18, 22, 174, `<p style="font-size:7.4pt;letter-spacing:.34em;color:#9fb6cc">02 · OUR SERVICES</p><h2 style="font-weight:300;font-size:28pt;color:#fff;margin-top:4mm">What we offer</h2>`)}
-    ${A(18, 64, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0">${svcNames.map((n, i) => `<div style="padding:8mm 5mm;border-top:1px solid rgba(201,210,220,.25);${i % 3 ? 'border-left:1px solid rgba(201,210,220,.25)' : ''}"><div style="width:14mm;height:14mm;border:1px solid #9aa3ac;border-radius:50%;display:grid;place-items:center">${ic(svc[i], 6.4, '#e3e9ef', 1.3)}</div><p style="color:#fff;font-size:10pt;margin-top:4.4mm">${n}</p><p style="font-size:8pt;line-height:1.6;margin-top:2mm">${L(20, i * 3)}</p></div>`).join('')}</div>`)}</div>`, dark);
+  // =====================================================================
+  // THEME 4 · DARK LUXE — portrait, dark navy and charcoal, silver lines
+  // =====================================================================
+  THEMES[4] = { name: 'Dark-Luxe', w: 210, h: 297, bg: '#101c29', pages: [] };
+  { const f = "font-family:'Sora',sans-serif;color:#b9c4cf", T = THEMES[4].pages, sil = '#c9d2dc', hair = 'rgba(201,210,220,.28)';
+    const glow = `<div class="abs" style="width:150mm;height:150mm;border-radius:50%;background:radial-gradient(circle, rgba(47,99,144,.45), rgba(16,28,41,0) 68%);top:-40mm;right:-50mm"></div>`;
+    const kick = (t) => `<p style="font-size:7pt;letter-spacing:.38em;color:#8fb0cc;text-transform:uppercase">${t}</p>`;
+    const h2 = (a, b) => `<h2 style="font-weight:200;font-size:30pt;color:#fff;line-height:1.1;margin-top:4mm">${a}<br><span style="color:${sil};font-weight:300">${b}</span></h2>`;
+    const frame = (id, w) => `<div style="position:relative;width:${w}mm"><div style="position:absolute;inset:-3.4mm;border:1px solid ${hair}"></div>${img(id, w)}</div>`;
+    const pn = (n) => A(18, 282, 174, `<div style="display:flex;justify-content:space-between;font-size:6.8pt;letter-spacing:.3em;color:#6f8296"><span>COMPANY NAME</span><span>${String(n).padStart(2, '0')}</span></div>`);
+    T.push(`<div style="${f}">${glow}${mark('position:absolute;width:150mm;top:-20mm;right:-50mm;opacity:.16', '#ffffff')}
+      ${A(18, 20, 0, logo(12, true))}${A(18, 70, 0, frame(7984490, 124))}
+      ${A(18, 186, 172, `${kick('Company Profile · 0000')}<h1 style="font-weight:200;font-size:42pt;color:#fff;line-height:1.05;margin-top:5mm">Headline of the<br><span style="color:${sil}">company profile</span></h1><div style="width:30mm;height:1px;background:${sil};margin-top:8mm"></div><p style="font-size:8.8pt;line-height:1.75;margin-top:6mm;max-width:130mm">${L(24)}</p>`)}</div>`);
+    T.push(`<div style="${f}">${glow}${A(18, 22, 174, `${kick('Introduction')}${h2('A message', 'from our founder')}`)}
+      ${A(18, 66, 104, `<p style="font-size:9pt;line-height:1.8;text-align:justify">${L(75)}</p><p style="font-size:9pt;line-height:1.8;text-align:justify;margin-top:4mm">${L(50, 9)}</p><div style="display:flex;gap:5mm;align-items:center;margin-top:9mm">${portrait(20, 24, '#1d3a57', '#8fb0cc')}<div><p style="color:#fff;font-size:10pt">Name Surname</p><p style="font-size:7pt;letter-spacing:.24em;color:#8fb0cc;margin-top:1mm">FOUNDER</p></div></div>`)}
+      ${A(134, 70, 58, `<div style="border-left:1px solid ${hair};padding-left:7mm">${toc.slice(0, 6).map((t, i) => `<div style="padding:3.6mm 0;border-bottom:1px solid ${hair}"><span style="color:#8fb0cc;font-size:8pt">${String(i + 1).padStart(2, '0')}</span><p style="color:#fff;font-size:9.6pt;margin-top:.8mm">${t}</p></div>`).join('')}</div>`)}
+      ${A(18, 216, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid ${hair};border-bottom:1px solid ${hair}">${stats.map(([n, s, l], i) => `<div style="padding:7mm 4mm;${i ? `border-left:1px solid ${hair}` : ''}"><b style="font-weight:200;font-size:28pt;color:#fff">${n}${s}</b><p style="font-size:6.6pt;letter-spacing:.22em;color:#8fb0cc;margin-top:2mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}${pn(2)}</div>`);
+    T.push(`<div style="${f}">${A(18, 22, 174, `${kick('01 · About Us')}${h2('Section headline', 'goes here')}`)}
+      ${A(18, 70, 96, `<p style="font-size:9pt;line-height:1.8;text-align:justify">${L(90)}</p>`)}
+      ${A(126, 74, 0, frame(8939110, 66))}
+      ${A(18, 178, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9mm 8mm">${vals.map((v, i) => `<div><div style="width:13mm;height:13mm;border:1px solid ${sil};border-radius:50%;display:grid;place-items:center">${ic(v, 6, '#e3e9ef', 1.2)}</div><p style="color:#fff;font-size:10pt;margin-top:3.6mm">Value title</p><p style="font-size:7.8pt;line-height:1.65;margin-top:1.4mm">${L(14, i * 4)}</p></div>`).join('')}</div>`)}${pn(3)}</div>`);
+    T.push(`<div style="${f}">${glow}${A(18, 22, 174, `${kick('02 · Our Services')}${h2('What we', 'offer')}`)}
+      ${A(18, 70, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr)">${svcNames.map((n, i) => `<div style="padding:8mm 5mm;border-top:1px solid ${hair};${i % 3 ? `border-left:1px solid ${hair}` : ''}"><b style="font-weight:200;font-size:22pt;color:#6f8fb0">0${i + 1}</b><p style="color:#fff;font-size:10pt;margin-top:3mm">${n}</p><p style="font-size:7.8pt;line-height:1.65;margin-top:2mm">${L(18, i * 3)}</p></div>`).join('')}</div>`)}${pn(4)}</div>`);
+    T.push(`<div style="${f}">${A(18, 22, 174, `${kick('03 · Our People')}${h2('The people', 'behind our work')}`)}
+      ${A(18, 72, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10mm 7mm">${Array.from({ length: 8 }, (_, i) => `<div><div style="position:relative;width:36mm"><div style="position:absolute;inset:-2.4mm;border:1px solid ${hair}"></div>${portrait(36, 44, '#1d3a57', '#6f8fb0')}</div><p style="color:#fff;font-size:9.4pt;margin-top:5mm">Name Surname</p><p style="font-size:6.8pt;letter-spacing:.22em;color:#8fb0cc;margin-top:1mm">POSITION</p></div>`).join('')}</div>`)}${pn(5)}</div>`);
+    T.push(`<div style="${f}">${glow}${mark('position:absolute;width:120mm;top:52mm;left:45mm;opacity:.9')}
+      ${A(0, 190, 210, `<div style="display:flex;justify-content:center">${logo(13, true)}</div>`)}
+      ${A(30, 218, 150, `<div style="display:flex;justify-content:center;gap:7mm;flex-wrap:wrap;font-size:8.6pt;color:#dbe3ea">${contactRows.map(([i, v]) => `<span style="display:flex;gap:2.4mm;align-items:center">${ic(i, 4.4, '#8fb0cc', 1.5)}${v}</span>`).join('')}</div>`)}
+      ${A(88, 244, 0, qr(34, '#101c29', '#dbe3ea'))}</div>`);
+  }
 
-  // ================= E · INFOGRAPHIC =================
-  const tE = 'Theme E · Infographic', fE = "'Plus Jakarta Sans',sans-serif", tile = 'background:#fff;border-radius:5mm;box-shadow:0 1mm 3mm rgba(29,58,87,.08)';
-  const donut = (vals, size) => { let a = -90, out = ''; const tot = vals.reduce((x, y) => x + y, 0), r = 40, rr = 26;
-    vals.forEach((v, i) => { const b = a + v / tot * 360, p = (t, R) => `${50 + R * Math.cos(t * Math.PI / 180)},${50 + R * Math.sin(t * Math.PI / 180)}`, big = b - a > 180 ? 1 : 0;
-      out += `<path d="M${p(a + .8, r)} A${r},${r} 0 ${big} 1 ${p(b - .8, r)} L${p(b - .8, rr)} A${rr},${rr} 0 ${big} 0 ${p(a + .8, rr)} Z" fill="${['#1d3a57', '#2f6390', '#5b86ad', '#8fb0cc', '#bfd0df'][i % 5]}"/>`; a = b; });
-    return `<svg viewBox="0 0 100 100" style="width:${size}mm;height:${size}mm">${out}</svg>`; };
-  P(tE, 1, `<div style="font-family:${fE}">
-    ${A(18, 18, 0, logo(11))}
-    ${A(18, 44, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4mm">${svc.slice(0, 8).map((n, i) => `<div style="aspect-ratio:1;border-radius:5mm;background:${['#1d3a57', '#2f6390', '#8fb0cc', '#f2f5f8'][(i + Math.floor(i / 4)) % 4]};display:grid;place-items:center">${ic(n, 16, i % 4 === 3 ? '#2f6390' : '#fff', 1.4)}</div>`).join('')}</div>`)}
-    ${A(18, 150, 174, `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:7.6pt">COMPANY PROFILE 2026</p><h1 style="font-weight:700;color:var(--navy);font-size:36pt;line-height:1.08;margin-top:4mm">Headline of the<br>company profile</h1><p style="font-size:10pt;line-height:1.6;margin-top:5mm;max-width:140mm">${L(26)}</p>`)}
-    ${A(18, 240, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4mm">${stats.map(([n, s, l]) => `<div style="background:var(--mist);border-radius:4mm;padding:4mm"><b style="color:var(--navy);font-size:17pt">${n}${s}</b><p style="font-size:7pt;margin-top:1mm">${l}</p></div>`).join('')}</div>`)}</div>`, 'background:#fafbfc');
-  P(tE, 2, `<div style="font-family:${fE}">
-    ${A(18, 20, 174, `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:7.6pt">01 · ABOUT US</p><h2 style="font-weight:700;color:var(--navy);font-size:24pt;margin-top:3mm">Section headline goes here</h2><p style="font-size:9.4pt;line-height:1.6;margin-top:3mm">${L(40)}</p>`)}
-    ${A(18, 76, 84, `<div style="${tile};padding:6mm;height:82mm"><p style="font-weight:700;color:var(--navy);font-size:10pt">Chart title</p><div style="display:flex;gap:5mm;align-items:center;margin-top:4mm">${donut([30, 22, 18, 16, 14], 42)}<div style="display:flex;flex-direction:column;gap:2mm">${[0, 1, 2, 3, 4].map((i) => `<span style="display:flex;gap:2mm;align-items:center;font-size:7.6pt"><i style="width:3mm;height:3mm;border-radius:1mm;background:${['#1d3a57', '#2f6390', '#5b86ad', '#8fb0cc', '#bfd0df'][i]}"></i>Label ${i + 1}</span>`).join('')}</div></div></div>`)}
-    ${A(108, 76, 84, `<div style="${tile};padding:6mm;height:82mm"><p style="font-weight:700;color:var(--navy);font-size:10pt">Bar chart title</p>${[86, 72, 64, 52, 40].map((v, i) => `<div style="margin-top:4.4mm"><div style="display:flex;justify-content:space-between;font-size:7.6pt"><span>Item ${i + 1}</span><b style="color:var(--navy)">${v}</b></div><div style="height:2.6mm;border-radius:2mm;background:var(--mist);margin-top:1mm"><div style="height:100%;width:${v}%;border-radius:2mm;background:#2f6390"></div></div></div>`).join('')}</div>`)}
-    ${A(18, 166, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5mm">${[0, 1, 2, 3, 4, 5].map((i) => `<div style="${tile};padding:5mm;display:flex;gap:3.4mm"><div style="width:12mm;height:12mm;border-radius:3.4mm;background:${i % 2 ? '#1d3a57' : '#2f6390'};display:grid;place-items:center;flex:0 0 auto">${ic(vals[i], 6, '#fff', 1.6)}</div><div><p style="font-weight:700;color:var(--navy);font-size:9pt">Value title</p><p style="font-size:7.4pt;line-height:1.5;margin-top:.8mm">${L(12, i * 4)}</p></div></div>`).join('')}</div>`)}
-    ${A(18, 238, 174, `<div style="${tile};padding:5mm 7mm"><p style="font-weight:700;color:var(--navy);font-size:9.4pt">Timeline</p><div style="position:relative;margin-top:7mm;height:14mm"><div style="position:absolute;left:0;right:0;top:2mm;height:1.4mm;border-radius:1mm;background:#8fb0cc"></div>${[0, 1, 2, 3, 4].map((i) => `<div style="position:absolute;left:${i * 24.5}%;top:0;text-align:center;width:16mm;margin-left:-${i ? 8 : 0}mm"><div style="width:5.4mm;height:5.4mm;border-radius:50%;background:#1d3a57;border:1.2mm solid #fff;margin:0 auto"></div><p style="font-size:7pt;margin-top:1.6mm;font-weight:700;color:var(--navy)">0000</p></div>`).join('')}</div></div>`)}</div>`, 'background:#f4f6f9');
-  P(tE, 3, `<div style="font-family:${fE}">
-    ${A(18, 20, 174, `<p style="font-weight:700;color:var(--steel);letter-spacing:.2em;font-size:7.6pt">02 · OUR SERVICES</p><h2 style="font-weight:700;color:var(--navy);font-size:24pt;margin-top:3mm">What we offer</h2>`)}
-    ${A(18, 50, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5mm">${svcNames.map((n, i) => `<div style="${tile};padding:6mm;height:70mm;display:flex;flex-direction:column"><div style="width:15mm;height:15mm;border-radius:4mm;background:${i % 2 ? '#1d3a57' : '#2f6390'};display:grid;place-items:center">${ic(svc[i], 7.6, '#fff', 1.6)}</div><p style="font-weight:700;color:var(--navy);font-size:10pt;margin-top:4mm">${n}</p><p style="font-size:7.8pt;line-height:1.55;margin-top:1.6mm">${L(16, i * 3)}</p><div style="margin-top:auto"><div style="display:flex;justify-content:space-between;font-size:7pt"><span>Services</span><b style="color:var(--navy)">00</b></div><div style="height:2mm;border-radius:2mm;background:var(--mist);margin-top:1mm"><div style="height:100%;width:${50 + i * 5}%;border-radius:2mm;background:#2f6390"></div></div></div></div>`).join('')}</div>`)}</div>`, 'background:#f4f6f9');
-
-  // ================= F · PHOTO MAGAZINE =================
-  const tF = 'Theme F · Photo Magazine', disp = "'Playfair Display',serif";
-  P(tF, 1, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(0, 0, 0, img(8939110, 210))}
-    ${A(18, H(8939110, 210) + 12, 174, `<div style="display:flex;justify-content:space-between;align-items:center">${logo(11)}<p style="font-weight:700;letter-spacing:.2em;color:var(--steel);font-size:8pt">COMPANY PROFILE 2026</p></div>
-      <h1 style="font-family:${disp};font-weight:700;color:var(--navy);font-size:40pt;line-height:1.05;margin-top:10mm">The headline that<br>opens our story</h1><p style="font-size:10.5pt;line-height:1.6;margin-top:6mm;max-width:150mm">${L(30)}</p>`)}</div>`);
-  P(tF, 2, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(18, 20, 174, `<p style="font-weight:700;letter-spacing:.2em;color:var(--steel);font-size:8pt">01 · ABOUT US</p>`)}
-    ${A(18, 28, 0, img(7654131, 174))}
-    ${A(18, 30 + H(7654131, 174), 174, `<p style="font-size:7.6pt;color:var(--silver);font-style:italic;margin-top:2mm">Caption for the photograph goes here.</p><h2 style="font-family:${disp};font-weight:700;color:var(--navy);font-size:28pt;line-height:1.1;margin-top:6mm">Section headline goes here</h2>
-      <div style="columns:2;column-gap:10mm;font-size:9.4pt;line-height:1.7;text-align:justify;margin-top:5mm">${L(120)}</div>`)}</div>`);
-  P(tF, 3, `<div style="font-family:'Source Sans 3',sans-serif">
-    ${A(18, 20, 174, `<p style="font-weight:700;letter-spacing:.2em;color:var(--steel);font-size:8pt">02 · OUR SERVICES</p><h2 style="font-family:${disp};font-weight:700;color:var(--navy);font-size:28pt;margin-top:3mm">What we offer</h2>`)}
-    ${A(18, 50, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4mm">${[1427541, 6129104, 8961073].map((id) => img(id, 55.3)).join('')}</div>`)}
-    ${A(18, 50 + H(1427541, 55.3) + 10, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm 8mm">${svcNames.map((n, i) => `<div style="border-top:2px solid var(--navy);padding-top:3.6mm"><p style="font-family:${disp};font-weight:700;color:var(--navy);font-size:12.5pt">${n}</p><p style="font-size:8.4pt;line-height:1.6;margin-top:2mm">${L(22, i * 3)}</p></div>`).join('')}</div>`)}</div>`);
-
-  document.getElementById('doc').innerHTML = pages.join('');
+  // ---------- render the chosen theme ----------
+  const th = THEMES[TN];
+  document.getElementById('pagesize').textContent = `@page{ size:${th.w}mm ${th.h}mm; margin:0; } #doc{ width:${th.w}mm; } .page{ width:${th.w}mm; height:${th.h}mm; background:${th.bg}; }`;
+  document.title = `Theme ${TN} – ${th.name} – Consolidated`;
+  document.getElementById('doc').innerHTML = th.pages.map((p) => `<section class="page">${p}</section>`).join('');
+  document.getElementById('ui').innerHTML = `<b>Company Profile · Theme ${TN} — ${th.name}</b>${[1, 2, 3, 4].map((n) => `<a class="${n === TN ? 'on' : ''}" href="?t=${n}">Theme ${n}</a>`).join('')}`;
   lucide.createIcons();
+  window.__themeName = th.name;
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(() => { window.__profileReady = true; }));
 })();
 </script>

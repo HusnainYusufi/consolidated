@@ -4,7 +4,7 @@ The template renders pages from the same content dictionary the website uses
 (assets/js/i18n.js), so the profile always matches the approved website copy.
 
     python tools/build_profile.py          # the profile, English and Arabic
-    python tools/build_profile.py themes   # the theme sampler (profile/themes.html)
+    python tools/build_profile.py themes   # the four theme samples (profile/themes.html -> profile/themes/)
 
 Outputs: profile/Consolidated-Company-Profile-EN.pdf and -AR.pdf
 Requires: pip install playwright && python -m playwright install chromium
@@ -29,7 +29,7 @@ async def render(lang, out, path='/profile/index.html'):
     async with async_playwright() as p:
         browser = await p.chromium.launch()
         page = await browser.new_page(viewport={'width': 794, 'height': 1123})
-        await page.goto(f'http://127.0.0.1:{PORT}{path}?lang={lang}&print=1', wait_until='networkidle')
+        await page.goto(f"http://127.0.0.1:{PORT}{path}{'&' if '?' in path else '?'}lang={lang}&print=1", wait_until='networkidle')
         await page.wait_for_function('window.__profileReady === true')
         await page.evaluate('document.fonts.ready')
         # Make sure every image has loaded (retry any that failed) before printing.
@@ -54,9 +54,11 @@ def main():
     httpd = serve()
     try:
         if sys.argv[1:] == ['themes']:
-            out = os.path.join(ROOT, 'profile', 'Consolidated-Profile-Themes.pdf')
-            n = asyncio.run(render('en', out, '/profile/themes.html'))
-            print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
+            os.makedirs(os.path.join(ROOT, 'profile', 'themes'), exist_ok=True)
+            for t, name in [(1, 'Executive'), (2, 'Geometric'), (3, 'Editorial'), (4, 'Dark-Luxe')]:
+                out = os.path.join(ROOT, 'profile', 'themes', f'Theme-{t}-{name}.pdf')
+                n = asyncio.run(render('en', out, f'/profile/themes.html?t={t}'))
+                print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
             return
         for lang in ['en', 'ar']:
             out = os.path.join(ROOT, 'profile', f'Consolidated-Company-Profile-{lang.upper()}.pdf')
