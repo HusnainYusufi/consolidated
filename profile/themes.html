@@ -8,10 +8,10 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Sora:wght@200;300;400;600&family=IBM+Plex+Mono:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Overpass:wght@400;600;700;800&family=Manrope:wght@400;600;700;800&family=Cinzel:wght@500;600&family=Oswald:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Montserrat:wght@300;500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Sora:wght@200;300;400;600&family=IBM+Plex+Mono:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Overpass:wght@400;600;700;800&family=Manrope:wght@400;600;700;800&family=Cinzel:wght@500;600&family=Oswald:wght@400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=UnifrakturMaguntia&family=Anton&family=Archivo:wght@400;700;800;900&family=Archivo+Black&family=Fraunces:ital,wght@0,400;0,500;1,400;1,500&family=Karla:wght@400;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
 <style id="pagesize"></style>
 <style>
-  /* Fourteen complete profile themes with placeholder text; ?t=1..14 picks the theme.
+  /* Twenty complete profile themes with placeholder text; ?t=1..20 picks the theme.
      Logo colours throughout; photos are always shown whole (never cropped). */
   :root{ --navy:#1d3a57; --navy2:#142b42; --steel:#2f6390; --sky:#8fb0cc; --silver:#9aa3ac; --ink:#262b30; --ink2:#5b636b; --line:#dde2e7; --mist:#f2f5f8; }
   *{ box-sizing:border-box; }
@@ -41,7 +41,7 @@
 <script src="/profile/vendor/lucide.min.js"></script>
 <script>
 (function () {
-  const q = new URLSearchParams(location.search), PRINT = q.has('print'), TN = Math.min(14, Math.max(1, +q.get('t') || 1));
+  const q = new URLSearchParams(location.search), PRINT = q.has('print'), TN = Math.min(20, Math.max(1, +q.get('t') || 1));
   if (PRINT) document.documentElement.classList.add('print');
   const LOREM = 'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
   const L = (n, s = 0) => { const w = []; for (let i = 0; i < n; i++) w.push(LOREM[(i + s) % LOREM.length]); const t = w.join(' '); return t[0].toUpperCase() + t.slice(1) + '.'; };
@@ -490,12 +490,152 @@
       ${A(70, 178, 122, `<div style="border:1.2px solid #1d3a57;background:#f4f5f0;padding:6mm 7mm"><p style="font:700 16pt ${cond};color:#1d3a57;text-transform:uppercase">Base camp</p>${contactRows.map(([i, v]) => `<div style="display:flex;gap:3mm;align-items:center;margin-top:2.6mm;font-size:9pt;color:#262b30">${ic(i, 4.6, '#2f6390', 1.6)}${v}</div>`).join('')}<div style="margin-top:4mm;display:flex;justify-content:space-between;align-items:flex-end">${logo(8)}${qr(24)}</div></div>`)}</div>`);
   }
 
+  // =====================================================================
+  // THEME 15 · NOIR — black, white, signal orange; giant poster type
+  // =====================================================================
+  THEMES[15] = { name: 'Noir', w: 210, h: 297, bg: '#0b0b0c', pages: [] };
+  { const OR = '#ff5a1f', T = THEMES[15].pages, an = "'Anton',sans-serif", body = "font-family:'Archivo',sans-serif;color:#b8b8b8";
+    const bw = (id, w) => `<img class="whole" src="/profile/img/c-${id}.jpg" style="width:${w}mm;filter:grayscale(1) contrast(1.15)">`;
+    T.push(`<div style="${body}">${A(16, 16, 0, logo(10, true))}
+      ${A(16, 40, 180, `<h1 style="font-family:${an};font-weight:400;font-size:96pt;line-height:.86;color:#fff;letter-spacing:-.01em">AUDIT.<br>TAX.<br><span style="color:${OR}">ADVISORY.</span></h1>`)}
+      ${A(76, 186, 0, bw(8939052, 120))}
+      <div class="abs" style="left:16mm;top:186mm;width:52mm;height:3mm;background:${OR}"></div>
+      ${A(16, 196, 54, `<p style="font-size:9pt;line-height:1.55">${L(30)}</p>`)}
+      <div class="abs" style="right:6mm;top:40mm;writing-mode:vertical-rl;font-family:${an};font-size:13pt;letter-spacing:.3em;color:${OR}">COMPANY PROFILE 0000</div></div>`);
+    T.push(`<div style="${body}">${A(16, 14, 180, `<h2 style="font-family:${an};font-weight:400;font-size:84pt;line-height:.9;color:transparent;-webkit-text-stroke:1.2px #fff">WHO<br>WE ARE</h2>`)}
+      ${A(16, 104, 178, `<div style="columns:2;column-gap:10mm;font-size:9.6pt;line-height:1.65;color:#cfcfcf">${L(140)}</div>`)}
+      ${A(16, 196, 178, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid ${OR}">${stats.map(([n, s, l]) => `<div style="padding-top:5mm"><b style="font-family:${an};font-weight:400;font-size:52pt;color:${OR};line-height:1">${n}${s}</b><p style="font-size:7.6pt;letter-spacing:.2em;color:#fff;margin-top:2mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${A(16, 14, 180, `<h2 style="font-family:${an};font-weight:400;font-size:60pt;line-height:.9;color:#fff">WHAT WE <span style="color:${OR}">DO.</span></h2>`)}
+      ${A(16, 60, 178, svcNames.map((n, i) => `<div style="display:grid;grid-template-columns:24mm 1fr 70mm;gap:5mm;align-items:center;border-top:1px solid #333;padding:3.2mm 0"><b style="font-family:${an};font-weight:400;font-size:34pt;color:${OR};line-height:1">0${i + 1}</b><p style="font-family:${an};font-weight:400;font-size:18pt;color:#fff;letter-spacing:.02em">${n.toUpperCase()}</p><p style="font-size:8pt;line-height:1.45">${L(16, i * 3)}</p></div>`).join(''))}</div>`);
+    T.push(`<div style="${body}">${A(16, 14, 180, `<h2 style="font-family:${an};font-weight:400;font-size:60pt;line-height:.9;color:#fff">THE <span style="color:${OR}">TEAM.</span></h2>`)}
+      ${A(16, 56, 178, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">${Array.from({ length: 8 }, () => `<div><div class="ph" style="height:52mm;background:#1c1c1e">${ic('user-round', 14, '#555', 1)}</div><div style="background:${OR};color:#0b0b0c;padding:2mm 3mm"><p style="font-family:${an};font-size:12pt">NAME SURNAME</p><p style="font-size:7pt;font-weight:700;letter-spacing:.12em">POSITION</p></div></div>`).join('')}</div>`)}
+      ${A(16, 206, 178, `<h3 style="font-family:${an};font-weight:400;font-size:54pt;color:#fff;line-height:1">LET’S TALK.</h3><div style="display:flex;gap:8mm;flex-wrap:wrap;margin-top:4mm;font-size:9.6pt;color:#fff">${contactRows.map(([i, v]) => `<span style="display:flex;gap:2.4mm;align-items:center">${ic(i, 5, OR, 2)}${v}</span>`).join('')}</div>`)}</div>`);
+  }
+
+  // =====================================================================
+  // THEME 16 · SAND & ARCH — warm sand, terracotta and olive; arches
+  // =====================================================================
+  THEMES[16] = { name: 'Sand-Arch', w: 210, h: 297, bg: '#f2e6d6', pages: [] };
+  { const TC = '#c4553c', OL = '#6c7a3c', BR = '#3b2a20', SD = '#e4d2bb', T = THEMES[16].pages, fr = "'Fraunces',serif", body = `font-family:'Karla',sans-serif;color:#6b5546`;
+    const arch = (w, h, bg, inner = '', st = '') => `<div style="width:${w}mm;height:${h}mm;background:${bg};border-radius:${w / 2}mm ${w / 2}mm 0 0;${st}">${inner}</div>`;
+    T.push(`<div style="${body}">${A(18, 16, 0, logo(10))}
+      ${A(50, 34, 0, arch(110, 168, TC, `<div style="position:relative;height:100%"><div style="position:absolute;left:50%;top:22mm;width:36mm;height:36mm;margin-left:-18mm;border-radius:50%;background:#f2b84b"></div></div>`))}
+      ${A(28, 140, 0, `<div style="padding:3mm;background:#fff;box-shadow:0 2mm 5mm rgba(59,42,32,.18)">${img(8938631, 96)}</div>`)}
+      ${A(18, 222, 174, `<p style="font-size:8pt;letter-spacing:.3em;color:${TC};font-weight:700">COMPANY PROFILE · 0000</p><h1 style="font-family:${fr};font-weight:500;font-size:34pt;line-height:1.05;color:${BR};margin-top:2mm">A warm headline,<br><i style="color:${TC}">rooted in place</i></h1>`)}
+      ${A(142, 236, 0, `<div style="display:flex;gap:2.4mm">${[OL, TC, SD, OL].map((c) => arch(9, 14, c)).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${A(18, 20, 174, `<p style="font-size:8pt;letter-spacing:.3em;color:${TC};font-weight:700">ABOUT US</p><h2 style="font-family:${fr};font-weight:500;font-size:32pt;color:${BR};line-height:1.08;margin-top:2mm">Section headline<br><i style="color:${OL}">in a warm serif</i></h2>`)}
+      ${A(18, 66, 92, `<p style="font-size:9.6pt;line-height:1.7;text-align:justify">${L(110)}</p>`)}
+      ${A(118, 62, 0, arch(74, 120, OL, `<div style="padding:30mm 8mm 0;color:#f2e6d6">${[0, 1, 2].map((i) => `<p style="font-family:${fr};font-size:15pt;color:#fff;margin-top:${i ? 5 : 0}mm">Value title</p><p style="font-size:8pt;line-height:1.5;margin-top:1mm">${L(10, i * 4)}</p>`).join('')}</div>`))}
+      ${A(18, 200, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4mm">${stats.map(([n, s, l], i) => `<div style="background:${[TC, SD, OL, SD][i]};color:${i % 2 ? BR : '#fff'};border-radius:20mm 20mm 3mm 3mm;padding:12mm 3mm 6mm;text-align:center"><b style="font-family:${fr};font-size:26pt;font-weight:500">${n}${s}</b><p style="font-size:7pt;letter-spacing:.14em;margin-top:1mm;text-transform:uppercase">${l}</p></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${A(18, 20, 174, `<p style="font-size:8pt;letter-spacing:.3em;color:${TC};font-weight:700">OUR SERVICES</p><h2 style="font-family:${fr};font-weight:500;font-size:32pt;color:${BR};margin-top:2mm">What we <i style="color:${TC}">offer</i></h2>`)}
+      ${A(18, 56, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm">${svcNames.map((n, i) => { const bg = [TC, OL, SD][i % 3], fg = i % 3 === 2 ? BR : '#fff'; return arch(54, 70, bg, `<div style="padding:16mm 5mm 0;color:${fg};text-align:center">${ic(svc[i], 10, fg, 1.4)}<p style="font-family:${fr};font-size:13pt;margin-top:3mm;line-height:1.15">${n}</p><p style="font-size:7.6pt;line-height:1.5;margin-top:2mm;opacity:.88">${L(12, i * 3)}</p></div>`); }).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${A(18, 20, 174, `<p style="font-size:8pt;letter-spacing:.3em;color:${TC};font-weight:700">OUR PEOPLE</p><h2 style="font-family:${fr};font-weight:500;font-size:32pt;color:${BR};margin-top:2mm">The <i style="color:${OL}">people</i></h2>`)}
+      ${A(18, 56, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm 5mm">${Array.from({ length: 8 }, (_, i) => `<div style="text-align:center">${arch(40, 50, [SD, '#d9c4a8'][i % 2], `<div class="ph" style="height:100%">${ic('user-round', 13, '#a8876b', 1.1)}</div>`)}<p style="font-family:${fr};font-size:12pt;color:${BR};margin-top:2.4mm">Name Surname</p><p style="font-size:7pt;letter-spacing:.14em;color:${TC};font-weight:700">POSITION</p></div>`).join('')}</div>`)}
+      <div class="abs" style="left:0;right:0;bottom:0;height:72mm;background:${TC};border-radius:60mm 60mm 0 0"></div>
+      ${A(40, 240, 130, `<p style="font-family:${fr};font-size:22pt;color:#fff;text-align:center">Come and visit us</p><div style="display:flex;justify-content:center;gap:6mm;flex-wrap:wrap;margin-top:4mm;color:#fbe9dc;font-size:8.8pt">${contactRows.map(([i, v]) => `<span style="display:flex;gap:2mm;align-items:center">${ic(i, 4.4, '#fff', 1.8)}${v}</span>`).join('')}</div>`)}</div>`);
+  }
+
+  // =====================================================================
+  // THEME 17 · POP — cobalt, coral, yellow and mint; neo-brutalist
+  // =====================================================================
+  THEMES[17] = { name: 'Pop', w: 210, h: 297, bg: '#fff8ec', pages: [] };
+  { const CB = '#2742ff', CO = '#ff6b5b', YE = '#ffc93c', MI = '#3ddc97', K = '#111', T = THEMES[17].pages, blk = "'Archivo Black',sans-serif", body = "font-family:'Archivo',sans-serif;color:#222";
+    const card = (bg, inner, st = '') => `<div style="background:${bg};border:1.1mm solid ${K};box-shadow:2.4mm 2.4mm 0 ${K};${st}">${inner}</div>`;
+    const confetti = (seed) => { _seed = seed; let o = ''; for (let i = 0; i < 26; i++) { const x = rnd() * 210, y = rnd() * 297, c = [CB, CO, YE, MI][i % 4], t = i % 4, s = 4 + rnd() * 7; o += t === 0 ? `<circle cx="${x}" cy="${y}" r="${s / 2}" fill="${c}"/>` : t === 1 ? `<rect x="${x}" y="${y}" width="${s}" height="${s}" fill="${c}" transform="rotate(${rnd() * 60} ${x} ${y})"/>` : t === 2 ? `<path d="M${x},${y} l${s / 2},-${s / 2} l${s / 2},${s / 2} l${s / 2},-${s / 2} l${s / 2},${s / 2}" fill="none" stroke="${c}" stroke-width="1.6"/>` : `<path d="M${x},${y} a${s / 2},${s / 2} 0 0 1 ${s},0 z" fill="${c}"/>`; } return svgP(o); };
+    T.push(`<div style="${body}">${confetti(3)}${A(16, 16, 0, card('#fff', `<div style="padding:2mm 3mm">${logo(9)}</div>`))}
+      ${A(16, 50, 178, `<h1 style="font-family:${blk};font-size:56pt;line-height:.95;color:${K}">WE MAKE<br>NUMBERS<br><span style="background:${YE};padding:0 2mm">MAKE SENSE.</span></h1>`)}
+      ${A(70, 150, 0, card('#fff', img(7654131, 110), 'padding:0'))}
+      ${A(20, 160, 0, `<div style="width:40mm;height:40mm;border-radius:50%;background:${CO};border:1.1mm solid ${K};display:grid;place-items:center;text-align:center;transform:rotate(-12deg)"><p style="font-family:${blk};font-size:11pt;color:#fff;line-height:1.1">SINCE<br><span style="font-size:20pt">0000</span></p></div>`)}
+      ${A(16, 262, 178, `<p style="font-family:${blk};font-size:10pt">COMPANY PROFILE · AUDIT · TAX · ADVISORY</p>`)}</div>`);
+    T.push(`<div style="${body}">${A(16, 18, 178, `<h2 style="font-family:${blk};font-size:38pt;line-height:1;color:${K}">ABOUT <span style="color:${CB}">US</span></h2>`)}
+      ${A(16, 42, 110, card('#fff', `<div style="padding:6mm"><p style="font-size:9.6pt;line-height:1.65">${L(90)}</p></div>`))}
+      ${A(136, 42, 58, card(MI, `<div style="padding:6mm"><p style="font-family:${blk};font-size:17pt;line-height:1.1">“Big bold quote here.”</p><p style="font-size:8.6pt;margin-top:3mm">${L(14, 4)}</p></div>`))}
+      ${A(16, 150, 178, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm">${stats.map(([n, s, l], i) => card([CB, CO, YE, MI][i], `<div style="padding:6mm 4mm;color:${i < 2 ? '#fff' : K}"><b style="font-family:${blk};font-size:26pt">${n}${s}</b><p style="font-weight:700;font-size:7.6pt;margin-top:1mm;text-transform:uppercase">${l}</p></div>`)).join('')}</div>`)}
+      ${A(16, 210, 178, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm">${[0, 1, 2].map((i) => card('#fff', `<div style="padding:5mm">${ic(vals[i], 10, [CB, CO, MI][i], 2)}<p style="font-family:${blk};font-size:11pt;margin-top:2mm">VALUE TITLE</p><p style="font-size:8pt;line-height:1.5;margin-top:1mm">${L(12, i * 3)}</p></div>`)).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${A(16, 18, 178, `<h2 style="font-family:${blk};font-size:38pt;line-height:1;color:${K}">WHAT WE <span style="background:${CO};color:#fff;padding:0 2mm">DO</span></h2>`)}
+      ${A(16, 46, 176, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm">${svcNames.map((n, i) => { const bg = [CB, YE, CO, MI][i % 4], fg = bg === CB || bg === CO ? '#fff' : K; return card(bg, `<div style="padding:5mm;height:64mm;color:${fg}"><div style="width:14mm;height:14mm;border-radius:50%;background:#fff;border:.8mm solid ${K};display:grid;place-items:center">${ic(svc[i], 7, K, 2)}</div><p style="font-family:${blk};font-size:12pt;margin-top:4mm;line-height:1.1">${n.toUpperCase()}</p><p style="font-size:7.8pt;line-height:1.5;margin-top:2mm">${L(14, i * 3)}</p></div>`); }).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${confetti(19)}${A(16, 18, 178, `<h2 style="font-family:${blk};font-size:38pt;line-height:1;color:${K}">THE <span style="color:${MI}">CREW</span></h2>`)}
+      ${A(16, 46, 178, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7mm 6mm">${Array.from({ length: 8 }, (_, i) => `<div style="text-align:center"><div style="width:32mm;height:32mm;border-radius:50%;margin:0 auto;background:${[CB, CO, YE, MI][i % 4]};border:1.1mm solid ${K};box-shadow:1.6mm 1.6mm 0 ${K};display:grid;place-items:center">${ic('user-round', 13, '#fff', 1.6)}</div><p style="font-family:${blk};font-size:10pt;margin-top:3.4mm">NAME SURNAME</p><p style="font-size:7.4pt;font-weight:700">Position</p></div>`).join('')}</div>`)}
+      ${A(16, 196, 176, card(YE, `<div style="padding:7mm;display:grid;grid-template-columns:1fr 30mm;gap:6mm;align-items:center"><div><p style="font-family:${blk};font-size:22pt">SAY HELLO!</p>${contactRows.map(([i, v]) => `<div style="display:flex;gap:2.6mm;align-items:center;margin-top:2.4mm;font-weight:700;font-size:9.4pt">${ic(i, 5, K, 2.2)}${v}</div>`).join('')}</div>${qr(30, K, '#fff')}</div>`))}</div>`);
+  }
+
+  // =====================================================================
+  // THEME 18 · EMERALD DECO — emerald and gold, art-deco luxury
+  // =====================================================================
+  THEMES[18] = { name: 'Emerald-Deco', w: 210, h: 297, bg: '#0f3b32', pages: [] };
+  { const GD = 'linear-gradient(135deg,#b88a2e,#f3dc94 45%,#b88a2e 70%,#e9c96f)', G = '#d9b75f', IV = '#f5efe0', EM = '#0f3b32', T = THEMES[18].pages, cin = "'Cinzel',serif", cor = "'Cormorant Garamond',serif";
+    const goldText = (t, size, st = '') => `<span style="color:#e2c271;font-size:${size}pt;${st}">${t}</span>`;
+    const frame = (inset = 9) => `<div class="abs" style="inset:${inset}mm;border:.5mm solid ${G}"></div><div class="abs" style="inset:${inset + 2.4}mm;border:.2mm solid ${G}"></div>` + [[inset, inset], [210 - inset - 14, inset], [inset, 297 - inset - 14], [210 - inset - 14, 297 - inset - 14]].map(([x, y]) => `<div class="abs" style="left:${x}mm;top:${y}mm;width:14mm;height:14mm;background:${EM};border:.5mm solid ${G};transform:rotate(45deg) scale(.6)"></div>`).join('');
+    const rays = (cx, cy, n, len, op = .5) => svgP(Array.from({ length: n }, (_, i) => { const a = Math.PI + i / (n - 1) * Math.PI; return `<line x1="${cx}" y1="${cy}" x2="${cx + len * Math.cos(a)}" y2="${cy + len * Math.sin(a)}" stroke="#d9b75f" stroke-width="${i % 2 ? .25 : .55}" opacity="${op}"/>`; }).join('') + [20, 34, 48].map((r) => `<path d="M${cx - r},${cy} A${r},${r} 0 0 1 ${cx + r},${cy}" fill="none" stroke="#d9b75f" stroke-width=".5"/>`).join(''));
+    T.push(`${rays(105, 190, 41, 210, .45)}${frame()}${A(0, 34, 210, `<div style="display:flex;justify-content:center">${logo(12, true)}</div>`)}
+      ${A(20, 196, 170, `<div style="text-align:center"><p style="font-family:${cin};font-size:9pt;letter-spacing:.5em;color:${G}">COMPANY PROFILE</p><h1 style="font-family:${cin};font-weight:600;line-height:1.1;margin-top:4mm">${goldText('THE ART OF', 30)}<br>${goldText('TRUST', 52)}</h1><p style="font-family:${cor};font-style:italic;font-size:14pt;color:${IV};margin-top:4mm">— Est. 0000 —</p></div>`)}`);
+    T.push(`<div class="abs" style="inset:0;background:${IV}"></div>${frame()}${A(24, 30, 162, `<p style="font-family:${cin};font-size:8pt;letter-spacing:.5em;color:#a3802e;text-align:center">ABOUT US</p><h2 style="font-family:${cin};font-weight:600;font-size:26pt;color:${EM};text-align:center;margin-top:3mm">A Legacy of Integrity</h2><div style="width:40mm;height:.5mm;background:${GD};margin:5mm auto"></div>`)}
+      ${A(24, 70, 78, `<p style="font-family:${cor};font-size:12pt;line-height:1.6;color:#2f3f39;text-align:justify">${L(80)}</p>`)}
+      ${A(112, 72, 0, `<div style="padding:2.4mm;background:${GD}"><div style="padding:2.4mm;background:${IV}">${img(8939110, 66)}</div></div>`)}
+      ${A(24, 196, 162, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4mm">${stats.map(([n, s, l]) => `<div style="text-align:center;background:${EM};padding:7mm 2mm;border:.5mm solid ${G}">${goldText(n + s, 22, `font-family:${cin};font-weight:600`)}<p style="font-family:${cin};font-size:6.4pt;letter-spacing:.2em;color:${IV};margin-top:2mm">${l.toUpperCase()}</p></div>`).join('')}</div>`)}`);
+    T.push(`${frame()}${A(24, 28, 162, `<p style="font-family:${cin};font-size:8pt;letter-spacing:.5em;color:${G};text-align:center">OUR SERVICES</p><h2 style="font-family:${cin};font-weight:600;text-align:center;margin-top:3mm">${goldText('Nine Distinguished Practices', 22)}</h2>`)}
+      ${A(24, 62, 162, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5mm">${svcNames.map((n, i) => `<div style="position:relative;padding:7mm 4mm;height:62mm;text-align:center;border:.4mm solid ${G};clip-path:polygon(4mm 0,calc(100% - 4mm) 0,100% 4mm,100% calc(100% - 4mm),calc(100% - 4mm) 100%,4mm 100%,0 calc(100% - 4mm),0 4mm)"><p style="font-family:${cin};font-size:16pt;color:${G}">${['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][i]}</p>${ic(svc[i], 9, IV, 1.2)}<p style="font-family:${cin};font-size:10pt;color:${IV};margin-top:3mm;line-height:1.3">${n}</p><p style="font-family:${cor};font-size:10pt;color:#bcd0c8;line-height:1.35;margin-top:2mm">${L(10, i * 3)}</p></div>`).join('')}</div>`)}`);
+    T.push(`<div class="abs" style="inset:0;background:${IV}"></div>${frame()}${A(24, 28, 162, `<p style="font-family:${cin};font-size:8pt;letter-spacing:.5em;color:#a3802e;text-align:center">OUR PEOPLE</p><h2 style="font-family:${cin};font-weight:600;font-size:24pt;color:${EM};text-align:center;margin-top:3mm">The Partners &amp; Team</h2>`)}
+      ${A(24, 60, 162, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm 4mm">${Array.from({ length: 8 }, () => `<div style="text-align:center"><div style="width:30mm;height:38mm;margin:0 auto;border-radius:50%;padding:1.2mm;background:${GD}"><div class="ph" style="height:100%;border-radius:50%;background:#e7dfcb">${ic('user-round', 11, '#a3802e', 1)}</div></div><p style="font-family:${cin};font-size:9pt;color:${EM};margin-top:3mm">Name Surname</p><p style="font-family:${cor};font-style:italic;font-size:10pt;color:#6b7a73">Position</p></div>`).join('')}</div>`)}
+      <div class="abs" style="left:9mm;right:9mm;bottom:9mm;height:62mm;background:${EM}"></div>
+      ${A(30, 242, 150, `<p style="font-family:${cin};font-size:14pt;text-align:center">${goldText('BY APPOINTMENT', 16)}</p><div style="display:flex;justify-content:center;gap:6mm;flex-wrap:wrap;margin-top:4mm;font-family:${cor};font-size:11pt;color:${IV}">${contactRows.map(([, v]) => `<span>${v}</span>`).join('<span style="color:#d9b75f">◆</span>')}</div>`)}`);
+  }
+
+  // =====================================================================
+  // THEME 19 · AURORA — midnight with violet, blue, teal and pink light
+  // =====================================================================
+  THEMES[19] = { name: 'Aurora', w: 210, h: 297, bg: '#090a1a', pages: [] };
+  { const T = THEMES[19].pages, un = "'Unbounded',sans-serif", body = "font-family:'Plus Jakarta Sans',sans-serif;color:#b9bdd6", GR2 = 'linear-gradient(120deg,#a78bfa,#60a5fa 45%,#2dd4bf 80%)';
+    const blobs = (list) => list.map(([x, y, r, c]) => `<div class="abs" style="left:${x - r}mm;top:${y - r}mm;width:${2 * r}mm;height:${2 * r}mm;border-radius:50%;background:radial-gradient(circle, ${c} 0%, rgba(9,10,26,0) 68%)"></div>`).join('');
+    const glass = (inner, st = '') => `<div style="background:rgba(255,255,255,.06);border:.3mm solid rgba(255,255,255,.16);border-radius:6mm;${st}">${inner}</div>`;
+    const gtext = (t, st = '') => `<span style="color:#7dd3fc;${st}">${t}</span>`;
+    T.push(`<div style="${body}">${blobs([[40, 70, 90, 'rgba(124,58,237,.55)'], [170, 120, 100, 'rgba(37,99,235,.5)'], [90, 230, 90, 'rgba(45,212,191,.38)'], [190, 270, 60, 'rgba(244,114,182,.35)']])}
+      ${A(18, 18, 0, logo(11, true))}
+      ${A(18, 96, 174, `<p style="font-size:8pt;letter-spacing:.3em;color:#a5b4fc">COMPANY PROFILE · 0000</p><h1 style="font-family:${un};font-weight:600;font-size:40pt;line-height:1.05;color:#fff;margin-top:4mm">Clarity for<br>${gtext('every number')}</h1>`)}
+      ${A(18, 196, 174, `<div style="display:flex;gap:4mm;flex-wrap:wrap">${['Audit', 'Tax', 'Advisory', 'Accounting', 'Risk', 'ERP'].map((t) => glass(`<span style="display:block;padding:3mm 5mm;color:#fff;font-size:10pt;font-weight:600">${t}</span>`, 'border-radius:20mm')).join('')}</div>`)}
+      ${A(18, 236, 120, `<p style="font-size:9.4pt;line-height:1.6">${L(24)}</p>`)}</div>`);
+    T.push(`<div style="${body}">${blobs([[180, 40, 80, 'rgba(124,58,237,.45)'], [20, 260, 90, 'rgba(45,212,191,.32)']])}${A(18, 22, 174, `<h2 style="font-family:${un};font-weight:600;font-size:28pt;color:#fff;line-height:1.1">About ${gtext('us')}</h2>`)}
+      ${A(18, 46, 174, glass(`<div style="padding:8mm;columns:2;column-gap:8mm;font-size:9.4pt;line-height:1.7">${L(110)}</div>`))}
+      ${A(18, 152, 174, `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:5mm">${stats.map(([n, s, l]) => glass(`<div style="padding:7mm"><b style="font-family:${un};font-weight:600;font-size:34pt">${gtext(n + s)}</b><p style="font-size:8.4pt;margin-top:2mm;color:#cfd3ea">${l}</p></div>`)).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${blobs([[30, 40, 80, 'rgba(37,99,235,.45)'], [190, 250, 90, 'rgba(244,114,182,.3)']])}${A(18, 22, 174, `<h2 style="font-family:${un};font-weight:600;font-size:28pt;color:#fff;line-height:1.1">What we ${gtext('do')}</h2>`)}
+      ${A(18, 48, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5mm">${svcNames.map((n, i) => glass(`<div style="padding:6mm;height:66mm"><div style="width:13mm;height:13mm;border-radius:4mm;background:${GR2};display:grid;place-items:center">${ic(svc[i], 7, '#0b0c1f', 1.9)}</div><p style="font-family:${un};font-weight:500;font-size:10pt;color:#fff;margin-top:5mm;line-height:1.3">${n}</p><p style="font-size:7.8pt;line-height:1.55;margin-top:2mm">${L(14, i * 3)}</p></div>`)).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${blobs([[105, 150, 120, 'rgba(124,58,237,.35)'], [40, 40, 60, 'rgba(45,212,191,.3)']])}${A(18, 22, 174, `<h2 style="font-family:${un};font-weight:600;font-size:28pt;color:#fff;line-height:1.1">The ${gtext('team')}</h2>`)}
+      ${A(18, 52, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm 5mm">${Array.from({ length: 8 }, () => `<div style="text-align:center"><div style="width:32mm;height:32mm;border-radius:50%;margin:0 auto;padding:.8mm;background:${GR2}"><div class="ph" style="height:100%;border-radius:50%;background:#14163a">${ic('user-round', 12, '#a5b4fc', 1.2)}</div></div><p style="color:#fff;font-weight:600;font-size:9.6pt;margin-top:3mm">Name Surname</p><p style="font-size:7.6pt">Position</p></div>`).join('')}</div>`)}
+      ${A(18, 190, 174, glass(`<div style="padding:9mm;display:grid;grid-template-columns:1fr 32mm;gap:8mm;align-items:center"><div><p style="font-family:${un};font-weight:600;font-size:18pt;color:#fff">Let’s ${gtext('connect')}</p>${contactRows.map(([i, v]) => `<div style="display:flex;gap:3mm;align-items:center;margin-top:3mm;font-size:9.4pt;color:#e1e4f5">${ic(i, 5, '#60a5fa', 1.8)}${v}</div>`).join('')}</div>${qr(32, '#0b0c1f', '#e1e4f5')}</div>`))}</div>`);
+  }
+
+  // =====================================================================
+  // THEME 20 · SWISS RED — white, red and black; strict modernist grid
+  // =====================================================================
+  THEMES[20] = { name: 'Swiss-Red', w: 210, h: 297, bg: '#ffffff', pages: [] };
+  { const RD = '#e2231a', K = '#111', T = THEMES[20].pages, gr = "'Archivo',sans-serif", body = `font-family:${gr};color:#333`;
+    const grid = svgP(Array.from({ length: 13 }, (_, i) => `<line x1="${12 + i * 15.5}" y1="0" x2="${12 + i * 15.5}" y2="297" stroke="#000" stroke-width=".1" opacity=".08"/>`).join(''));
+    T.push(`<div style="${body}">${grid}<div class="abs" style="left:0;top:0;width:136mm;height:150mm;background:${RD}"></div>
+      ${A(12, 12, 0, logo(10, true))}${A(12, 64, 124, `<b style="font-family:${gr};font-weight:900;font-size:150pt;line-height:.8;color:#fff;letter-spacing:-.06em">00</b>`)}
+      ${A(143, 16, 55, `<p style="font-weight:800;font-size:9pt;color:${K};line-height:1.35">Company<br>Profile<br>0000</p><p style="font-size:7.6pt;line-height:1.5;margin-top:5mm">${L(24)}</p>`)}
+      ${A(12, 166, 186, `<h1 style="font-weight:900;font-size:50pt;line-height:.92;color:${K};letter-spacing:-.03em">Audit.<br>Tax.<br>Advisory.</h1>`)}
+      ${A(143, 214, 0, `<img class="whole" src="/profile/img/c-7821716.jpg" style="width:55mm;filter:grayscale(1)">`)}
+      ${A(12, 280, 186, `<div style="display:flex;justify-content:space-between;font-size:7.4pt;font-weight:700;color:${K};border-top:2px solid ${K};padding-top:2mm"><span>COMPANY NAME</span><span>CITY</span><span>WWW.COMPANY.COM</span></div>`)}</div>`);
+    T.push(`<div style="${body}">${grid}${A(12, 14, 186, `<div style="display:flex;justify-content:space-between;border-top:2px solid ${K};padding-top:2mm;font-size:7.6pt;font-weight:800"><span>01</span><span>ABOUT US</span></div>`)}
+      ${A(12, 28, 186, `<h2 style="font-weight:900;font-size:44pt;line-height:.95;letter-spacing:-.03em;color:${K}">Precise.<br><span style="color:${RD}">Independent.</span><br>Reliable.</h2>`)}
+      ${A(12, 104, 90, `<p style="font-size:9.4pt;line-height:1.6">${L(90)}</p>`)}${A(110, 104, 88, `<p style="font-size:9.4pt;line-height:1.6">${L(80, 9)}</p>`)}
+      ${A(12, 196, 186, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid ${K}">${stats.map(([n, s, l]) => `<div style="padding-top:3mm"><b style="font-weight:900;font-size:46pt;color:${RD};letter-spacing:-.04em;line-height:1">${n}${s}</b><p style="font-size:7.6pt;font-weight:800;margin-top:2mm;text-transform:uppercase;color:${K}">${l}</p></div>`).join('')}</div>`)}</div>`);
+    T.push(`<div style="${body}">${grid}${A(12, 14, 186, `<div style="display:flex;justify-content:space-between;border-top:2px solid ${K};padding-top:2mm;font-size:7.6pt;font-weight:800"><span>02</span><span>SERVICES</span></div>`)}
+      ${A(12, 28, 186, `<h2 style="font-weight:900;font-size:44pt;line-height:.95;letter-spacing:-.03em;color:${K}">Nine<br>services.</h2>`)}
+      ${A(12, 80, 186, svcNames.map((n, i) => `<div style="display:grid;grid-template-columns:31mm 62mm 1fr;align-items:baseline;border-top:${i ? '1px' : '2px'} solid ${K};padding:3.2mm 0"><b style="font-weight:900;font-size:22pt;color:${RD}">0${i + 1}</b><p style="font-weight:800;font-size:11pt;color:${K}">${n}</p><p style="font-size:8pt;line-height:1.45">${L(16, i * 3)}</p></div>`).join(''))}</div>`);
+    T.push(`<div style="${body}">${grid}${A(12, 14, 186, `<div style="display:flex;justify-content:space-between;border-top:2px solid ${K};padding-top:2mm;font-size:7.6pt;font-weight:800"><span>03</span><span>PEOPLE</span></div>`)}
+      ${A(12, 28, 186, `<h2 style="font-weight:900;font-size:44pt;line-height:.95;letter-spacing:-.03em;color:${K}">The team.</h2>`)}
+      ${A(12, 60, 186, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6mm 4mm">${Array.from({ length: 8 }, () => `<div><div class="ph" style="height:48mm;background:#ececec">${ic('user-round', 13, '#9a9a9a', 1)}</div><p style="font-weight:800;font-size:9.4pt;color:${K};margin-top:2.4mm">Name Surname</p><p style="font-size:7.4pt;color:${RD};font-weight:700">Position</p></div>`).join('')}</div>`)}
+      <div class="abs" style="left:0;right:0;bottom:0;height:74mm;background:${RD}"></div>
+      ${A(12, 232, 186, `<div style="display:grid;grid-template-columns:1fr 30mm;gap:8mm;align-items:end"><div><h3 style="font-weight:900;font-size:34pt;color:#fff;letter-spacing:-.03em;line-height:1">Contact.</h3>${contactRows.map(([, v]) => `<p style="color:#fff;font-weight:700;font-size:9.4pt;margin-top:1.6mm">${v}</p>`).join('')}</div>${qr(30, K, '#fff')}</div>`)}</div>`);
+  }
+
   // ---------- render the chosen theme ----------
   const th = THEMES[TN];
   document.getElementById('pagesize').textContent = `@page{ size:${th.w}mm ${th.h}mm; margin:0; } #doc{ width:${th.w}mm; } .page{ width:${th.w}mm; height:${th.h}mm; background:${th.bg}; }`;
   document.title = `Theme ${TN} – ${th.name} – Consolidated`;
   document.getElementById('doc').innerHTML = th.pages.map((p) => `<section class="page">${p}</section>`).join('');
-  document.getElementById('ui').innerHTML = `<b>Company Profile · Theme ${TN} — ${th.name}</b>${Array.from({ length: 14 }, (_, i) => i + 1).map((n) => `<a class="${n === TN ? 'on' : ''}" href="?t=${n}">Theme ${n}</a>`).join('')}`;
+  document.getElementById('ui').innerHTML = `<b>Company Profile · Theme ${TN} — ${th.name}</b>${Array.from({ length: 20 }, (_, i) => i + 1).map((n) => `<a class="${n === TN ? 'on' : ''}" href="?t=${n}">Theme ${n}</a>`).join('')}`;
   lucide.createIcons();
   window.__themeName = th.name;
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => requestAnimationFrame(() => { window.__profileReady = true; }));
