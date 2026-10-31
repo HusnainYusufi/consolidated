@@ -8,32 +8,25 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ============ Consolidated company profile ============
-     Layered corporate brochure: every photo is shown whole (never sliced), sitting on an offset navy
-     block; navy colour fields carry a fine 60-degree line texture (the six-fold geometry of the logo);
-     filled icon discs, a services donut chart, a competence ring and a regional map carry the content.
-     Colours come from the logo. All copy comes from the website (assets/js/i18n.js); ?lang=ar for Arabic. */
+  /* ============ Consolidated company profile · Brand Blades, angular edition ============
+     Sharp angles only: faceted shards cut from a 60-degree triangle lattice (the six-fold geometry of the
+     logo), chamfered panels and icon tiles, straight-edged charts. Big icons carry the content; the only
+     photograph is the building on the cover, shown whole. Colours come from the logo.
+     All copy comes from the website (assets/js/i18n.js); ?lang=ar for Arabic. */
   :root{
-    --navy: oklch(0.31 0.055 252);
-    --accent: oklch(0.52 0.08 245);
-    --soft: oklch(0.80 0.035 245);
-    --ink: oklch(0.30 0.01 250);
-    --ink2: oklch(0.45 0.01 250);
-    --silver: oklch(0.66 0.008 250);
-    --line: oklch(0.88 0.008 250);
-    --mist: oklch(0.96 0.008 245);
-    --paper: oklch(0.997 0.002 250);
-    --font: 'Source Sans 3', 'Segoe UI', sans-serif;
-    --hatch-dark: repeating-linear-gradient(120deg, oklch(1 0 0 / .07) 0 .35mm, transparent .35mm 2.6mm);
-    --hatch-light: repeating-linear-gradient(120deg, oklch(0.52 0.08 245 / .13) 0 .3mm, transparent .3mm 2.4mm);
+    --navy:#1d3a57; --steel:#2f6390; --soft:#8fb0cc; --silver:#9aa3ac;
+    --ink:#24303c; --ink2:#4a5662; --line:#dfe4e9; --mist:#f1f4f7; --paper:#ffffff;
+    --dark:linear-gradient(150deg,#0e1218,#1a2531 55%,#16304a);
+    --navyfill:linear-gradient(150deg,#24476b,#13253a);
+    --font:'Outfit','Segoe UI',sans-serif;
   }
-  html[lang="ar"]{ --font:'IBM Plex Sans Arabic', 'Segoe UI', sans-serif; }
+  html[lang="ar"]{ --font:'IBM Plex Sans Arabic','Segoe UI',sans-serif; }
   @page{ size:210mm 297mm; margin:0; }
   *{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; }
-  body{ font-family:var(--font); color:var(--ink2); background:oklch(0.82 0.01 250); -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:var(--font); color:var(--ink2); background:#c9cfd6; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   html.print body{ background:var(--paper); }
   #doc{ width:210mm; margin:0 auto; }
   html:not(.print) #doc{ padding:24px 0 60px; display:flex; flex-direction:column; gap:24px; }
@@ -42,14 +35,16 @@
 
   .page{ position:relative; isolation:isolate; width:210mm; height:297mm; overflow:hidden; background:var(--paper); page-break-after:always; break-after:page; }
   .page:last-child{ page-break-after:auto; break-after:auto; }
-  html:not(.print) .page{ box-shadow:0 12px 40px oklch(0.2 0.03 252 / .25); }
+  .page.dark{ background:var(--dark); color:#c3cbd3; }
+  html:not(.print) .page{ box-shadow:0 12px 40px rgba(14,18,24,.3); }
   .abs{ position:absolute; z-index:1; }
-  .navy{ background-color:var(--navy); background-image:var(--hatch-dark); color:#fff; }
-  .tex{ background-image:var(--hatch-light); }
+  .bg{ position:absolute; z-index:0; pointer-events:none; }
+  html[dir="rtl"] .bg.mir{ transform:scaleX(-1); }
+  .navy{ background:var(--navyfill); color:#fff; }
 
   /* running header and footer */
   .hd{ position:absolute; z-index:3; top:11mm; inset-inline:18mm; display:flex; justify-content:space-between; align-items:center; }
-  .hd .sec{ display:flex; align-items:center; gap:2.6mm; font-size:7.4pt; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--accent); }
+  .hd .sec{ display:flex; align-items:center; gap:2.6mm; font-size:7.4pt; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--steel); }
   .hd .sec b{ color:var(--navy); font-size:9pt; letter-spacing:0; }
   html[lang="ar"] .hd .sec{ letter-spacing:0; font-size:8.4pt; }
   .hd img{ height:6mm; }
@@ -57,46 +52,47 @@
   .ft .r{ flex:1; height:1px; background:var(--line); }
   .ft b{ color:var(--navy); font-size:9pt; }
   html[lang="ar"] .ft{ font-size:7.8pt; }
+  .dark .hd .sec, .dark .hd .sec b{ color:#fff; } .dark .hd img{ filter:brightness(0) invert(1); }
+  .dark .ft, .lf .ft{ color:#c7d3de; } .dark .ft b, .lf .ft b{ color:#fff; } .dark .ft .r, .lf .ft .r{ background:rgba(255,255,255,.25); }
 
   /* type */
-  .kick{ display:flex; align-items:center; gap:3mm; font-size:7.6pt; letter-spacing:.2em; text-transform:uppercase; font-weight:700; color:var(--accent); }
-  .kick::before{ content:""; width:10mm; height:2px; background:var(--accent); }
+  .kick{ display:flex; align-items:center; gap:3mm; font-size:7.6pt; letter-spacing:.24em; text-transform:uppercase; font-weight:600; color:var(--steel); }
+  .kick::before{ content:""; width:4mm; height:4mm; background:currentColor; clip-path:polygon(100% 0,100% 100%,0 100%); }
+  html[dir="rtl"] .kick::before{ clip-path:polygon(0 0,100% 100%,0 100%); }
   html[lang="ar"] .kick{ letter-spacing:0; font-size:9pt; }
   .h2{ font-weight:700; color:var(--navy); font-size:27pt; line-height:1.08; margin-top:3mm; letter-spacing:-.01em; }
-  .h2 span{ font-weight:300; color:var(--accent); }
+  .h2 span{ font-weight:300; color:var(--steel); }
   html[lang="ar"] .h2{ font-size:21pt; line-height:1.45; letter-spacing:0; }
   .t2{ font-weight:700; color:var(--navy); font-size:11pt; line-height:1.3; }
   html[lang="ar"] .t2{ font-size:11.4pt; line-height:1.55; }
-  .tag{ color:var(--accent); font-weight:600; font-size:9.2pt; line-height:1.35; }
+  .tag{ color:var(--steel); font-weight:600; font-size:9.2pt; line-height:1.35; }
   .tx{ font-size:9.1pt; line-height:1.56; color:var(--ink2); text-align:justify; }
   html[lang="ar"] .tx{ font-size:9.4pt; line-height:1.8; }
   .sm{ font-size:8pt; line-height:1.5; }
   html[lang="ar"] .sm{ font-size:8.6pt; line-height:1.7; }
-  .cap{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; font-weight:700; color:var(--accent); }
+  .cap{ font-size:7pt; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--steel); }
   html[lang="ar"] .cap{ letter-spacing:0; font-size:8.4pt; }
   .num{ font-weight:300; line-height:.95; letter-spacing:-.02em; }
   .num small{ font-size:.5em; font-weight:400; }
-  .navy .t2, .navy .h2{ color:#fff; } .navy .tx, .navy .sm{ color:oklch(0.88 0.02 245); } .navy .cap, .navy .tag{ color:var(--soft); } .navy .kick{ color:var(--soft); } .navy .kick::before{ background:var(--soft); }
+  .navy .t2, .navy .h2, .dark .t2, .dark .h2{ color:#fff; } .navy .tx, .navy .sm, .dark .tx, .dark .sm{ color:#c9d6e2; }
+  .navy .cap, .navy .tag, .dark .cap, .dark .tag{ color:var(--soft); } .navy .kick, .dark .kick{ color:var(--soft); } .dark .h2 span{ color:var(--soft); }
 
-  /* filled icon disc */
-  .disc{ display:inline-grid; place-items:center; flex:0 0 auto; border-radius:50%; background:var(--accent); color:#fff; }
-  .disc svg{ width:50%; height:50%; stroke-width:1.7; }
-  .disc.nv{ background:var(--navy); } .disc.wt{ background:#fff; color:var(--navy); }
-
-  /* a whole photo on an offset block */
-  .lay{ position:relative; }
-  .lay > img{ position:relative; z-index:1; display:block; width:100%; height:100%; }
-  .lay > .blk{ position:absolute; width:100%; height:100%; }
+  /* chamfered icon tile: a square with its top corner cut at 45 degrees */
+  .tile{ display:inline-grid; place-items:center; flex:0 0 auto; color:#fff; background:var(--steel); clip-path:polygon(24% 0,100% 0,100% 100%,0 100%,0 24%); }
+  html[dir="rtl"] .tile{ clip-path:polygon(0 0,76% 0,100% 24%,100% 100%,0 100%); }
+  .tile svg{ width:52%; height:52%; stroke-width:1.7; }
+  .tile.nv{ background:var(--navy); } .tile.wt{ color:var(--navy); background:#fff; } .tile.gl{ color:#fff; background:rgba(255,255,255,.13); }
 
   ul.li{ list-style:none; margin:0; padding:0; display:grid; gap:1.5mm 6mm; }
   ul.li li{ display:flex; gap:2.2mm; font-size:7.9pt; line-height:1.38; color:var(--ink); }
   html[lang="ar"] ul.li li{ font-size:8.5pt; line-height:1.55; }
-  ul.li li svg{ flex:0 0 auto; width:3.2mm; height:3.2mm; color:var(--accent); stroke-width:2.4; margin-top:.3mm; }
-  .chip{ display:inline-block; border:1px solid var(--accent); color:var(--navy); font-weight:700; font-size:7.6pt; padding:.6mm 2.4mm; letter-spacing:.05em; direction:ltr; }
+  ul.li li::before{ content:""; flex:0 0 auto; width:2mm; height:2mm; margin-top:1.1mm; background:var(--steel); clip-path:polygon(100% 0,100% 100%,0 100%); }
+  .chip{ display:inline-block; border:1px solid var(--steel); color:var(--navy); font-weight:600; font-size:7.6pt; padding:.6mm 2.4mm; letter-spacing:.05em; direction:ltr; }
+  .navy .chip, .dark .chip{ border-color:rgba(255,255,255,.45); color:#fff; }
 
   .ui{ position:sticky; top:0; z-index:9; display:flex; gap:12px; align-items:center; padding:10px 18px; background:var(--navy); color:#fff; font:14px var(--font); }
   .ui img{ height:24px; filter:brightness(0) invert(1); } .ui .t{ flex:1; opacity:.85; }
-  .ui a{ color:#fff; border:1px solid oklch(1 0 0 / .4); padding:6px 12px; text-decoration:none; }
+  .ui a{ color:#fff; border:1px solid rgba(255,255,255,.4); padding:6px 12px; text-decoration:none; }
   html.print .ui{ display:none; }
 </style>
 </head>
@@ -105,7 +101,6 @@
 <div id="doc"></div>
 <script src="/assets/js/i18n.js"></script>
 <script src="/profile/mark.js"></script>
-<script src="/profile/photos.js"></script>
 <script src="/profile/map.js"></script>
 <script src="/profile/vendor/lucide.min.js"></script>
 <script>
@@ -116,17 +111,29 @@
   Hd.lang = lang; Hd.dir = AR ? 'rtl' : 'ltr'; if (PRINT) Hd.classList.add('print');
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const pad = (i) => String(i).padStart(2, '0');
-  const disc = (n, mm, cls = '') => `<span class="disc ${cls}" style="width:${mm}mm;height:${mm}mm"><i data-lucide="${n}"></i></span>`;
-  const src = (id) => /^\d+$/.test(String(id)) ? `/profile/img/c-${id}.jpg` : `/assets/img/${id}.jpg`;
-  // A whole photo (never cropped) at width w mm, with an offset block behind it.
-  const ph = (id, w, o = {}) => { const [iw, ih] = PHOTO_DIM[id], h = w * ih / iw, d = o.off ?? 5;
-    const bs = o.dir === 'tl' ? `top:${-d}mm;inset-inline-start:${-d}mm` : o.dir === 'bl' ? `top:${d}mm;inset-inline-start:${-d}mm` : o.dir === 'tr' ? `top:${-d}mm;inset-inline-start:${d}mm` : `top:${d}mm;inset-inline-start:${d}mm`;
-    return `<div class="lay" style="width:${w}mm;height:${h}mm;${o.style || ''}"><div class="blk ${o.light ? 'tex' : 'navy'}" style="${bs};${o.light ? 'background-color:var(--mist)' : ''}"></div><img src="${src(id)}" alt=""></div>`; };
-  const phH = (id, w) => { const [iw, ih] = PHOTO_DIM[id]; return w * ih / iw; };
-  const GR = { silver: ['#c6ccd2', '#7d858d'], navy: ['#3d678c', '#13253a'], char: ['#3e4248', '#1a1c1f'] };
+  // chamfered panel: the top outer corner cut at 45 degrees (a vector clip, so the cut edge prints clean)
+  const cut = (n) => AR ? `polygon(${n}mm 0,100% 0,100% 100%,0 100%,0 ${n}mm)` : `polygon(0 0,calc(100% - ${n}mm) 0,100% ${n}mm,100% 100%,0 100%)`;
+  const tile = (n, mm, cls = '') => `<span class="tile ${cls}" style="width:${mm}mm;height:${mm}mm"><i data-lucide="${n}"></i></span>`;
+  const GR = { silver: ['#c6ccd2', '#7d858d'], navy: ['#3d678c', '#13253a'], char: ['#3e4248', '#1a1c1f'], steel: ['#5b86ad', '#1d3a57'] };
   let gid = 0;
   const mark = (style, mono) => { const id = ++gid;
     return `<svg viewBox="0 0 ${MARK.w} ${MARK.h}" style="${style}"><defs>${Object.entries(GR).map(([k, [a, b]]) => `<linearGradient id="m${id}${k}" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`).join('')}</defs>${MARK.blades.map((b) => `<path d="${b.d}" fill="${mono || `url(#m${id}${b.role})`}"/>`).join('')}</svg>`; };
+
+  // ---- faceted shards: triangles of a 60-degree lattice, filled inside a region (all edges straight) ----
+  let _s = 1; const rnd = () => { _s = (_s * 16807) % 2147483647; return (_s - 1) / 2147483646; };
+  const hex = (s) => [1, 3, 5].map((i) => parseInt(s.slice(i, i + 2), 16));
+  const mixC = (a, b, t) => '#' + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t).toString(16).padStart(2, '0')).join('');
+  const inPoly = (x, y, P) => { let c = false; for (let i = 0, j = P.length - 1; i < P.length; j = i++) { const [xi, yi] = P[i], [xj, yj] = P[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+  const facets = ({ core, fringe, s = 13, pal = 'navy', seed = 1, W = 210, H = 297, edge = .14, dens = .94, fr = .3 }) => { _s = seed; const h = s * Math.sqrt(3) / 2, [c0, c1] = GR[pal]; let o = '';
+    for (let r = -1; r * h < H + h; r++) for (let k = -2; k * s / 2 < W + s; k++) {
+      const L = k * s / 2, y = r * h, up = (((k + r) % 2) + 2) % 2 === 0, cx = L + s / 2, cy = y + h / 2, rr = rnd(), t = rnd();
+      const inC = inPoly(cx, cy, core), inF = !inC && fringe && inPoly(cx, cy, fringe);
+      if (!(inC ? rr < dens : inF ? rr < fr : false)) continue;
+      const P = up ? [[L, y + h], [L + s / 2, y], [L + s, y + h]] : [[L, y], [L + s / 2, y + h], [L + s, y]];
+      const f = mixC(c0, c1, Math.min(1, Math.max(0, cy / H * .55 + t * .5 + (up ? 0 : .1))));
+      o += `<polygon points="${P.map((p) => p.map((v) => v.toFixed(2)).join(',')).join(' ')}" fill="${f}" stroke="${f}" stroke-width=".25"/><polygon points="${P.map((p) => p.map((v) => v.toFixed(2)).join(',')).join(' ')}" fill="none" stroke="#fff" stroke-opacity="${edge}" stroke-width=".18"/>`;
+    } return o; };
+  const svgBg = (inner, W = 210, H = 297, st = '') => `<svg class="bg mir" viewBox="0 0 ${W} ${H}" style="top:0;left:0;width:${W}mm;height:${H}mm;${st}">${inner}</svg>`;
 
   const T = AR ? {
     profile: 'الملف التعريفي', year: '2026', firm: 'الموحدة لتدقيق الحسابات والاستشارات المالية', site: 'www.caudit.net', motto: ['نزاهة', 'شفافية', 'جودة'],
@@ -134,7 +141,7 @@
     whoTitle: 'شريك موثوق', whoTitle2: 'لأعمالك', est: 'تأسست عام 2015 · عمّان، الأردن', creds: 'اعتمادات قيادتنا', standards: 'معايير نعمل وفقها', inNum: 'بالأرقام',
     vmv: ['الرؤية والمهمة', 'والقيم'], valuesT: 'قيمنا الأساسية', specialised: 'خدمة متخصصة', across: 'خدمة متخصصة', service: 'الخدمة',
     stats: ['سنة التأسيس', 'سنوات من الخبرة', 'عميل', 'خدمة متخصصة'], clientsN: 'عميل من الشركات والمصانع والمنظمات غير الحكومية',
-    clientsT: 'عملاء يثقون بنا', expectT: 'ما يمكنك أن تتوقعه منا',
+    clientsT: 'عملاء يثقون بنا', expectT: 'ما يمكنك أن تتوقعه منا', practices: 'ممارسات مهنية',
     mapT: ['من عمّان', 'إلى المنطقة'], mapS: 'مقرنا الرئيسي في عمّان، الأردن، ونخدم عملاءنا في منطقة الشرق الأوسط وشمال أفريقيا.', amman: 'عمّان',
     rows: ['الاسم', 'التأسيس', 'المقر الرئيسي', 'الخدمات', 'الاعتمادات المهنية', 'المعايير', 'العملاء', 'الهاتف', 'البريد الإلكتروني', 'الموقع الإلكتروني'],
     founded: '26 شباط 2015', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
@@ -144,7 +151,7 @@
     whoTitle: 'A trusted partner', whoTitle2: 'for your business', est: 'Established 2015 · Amman, Jordan', creds: 'Credentials held by our leadership', standards: 'Standards we work by', inNum: 'In Numbers',
     vmv: ['Vision, Mission', '& Values'], valuesT: 'Our Core Values', specialised: 'Specialised services', across: 'Specialised services', service: 'Service',
     stats: ['Founded', 'Years of practice', 'Clients served', 'Specialised services'], clientsN: 'Corporate, industrial & NGO client partners',
-    clientsT: 'Clients That Trust Us', expectT: 'What You Can Expect from Us',
+    clientsT: 'Clients That Trust Us', expectT: 'What You Can Expect from Us', practices: 'Professional practices',
     mapT: ['From Amman', 'to the region'], mapS: 'Headquartered in Amman, Jordan, serving clients across the Middle East and North Africa.', amman: 'Amman',
     rows: ['Name', 'Founded', 'Headquarters', 'Services', 'Professional credentials', 'Standards', 'Clients', 'Phone', 'Email', 'Website'],
     founded: '26 February 2015', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
@@ -155,11 +162,11 @@
   const ptIcons = ['medal', 'network', 'clipboard-check'];
   const statIcons = ['calendar-check', 'clock', 'users', 'layers'];
   const secIcons = ['factory', 'store', 'stethoscope', 'monitor-smartphone', 'heart-handshake', 'hard-hat', 'wheat', 'fuel'];
-  const secPhotos = [29988955, 1427541, 6129104, 1181354, 6591154, 8961073, 14502034, 19205947];
   const expIcons = ['hourglass', 'users-round', 'graduation-cap', 'book-check', 'globe', 'compass', 'lock', 'map-pin', 'star'];
+  const roleIcon = (r) => /Founder/.test(r) ? 'shield-check' : /Tax Partner/.test(r) ? 'receipt-text' : /Manager/.test(r) ? 'clipboard-check' : /Auditor/.test(r) ? 'scan-search' : /Accountant/.test(r) ? 'calculator' : 'users';
 
   const st = D.stats, S = D.services.items;
-  const totalSpec = S.reduce((a, s) => a + s.list.length, 0);
+  const totalSpec = S.reduce((a, s) => a + s.list.length, 0), maxL = Math.max(...S.map((s) => s.list.length));
   const cc = D.footer.cols.find((c) => (c.links || []).some((l) => String(l[1] || '').startsWith('tel:')));
   const link = (k) => (cc.links.find((l) => l[3] === k) || [''])[0];
   const figs = [[st[0].n, '', T.stats[0]], [st[1].n, st[1].suffix, T.stats[1]], [st[2].n, st[2].suffix, T.stats[2]], [totalSpec, '', T.stats[3]]];
@@ -168,165 +175,167 @@
   const page = (sec, inner, opt = {}) => pages.push({ sec, inner, opt });
   const A = (x, y, w, inner, extra = '') => `<div class="abs" style="top:${y}mm;inset-inline-start:${x}mm;${w ? `width:${w}mm;` : ''}${extra}">${inner}</div>`;
   const head = (no, h, h2) => `<p class="kick">${pad(no)} · ${esc(T.lb[no - 1])}</p><h2 class="h2">${esc(h)}${h2 ? `<br><span>${esc(h2)}</span>` : ''}</h2>`;
+  // a navy band across the page with a faint shard texture
+  const band = (top, height, inner, seed, pad = '10mm 18mm 0') => `<div class="navy abs" style="top:${top}mm;inset-inline:0;height:${height}mm;z-index:0">${svgBg(facets({ core: [[120, -5], [215, -5], [215, height + 5], [80, height + 5]], fringe: [[95, -5], [215, -5], [215, height + 5], [50, height + 5]], s: 11, seed, H: height }), 210, height, 'opacity:.4')}<div style="position:relative;padding:${pad}">${inner}</div></div>`;
+  const corner = (seed, pal = 'silver', op = .55) => svgBg(facets({ core: [[168, -5], [215, -5], [215, 40]], fringe: [[150, -5], [215, -5], [215, 58]], s: 10, pal, seed }), 210, 297, `opacity:${op}`);
 
-  // ============ 1 · COVER ============
+  // ============ 1 · COVER: the building, whole, inside a field of shards ============
+  const PW = 88, PH = PW * 2133 / 1600;
   page(0, `
-    <div class="navy abs" style="top:0;bottom:0;inset-inline-start:0;width:76mm;z-index:0"></div>
-    ${A(18, 18, 52, `<img src="/assets/img/icon.png" style="height:16mm;filter:brightness(0) invert(1)"><img src="/profile/img/wordmark-white.png" style="height:6.2mm;display:block;margin-top:5mm">`)}
-    ${A(64, 28, 0, ph(8939052, 128, { dir: 'br', off: 6, light: true }))}
-    ${A(100, 28 + phH(8939052, 128) + 14, 0, ph(7821716, 92, { dir: 'bl', off: 6 }))}
-    ${A(18, 196, 52, `<h1 style="color:#fff;font-weight:300;font-size:${AR ? 25 : 30}pt;line-height:1.08">${esc(T.profile)}<br><b style="font-weight:700;color:var(--soft)">${T.year}</b></h1>
-      <div style="display:flex;flex-direction:column;gap:2.6mm;margin-top:9mm">${T.motto.map((m, i) => `<span style="display:flex;align-items:center;gap:2.4mm;color:#fff;font-weight:600;font-size:${AR ? 10.4 : 10}pt">${disc(['badge-check', 'eye', 'award'][i], 6.4, 'wt')}${esc(m)}</span>`).join('')}</div>`)}
-    ${A(90, 222, 102, `<p class="t2" style="font-size:${AR ? 14 : 15.5}pt">${esc(D.services.title1)} ${esc(D.services.title2)}</p><p class="tx" style="margin-top:3.6mm">${esc(D.hero.sub)}</p>
-      <p class="cap" style="margin-top:5mm">${T.site}</p>`)}`, { bare: true });
+    ${svgBg(facets({ core: [[92, -5], [215, -5], [215, 182], [168, 212], [92, 160]], fringe: [[74, -5], [215, -5], [215, 206], [150, 236], [70, 170]], s: 13, seed: 3 }))}
+    ${svgBg(facets({ core: [[150, 297], [215, 236], [215, 302], [140, 302]], fringe: [[118, 302], [215, 214], [215, 302]], s: 9, pal: 'silver', seed: 5, edge: .2 }), 210, 297, 'opacity:.55')}
+    ${A(104, 24, 0, `<div style="position:relative;width:${PW}mm;height:${PH}mm"><div style="position:absolute;top:5mm;inset-inline-start:5mm;width:100%;height:100%;border:.5mm solid var(--soft)"></div><img src="/assets/img/sky-1.jpg" style="position:relative;display:block;width:100%;height:100%"></div>`)}
+    ${A(18, 18, 70, `<img src="/assets/img/icon.png" style="height:15mm;filter:brightness(0) invert(1)"><img src="/profile/img/wordmark-white.png" style="height:6mm;display:block;margin-top:5mm">`)}
+    ${A(18, 70, 76, `<p class="kick">${esc(T.profile)}</p><p class="num" style="font-size:58pt;color:#fff;margin-top:3mm">${T.year}</p>
+      <div style="display:flex;flex-direction:column;gap:3mm;margin-top:9mm">${T.motto.map((m, i) => `<span style="display:flex;align-items:center;gap:3mm;color:#fff;font-weight:600;font-size:${AR ? 10.4 : 10.4}pt">${tile(['badge-check', 'eye', 'award'][i], 8, 'gl')}${esc(m)}</span>`).join('')}</div>`)}
+    ${A(18, 196, 150, `<h1 style="font-weight:700;color:#fff;font-size:${AR ? 25 : 31}pt;line-height:1.1">${esc(D.services.title1)}<br><span style="font-weight:300;color:var(--soft)">${esc(D.services.title2)}</span></h1>
+      <p class="tx" style="margin-top:5mm;color:#c9d6e2;max-width:132mm">${esc(D.hero.sub)}</p><p class="cap" style="margin-top:6mm;color:var(--soft)">${T.site}</p>`)}`, { bare: true, dark: true });
 
   // ============ 2 · ABOUT ============
   page(0, `
+    ${corner(11)}
     ${A(18, 26, 174, head(1, T.whoTitle, T.whoTitle2))}
-    ${A(18, 66, 96, `<p class="tag">${esc(T.est)}</p><p class="tx" style="margin-top:3mm">${esc(D.intro.p1)}</p>`)}
-    ${A(126, 66, 0, ph(8938631, 66, { dir: 'br', off: 5 }))}
-    ${A(122, 66 + phH(8938631, 66) + 12, 70, `<div style="display:flex;flex-direction:column;gap:4mm">${D.intro.points.map((p, i) => `
-      <div style="display:flex;gap:3.4mm;align-items:flex-start">${disc(ptIcons[i], 10)}<div><p class="t2" style="font-size:9.6pt">${esc(p.title)}</p><p class="sm" style="margin-top:.6mm">${esc(p.text)}</p></div></div>`).join('')}</div>`)}
-    ${A(18, 168, 96, `<p class="cap">${esc(T.creds)}</p><div style="display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:2.4mm">${D.hero.certs.slice(0, 5).map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>
+    ${A(18, 66, 100, `<p class="tag">${esc(T.est)}</p><p class="tx" style="margin-top:3mm">${esc(D.intro.p1)}</p>`)}
+    ${A(128, 66, 64, `<div style="display:flex;flex-direction:column;gap:6mm">${D.intro.points.map((p, i) => `
+      <div>${tile(ptIcons[i], 15, i % 2 ? 'nv' : '')}<p class="t2" style="font-size:10pt;margin-top:2.6mm">${esc(p.title)}</p><p class="sm" style="margin-top:.8mm">${esc(p.text)}</p></div>`).join('')}</div>`)}
+    ${A(18, 160, 100, `<p class="cap">${esc(T.creds)}</p><div style="display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:2.4mm">${D.hero.certs.slice(0, 5).map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>
       <p class="cap" style="margin-top:4.4mm">${esc(T.standards)}</p><div style="display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:2.4mm">${D.hero.certs.slice(5).map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>`)}
-    <div class="navy abs" style="top:214mm;inset-inline:0;height:83mm;padding:10mm 18mm 0">
-      <p class="kick">${esc(T.inNum)}</p>
+    ${band(214, 83, `<p class="kick">${esc(T.inNum)}</p>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:6mm">${figs.map(([n, s, l], i) => `
-        <div style="${i ? 'border-inline-start:1px solid oklch(1 0 0 / .22);padding-inline-start:5mm' : ''}">${disc(statIcons[i], 9, 'wt')}<p class="num" style="font-size:31pt;margin-top:3.4mm;color:#fff">${n}${s ? `<small>${esc(s)}</small>` : ''}</p><p class="cap" style="margin-top:2mm">${esc(l)}</p></div>`).join('')}</div></div>`, { lightFoot: true });
+        <div style="${i ? 'border-inline-start:1px solid rgba(255,255,255,.22);padding-inline-start:5mm' : ''}">${tile(statIcons[i], 10, 'wt')}<p class="num" style="font-size:31pt;margin-top:3.4mm;color:#fff">${n}${s ? `<small>${esc(s)}</small>` : ''}</p><p class="cap" style="margin-top:2mm">${esc(l)}</p></div>`).join('')}</div>`, 21)}`, { lightFoot: true });
 
   // ============ 3 · VISION, MISSION & VALUES ============
   page(1, `
+    ${corner(13)}
     ${A(18, 26, 174, head(2, T.vmv[0], T.vmv[1]))}
     ${A(18, 64, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm">
-      <div class="navy" style="padding:7mm">${disc('eye', 12, 'wt')}<p class="t2" style="font-size:15pt;margin-top:4mm">${esc(D.vision.title)}</p><p class="tx" style="margin-top:2.6mm;color:oklch(0.9 0.02 245)">${esc(D.vision.text)}</p><p class="cap" style="margin-top:3.4mm">${esc(D.vision.tag)}</p></div>
-      <div class="tex" style="padding:7mm;background-color:var(--mist)">${disc('target', 12)}<p class="t2" style="font-size:15pt;margin-top:4mm">${esc(D.mission.title)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.mission.text)}</p><p class="cap" style="margin-top:3.4mm">${esc(D.mission.tag)}</p></div></div>`)}
-    ${A(18, 158, 174, `<p class="kick">${esc(T.valuesT)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.values.sub)}</p>
+      <div style="padding:7mm;color:#fff;background:#1d3a57;clip-path:${cut(9)}">${tile('eye', 14, 'wt')}<p class="t2" style="font-size:15pt;margin-top:4mm;color:#fff">${esc(D.vision.title)}</p><p class="tx" style="margin-top:2.6mm;color:#d3dfea">${esc(D.vision.text)}</p><p class="cap" style="margin-top:3.4mm;color:var(--soft)">${esc(D.vision.tag)}</p></div>
+      <div style="padding:7mm;background:var(--mist);clip-path:${cut(9)}">${tile('target', 14)}<p class="t2" style="font-size:15pt;margin-top:4mm">${esc(D.mission.title)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.mission.text)}</p><p class="cap" style="margin-top:3.4mm">${esc(D.mission.tag)}</p></div></div>`)}
+    ${A(18, 160, 174, `<p class="kick">${esc(T.valuesT)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.values.sub)}</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm 7mm;margin-top:6mm">${D.values.cards.map((c, k) => `
-        <div style="display:flex;gap:3.4mm;align-items:flex-start">${disc(valIcons[k], 11, k % 2 ? 'nv' : '')}<div><p class="t2" style="font-size:10pt">${esc(c.title)}</p><p class="sm" style="margin-top:1mm;text-align:start;font-size:7.8pt">${esc(c.text)}</p></div></div>`).join('')}</div>`)}`);
+        <div style="display:flex;gap:3.4mm;align-items:flex-start">${tile(valIcons[k], 12, k % 2 ? 'nv' : '')}<div><p class="t2" style="font-size:10pt">${esc(c.title)}</p><p class="sm" style="margin-top:1mm;font-size:7.8pt">${esc(c.text)}</p></div></div>`).join('')}</div>`)}`);
 
-  // ============ 4 · WHY CHOOSE US: competence ring ============
-  const cx = 105, cy = 166, R = 40;
+  // ============ 4 · WHY CHOOSE US: hexagon of competences ============
+  const cx = 105, cy = 170, R = 44, MX = (x) => AR ? 210 - x : x;
   const nodes = D.why.items.map((w, k) => { const a = (-90 + k * 60) * Math.PI / 180; return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a), w, k, c: Math.cos(a) }; });
-  const MX = (x) => AR ? 210 - x : x;
+  const hexP = (r) => Array.from({ length: 6 }, (_, k) => { const a = (-90 + k * 60) * Math.PI / 180; return `${MX(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`; }).join(' ');
   page(2, `
-    ${A(18, 26, 108, `${head(3, D.why.title1, D.why.title2)}<p class="tag" style="margin-top:4mm">${esc(D.why.subtitle)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.why.intro)}</p>`)}
-    ${A(136, 30, 0, ph(7984737, 54, { dir: 'bl', off: 5 }))}
+    ${svgBg(facets({ core: [[150, -5], [215, -5], [215, 100], [176, 120]], fringe: [[128, -5], [215, -5], [215, 126], [160, 140]], s: 11, pal: 'navy', seed: 17 }), 210, 297, 'opacity:.9')}
+    ${A(18, 26, 116, `${head(3, D.why.title1, D.why.title2)}<p class="tag" style="margin-top:4mm">${esc(D.why.subtitle)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.why.intro)}</p>`)}
     <svg class="abs" viewBox="0 0 210 297" style="inset:0;width:100%;height:100%;z-index:1">
-      <circle cx="${MX(cx)}" cy="${cy}" r="${R}" fill="none" stroke="#2f6390" stroke-width=".4" stroke-dasharray="1.4 1.4"/>
-      <circle cx="${MX(cx)}" cy="${cy}" r="21" fill="#eef2f6"/></svg>
-    ${mark(`position:absolute;z-index:2;width:26mm;top:${cy - 13}mm;inset-inline-start:${cx - 13}mm`)}
-    ${nodes.map((n) => A(n.x - 7, n.y - 7, 14, disc(whyIcons[n.k], 14, n.k % 2 ? 'nv' : ''), 'z-index:3')).join('')}
+      <polygon points="${hexP(R)}" fill="none" stroke="#2f6390" stroke-width=".4" stroke-dasharray="1.4 1.4"/>
+      ${nodes.map((n) => `<line x1="${MX(cx)}" y1="${cy}" x2="${MX(n.x).toFixed(2)}" y2="${n.y.toFixed(2)}" stroke="#2f6390" stroke-width=".25"/>`).join('')}
+      <polygon points="${hexP(22)}" fill="#ffffff" stroke="#1d3a57" stroke-width=".6"/></svg>
+    ${mark(`position:absolute;z-index:2;width:24mm;top:${cy - 12}mm;inset-inline-start:${cx - 12}mm`)}
+    ${nodes.map((n) => A(n.x - 7.5, n.y - 7.5, 15, tile(whyIcons[n.k], 15, n.k % 2 ? 'nv' : ''), 'z-index:3')).join('')}
     ${nodes.map((n) => { const right = n.c > .1, left = n.c < -.1;
-      const x = right ? n.x + 10 : left ? n.x - 10 - 46 : n.x - 23, y = n.k === 0 ? n.y - 15 : n.k === 3 ? n.y + 9.5 : n.y - 3.4;
+      const x = right ? n.x + 10.5 : left ? n.x - 10.5 - 46 : n.x - 23, y = n.k === 0 ? n.y - 16 : n.k === 3 ? n.y + 10 : n.y - 3.4;
       return A(x, y, 46, `<p class="t2" style="text-align:${right ? 'start' : left ? 'end' : 'center'};font-size:9.4pt">${esc(n.w.title)}</p>`, 'z-index:3'); }).join('')}
-    ${A(18, 226, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4mm 7mm;border-top:2px solid var(--navy);padding-top:4mm">${D.why.items.map((w, k) => `
-      <div><p class="cap">${pad(k + 1)} · ${esc(w.title)}</p><p class="sm" style="margin-top:1mm;text-align:start;font-size:7.7pt">${esc(w.text)}</p></div>`).join('')}</div>`)}`);
+    ${A(18, 232, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4mm 7mm;border-top:2px solid var(--navy);padding-top:4mm">${D.why.items.map((w, k) => `
+      <div><p class="cap">${pad(k + 1)} · ${esc(w.title)}</p><p class="sm" style="margin-top:1mm;font-size:7.7pt">${esc(w.text)}</p></div>`).join('')}</div>`)}`);
 
-  // ============ 5 · LEADERSHIP ============
-  const L0 = D.leaders.people[0], L1 = D.leaders.people[1];
+  // ============ 5 · LEADERSHIP: chamfered navy plates with big icons ============
   const contact = (p) => p.contact.filter((c) => /^\+|@/.test(c.value)).map((c) => `<span class="ltr">${esc(c.value)}</span>`).join('<br>');
-  const leader = (p, w, y, big) => { const h = phH(p.photo, w);
-    return `${A(18, y, 0, ph(p.photo, w, { dir: 'br', off: 5 }))}
-      <div class="navy abs" style="top:${y + h - 9}mm;inset-inline-start:${18 + w * .32}mm;width:${w * .78}mm;padding:3mm 4mm;z-index:2"><p class="t2" style="font-size:${big ? 10.4 : 9.4}pt">${esc(p.name)}</p><p class="cap" style="margin-top:.8mm;font-size:6.4pt">${esc(p.role)}</p></div>
-      ${A(18 + w + 12, y, 174 - w - 12, `${p.certs.length ? `<div style="display:flex;gap:1.6mm;flex-wrap:wrap;margin-bottom:3mm">${p.certs.map((c) => `<span class="chip">${esc(c)}</span>`).join('')}</div>` : ''}
-        <p class="tag" style="display:flex;gap:2mm;align-items:center">${disc('graduation-cap', 6)}${esc(p.degree)}</p>
-        ${p.bio.map((b) => `<p class="tx" style="margin-top:2.6mm;${big ? '' : 'font-size:8.5pt'}">${esc(b)}</p>`).join('')}
-        <p class="sm" style="margin-top:3mm;color:var(--accent);font-weight:600;line-height:1.6">${contact(p)}</p>`)}`; };
-  page(3, `${A(18, 26, 174, head(4, D.leaders.title))}${leader(L0, 64, 54, true)}${leader(L1, 50, 172, false)}`);
+  const leader = (p, k, y, h, big) => `
+    <div class="abs" style="top:${y}mm;inset-inline-start:18mm;width:58mm;height:${h}mm;padding:6mm;background:#1d3a57;clip-path:${cut(10)}">
+      ${tile(k ? 'receipt-text' : 'shield-check', 20, 'wt')}
+      <p class="t2" style="color:#fff;font-size:${big ? 13 : 12}pt;margin-top:6mm">${esc(p.name)}</p><p class="cap" style="color:var(--soft);margin-top:1.4mm">${esc(p.role)}</p>
+      ${p.certs.length ? `<div style="display:flex;gap:1.4mm;flex-wrap:wrap;margin-top:5mm">${p.certs.map((c) => `<span class="chip" style="border-color:rgba(255,255,255,.45);color:#fff;font-size:7pt">${esc(c)}</span>`).join('')}</div>` : ''}</div>
+    ${A(86, y, 106, `<p class="tag" style="display:flex;gap:2.4mm;align-items:center">${tile('graduation-cap', 7)}${esc(p.degree)}</p>
+      ${p.bio.map((b) => `<p class="tx" style="margin-top:2.6mm;${big ? '' : 'font-size:8.6pt'}">${esc(b)}</p>`).join('')}
+      <p class="sm" style="margin-top:3mm;color:var(--steel);font-weight:600;line-height:1.6">${contact(p)}</p>`)}`;
+  page(3, `${corner(19)}${A(18, 26, 174, head(4, D.leaders.title))}${leader(D.leaders.people[0], 0, 56, 100, true)}${leader(D.leaders.people[1], 1, 172, 86, false)}`);
 
-  // ============ 6 · SECTORS: whole photos in a grid ============
-  const cw = 54.6, gx = 5.1;
+  // ============ 6 · SECTORS: big icon plates ============
   page(4, `
-    ${A(18, 26, cw, `${head(5, D.sectors.title)}`)}
-    ${A(18, 66, cw, `<p class="tx" style="text-align:start;font-size:8.6pt">${esc(D.expect.cards[4].text)}.</p>`)}
-    ${D.sectors.cards.map((c, k) => { const i = k + 1, col = i % 3, row = Math.floor(i / 3), x = 18 + col * (cw + gx), y = 30 + row * 60;
-      return A(x, y, cw, `${ph(secPhotos[k], cw, { dir: 'br', off: 2.4, light: true })}<div style="display:flex;gap:2.4mm;align-items:center;margin-top:5.4mm">${disc(secIcons[k], 7.4, k % 2 ? 'nv' : '')}<p class="t2" style="font-size:9.2pt">${esc(c.title)}</p></div>`); }).join('')}
-    <div class="navy abs" style="top:214mm;inset-inline:0;height:83mm;padding:12mm 18mm 0">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:10mm;align-items:center">
+    ${corner(23)}
+    ${A(18, 26, 174, `${head(5, D.sectors.title)}<p class="tx" style="margin-top:3mm">${esc(D.expect.cards[4].text)}.</p>`)}
+    ${A(18, 80, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">${D.sectors.cards.map((c, k) => `
+      <div style="height:58mm;padding:5mm;display:flex;flex-direction:column;justify-content:space-between;background:${k % 2 ? 'var(--mist)' : '#1d3a57'};clip-path:${cut(7)}">
+        ${tile(secIcons[k], 16, k % 2 ? '' : 'wt')}<div><p class="cap" style="${k % 2 ? '' : 'color:var(--soft)'}">${pad(k + 1)}</p><p class="t2" style="font-size:10.4pt;margin-top:1mm;${k % 2 ? '' : 'color:#fff'}">${esc(c.title)}</p></div></div>`).join('')}</div>`)}
+    ${band(214, 83, `<div style="display:grid;grid-template-columns:auto 1fr;gap:10mm;align-items:center">
         <p class="num" style="font-size:64pt;color:#fff">${st[2].n}<small style="color:var(--soft)">${esc(st[2].suffix)}</small></p>
-        <div><p class="kick">${esc(T.clientsT)}</p><p class="t2" style="margin-top:3mm;font-size:13pt;font-weight:300">${esc(T.clientsN)}</p><p class="tx" style="margin-top:2.4mm">${esc(D.expect.cards[1].text)}</p></div></div></div>`, { lightFoot: true });
+        <div><p class="kick">${esc(T.clientsT)}</p><p class="t2" style="margin-top:3mm;font-size:13pt;font-weight:300">${esc(T.clientsN)}</p><p class="tx" style="margin-top:2.4mm">${esc(D.expect.cards[1].text)}</p></div></div>`, 29, '12mm 18mm 0')}`, { lightFoot: true });
 
-  // ============ 7 · SERVICES OVERVIEW: donut chart ============
-  const shade = (i) => `oklch(${(0.30 + i * 0.055).toFixed(3)} ${(0.06 - i * 0.002).toFixed(3)} 247)`;
-  const donut = (() => { let a0 = -90, out = ''; const r = 30, rr = 19, C = 35;
-    S.forEach((s, i) => { const a1 = a0 + s.list.length / totalSpec * 360, p = (a) => [C + r * Math.cos(a * Math.PI / 180), C + r * Math.sin(a * Math.PI / 180)], q2 = (a) => [C + rr * Math.cos(a * Math.PI / 180), C + rr * Math.sin(a * Math.PI / 180)];
-      const [x0, y0] = p(a0 + .6), [x1, y1] = p(a1 - .6), [u1, v1] = q2(a1 - .6), [u0, v0] = q2(a0 + .6), big = a1 - a0 > 180 ? 1 : 0;
-      out += `<path d="M${x0},${y0} A${r},${r} 0 ${big} 1 ${x1},${y1} L${u1},${v1} A${rr},${rr} 0 ${big} 0 ${u0},${v0} Z" fill="${shade(i)}"/>`; a0 = a1; });
-    return `<svg viewBox="0 0 70 70" style="width:70mm;height:70mm;display:block">${out}</svg>`; })();
+  // ============ 7 · SERVICES OVERVIEW (dark): bar chart of specialised services ============
   page(5, `
-    ${A(18, 26, 174, head(6, D.services.title1, D.services.title2))}
-    ${A(18, 66, 70, `<div style="position:relative">${donut}<div style="position:absolute;inset:0;display:grid;place-items:center;text-align:center"><div><p class="num" style="font-size:30pt;color:var(--navy);font-weight:600">${totalSpec}</p><p class="cap" style="font-size:6pt;margin-top:1mm">${esc(T.across)}</p></div></div></div>`)}
-    ${A(104, 66, 0, ph(33175651, 82, { dir: 'br', off: 5, light: true }))}
-    ${A(18, 146, 174, `<div style="border-top:2px solid var(--navy)">${S.map((s, k) => `
-      <div style="display:grid;grid-template-columns:3mm 9mm 1fr 14mm;gap:4mm;align-items:center;padding:2.4mm 0;border-bottom:1px solid var(--line)">
-        <span style="width:3mm;height:3mm;background:${shade(k)}"></span>${disc(svcIcons[k], 9, k % 2 ? 'nv' : '')}
-        <div><p class="t2" style="font-size:9.8pt">${esc(s.title)}</p><p class="sm" style="color:var(--accent);margin-top:.3mm">${esc(s.tagline)}</p></div>
-        <p class="num" style="font-size:17pt;color:var(--navy);text-align:end;font-weight:600">${pad(s.list.length)}</p></div>`).join('')}</div>`)}`);
+    ${svgBg(facets({ core: [[-5, 190], [70, 300], [-5, 300]], fringe: [[-5, 160], [100, 302], [-5, 302]], s: 12, seed: 31 }), 210, 297, 'opacity:.7')}
+    ${svgBg(facets({ core: [[170, -5], [215, -5], [215, 60]], fringe: [[150, -5], [215, -5], [215, 80]], s: 10, pal: 'silver', seed: 33 }), 210, 297, 'opacity:.25')}
+    ${A(18, 26, 120, head(6, D.services.title1, D.services.title2))}
+    ${A(150, 30, 42, `<div style="text-align:end"><p class="num" style="font-size:44pt;color:#fff;font-weight:300">${totalSpec}</p><p class="cap" style="margin-top:1.6mm">${esc(T.across)}</p><p class="num" style="font-size:20pt;color:var(--soft);margin-top:4mm">${pad(S.length)}</p><p class="cap" style="margin-top:1mm">${esc(T.practices)}</p></div>`)}
+    ${A(18, 78, 174, `<div style="border-top:1px solid rgba(255,255,255,.3)">${S.map((s, k) => `
+      <div style="display:grid;grid-template-columns:11mm 1fr 52mm 10mm;gap:4mm;align-items:center;padding:3mm 0;border-bottom:1px solid rgba(255,255,255,.14)">
+        ${tile(svcIcons[k], 11, k % 2 ? 'gl' : '')}
+        <div><p class="t2" style="font-size:10pt">${esc(s.title)}</p><p class="sm" style="color:var(--soft);margin-top:.3mm">${esc(s.tagline)}</p></div>
+        <div style="height:3.4mm;background:rgba(255,255,255,.1)"><div style="height:100%;width:${(s.list.length / maxL * 100).toFixed(1)}%;background:linear-gradient(90deg,#3d678c,#8fb0cc)"></div></div>
+        <p class="num" style="font-size:17pt;color:#fff;text-align:end;font-weight:400">${pad(s.list.length)}</p></div>`).join('')}</div>`)}`, { dark: true });
 
   // ============ 8-11 · SERVICE DETAILS ============
-  [[0, 1, 2], [3, 4], [5, 6], [7, 8]].forEach((group) => {
+  [[0, 1, 2], [3, 4], [5, 6], [7, 8]].forEach((group, gi) => {
     const c = group.length === 3;
-    page(6, A(18, 24, 174, `<div style="display:flex;flex-direction:column;justify-content:space-between;height:252mm">${group.map((k, r) => { const s = S[k]; return `
+    page(6, `${corner(41 + gi, 'silver', .4)}${A(18, 24, 174, `<div style="display:flex;flex-direction:column;justify-content:space-between;height:252mm">${group.map((k, r) => { const s = S[k]; return `
       <div>
-        <div style="display:flex;gap:4.5mm;align-items:center;border-bottom:2px solid var(--navy);padding-bottom:${c ? 2.6 : 3.6}mm">${disc(svcIcons[k], c ? 11 : 15, r % 2 ? 'nv' : '')}
+        <div style="display:flex;gap:4.5mm;align-items:center;border-bottom:2px solid var(--navy);padding-bottom:${c ? 2.6 : 3.6}mm">${tile(svcIcons[k], c ? 12 : 16, r % 2 ? 'nv' : '')}
           <div style="flex:1"><p class="cap">${esc(T.service)} ${pad(k + 1)} / ${pad(S.length)}</p><h3 class="t2" style="font-size:${AR ? (c ? 12.5 : 14) : (c ? 14 : 17)}pt;margin-top:.6mm">${esc(s.title)}</h3><p class="tag" style="margin-top:.6mm;font-size:${c ? 8.6 : 9.6}pt">${esc(s.tagline)}</p></div>
-          <div style="text-align:end"><p class="num" style="font-size:${c ? 24 : 32}pt;color:var(--accent)">${pad(s.list.length)}</p><p class="cap" style="font-size:5.8pt;color:var(--silver)">${esc(T.specialised)}</p></div></div>
+          <div style="text-align:end"><p class="num" style="font-size:${c ? 24 : 32}pt;color:var(--steel)">${pad(s.list.length)}</p><p class="cap" style="font-size:5.8pt;color:var(--silver)">${esc(T.specialised)}</p></div></div>
         <p class="tx" style="margin-top:${c ? 2.4 : 3.6}mm;font-size:${c ? 8.1 : 9}pt;line-height:${c ? 1.5 : 1.58}">${esc(s.text[0])}</p>
-        <div class="tex" style="background-color:var(--mist);margin-top:${c ? 2.6 : 4}mm;padding:${c ? '2.8mm 3.4mm' : '4.4mm 5mm'}"><p class="cap">${esc(s.listTitle)}</p>
-          <ul class="li" style="margin-top:${c ? 1.8 : 2.6}mm;grid-template-columns:repeat(${c ? 3 : 2},1fr);gap:${c ? '.8mm 4mm' : '1.8mm 7mm'}">${s.list.map((li) => `<li style="${c ? 'font-size:7pt;line-height:1.3' : ''}"><i data-lucide="check"></i><span>${esc(li)}</span></li>`).join('')}</ul></div>
-      </div>`; }).join('')}</div>`), { sub: `${pad(group[0] + 1)}–${pad(group[group.length - 1] + 1)}` });
+        <div style="background:var(--mist);clip-path:${cut(5)};margin-top:${c ? 2.6 : 4}mm;padding:${c ? '2.8mm 3.4mm' : '4.4mm 5mm'}"><p class="cap">${esc(s.listTitle)}</p>
+          <ul class="li" style="margin-top:${c ? 1.8 : 2.6}mm;grid-template-columns:repeat(${c ? 3 : 2},1fr);gap:${c ? '.8mm 4mm' : '1.8mm 7mm'}">${s.list.map((li) => `<li style="${c ? 'font-size:7pt;line-height:1.3' : ''}"><span>${esc(li)}</span></li>`).join('')}</ul></div>
+      </div>`; }).join('')}</div>`)}`, { sub: `${pad(group[0] + 1)}–${pad(group[group.length - 1] + 1)}` });
   });
 
-  // ============ 12 · TEAM ============
+  // ============ 12 · TEAM: role icons, no photographs ============
   page(7, `
+    ${corner(53)}
     ${A(18, 26, 174, `<p class="kick">08 · ${esc(T.lb[7])}</p><h2 class="h2" style="font-size:${AR ? 19 : 23}pt">${esc(D.team.title)}</h2>`)}
-    ${A(18, 54, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 8mm">${D.team.people.map((p, k) => `
-      <div style="display:flex;gap:4.6mm;padding:4.4mm 0;border-top:${k < 2 ? '2px solid var(--navy)' : '1px solid var(--line)'};height:54mm">
-        <div style="position:relative;width:24mm;flex:0 0 auto;align-self:flex-start"><div class="navy" style="position:absolute;top:2.4mm;inset-inline-start:2.4mm;width:100%;height:100%"></div><img src="/assets/img/${p.photo}.jpg" style="position:relative;width:24mm;height:auto;display:block"></div>
-        <div><p class="t2" style="font-size:9.6pt">${esc(p.name)}</p><p class="cap" style="margin:1mm 0 1.6mm;font-size:6.2pt">${esc(p.role)}</p><p class="sm" style="font-size:7.3pt;line-height:1.48;text-align:justify">${esc(p.line)}</p></div></div>`).join('')}</div>`)}`);
+    ${A(18, 56, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 8mm">${D.team.people.map((p, k) => `
+      <div style="display:flex;gap:4.6mm;padding:5mm 0;border-top:${k < 2 ? '2px solid var(--navy)' : '1px solid var(--line)'};height:53mm">
+        ${tile(roleIcon(EN.team.people[k].role), 16, k % 2 ? 'nv' : '')}
+        <div><p class="t2" style="font-size:10pt">${esc(p.name)}</p><p class="cap" style="margin:1mm 0 1.8mm;font-size:6.4pt">${esc(p.role)}</p><p class="sm" style="font-size:7.6pt;line-height:1.5;text-align:justify">${esc(p.line)}</p></div></div>`).join('')}</div>`)}`);
 
   // ============ 13 · CLIENTS & COMMITMENTS ============
   const logos = EN.clients.logoFiles || [];
   page(8, `
-    ${A(18, 26, 174, `<div style="display:flex;justify-content:space-between;align-items:flex-end"><div><p class="kick">09 · ${esc(T.lb[8])}</p><h2 class="h2">${esc(T.clientsT)}</h2></div><p class="num" style="font-size:36pt;color:var(--accent)">${st[2].n}<small>${esc(st[2].suffix)}</small></p></div>`)}
+    ${corner(59)}
+    ${A(18, 26, 174, `<div style="display:flex;justify-content:space-between;align-items:flex-end"><div><p class="kick">09 · ${esc(T.lb[8])}</p><h2 class="h2">${esc(T.clientsT)}</h2></div><p class="num" style="font-size:36pt;color:var(--steel)">${st[2].n}<small>${esc(st[2].suffix)}</small></p></div>`)}
     ${A(18, 52, 174, `<div style="display:grid;grid-template-columns:repeat(9,1fr);gap:2mm 3mm;border-top:2px solid var(--navy);padding-top:4.4mm">${logos.map((f) => `<div style="height:15mm;position:relative"><img src="/assets/img/clients/${f}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></div>`).join('')}</div>`)}
-    <div class="navy abs" style="top:134mm;inset-inline:0;bottom:0;padding:10mm 18mm 0">
-      <p class="kick">${esc(T.expectT)}</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm 7mm;margin-top:7mm">${D.expect.cards.map((c, k) => `
-        <div style="display:flex;gap:3.4mm;align-items:flex-start">${disc(expIcons[k], 10, 'wt')}<p class="sm" style="color:#fff;font-size:8.3pt;line-height:1.5">${esc(c.text)}</p></div>`).join('')}</div></div>`, { lightFoot: true });
+    ${band(134, 163, `<p class="kick">${esc(T.expectT)}</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7mm 7mm;margin-top:7mm">${D.expect.cards.map((c, k) => `
+        <div style="display:flex;gap:3.4mm;align-items:flex-start">${tile(expIcons[k], 11, 'wt')}<p class="sm" style="color:#fff;font-size:8.3pt;line-height:1.5">${esc(c.text)}</p></div>`).join('')}</div>`, 61)}`, { lightFoot: true });
 
-  // ============ 14 · CORPORATE PROFILE: map with links from Amman + fact table ============
+  // ============ 14 · CORPORATE PROFILE: square-dot map, straight routes from Amman, fact table ============
   const Mp = MENA_MAP, mw = 174, mh = mw * Mp.h / Mp.w, kk = mw / Mp.w;
   const mxm = (x) => AR ? Mp.w - x : x;
   const hubs = [[46.7, 24.7], [55.3, 25.2], [31.2, 30.0], [44.4, 33.3], [48.0, 29.4], [51.5, 25.3], [58.4, 23.6], [35.5, 33.9], [39.2, 21.5], [10.2, 36.8], [3.0, 36.7], [-6.8, 34.0], [13.2, 32.9]].map(([lo, la]) => [lo + 18, 44 - la]);
   const [amx, amy] = Mp.amman;
-  const arcs = hubs.map(([x, y]) => { const mx = (amx + x) / 2, my = (amy + y) / 2 - Math.hypot(x - amx, y - amy) * .22; return `<path d="M${mxm(amx)},${amy} Q${mxm(mx)},${my} ${mxm(x)},${y}" fill="none" stroke="#2f6390" stroke-width=".18" stroke-dasharray=".7 .5"/><circle cx="${mxm(x)}" cy="${y}" r=".55" fill="#2f6390"/>`; }).join('');
-  const dotSvg = `<svg viewBox="0 0 ${Mp.w} ${Mp.h}" style="width:${mw}mm;height:${mh}mm;display:block">${Mp.dots.map(([x, y, t]) => { const fill = t === 'J' || t === 'j' ? '#1d3a57' : t === 'm' ? '#a7b3bf' : '#dde2e7'; const r = t === 'J' ? .13 : .3; return `<circle cx="${mxm(x)}" cy="${y}" r="${r}" fill="${fill}"/>`; }).join('')}${arcs}
-    <circle cx="${mxm(amx)}" cy="${amy}" r="1.3" fill="#fff" stroke="#1d3a57" stroke-width=".3"/><circle cx="${mxm(amx)}" cy="${amy}" r=".55" fill="#1d3a57"/></svg>`;
+  const routes = hubs.map(([x, y]) => `<line x1="${mxm(amx)}" y1="${amy}" x2="${mxm(x)}" y2="${y}" stroke="#2f6390" stroke-width=".16" stroke-dasharray=".7 .5"/><rect x="${mxm(x) - .5}" y="${y - .5}" width="1" height="1" fill="#2f6390" transform="rotate(45 ${mxm(x)} ${y})"/>`).join('');
+  const dotSvg = `<svg viewBox="0 0 ${Mp.w} ${Mp.h}" style="width:${mw}mm;height:${mh}mm;display:block">${Mp.dots.map(([x, y, t]) => { const fill = t === 'J' || t === 'j' ? '#1d3a57' : t === 'm' ? '#a7b3bf' : '#dde2e7'; const r = t === 'J' ? .13 : .27; return `<rect x="${(mxm(x) - r).toFixed(2)}" y="${(y - r).toFixed(2)}" width="${2 * r}" height="${2 * r}" fill="${fill}"/>`; }).join('')}${routes}
+    <rect x="${mxm(amx) - 1.2}" y="${amy - 1.2}" width="2.4" height="2.4" fill="#fff" stroke="#1d3a57" stroke-width=".3" transform="rotate(45 ${mxm(amx)} ${amy})"/><rect x="${mxm(amx) - .5}" y="${amy - .5}" width="1" height="1" fill="#1d3a57" transform="rotate(45 ${mxm(amx)} ${amy})"/></svg>`;
   const facts = [T.firm, T.founded, link('pin'), S.map((s) => s.title).join(' · '), D.hero.certs.slice(0, 5).map((c) => c[0]).join(' · '), D.hero.certs.slice(5).map((c) => c[0]).join(' · '), `${st[2].n}${st[2].suffix} · ${st[2].caption}`, link('phone'), link('mail'), link('globe')];
   page(9, `
+    ${corner(67)}
     ${A(18, 26, 174, `${head(10, T.mapT[0], T.mapT[1])}<p class="tx" style="margin-top:3mm">${esc(T.mapS)}</p>`)}
     <div class="abs" style="top:76mm;left:18mm;width:${mw}mm">${dotSvg}
       <div style="position:absolute;left:${mxm(amx) * kk + (AR ? -19 : 3)}mm;top:${amy * kk + 2.4}mm;font-weight:700;color:var(--navy);font-size:9.5pt;background:var(--paper);padding:0 1.2mm">${esc(T.amman)}</div></div>
     ${A(18, 76 + mh + 6, 174, `<div style="border-top:2px solid var(--navy)">${T.rows.map((r, i) => `
       <div style="display:grid;grid-template-columns:44mm 1fr;gap:6mm;padding:2.6mm 0;border-bottom:1px solid var(--line)"><span class="cap" style="color:var(--ink2)">${esc(r)}</span><span class="sm" style="color:var(--ink)">${i >= 7 ? `<span class="ltr">${esc(facts[i])}</span>` : esc(facts[i])}</span></div>`).join('')}</div>`)}`);
 
-  // ============ 15 · BACK COVER ============
+  // ============ 15 · BACK COVER (dark) ============
   page(0, `
-    <div class="navy abs" style="inset:0;z-index:0"></div>
-    ${mark('position:absolute;z-index:1;width:170mm;top:30mm;inset-inline-end:-50mm;opacity:.12', '#ffffff')}
-    ${A(18, 40, 120, `<img src="/assets/img/icon.png" style="height:22mm;filter:brightness(0) invert(1)"><img src="/profile/img/wordmark-white.png" style="height:8.4mm;display:block;margin-top:6mm">`)}
-    ${A(18, 118, 130, `<h2 class="h2" style="color:#fff;font-size:${AR ? 22 : 28}pt">${esc(D.consult.title1)}<br><span style="color:var(--soft)">${esc(D.consult.title2)}</span></h2><p class="tx" style="margin-top:4mm;color:oklch(0.88 0.02 245)">${esc(D.consult.sub)}</p>`)}
-    ${A(18, 210, 174, `<div style="display:grid;grid-template-columns:1fr 36mm;gap:10mm;align-items:end;border-top:1px solid oklch(1 0 0 / .25);padding-top:7mm">
+    ${svgBg(facets({ core: [[-5, 150], [120, 302], [-5, 302]], fringe: [[-5, 120], [150, 302], [-5, 302]], s: 13, seed: 71 }))}
+    ${svgBg(facets({ core: [[150, -5], [215, -5], [215, 70]], fringe: [[128, -5], [215, -5], [215, 96]], s: 10, pal: 'silver', seed: 73, edge: .2 }), 210, 297, 'opacity:.4')}
+    ${A(18, 36, 120, `<img src="/assets/img/icon.png" style="height:22mm;filter:brightness(0) invert(1)"><img src="/profile/img/wordmark-white.png" style="height:8.4mm;display:block;margin-top:6mm">`)}
+    ${A(18, 104, 150, `<h2 class="h2" style="color:#fff;font-size:${AR ? 22 : 28}pt">${esc(D.consult.title1)}<br><span style="color:var(--soft)">${esc(D.consult.title2)}</span></h2><p class="tx" style="margin-top:4mm;color:#c9d6e2">${esc(D.consult.sub)}</p>`)}
+    ${A(18, 168, 174, `<div style="display:grid;grid-template-columns:1fr 38mm;gap:10mm;align-items:end;border-top:1px solid rgba(255,255,255,.25);padding-top:7mm">
       <div style="display:flex;flex-direction:column;gap:3.4mm">${[['map-pin', link('pin'), false], ['phone', link('phone'), true], ['mail', link('mail'), true], ['globe', link('globe'), true]].map(([i, v, l]) => `
-        <div style="display:flex;gap:3.4mm;align-items:center;color:#fff;font-size:10pt">${disc(i, 8, 'wt')}${l ? `<span class="ltr">${esc(v)}</span>` : esc(v)}</div>`).join('')}</div>
+        <div style="display:flex;gap:3.4mm;align-items:center;color:#fff;font-size:10pt">${tile(i, 9, 'gl')}${l ? `<span class="ltr">${esc(v)}</span>` : esc(v)}</div>`).join('')}</div>
       <div style="background:#fff;padding:2.6mm"><img src="/profile/qr-website.svg" style="width:100%;display:block"></div></div>
-      <div style="display:flex;gap:6mm;margin-top:8mm">${T.motto.map((m) => `<span style="color:var(--soft);font-weight:700;letter-spacing:${AR ? 0 : '.14em'};text-transform:uppercase;font-size:8pt">${esc(m)}</span>`).join('')}</div>`)}`, { bare: true });
+      <div style="display:flex;gap:6mm;margin-top:8mm">${T.motto.map((m) => `<span style="color:var(--soft);font-weight:600;letter-spacing:${AR ? 0 : '.14em'};text-transform:uppercase;font-size:8pt">${esc(m)}</span>`).join('')}</div>`)}`, { bare: true, dark: true });
 
   // ---------- render ----------
-  document.getElementById('doc').innerHTML = pages.map((p, i) => `<section class="page" id="pg${i + 1}">${p.inner}
+  document.getElementById('doc').innerHTML = pages.map((p, i) => `<section class="page${p.opt.dark ? ' dark' : ''}${p.opt.lightFoot ? ' lf' : ''}" id="pg${i + 1}">${p.inner}
       ${p.opt.bare ? '' : `<div class="hd"><span class="sec">${p.opt.sub ? `<b>${esc(T.lb[p.sec])}</b>${p.opt.sub}` : ''}</span><img src="/assets/img/icon.png" alt=""></div>
-        <div class="ft" style="${p.opt.lightFoot ? 'color:oklch(0.85 0.02 245)' : ''}"><b style="${p.opt.lightFoot ? 'color:#fff' : ''}">${pad(i + 1)}</b><span class="r" style="${p.opt.lightFoot ? 'background:oklch(1 0 0 / .25)' : ''}"></span><span>${esc(T.firm)}</span><span class="ltr">${T.site}</span></div>`}</section>`).join('');
+        <div class="ft"><b>${pad(i + 1)}</b><span class="r"></span><span>${esc(T.firm)}</span><span class="ltr">${T.site}</span></div>`}</section>`).join('');
   lucide.createIcons({ attrs: { 'stroke-width': 1.7 } });
 
   if (!PRINT) document.getElementById('ui').innerHTML = `<img src="/assets/img/icon.png" alt=""><span class="t">${esc(T.firm)} · ${esc(T.profile)} ${T.year}</span>
