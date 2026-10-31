@@ -55,7 +55,7 @@ def main():
     try:
         if sys.argv[1:] == ['themes']:
             os.makedirs(os.path.join(ROOT, 'profile', 'themes'), exist_ok=True)
-            for t, name in [(1, 'Executive'), (2, 'Geometric'), (3, 'Editorial'), (4, 'Dark-Luxe'), (5, 'Ledger'), (6, 'Blueprint'), (7, 'Certificate'), (8, 'Broadsheet'), (9, 'Elements'), (10, 'Metro'), (11, 'Star-Atlas'), (12, 'Museum'), (13, 'Isometric-City'), (14, 'Expedition'), (15, 'Noir'), (16, 'Sand-Arch'), (17, 'Pop'), (18, 'Emerald-Deco'), (19, 'Aurora'), (20, 'Swiss-Red'), (21, 'Working-Papers'), (22, 'Calculator'), (23, 'Debit-Credit'), (24, 'Bauhaus-Charts'), (25, 'Highlighter'), (26, 'Vault')]:
+            for t, name in [(1, 'Executive'), (2, 'Geometric'), (3, 'Editorial'), (4, 'Dark-Luxe'), (5, 'Ledger'), (6, 'Blueprint'), (7, 'Certificate'), (8, 'Broadsheet'), (9, 'Elements'), (10, 'Metro'), (11, 'Star-Atlas'), (12, 'Museum'), (13, 'Isometric-City'), (14, 'Expedition'), (15, 'Noir'), (16, 'Sand-Arch'), (17, 'Pop'), (18, 'Emerald-Deco'), (19, 'Aurora'), (20, 'Swiss-Red'), (21, 'Working-Papers'), (22, 'Calculator'), (23, 'Debit-Credit'), (24, 'Bauhaus-Charts'), (25, 'Highlighter'), (26, 'Vault'), (27, 'Terminal'), (28, 'Airmail'), (29, 'Puzzle'), (30, 'Chess'), (31, 'Forecast'), (32, 'Mint'), (33, 'Shipping-Label'), (34, 'Mosaic')]:
                 out = os.path.join(ROOT, 'profile', 'themes', f'Theme-{t}-{name}.pdf')
                 n = asyncio.run(render('en', out, f'/profile/themes.html?t={t}'))
                 print(f'{out}: {n} pages, {os.path.getsize(out)/1024/1024:.1f} MB')
