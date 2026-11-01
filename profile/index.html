@@ -83,6 +83,13 @@
   .tile svg{ width:52%; height:52%; stroke-width:1.7; }
   .tile.nv{ background:var(--navy); } .tile.wt{ color:var(--navy); background:#fff; } .tile.gl{ color:#fff; background:rgba(255,255,255,.13); }
 
+  .ico{ display:inline-block; flex:0 0 auto; } .ico svg{ display:block; width:100%; height:100%; stroke-width:1.7; }
+  /* section progress rail on the outer edge */
+  .rail{ position:absolute; z-index:3; top:66mm; inset-inline-end:7mm; display:flex; flex-direction:column; align-items:center; gap:1.2mm; }
+  .rail b{ font-size:6pt; font-weight:700; color:var(--navy); margin-bottom:1.4mm; }
+  .rail span{ display:block; width:.8mm; height:11mm; background:#d5dce3; }
+  .rail span.on{ width:1.8mm; background:var(--steel); }
+  .dark .rail b{ color:#fff; } .dark .rail span{ background:rgba(255,255,255,.2); } .dark .rail span.on{ background:#fff; }
   ul.li{ list-style:none; margin:0; padding:0; display:grid; gap:1.5mm 6mm; }
   ul.li li{ display:flex; gap:2.2mm; font-size:7.9pt; line-height:1.38; color:var(--ink); }
   html[lang="ar"] ul.li li{ font-size:8.5pt; line-height:1.55; }
@@ -113,7 +120,7 @@
   const pad = (i) => String(i).padStart(2, '0');
   // chamfered panel: the top outer corner cut at 45 degrees (a vector clip, so the cut edge prints clean)
   const cut = (n) => AR ? `polygon(${n}mm 0,100% 0,100% 100%,0 100%,0 ${n}mm)` : `polygon(0 0,calc(100% - ${n}mm) 0,100% ${n}mm,100% 100%,0 100%)`;
-  const tile = (n, mm, cls = '') => `<span class="tile ${cls}" style="width:${mm}mm;height:${mm}mm"><i data-lucide="${n}"></i></span>`;
+  const tile = (n, mm, cls = '', st = '') => `<span class="tile ${cls}" style="width:${mm}mm;height:${mm}mm;${st}"><i data-lucide="${n}"></i></span>`;
   const GR = { silver: ['#c6ccd2', '#7d858d'], navy: ['#3d678c', '#13253a'], char: ['#3e4248', '#1a1c1f'], steel: ['#5b86ad', '#1d3a57'] };
   let gid = 0;
   const mark = (style, mono) => { const id = ++gid;
@@ -144,7 +151,7 @@
     clientsT: 'عملاء يثقون بنا', expectT: 'ما يمكنك أن تتوقعه منا', practices: 'ممارسات مهنية',
     mapT: ['من عمّان', 'إلى المنطقة'], mapS: 'مقرنا الرئيسي في عمّان، الأردن، ونخدم عملاءنا في منطقة الشرق الأوسط وشمال أفريقيا.', amman: 'عمّان',
     rows: ['الاسم', 'التأسيس', 'المقر الرئيسي', 'الخدمات', 'الاعتمادات المهنية', 'المعايير', 'العملاء', 'الهاتف', 'البريد الإلكتروني', 'الموقع الإلكتروني'],
-    founded: '26 شباط 2015', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
+    founded: '26 شباط 2015', today: 'اليوم', yearsExp: 'سنة من الخبرة', teamBy: 'فريقنا حسب التخصص', groups: ['الشركاء', 'التدقيق والتأكيد', 'المحاسبة والضرائب', 'الإدارة'], people: 'مهنيين', refClients: 'عملاء مرجعيون حسب مجموعة القطاعات', of: 'من', unit: 'كل خدمة من خدماتنا المتخصصة، حسب الممارسة', dl: 'تحميل PDF', other: 'English', otherHref: '?lang=en'
   } : {
     profile: 'Company Profile', year: '2026', firm: 'Consolidated for Auditing and Financial Consulting', site: 'www.caudit.net', motto: ['Integrity', 'Transparency', 'Quality'],
     lb: ['About Us', 'Vision, Mission & Values', 'Why Choose Us', 'Our Leadership', 'Sectors We Serve', 'Our Services', 'Service Details', 'Our Team', 'Clients & Commitments', 'Corporate Profile'],
@@ -154,7 +161,7 @@
     clientsT: 'Clients That Trust Us', expectT: 'What You Can Expect from Us', practices: 'Professional practices',
     mapT: ['From Amman', 'to the region'], mapS: 'Headquartered in Amman, Jordan, serving clients across the Middle East and North Africa.', amman: 'Amman',
     rows: ['Name', 'Founded', 'Headquarters', 'Services', 'Professional credentials', 'Standards', 'Clients', 'Phone', 'Email', 'Website'],
-    founded: '26 February 2015', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
+    founded: '26 February 2015', today: 'Today', yearsExp: 'Years of experience', teamBy: 'Our team by practice', groups: ['Partners', 'Audit & Assurance', 'Accounting & Tax', 'Administration'], people: 'Professionals', refClients: 'Reference clients by sector group', of: 'of', unit: 'Every one of our specialised services, by practice', dl: 'Download PDF', other: 'العربية', otherHref: '?lang=ar'
   };
   const svcIcons = ['shield-check', 'calculator', 'receipt-text', 'scan-search', 'trending-up', 'building-2', 'briefcase-business', 'graduation-cap', 'monitor-cog'];
   const valIcons = ['badge-check', 'scale', 'award', 'handshake', 'lock-keyhole', 'lightbulb'];
@@ -178,18 +185,43 @@
   // a navy band across the page with a faint shard texture
   const band = (top, height, inner, seed, pad = '10mm 18mm 0') => `<div class="navy abs" style="top:${top}mm;inset-inline:0;height:${height}mm;z-index:0">${svgBg(facets({ core: [[120, -5], [215, -5], [215, height + 5], [80, height + 5]], fringe: [[95, -5], [215, -5], [215, height + 5], [50, height + 5]], s: 11, seed, H: height }), 210, height, 'opacity:.4')}<div style="position:relative;padding:${pad}">${inner}</div></div>`;
   const corner = (seed, pal = 'silver', op = .55) => svgBg(facets({ core: [[168, -5], [215, -5], [215, 40]], fringe: [[150, -5], [215, -5], [215, 58]], s: 10, pal, seed }), 210, 297, `opacity:${op}`);
+  const ico = (n, mm, color = '#fff') => `<span class="ico" style="width:${mm}mm;height:${mm}mm;color:${color}"><i data-lucide="${n}"></i></span>`;
+  // unit strip: one cell per specialised service (117 in all); the cells of practice k are lit
+  const offs = S.map((_, k) => S.slice(0, k).reduce((a, s) => a + s.list.length, 0));
+  const unitStrip = (k, h = 2.6) => `<svg viewBox="0 0 ${totalSpec} 4" preserveAspectRatio="none" style="display:block;width:100%;height:${h}mm">${Array.from({ length: totalSpec }, (_, i) => { const on = i >= offs[k] && i < offs[k] + S[k].list.length; return `<rect x="${AR ? totalSpec - 1 - i : i}" y="0" width=".66" height="4" fill="${on ? '#2f6390' : '#dfe4e9'}"/>`; }).join('')}</svg>`;
+  // squarified treemap (all straight edges): rectangles sized by value
+  const squarify = (items, W, H) => { const out = [], total = items.reduce((a, b) => a + b.v, 0), sc = W * H / total; let rect = { x: 0, y: 0, w: W, h: H }, row = [], rest = items.slice();
+    const worst = (r, side) => { const s = r.reduce((a, b) => a + b.v * sc, 0), mx = Math.max(...r.map((b) => b.v * sc)), mn = Math.min(...r.map((b) => b.v * sc)); return Math.max(side * side * mx / (s * s), s * s / (side * side * mn)); };
+    const lay = (r) => { const s = r.reduce((a, b) => a + b.v * sc, 0);
+      if (rect.w >= rect.h) { const cw = s / rect.h; let yy = rect.y; r.forEach((b) => { const ch = b.v * sc / cw; out.push({ ...b, x: rect.x, y: yy, w: cw, h: ch }); yy += ch; }); rect = { x: rect.x + cw, y: rect.y, w: rect.w - cw, h: rect.h }; }
+      else { const ch = s / rect.w; let xx = rect.x; r.forEach((b) => { const cw = b.v * sc / ch; out.push({ ...b, x: xx, y: rect.y, w: cw, h: ch }); xx += cw; }); rect = { x: rect.x, y: rect.y + ch, w: rect.w, h: rect.h - ch }; } };
+    while (rest.length) { const side = Math.min(rect.w, rect.h); if (!row.length || worst([...row, rest[0]], side) <= worst(row, side)) row.push(rest.shift()); else { lay(row); row = []; } }
+    if (row.length) lay(row); return out; };
+  const rankOf = S.map((s, k) => k).sort((a, b) => S[b].list.length - S[a].list.length || a - b).reduce((o, k, r) => (o[k] = r, o), {});
+  const pcol = (k) => mixC('#6f97bd', '#1a3550', rankOf[k] / (S.length - 1));
+  const vcx = 51, vcy = 211, VR = 32;
+  const vtx = (k) => { const a = (-90 + k * 60) * Math.PI / 180; return [vcx + VR * Math.cos(a), vcy + VR * Math.sin(a)]; };
+  const vtri = Array.from({ length: 6 }, (_, k) => { const p1 = vtx(k), p2 = vtx(k + 1); return { P: [[vcx, vcy], p1, p2], c: [(vcx + p1[0] + p2[0]) / 3, (vcy + p1[1] + p2[1]) / 3] }; });
+  const vfill = ['#1d3a57', '#2f6390', '#24476b', '#3d678c', '#13253a', '#5b86ad'];
 
-  // ============ 1 · COVER: the building, whole, inside a field of shards ============
-  const PW = 88, PH = PW * 2133 / 1600;
+  // ============ 1 · COVER: the building, whole, with glass shards breaking away into the field ============
+  const PW = 88, PH = PW * 2133 / 1600, PX = 104, PY = 22;
+  const ring = (d) => [[PX - d, PY - d], [PX + PW + d, PY - d], [PX + PW + d, PY + PH + d], [PX - d, PY + PH + d]];
+  const beams = [[[214, 6], [214, 13], [34, 297], [20, 297]], [[214, 58], [214, 64], [112, 297], [102, 297]], [[178, -2], [186, -2], [-2, 240], [-2, 226]], [[214, 118], [214, 122], [154, 297], [148, 297]]]
+    .map((P, i) => `<polygon points="${P.map((p) => p.join(',')).join(' ')}" fill="#fff" opacity="${[.05, .07, .035, .06][i]}"/>`).join('');
   page(0, `
     ${svgBg(facets({ core: [[92, -5], [215, -5], [215, 182], [168, 212], [92, 160]], fringe: [[74, -5], [215, -5], [215, 206], [150, 236], [70, 170]], s: 13, seed: 3 }))}
-    ${svgBg(facets({ core: [[150, 297], [215, 236], [215, 302], [140, 302]], fringe: [[118, 302], [215, 214], [215, 302]], s: 9, pal: 'silver', seed: 5, edge: .2 }), 210, 297, 'opacity:.55')}
-    ${A(104, 24, 0, `<div style="position:relative;width:${PW}mm;height:${PH}mm"><div style="position:absolute;top:5mm;inset-inline-start:5mm;width:100%;height:100%;border:.5mm solid var(--soft)"></div><img src="/assets/img/sky-1.jpg" style="position:relative;display:block;width:100%;height:100%"></div>`)}
+    ${svgBg(beams)}
+    ${svgBg(facets({ core: ring(8), fringe: ring(24), s: 5, pal: 'silver', seed: 7, edge: .4, dens: .42, fr: .16 }), 210, 297, 'opacity:.5')}
+    ${svgBg(facets({ core: [[188, 297], [215, 258], [215, 302], [182, 302]], fringe: [[166, 302], [215, 236], [215, 302]], s: 8, pal: 'silver', seed: 5, edge: .2 }), 210, 297, 'opacity:.5')}
+    ${A(PX, PY, 0, `<div style="position:relative;width:${PW}mm;height:${PH}mm"><div style="position:absolute;top:5mm;inset-inline-start:5mm;width:100%;height:100%;border:.5mm solid var(--soft)"></div><img src="/assets/img/sky-1.jpg" style="position:relative;display:block;width:100%;height:100%"></div>`)}
     ${A(18, 18, 70, `<img src="/assets/img/icon.png" style="height:15mm;filter:brightness(0) invert(1)"><img src="/profile/img/wordmark-white.png" style="height:6mm;display:block;margin-top:5mm">`)}
     ${A(18, 70, 76, `<p class="kick">${esc(T.profile)}</p><p class="num" style="font-size:58pt;color:#fff;margin-top:3mm">${T.year}</p>
-      <div style="display:flex;flex-direction:column;gap:3mm;margin-top:9mm">${T.motto.map((m, i) => `<span style="display:flex;align-items:center;gap:3mm;color:#fff;font-weight:600;font-size:${AR ? 10.4 : 10.4}pt">${tile(['badge-check', 'eye', 'award'][i], 8, 'gl')}${esc(m)}</span>`).join('')}</div>`)}
-    ${A(18, 196, 150, `<h1 style="font-weight:700;color:#fff;font-size:${AR ? 25 : 31}pt;line-height:1.1">${esc(D.services.title1)}<br><span style="font-weight:300;color:var(--soft)">${esc(D.services.title2)}</span></h1>
-      <p class="tx" style="margin-top:5mm;color:#c9d6e2;max-width:132mm">${esc(D.hero.sub)}</p><p class="cap" style="margin-top:6mm;color:var(--soft)">${T.site}</p>`)}`, { bare: true, dark: true });
+      <div style="display:flex;flex-direction:column;gap:3mm;margin-top:9mm">${T.motto.map((m, i) => `<span style="display:flex;align-items:center;gap:3mm;color:#fff;font-weight:600;font-size:10.4pt">${tile(['badge-check', 'eye', 'award'][i], 8, 'gl')}${esc(m)}</span>`).join('')}</div>`)}
+    ${A(18, 186, 160, `<h1 style="font-weight:700;color:#fff;font-size:${AR ? 25 : 31}pt;line-height:1.1">${esc(D.services.title1)}<br><span style="font-weight:300;color:var(--soft)">${esc(D.services.title2)}</span></h1>
+      <p class="tx" style="margin-top:5mm;color:#c9d6e2;max-width:132mm">${esc(D.hero.sub)}</p>`)}
+    ${A(18, 252, 160, `<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.28);padding-top:4mm">${figs.map(([n, s, l], i) => `
+      <div style="${i ? 'border-inline-start:1px solid rgba(255,255,255,.18);padding-inline-start:4mm' : ''}"><p class="num" style="font-size:22pt;color:#fff">${n}${s ? `<small style="color:var(--soft)">${esc(s)}</small>` : ''}</p><p class="cap" style="margin-top:1.6mm;font-size:6.2pt;color:var(--soft)">${esc(l)}</p></div>`).join('')}</div>`)}`, { bare: true, dark: true });
 
   // ============ 2 · ABOUT ============
   page(0, `
@@ -201,8 +233,10 @@
     ${A(18, 160, 100, `<p class="cap">${esc(T.creds)}</p><div style="display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:2.4mm">${D.hero.certs.slice(0, 5).map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>
       <p class="cap" style="margin-top:4.4mm">${esc(T.standards)}</p><div style="display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:2.4mm">${D.hero.certs.slice(5).map((c) => `<span class="chip">${esc(c[0])}</span>`).join('')}</div>`)}
     ${band(214, 83, `<p class="kick">${esc(T.inNum)}</p>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:6mm">${figs.map(([n, s, l], i) => `
-        <div style="${i ? 'border-inline-start:1px solid rgba(255,255,255,.22);padding-inline-start:5mm' : ''}">${tile(statIcons[i], 10, 'wt')}<p class="num" style="font-size:31pt;margin-top:3.4mm;color:#fff">${n}${s ? `<small>${esc(s)}</small>` : ''}</p><p class="cap" style="margin-top:2mm">${esc(l)}</p></div>`).join('')}</div>`, 21)}`, { lightFoot: true });
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;margin-top:5mm">${figs.map(([n, s, l], i) => `
+        <div style="${i ? 'border-inline-start:1px solid rgba(255,255,255,.22);padding-inline-start:5mm' : ''}">${tile(statIcons[i], 10, 'wt')}<p class="num" style="font-size:30pt;margin-top:3mm;color:#fff">${n}${s ? `<small>${esc(s)}</small>` : ''}</p><p class="cap" style="margin-top:1.6mm">${esc(l)}</p></div>`).join('')}</div>
+      <div style="display:grid;grid-template-columns:repeat(12,1fr);margin-top:6mm;border-top:1px solid rgba(255,255,255,.4)">${Array.from({ length: 12 }, (_, i) => { const end = i === 0 || i === 11; return `
+        <div style="border-inline-start:1px solid rgba(255,255,255,${end ? .9 : .3});padding:1.4mm 0 0;padding-inline-start:1.2mm;height:${end ? 7 : 4}mm"><p style="font-size:6.4pt;font-weight:${end ? 700 : 400};color:${end ? '#fff' : 'rgba(255,255,255,.55)'}">${2015 + i}</p>${end ? `<p class="cap" style="font-size:5.6pt;margin-top:.4mm">${esc(i ? T.today : T.stats[0])}</p>` : ''}</div>`; }).join('')}</div>`, 21, '8mm 18mm 0')}`, { lightFoot: true });
 
   // ============ 3 · VISION, MISSION & VALUES ============
   page(1, `
@@ -211,28 +245,25 @@
     ${A(18, 64, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6mm">
       <div style="padding:7mm;color:#fff;background:#1d3a57;clip-path:${cut(9)}">${tile('eye', 14, 'wt')}<p class="t2" style="font-size:15pt;margin-top:4mm;color:#fff">${esc(D.vision.title)}</p><p class="tx" style="margin-top:2.6mm;color:#d3dfea">${esc(D.vision.text)}</p><p class="cap" style="margin-top:3.4mm;color:var(--soft)">${esc(D.vision.tag)}</p></div>
       <div style="padding:7mm;background:var(--mist);clip-path:${cut(9)}">${tile('target', 14)}<p class="t2" style="font-size:15pt;margin-top:4mm">${esc(D.mission.title)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.mission.text)}</p><p class="cap" style="margin-top:3.4mm">${esc(D.mission.tag)}</p></div></div>`)}
-    ${A(18, 160, 174, `<p class="kick">${esc(T.valuesT)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.values.sub)}</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6mm 7mm;margin-top:6mm">${D.values.cards.map((c, k) => `
-        <div style="display:flex;gap:3.4mm;align-items:flex-start">${tile(valIcons[k], 12, k % 2 ? 'nv' : '')}<div><p class="t2" style="font-size:10pt">${esc(c.title)}</p><p class="sm" style="margin-top:1mm;font-size:7.8pt">${esc(c.text)}</p></div></div>`).join('')}</div>`)}`);
+    ${A(18, 158, 174, `<p class="kick">${esc(T.valuesT)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.values.sub)}</p>`)}
+    ${svgBg(vtri.map((t, k) => `<polygon points="${t.P.map((p) => p.map((v) => v.toFixed(2)).join(',')).join(' ')}" fill="${vfill[k]}" stroke="#fff" stroke-width="1.3" stroke-linejoin="miter"/>`).join('') + `<polygon points="${Array.from({ length: 6 }, (_, k) => vtx(k).map((v) => v.toFixed(2)).join(',')).join(' ')}" fill="none" stroke="#1d3a57" stroke-width=".35" transform="translate(0 0)"/>`)}
+    ${vtri.map((t, k) => A(t.c[0] - 4, t.c[1] - 5.4, 8, `<div style="text-align:center">${ico(valIcons[k], 8)}<p style="font-size:6pt;font-weight:600;color:#fff;margin-top:.6mm">${pad(k + 1)}</p></div>`, 'z-index:2')).join('')}
+    ${A(98, 177, 94, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:3mm 6mm">${D.values.cards.map((c, k) => `
+      <div style="border-top:1px solid var(--line);padding-top:2mm"><p class="cap" style="font-size:6.2pt">${pad(k + 1)}</p><p class="t2" style="font-size:9.6pt;margin-top:.4mm">${esc(c.title)}</p><p class="sm" style="margin-top:.6mm;font-size:6.9pt;line-height:1.36">${esc(c.text)}</p></div>`).join('')}</div>`)}`);
 
-  // ============ 4 · WHY CHOOSE US: hexagon of competences ============
-  const cx = 105, cy = 170, R = 44, MX = (x) => AR ? 210 - x : x;
-  const nodes = D.why.items.map((w, k) => { const a = (-90 + k * 60) * Math.PI / 180; return { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a), w, k, c: Math.cos(a) }; });
-  const hexP = (r) => Array.from({ length: 6 }, (_, k) => { const a = (-90 + k * 60) * Math.PI / 180; return `${MX(cx + r * Math.cos(a)).toFixed(2)},${(cy + r * Math.sin(a)).toFixed(2)}`; }).join(' ');
+  // ============ 4 · WHY CHOOSE US: six advantages as a rising staircase ============
+  const SW = 29, BY = 238, SH = 18;
+  const steps = D.why.items.map((w, k) => ({ w, k, x: 18 + k * SW, top: BY - (k + 1) * SH }));
   page(2, `
-    ${svgBg(facets({ core: [[150, -5], [215, -5], [215, 100], [176, 120]], fringe: [[128, -5], [215, -5], [215, 126], [160, 140]], s: 11, pal: 'navy', seed: 17 }), 210, 297, 'opacity:.9')}
+    ${svgBg(facets({ core: [[156, -5], [215, -5], [215, 50], [184, 62]], fringe: [[136, -5], [215, -5], [215, 72], [166, 84]], s: 11, pal: 'navy', seed: 17 }), 210, 297, 'opacity:.9')}
     ${A(18, 26, 116, `${head(3, D.why.title1, D.why.title2)}<p class="tag" style="margin-top:4mm">${esc(D.why.subtitle)}</p><p class="tx" style="margin-top:2.6mm">${esc(D.why.intro)}</p>`)}
-    <svg class="abs" viewBox="0 0 210 297" style="inset:0;width:100%;height:100%;z-index:1">
-      <polygon points="${hexP(R)}" fill="none" stroke="#2f6390" stroke-width=".4" stroke-dasharray="1.4 1.4"/>
-      ${nodes.map((n) => `<line x1="${MX(cx)}" y1="${cy}" x2="${MX(n.x).toFixed(2)}" y2="${n.y.toFixed(2)}" stroke="#2f6390" stroke-width=".25"/>`).join('')}
-      <polygon points="${hexP(22)}" fill="#ffffff" stroke="#1d3a57" stroke-width=".6"/></svg>
-    ${mark(`position:absolute;z-index:2;width:24mm;top:${cy - 12}mm;inset-inline-start:${cx - 12}mm`)}
-    ${nodes.map((n) => A(n.x - 7.5, n.y - 7.5, 15, tile(whyIcons[n.k], 15, n.k % 2 ? 'nv' : ''), 'z-index:3')).join('')}
-    ${nodes.map((n) => { const right = n.c > .1, left = n.c < -.1;
-      const x = right ? n.x + 10.5 : left ? n.x - 10.5 - 46 : n.x - 23, y = n.k === 0 ? n.y - 16 : n.k === 3 ? n.y + 10 : n.y - 3.4;
-      return A(x, y, 46, `<p class="t2" style="text-align:${right ? 'start' : left ? 'end' : 'center'};font-size:9.4pt">${esc(n.w.title)}</p>`, 'z-index:3'); }).join('')}
-    ${A(18, 232, 174, `<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4mm 7mm;border-top:2px solid var(--navy);padding-top:4mm">${D.why.items.map((w, k) => `
-      <div><p class="cap">${pad(k + 1)} · ${esc(w.title)}</p><p class="sm" style="margin-top:1mm;font-size:7.7pt">${esc(w.text)}</p></div>`).join('')}</div>`)}`);
+    ${svgBg(`<line x1="22" y1="${BY - SH - 30}" x2="186" y2="${BY - 6 * SH - 30}" stroke="#2f6390" stroke-width=".4" stroke-dasharray="1.6 1.2"/><polygon points="190,${BY - 6 * SH - 31.8} 183.2,${BY - 6 * SH - 33.6} 185.4,${BY - 6 * SH - 27.2}" fill="#2f6390"/>`)}
+    ${steps.map((s) => `
+      <div class="abs" style="top:${s.top}mm;inset-inline-start:${s.x}mm;width:${SW - 1.4}mm;height:${(s.k + 1) * SH}mm;padding:2.6mm;background:${mixC('#13253a', '#5b86ad', s.k / 5)};clip-path:${cut(4)}">
+        <p style="font-size:6.4pt;font-weight:700;color:var(--soft);letter-spacing:.1em">${pad(s.k + 1)}</p><div style="margin-top:1.4mm">${ico(whyIcons[s.k], 7.4)}</div></div>
+      ${A(s.x, s.top - 13, SW - 2, `<div style="height:11.4mm;display:flex;align-items:flex-end"><p class="t2" style="font-size:8.2pt;line-height:1.2">${esc(s.w.title)}</p></div>`)}
+      ${A(s.x, BY + 4, SW - 2.4, `<p class="sm" style="font-size:7pt;line-height:1.42;text-align:start">${esc(s.w.text)}</p>`)}`).join('')}
+    <div class="abs" style="top:${BY}mm;inset-inline:18mm;height:.6mm;background:var(--navy)"></div>`);
 
   // ============ 5 · LEADERSHIP: chamfered navy plates with big icons ============
   const contact = (p) => p.contact.filter((c) => /^\+|@/.test(c.value)).map((c) => `<span class="ltr">${esc(c.value)}</span>`).join('<br>');
@@ -240,35 +271,46 @@
     <div class="abs" style="top:${y}mm;inset-inline-start:18mm;width:58mm;height:${h}mm;padding:6mm;background:#1d3a57;clip-path:${cut(10)}">
       ${tile(k ? 'receipt-text' : 'shield-check', 20, 'wt')}
       <p class="t2" style="color:#fff;font-size:${big ? 13 : 12}pt;margin-top:6mm">${esc(p.name)}</p><p class="cap" style="color:var(--soft);margin-top:1.4mm">${esc(p.role)}</p>
-      ${p.certs.length ? `<div style="display:flex;gap:1.4mm;flex-wrap:wrap;margin-top:5mm">${p.certs.map((c) => `<span class="chip" style="border-color:rgba(255,255,255,.45);color:#fff;font-size:7pt">${esc(c)}</span>`).join('')}</div>` : ''}</div>
+      ${p.certs.length ? `<div style="display:flex;gap:1.4mm;flex-wrap:wrap;margin-top:5mm">${p.certs.map((c) => `<span class="chip" style="border-color:rgba(255,255,255,.45);color:#fff;font-size:7pt">${esc(c)}</span>`).join('')}</div>` : ''}
+      <div style="position:absolute;bottom:6mm;inset-inline-start:6mm"><p class="num" style="font-size:40pt;color:#fff">${(EN.leaders.people[k].bio[0].match(/(\d+) years/) || [, ''])[1]}<small style="color:var(--soft)">+</small></p><p class="cap" style="color:var(--soft);margin-top:1.4mm">${esc(T.yearsExp)}</p></div></div>
     ${A(86, y, 106, `<p class="tag" style="display:flex;gap:2.4mm;align-items:center">${tile('graduation-cap', 7)}${esc(p.degree)}</p>
       ${p.bio.map((b) => `<p class="tx" style="margin-top:2.6mm;${big ? '' : 'font-size:8.6pt'}">${esc(b)}</p>`).join('')}
       <p class="sm" style="margin-top:3mm;color:var(--steel);font-weight:600;line-height:1.6">${contact(p)}</p>`)}`;
   page(3, `${corner(19)}${A(18, 26, 174, head(4, D.leaders.title))}${leader(D.leaders.people[0], 0, 56, 100, true)}${leader(D.leaders.people[1], 1, 172, 86, false)}`);
 
-  // ============ 6 · SECTORS: big icon plates ============
+  // ============ 6 · SECTORS: big icon plates; reference clients charted by sector group ============
+  const RS = D.clients.sectors, rsN = RS.map((s) => s.groups.reduce((a, g) => a + g[1].length, 0)), rsMax = Math.max(...rsN);
   page(4, `
     ${corner(23)}
     ${A(18, 26, 174, `${head(5, D.sectors.title)}<p class="tx" style="margin-top:3mm">${esc(D.expect.cards[4].text)}.</p>`)}
-    ${A(18, 80, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">${D.sectors.cards.map((c, k) => `
-      <div style="height:58mm;padding:5mm;display:flex;flex-direction:column;justify-content:space-between;background:${k % 2 ? 'var(--mist)' : '#1d3a57'};clip-path:${cut(7)}">
-        ${tile(secIcons[k], 16, k % 2 ? '' : 'wt')}<div><p class="cap" style="${k % 2 ? '' : 'color:var(--soft)'}">${pad(k + 1)}</p><p class="t2" style="font-size:10.4pt;margin-top:1mm;${k % 2 ? '' : 'color:#fff'}">${esc(c.title)}</p></div></div>`).join('')}</div>`)}
-    ${band(214, 83, `<div style="display:grid;grid-template-columns:auto 1fr;gap:10mm;align-items:center">
-        <p class="num" style="font-size:64pt;color:#fff">${st[2].n}<small style="color:var(--soft)">${esc(st[2].suffix)}</small></p>
-        <div><p class="kick">${esc(T.clientsT)}</p><p class="t2" style="margin-top:3mm;font-size:13pt;font-weight:300">${esc(T.clientsN)}</p><p class="tx" style="margin-top:2.4mm">${esc(D.expect.cards[1].text)}</p></div></div>`, 29, '12mm 18mm 0')}`, { lightFoot: true });
+    ${A(18, 74, 174, `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5mm">${D.sectors.cards.map((c, k) => `
+      <div style="height:47mm;padding:4.4mm;display:flex;flex-direction:column;justify-content:space-between;background:${k % 2 ? 'var(--mist)' : '#1d3a57'};clip-path:${cut(7)}">
+        ${tile(secIcons[k], 14, k % 2 ? '' : 'wt')}<div><p class="cap" style="${k % 2 ? '' : 'color:var(--soft)'}">${pad(k + 1)}</p><p class="t2" style="font-size:10pt;margin-top:1mm;${k % 2 ? '' : 'color:#fff'}">${esc(c.title)}</p></div></div>`).join('')}</div>`)}
+    ${band(184, 113, `<div style="display:grid;grid-template-columns:auto 1fr;gap:9mm;align-items:center">
+        <p class="num" style="font-size:52pt;color:#fff">${st[2].n}<small style="color:var(--soft)">${esc(st[2].suffix)}</small></p>
+        <div><p class="kick">${esc(T.clientsT)}</p><p class="t2" style="margin-top:2.4mm;font-size:12pt;font-weight:300">${esc(T.clientsN)}</p></div></div>
+      <p class="cap" style="margin-top:6mm;border-top:1px solid rgba(255,255,255,.25);padding-top:3mm">${esc(T.refClients)}</p>
+      ${RS.map((s, i) => `<div style="display:grid;grid-template-columns:40mm 1fr 9mm;gap:3mm;align-items:start;margin-top:3.4mm">
+        <p class="t2" style="font-size:8.4pt;color:#fff;line-height:1.25">${esc(s.name)}</p>
+        <div style="display:flex;gap:.8mm;width:${(rsN[i] / rsMax * 100).toFixed(1)}%">${s.groups.map((g, j) => `<div style="flex:${g[1].length};min-width:0"><div style="height:4.4mm;background:${['#8fb0cc', '#5b86ad', '#c6ccd2'][j]};clip-path:${cut(1.6)}"></div><p style="font-size:6pt;color:#c9d6e2;margin-top:1mm;line-height:1.25">${esc(g[0])} · <b style="color:#fff">${g[1].length}</b></p></div>`).join('')}</div>
+        <p class="num" style="font-size:15pt;color:#fff;text-align:end">${rsN[i]}</p></div>`).join('')}`, 29, '9mm 18mm 0')}`, { lightFoot: true });
 
-  // ============ 7 · SERVICES OVERVIEW (dark): bar chart of specialised services ============
+  // ============ 7 · SERVICES OVERVIEW (dark): treemap of the nine practices + a 117-cell unit strip ============
+  const TW = 174, TH = 146, TY = 76;
+  const tm = squarify(S.map((s, k) => ({ v: s.list.length, k })).sort((a, b) => b.v - a.v || a.k - b.k), TW, TH);
   page(5, `
-    ${svgBg(facets({ core: [[-5, 190], [70, 300], [-5, 300]], fringe: [[-5, 160], [100, 302], [-5, 302]], s: 12, seed: 31 }), 210, 297, 'opacity:.7')}
+    ${svgBg(facets({ core: [[-5, 236], [44, 302], [-5, 302]], fringe: [[-5, 206], [80, 302], [-5, 302]], s: 12, seed: 31 }), 210, 297, 'opacity:.7')}
     ${svgBg(facets({ core: [[170, -5], [215, -5], [215, 60]], fringe: [[150, -5], [215, -5], [215, 80]], s: 10, pal: 'silver', seed: 33 }), 210, 297, 'opacity:.25')}
-    ${A(18, 26, 120, head(6, D.services.title1, D.services.title2))}
-    ${A(150, 30, 42, `<div style="text-align:end"><p class="num" style="font-size:44pt;color:#fff;font-weight:300">${totalSpec}</p><p class="cap" style="margin-top:1.6mm">${esc(T.across)}</p><p class="num" style="font-size:20pt;color:var(--soft);margin-top:4mm">${pad(S.length)}</p><p class="cap" style="margin-top:1mm">${esc(T.practices)}</p></div>`)}
-    ${A(18, 78, 174, `<div style="border-top:1px solid rgba(255,255,255,.3)">${S.map((s, k) => `
-      <div style="display:grid;grid-template-columns:11mm 1fr 52mm 10mm;gap:4mm;align-items:center;padding:3mm 0;border-bottom:1px solid rgba(255,255,255,.14)">
-        ${tile(svcIcons[k], 11, k % 2 ? 'gl' : '')}
-        <div><p class="t2" style="font-size:10pt">${esc(s.title)}</p><p class="sm" style="color:var(--soft);margin-top:.3mm">${esc(s.tagline)}</p></div>
-        <div style="height:3.4mm;background:rgba(255,255,255,.1)"><div style="height:100%;width:${(s.list.length / maxL * 100).toFixed(1)}%;background:linear-gradient(90deg,#3d678c,#8fb0cc)"></div></div>
-        <p class="num" style="font-size:17pt;color:#fff;text-align:end;font-weight:400">${pad(s.list.length)}</p></div>`).join('')}</div>`)}`, { dark: true });
+    ${A(18, 26, 124, head(6, D.services.title1, D.services.title2))}
+    ${A(146, 28, 46, `<div style="text-align:end"><p class="num" style="font-size:44pt;color:#fff;font-weight:300">${totalSpec}</p><p class="cap" style="margin-top:1.6mm">${esc(T.across)}</p><p class="num" style="font-size:18pt;color:var(--soft);margin-top:3mm">${pad(S.length)}</p><p class="cap" style="margin-top:1mm">${esc(T.practices)}</p></div>`)}
+    ${tm.map((r) => { const s = S[r.k], m = Math.min(r.w, r.h), big = r.w > 52 && r.h > 44;
+      return A(18 + r.x, TY + r.y, r.w - 1.6, `<div style="height:${r.h - 1.6}mm;padding:${m > 44 ? 4 : 3}mm;background:${pcol(r.k)};clip-path:${cut(4)};display:flex;flex-direction:column;justify-content:space-between;color:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">${ico(svcIcons[r.k], m > 44 ? 8 : 6.4)}<p class="num" style="font-size:${big ? 30 : 20}pt;color:#fff">${pad(s.list.length)}</p></div>
+        <div><p class="t2" style="color:#fff;font-size:${big ? 11 : 8.6}pt;line-height:1.22">${esc(s.title)}</p>${big ? `<p class="sm" style="font-size:7pt;margin-top:1mm;color:#dbe6f0">${esc(s.tagline)}</p>` : ''}<p class="cap" style="color:#dbe6f0;font-size:5.8pt;margin-top:1.2mm">${(s.list.length / totalSpec * 100).toFixed(1)}% · ${esc(T.service)} ${pad(r.k + 1)}</p></div></div>`); }).join('')}
+    ${A(18, TY + TH + 8, 174, `<p class="cap">${esc(T.unit)}</p>
+      <div style="display:flex;gap:1.2mm;margin-top:2.6mm">${S.map((s, k) => `<div style="flex:${s.list.length}">
+        <svg viewBox="0 0 ${s.list.length} 4" preserveAspectRatio="none" style="display:block;width:100%;height:9mm">${s.list.map((_, i) => `<rect x="${i}" y="0" width=".62" height="4" fill="${pcol(k)}"/>`).join('')}</svg>
+        <p style="font-size:6.2pt;font-weight:700;color:#fff;margin-top:1.2mm">${pad(k + 1)}</p><p style="font-size:5.6pt;color:var(--soft)">${s.list.length}</p></div>`).join('')}</div>`)}`, { dark: true });
 
   // ============ 8-11 · SERVICE DETAILS ============
   [[0, 1, 2], [3, 4], [5, 6], [7, 8]].forEach((group, gi) => {
@@ -278,20 +320,27 @@
         <div style="display:flex;gap:4.5mm;align-items:center;border-bottom:2px solid var(--navy);padding-bottom:${c ? 2.6 : 3.6}mm">${tile(svcIcons[k], c ? 12 : 16, r % 2 ? 'nv' : '')}
           <div style="flex:1"><p class="cap">${esc(T.service)} ${pad(k + 1)} / ${pad(S.length)}</p><h3 class="t2" style="font-size:${AR ? (c ? 12.5 : 14) : (c ? 14 : 17)}pt;margin-top:.6mm">${esc(s.title)}</h3><p class="tag" style="margin-top:.6mm;font-size:${c ? 8.6 : 9.6}pt">${esc(s.tagline)}</p></div>
           <div style="text-align:end"><p class="num" style="font-size:${c ? 24 : 32}pt;color:var(--steel)">${pad(s.list.length)}</p><p class="cap" style="font-size:5.8pt;color:var(--silver)">${esc(T.specialised)}</p></div></div>
+        <div style="display:flex;align-items:center;gap:3mm;margin-top:1.8mm"><div style="flex:1">${unitStrip(k)}</div><span class="cap" style="white-space:nowrap;font-size:5.8pt;color:var(--silver)">${s.list.length} ${esc(T.of)} ${totalSpec} · ${(s.list.length / totalSpec * 100).toFixed(1)}%</span></div>
         <p class="tx" style="margin-top:${c ? 2.4 : 3.6}mm;font-size:${c ? 8.1 : 9}pt;line-height:${c ? 1.5 : 1.58}">${esc(s.text[0])}</p>
         <div style="background:var(--mist);clip-path:${cut(5)};margin-top:${c ? 2.6 : 4}mm;padding:${c ? '2.8mm 3.4mm' : '4.4mm 5mm'}"><p class="cap">${esc(s.listTitle)}</p>
           <ul class="li" style="margin-top:${c ? 1.8 : 2.6}mm;grid-template-columns:repeat(${c ? 3 : 2},1fr);gap:${c ? '.8mm 4mm' : '1.8mm 7mm'}">${s.list.map((li) => `<li style="${c ? 'font-size:7pt;line-height:1.3' : ''}"><span>${esc(li)}</span></li>`).join('')}</ul></div>
       </div>`; }).join('')}</div>`)}`, { sub: `${pad(group[0] + 1)}–${pad(group[group.length - 1] + 1)}` });
   });
 
-  // ============ 12 · TEAM: role icons, no photographs ============
+  // ============ 12 · TEAM: composition by practice + role icons, no photographs ============
+  const tg = EN.team.people.map((p) => /Founder|Partner/.test(p.role) ? 0 : /Manager|Auditor/.test(p.role) ? 1 : /Accountant/.test(p.role) ? 2 : 3);
+  const gcol = ['#1d3a57', '#2f6390', '#5b86ad', '#8a949e'];
   page(7, `
     ${corner(53)}
     ${A(18, 26, 174, `<p class="kick">08 · ${esc(T.lb[7])}</p><h2 class="h2" style="font-size:${AR ? 19 : 23}pt">${esc(D.team.title)}</h2>`)}
-    ${A(18, 56, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 8mm">${D.team.people.map((p, k) => `
-      <div style="display:flex;gap:4.6mm;padding:5mm 0;border-top:${k < 2 ? '2px solid var(--navy)' : '1px solid var(--line)'};height:53mm">
-        ${tile(roleIcon(EN.team.people[k].role), 16, k % 2 ? 'nv' : '')}
-        <div><p class="t2" style="font-size:10pt">${esc(p.name)}</p><p class="cap" style="margin:1mm 0 1.8mm;font-size:6.4pt">${esc(p.role)}</p><p class="sm" style="font-size:7.6pt;line-height:1.5;text-align:justify">${esc(p.line)}</p></div></div>`).join('')}</div>`)}`);
+    ${A(18, 52, 174, `<div style="display:grid;grid-template-columns:24mm 1fr;gap:5mm;align-items:center">
+      <div><p class="num" style="font-size:30pt;color:var(--navy)">${pad(tg.length)}</p><p class="cap" style="margin-top:1mm">${esc(T.people)}</p></div>
+      <div><p class="cap" style="color:var(--ink2)">${esc(T.teamBy)}</p><div style="display:flex;gap:1mm;margin-top:2mm">${tg.slice().sort().map((g) => `<div style="flex:1;height:6mm;background:${gcol[g]};clip-path:${cut(2)}"></div>`).join('')}</div>
+        <div style="display:flex;gap:1mm;margin-top:1.6mm">${[0, 1, 2, 3].map((g) => { const n = tg.filter((x) => x === g).length; return `<div style="flex:${n}"><p style="font-size:6.4pt;line-height:1.25;color:var(--ink2)">${esc(T.groups[g])}<br><b style="color:${gcol[g]};font-size:8pt">${n}</b></p></div>`; }).join('')}</div></div></div>`)}
+    ${A(18, 80, 174, `<div style="display:grid;grid-template-columns:1fr 1fr;gap:0 8mm">${D.team.people.map((p, k) => `
+      <div style="display:flex;gap:4.6mm;padding:4.4mm 0;border-top:${k < 2 ? '2px solid var(--navy)' : '1px solid var(--line)'};height:48.5mm">
+        ${tile(roleIcon(EN.team.people[k].role), 15, '', `background:${gcol[tg[k]]}`)}
+        <div><p class="t2" style="font-size:10pt">${esc(p.name)}</p><p class="cap" style="margin:1mm 0 1.6mm;font-size:6.4pt">${esc(p.role)}</p><p class="sm" style="font-size:7.5pt;line-height:1.48;text-align:justify">${esc(p.line)}</p></div></div>`).join('')}</div>`)}`);
 
   // ============ 13 · CLIENTS & COMMITMENTS ============
   const logos = EN.clients.logoFiles || [];
@@ -335,6 +384,7 @@
   // ---------- render ----------
   document.getElementById('doc').innerHTML = pages.map((p, i) => `<section class="page${p.opt.dark ? ' dark' : ''}${p.opt.lightFoot ? ' lf' : ''}" id="pg${i + 1}">${p.inner}
       ${p.opt.bare ? '' : `<div class="hd"><span class="sec">${p.opt.sub ? `<b>${esc(T.lb[p.sec])}</b>${p.opt.sub}` : ''}</span><img src="/assets/img/icon.png" alt=""></div>
+        <div class="rail"><b>${pad(p.sec + 1)}</b>${T.lb.map((_, k) => `<span class="${k === p.sec ? 'on' : ''}"></span>`).join('')}</div>
         <div class="ft"><b>${pad(i + 1)}</b><span class="r"></span><span>${esc(T.firm)}</span><span class="ltr">${T.site}</span></div>`}</section>`).join('');
   lucide.createIcons({ attrs: { 'stroke-width': 1.7 } });
 
