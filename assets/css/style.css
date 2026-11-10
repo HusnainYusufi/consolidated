@@ -785,3 +785,6 @@ html[dir="rtl"] .hd-line::after { background: linear-gradient(270deg, var(--cyan
 .about-panel, .why-head { --pp: clamp(.75rem, (100vw - 75rem) / 2 - .5rem, 3rem); padding-inline: var(--pp); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); max-width: none; }
 /* Vision / Mission cards line up with the About panel's outer edges (same outward offset). */
 .vm-grid { --pp: clamp(.75rem, (100vw - 75rem) / 2 - .5rem, 3rem); margin-inline: calc(-1 * var(--pp)); width: calc(100% + 2 * var(--pp)); }
+
+/* Office address: a line break in the text (the Arabic puts عمّان on its own line) is kept. */
+.visit-address, .foot-contact span, .leader-contact li { white-space: pre-line; }
