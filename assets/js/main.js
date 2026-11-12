@@ -421,11 +421,13 @@
   }
 
   /* ---------- Hero word cycle (letters slide 118%, stagger .045, ease [.16,1,.3,1]) ---------- */
-  let cycleTimer = null;
+  let cycleTimer = null, cycleRun = 0;
   function initCycle() {
     const host = $('[data-cycle]');
     if (!host) return;
     clearTimeout(cycleTimer);
+    // A language switch starts a new run; an animation still finishing from the old run must not restart the old words.
+    const run = ++cycleRun;
     const words = heroWords();
     const isAr = lang === 'ar';
     let idx = 0, spans = [];
@@ -441,6 +443,7 @@
       return out;
     };
     const show = () => {
+      if (run !== cycleRun) return;
       spans = build(words[idx]);
       if (hasGsap && !reduced) { gsap.set(spans, { yPercent: 118 }); gsap.to(spans, { yPercent: 0, duration: 1.05, stagger: .03, ease: 'expo.out' }); }
       cycleTimer = setTimeout(hide, 3200);
